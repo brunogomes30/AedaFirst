@@ -67,10 +67,10 @@ RM = "C:\Program Files\JetBrains\CLion 2020.2.3\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst"
+CMAKE_SOURCE_DIR = C:\Users\ultra\Documents\Projects\AedaFirst
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\cmake-build-debug"
+CMAKE_BINARY_DIR = C:\Users\ultra\Documents\Projects\AedaFirst\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -99,9 +99,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles" "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles\progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ultra\Documents\Projects\AedaFirst\cmake-build-debug\CMakeFiles C:\Users\ultra\Documents\Projects\AedaFirst\cmake-build-debug\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ultra\Documents\Projects\AedaFirst\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -196,6 +196,33 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+product.obj: product.cpp.obj
+
+.PHONY : product.obj
+
+# target to build an object file
+product.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/product.cpp.obj
+.PHONY : product.cpp.obj
+
+product.i: product.cpp.i
+
+.PHONY : product.i
+
+# target to preprocess a source file
+product.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/product.cpp.i
+.PHONY : product.cpp.i
+
+product.s: product.cpp.s
+
+.PHONY : product.s
+
+# target to generate assembly for a file
+product.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/product.cpp.s
+.PHONY : product.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -211,6 +238,9 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... product.obj
+	@echo ... product.i
+	@echo ... product.s
 .PHONY : help
 
 

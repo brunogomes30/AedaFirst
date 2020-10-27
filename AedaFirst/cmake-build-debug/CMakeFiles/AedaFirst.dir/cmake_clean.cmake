@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "AedaFirst.pdb"
   "CMakeFiles/AedaFirst.dir/loja.cpp.obj"
   "CMakeFiles/AedaFirst.dir/main.cpp.obj"
+  "CMakeFiles/AedaFirst.dir/product.cpp.obj"
   "libAedaFirst.dll.a"
 )
 
