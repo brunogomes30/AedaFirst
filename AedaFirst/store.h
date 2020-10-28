@@ -10,14 +10,14 @@ struct Address{
 
 class Store {
 private:
-  std::string name;
-  Address address;
+    std::string name;
+    Address address;
 public:
-  Store(std::string name, Address address);
-  std::string getName() const;
-  Address getAddress() const;
-  void setName(std::string name);
-  void setAddress(Address address);
+    Store(std::string name, Address address);
+    std::string getName() const;
+    Address getAddress() const;
+    void setName(std::string name);
+    void setAddress(Address address);
 };
 
 
