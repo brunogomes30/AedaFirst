@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/main.cpp
+iostream
+-
+store.h
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/store.h
+
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/store.h
+iostream
+-
+
