@@ -5,6 +5,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/AedaFirst.dir/client.cpp.obj"
   "CMakeFiles/AedaFirst.dir/main.cpp.obj"
   "CMakeFiles/AedaFirst.dir/product.cpp.obj"
+  "CMakeFiles/AedaFirst.dir/sale.cpp.obj"
   "CMakeFiles/AedaFirst.dir/store.cpp.obj"
   "libAedaFirst.dll.a"
 )

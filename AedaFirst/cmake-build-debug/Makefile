@@ -223,6 +223,33 @@ product.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/product.cpp.s
 .PHONY : product.cpp.s
 
+sale.obj: sale.cpp.obj
+
+.PHONY : sale.obj
+
+# target to build an object file
+sale.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/sale.cpp.obj
+.PHONY : sale.cpp.obj
+
+sale.i: sale.cpp.i
+
+.PHONY : sale.i
+
+# target to preprocess a source file
+sale.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/sale.cpp.i
+.PHONY : sale.cpp.i
+
+sale.s: sale.cpp.s
+
+.PHONY : sale.s
+
+# target to generate assembly for a file
+sale.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/sale.cpp.s
+.PHONY : sale.cpp.s
+
 store.obj: store.cpp.obj
 
 .PHONY : store.obj
@@ -268,6 +295,9 @@ help:
 	@echo ... product.obj
 	@echo ... product.i
 	@echo ... product.s
+	@echo ... sale.obj
+	@echo ... sale.i
+	@echo ... sale.s
 	@echo ... store.obj
 	@echo ... store.i
 	@echo ... store.s
