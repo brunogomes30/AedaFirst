@@ -29,6 +29,16 @@ public:
     std::vector<Product*>& getProducts();
     std::vector<unsigned>& getQuantities();
     unsigned getAppraisal() const;
+    /**
+     * Print sale in format:
+     * ID: <STORE_ID> Store: <STORE_NAME>
+     * NIF: <CLIENT_NIF> Name: <CLIENT_NAME> Premium: <REGIME>
+     * <PRODUCT_ID> <PRODUCT_NAME> <PRODUCT_PRICE> x <PRODUCT_QUANTITY>
+     *
+     * Total amount: <BILL>
+     * Amount to pay after discount: <BILL_DISCOUNTED>
+     * Client's appraisal: <APPRAISAL>
+     */
     void showSale() const;
 };
 

@@ -30,9 +30,24 @@ public:
     void setName(std::string name);
     void setNif(unsigned nif);
     void setRegime(bool regime);
+    /**
+     * Set discount to false.
+     */
     void useDiscount();
+    /**
+     * Change the client's opinion if it is the case.
+     * @param appraisal Client appreciation of an order.
+     */
     void addAppraisal(unsigned appraisal);
+    /**
+     * Add 10 points for each unit of bill and set discount on 100 or 200 points according to regime.
+     * @param bill Amount payed in last order.
+     */
     void addPoints(const float &bill);
+    /**
+     * Print client in format:
+     * NIF: <CLIENT_NIF> Name: <CLIENT_NAME> Premium: <REGIME>
+     */
     void showClient() const;
 
 
