@@ -5,7 +5,7 @@
 #include <iostream>
 #include "store.h"
 #include "product.h"
-#include <list>
+#include <stack>
 #include <vector>
 
 class Client {
@@ -16,7 +16,7 @@ private:
     unsigned points;
     bool discount;
     bool opinion;
-    std::list<int> appraisals;
+    std::stack<int> appraisals;
     int sumOfAppraisals;
 public:
     Client();
@@ -30,9 +30,11 @@ public:
     void setName(std::string name);
     void setNif(unsigned nif);
     void setRegime(bool regime);
-    void addAppraisal(int appraisal);
+    void useDiscount();
+    void addAppraisal(unsigned appraisal);
     void addPoints(const float &bill);
-    void makeOrder(std::vector<Store*> stores);
+    void showClient() const;
+
 
 };
 #endif //CLIENT_H

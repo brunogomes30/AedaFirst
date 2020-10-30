@@ -2,13 +2,13 @@
 using namespace std;
 
 Store::Store(std::string name, Address address) {
-    this->id = store_next_id++;
+    this->store_id = store_next_id++;
     this->name = name;
     this->address = address;
 }
 
 unsigned Store::getId() const {
-    return id;
+    return store_id;
 }
 
 string Store::getName() const {
@@ -39,12 +39,16 @@ void Store::addProduct(Product *product) {
 }
 
 bool Store::operator==(const Store &store) const {
-    return id == store.getId();
+    return store_id == store.getId();
 }
 
 void Store::showProducts() const {
     for (auto product:products){
-        cout << product->getId() << " -> " << product->getName() << " " << product->getPrice() << "€" << endl;
+        cout << product->getId() << " -> " << product->getName() << " " << product->getPrice() << " euros" << endl;
     }
+}
+
+void Store::showStore() const {
+    cout << "ID: " << getId() << " Store: " << name << endl;
 }
 

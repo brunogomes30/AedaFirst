@@ -11,6 +11,7 @@ class Sale {
 private:
     unsigned sale_id;
     Client* client;
+    Store* store;
     std::vector<Product*> products;
     std::vector<unsigned> quantities;
     unsigned appraisal;
@@ -19,13 +20,16 @@ private:
 public:
     Sale();
     void setClient(Client* client);
+    void setStore(Store* store);
     void setProducts(std::vector<Product*> products, std::vector<unsigned> quantities);
     void addProduct(Product* product, unsigned qty);
     void setAppraisal(unsigned appraisal);
+    void setDiscount(bool discount);
     Client* getClient() const;
-    std::vector<Product*> getProducts() const;
-    std::vector<unsigned> getQuantities() const;
+    std::vector<Product*>& getProducts();
+    std::vector<unsigned>& getQuantities();
     unsigned getAppraisal() const;
+    void showSale() const;
 };
 
 #endif //SALE_H

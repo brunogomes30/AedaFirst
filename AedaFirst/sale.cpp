@@ -1,5 +1,4 @@
 #include "sale.h"
-#include <algorithm>
 
 using namespace std;
 
@@ -11,9 +10,13 @@ size_t Sale::findProduct(const Product &product) {
     return -1;
 }
 
-Sale::Sale() {}
+Sale::Sale() {
+    sale_id = next_sale_id++;
+}
 
 void Sale::setClient(Client *client) {this->client = client;}
+
+void Sale::setStore(Store *store) {this->store = store;}
 
 void Sale::setProducts(std::vector<Product *> products, std::vector<unsigned int> quantities) {
     this->products = products;
@@ -33,12 +36,36 @@ void Sale::addProduct(Product *product, unsigned int qty) {
 
 void Sale::setAppraisal(unsigned int appraisal) {
     this->appraisal = appraisal;
+    client->addAppraisal(appraisal);
 }
+
+void Sale::setDiscount(bool discount) {this->discount = discount;}
 
 Client* Sale::getClient() const {return client;}
 
-vector<Product*> Sale::getProducts() const {return products;}
+vector<Product*>& Sale::getProducts() {return products;}
 
-vector<unsigned> Sale::getQuantities() const {return quantities;}
+vector<unsigned>& Sale::getQuantities() {return quantities;}
 
 unsigned Sale::getAppraisal() const {return appraisal;}
+
+void Sale::showSale() const {
+    float bill = 0;
+    cout << endl << endl;
+    store->showStore();
+    client->showClient();
+    for (size_t i = 0; i < quantities.size(); i++){
+        bill += quantities[i]*products[i]->getPrice();
+        cout << products[i]->getId() << " " << products[i]->getName() << " "
+             << products[i]->getPrice() << " x " << quantities[i] << endl;
+    }
+    cout << endl << "Total amount: " << bill << endl;
+    if (discount) {
+        if (client->getRegime())
+            bill *= 0.95;
+        else
+            bill *= 0.98;
+        cout << "Amount to pay after discount: " << bill << endl;
+    }
+    cout << "Client's appraisal: " << appraisal << endl;
+}

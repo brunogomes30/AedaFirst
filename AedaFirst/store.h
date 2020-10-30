@@ -14,7 +14,7 @@ static unsigned store_next_id = 1;
 
 class Store {
 private:
-    unsigned id;
+    unsigned store_id;
     std::string name;
     Address address;
     std::vector<Product*> products;
@@ -29,6 +29,7 @@ public:
     void addProduct(Product *product);
     bool operator==(const Store &store) const;
     void showProducts() const;
+    void showStore() const;
 };
 
 

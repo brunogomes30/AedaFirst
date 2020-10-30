@@ -6,13 +6,57 @@
 
 #IncludeRegexTransform: 
 
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/client.cpp
+client.h
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/client.h
+algorithm
+-
+
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/client.h
+iostream
+-
+store.h
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/store.h
+product.h
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/product.h
+stack
+-
+vector
+-
+
 C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/main.cpp
 iostream
 -
 store.h
 C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/store.h
+sale.h
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/sale.h
+client.h
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/client.h
+product.h
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/product.h
+
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/product.h
+iostream
+-
+
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/sale.cpp
+sale.h
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/sale.h
+
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/sale.h
+iostream
+-
+vector
+-
+client.h
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/client.h
 
 C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/store.h
 iostream
 -
+vector
+-
+product.h
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/product.h
 
