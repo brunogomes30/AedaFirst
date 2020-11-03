@@ -3,4 +3,4 @@ project(AedaFirst)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(AedaFirst main.cpp loja.h loja.cpp product.cpp product.h)
+add_executable(AedaFirst main.cpp loja.h loja.cpp product.cpp product.h cake.cpp cake.h)

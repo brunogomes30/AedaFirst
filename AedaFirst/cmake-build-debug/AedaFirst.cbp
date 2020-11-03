@@ -82,6 +82,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/ultra/Documents/Projects/AedaFirst/cake.cpp">
+			<Option target="AedaFirst"/>
+		</Unit>
+		<Unit filename="C:/Users/ultra/Documents/Projects/AedaFirst/cake.h">
+			<Option target="AedaFirst"/>
+		</Unit>
 		<Unit filename="C:/Users/ultra/Documents/Projects/AedaFirst/loja.cpp">
 			<Option target="AedaFirst"/>
 		</Unit>

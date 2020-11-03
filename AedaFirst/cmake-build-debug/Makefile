@@ -142,6 +142,33 @@ AedaFirst/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/build
 .PHONY : AedaFirst/fast
 
+cake.obj: cake.cpp.obj
+
+.PHONY : cake.obj
+
+# target to build an object file
+cake.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/cake.cpp.obj
+.PHONY : cake.cpp.obj
+
+cake.i: cake.cpp.i
+
+.PHONY : cake.i
+
+# target to preprocess a source file
+cake.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/cake.cpp.i
+.PHONY : cake.cpp.i
+
+cake.s: cake.cpp.s
+
+.PHONY : cake.s
+
+# target to generate assembly for a file
+cake.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/cake.cpp.s
+.PHONY : cake.cpp.s
+
 loja.obj: loja.cpp.obj
 
 .PHONY : loja.obj
@@ -232,6 +259,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... AedaFirst
+	@echo ... cake.obj
+	@echo ... cake.i
+	@echo ... cake.s
 	@echo ... loja.obj
 	@echo ... loja.i
 	@echo ... loja.s
