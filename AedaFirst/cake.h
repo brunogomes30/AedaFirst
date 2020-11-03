@@ -8,13 +8,17 @@
 #include <iostream>
 enum layer {
     crispy = "crocante",
-    
+    puff = "massa folhada",
+    sponge = "massa de pão de ló"
 };
 class Cake : public Product{
 private:
-    std::string layer1;
-    std::string layer2;
+    layer layer1;
+    layer layer2;
 public:
+    Cake(std::string name, float price, layer layer1, layer layer2);
+    layer getLayer1() const;
+    layer getLayer2() const;
 
 };
 
