@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 CMakeFiles/AedaFirst.dir/main.cpp.obj CMakeFiles/AedaFirst.dir/loja.cpp.obj CMakeFiles/AedaFirst.dir/product.cpp.obj CMakeFiles/AedaFirst.dir/cake.cpp.obj
+=======
+CMakeFiles/AedaFirst.dir/main.cpp.obj CMakeFiles/AedaFirst.dir/store.cpp.obj CMakeFiles/AedaFirst.dir/product.cpp.obj CMakeFiles/AedaFirst.dir/client.cpp.obj CMakeFiles/AedaFirst.dir/sale.cpp.obj
+>>>>>>> 03fa9b62b76273886c6953b064dfff803b70bd5f
