@@ -17,52 +17,96 @@ void showStores(const vector<Store*> &stores) {
     }
 }
 
- void makeOrder(const vector<Store*> &stores, const vector<Client*> &clients, Sale &sale) {
+void makeOrder(const vector<Store*> &stores, const vector<Client*> &clients, Sale &sale) {
     Store* store;
     Client* client;
     string client_name;
     unsigned appraisal, store_id, product_id, qnt;
     float bill=0;
+    bool error;
 
     // Choose client
     showClients(clients);
-    cout << "Client's name:" << endl;
-    getline(cin, client_name);
-    for (auto c:clients){
-        if (c->getName() == client_name)
-            client = c;
-    }
+    do {
+        error = true;
+        cout << "Client's name:" << endl;
+        getline(cin, client_name);
+        for (auto c:clients){
+            if (c->getName() == client_name) {
+                error = false;
+                client = c;
+            }
+        }
+    } while (error);
+
     sale.setClient(client);
+
 
     // Choose store
     showStores(stores);
-    cout << "Choose a store ID:" << endl;
-    cin >> store_id; cin.ignore(100, '\n');
-    for (auto s:stores){
-        if (store_id == s->getId())
-            store = s;
-    }
+    do {
+        error = true;
+        cout << "Choose a store ID:" << endl;
+        cin >> store_id;
+
+        if (cin.fail() || cin.peek() != '\n'){
+            cin.clear();
+            cin.ignore(100, '\n');
+            cout << "That store doesn't exist." << endl;
+            continue;
+        }
+        else
+            cin.ignore(100, '\n');
+
+        for (auto s:stores){
+            if (store_id == s->getId()){
+                error = false;
+                store = s;
+            }
+        }
+    } while (error);
+
     sale.setStore(store);
 
+
     // Choose products
-    store->showProducts();
-    cout << "ID: 0 -> Stop adding" << endl;
+     cout << "ID: 0 -> Stop adding" << endl;
+     store->showProducts();
     do {
         cout << "Product you want:" << endl;
-        cin >> product_id; cin.ignore(100, '\n');
+        cin >> product_id;
+        if (cin.fail() || cin.peek() != '\n'){
+            product_id = 1;
+            cin.clear();
+            cin.ignore(100, '\n');
+            cout << "That product doesn't exist" << endl;
+            continue;
+        }
+        else
+            cin.ignore(100, '\n');
         if (product_id == 0)
-            break;
+            continue;
+
+        error = false;
         cout << "How many:" << endl;
-        cin >> qnt; cin.ignore(100, '\n');
-        sale.addProduct(store->getProduct(product_id), qnt);
+        cin >> qnt;
+        if (cin.fail() || cin.peek() != '\n'){
+            error = true;
+            cin.clear();
+            cout << "That quantity doesn't exist" << endl;
+        }
+        cin.ignore(100, '\n');
+
+        if (!error)
+            sale.addProduct(store->getProduct(product_id), qnt);
     } while (product_id != 0);
 
     // Bill
-    for (size_t i = 0; i < sale.getQuantities().size(); i++){
-        bill += sale.getQuantities()[i]*sale.getProducts()[i]->getPrice();
-        cout << sale.getProducts()[i]->getId() << " " << sale.getProducts()[i]->getName() << " "
-            << sale.getProducts()[i]->getPrice() << " x " << sale.getQuantities()[i] << endl;
-    }
+     for (auto it = sale.getProducts().begin(); it != sale.getProducts().end(); it++){
+         bill += it->second * it->first->getPrice();
+         cout << it->first->getId() << " " << it->first->getName() << " "
+              << it->first->getPrice() << " x " << it->second << endl;
+     }
     cout << endl << "Total amount: " << bill << endl;
 
     if (client->getDiscount()) {
@@ -79,13 +123,23 @@ void showStores(const vector<Store*> &stores) {
 
     // Manage points
     client->addPoints(bill);
+    cout << "You have " << client->getPoints() << " points." << endl;
+
 
     // Appraisal
     cout << "Your appraisal for the service (0-5): " << endl;
     cin >> appraisal; cin.ignore(100, '\n');
-    //client->addAppraisal(appraisal);
     sale.setAppraisal(appraisal);
 }
+
+void addClient() {}
+
+void searchClient() {}
+
+void searchEmployee() {}
+
+void searchProduct() {}
+
 
 int main() {
     vector<Store*> stores;
@@ -112,16 +166,26 @@ int main() {
         store->addProduct(&p2);
     }
 
+    int operation;
+    while (operation != 0) {
+        cout << "Select operation:" << endl;
+        cin >> operation; cin.ignore(100, '\n');
+        switch (operation) {
+            case 1: // Make an order
+                sales.push_back(new Sale());
+                makeOrder(stores, clients, (*sales[sales.size()-1]));
+                break;
+            case 2: // Show all sales
+                for (auto sale:sales) {
+                    sale->showSale();
+                }
+                break;
 
-    showStores(stores);
-
-    for (int i = 0; i < 3; i++){
-        sales.push_back(new Sale());
-        makeOrder(stores, clients, (*sales[i]));
+            default:
+                break;
+        }
     }
 
-    for (auto sale:sales) {
-        sale->showSale();
-    }
+
 
 }

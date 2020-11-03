@@ -4,10 +4,8 @@
 
 #include "bread.h"
 
-Bread::Bread(int name, float price, int layer1, int layer2) {
-    Product(name, price);
-    this.layer1 = layer1;
-    this.layer2 = layer2;
+Bread::Bread(std::string name, float price, sizeType size):Product(name, price) {
+    this->size = size;
 }
 
 

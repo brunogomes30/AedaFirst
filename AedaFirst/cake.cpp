@@ -4,10 +4,9 @@
 
 #include "cake.h"
 
-Cake::Cake(int name, float price, layer layer1, layer layer2) {
-    Product(name, price);
-    this.layer1 = layer1;
-    this.layer2 = layer2;
+Cake::Cake(std::string name, float price, layer layer1, layer layer2):Product(name, price) {
+    this->layer1 = layer1;
+    this->layer2 = layer2;
 }
 
 layer Cake::getLayer1() const {

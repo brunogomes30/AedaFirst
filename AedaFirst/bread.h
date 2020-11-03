@@ -5,10 +5,12 @@
 #ifndef MAIN_CPP_BREAD_H
 #define MAIN_CPP_BREAD_H
 
-#include<iostream>
+#include "product.h"
+#include <iostream>
+
 enum sizeType{
     small = "pequeno",
-    big = "grande";
+    big = "grande"
 };
 
 class Bread : public Product{
@@ -16,7 +18,7 @@ private:
     sizeType size;
 
 public:
-    Bread(std::string name, float price, layer layer1, layer layer2);
+    Bread(std::string name, float price, sizeType size);
     sizeType getSize();
 };
 
