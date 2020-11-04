@@ -54,14 +54,27 @@ void Client::addPoints(const float &bill) {
 
     if (regime)
         if (points >= 100) {
-            points = 0;
+            points = points%100;
             discount = true;
         }
     else
         if (points >= 200) {
-            points = 0;
+            points = points%200;
             discount = true;
         }
+}
+
+bool Client::same(string identifier) const {
+    if (isdigit(identifier[0])) {
+        unsigned cmpNif = stoul(identifier);
+        return nif == cmpNif;
+    }
+    else
+        return name == identifier;
+}
+
+bool Client::operator==(const Client* &client) const {
+    return (name==client->getName()) && (nif == client->getNif());
 }
 
 void Client::showClient() const {

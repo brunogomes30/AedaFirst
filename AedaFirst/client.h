@@ -48,6 +48,8 @@ public:
      * Print client in format:
      * NIF: <CLIENT_NIF> Name: <CLIENT_NAME> Premium: <REGIME>
      */
+    bool same(std::string identifier) const;
+    bool operator==(const Client* &client) const;
     void showClient() const;
 
 
