@@ -29,11 +29,17 @@ void Sale::setAppraisal(unsigned int appraisal) {
 
 void Sale::setDiscount(bool discount) {this->discount = discount;}
 
+Store* Sale::getStore() const {return store;}
+
 Client* Sale::getClient() const {return client;}
 
 map<Product*,unsigned>& Sale::getProducts() {return products;}
 
 unsigned Sale::getAppraisal() const {return appraisal;}
+
+bool Sale::sameClient(Client *&client) const {
+    return this->client == client;
+}
 
 void Sale::showSale() const {
     float bill = 0;

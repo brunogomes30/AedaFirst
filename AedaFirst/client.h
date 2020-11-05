@@ -21,6 +21,7 @@ private:
 public:
     Client();
     Client(std::string name, unsigned nif, bool regime);
+    ~Client();
     std::string getName() const;
     unsigned getNif() const;
     bool getRegime() const;

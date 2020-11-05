@@ -38,6 +38,13 @@ void Store::addProduct(Product *product) {
     products.push_back(product);
 }
 
+bool Store::findProduct(const unsigned int &id) const {
+    for (auto product:products)
+        if (product->getId() == id)
+            return true;
+    return false;
+}
+
 bool Store::operator==(const Store &store) const {
     return store_id == store.getId();
 }

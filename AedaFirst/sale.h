@@ -23,9 +23,11 @@ public:
     void addProduct(Product* product, unsigned qty);
     void setAppraisal(unsigned appraisal);
     void setDiscount(bool discount);
+    Store* getStore() const;
     Client* getClient() const;
     std::map<Product*,unsigned>& getProducts();
     unsigned getAppraisal() const;
+    bool sameClient(Client* &client) const;
     /**
      * Print sale in format:
      * ID: <STORE_ID> Store: <STORE_NAME>

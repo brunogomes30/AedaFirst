@@ -36,6 +36,7 @@ public:
      * @param product Pointer to Product object.
      */
     void addProduct(Product *product);
+    bool findProduct(const unsigned &id) const;
     /**
      *
      * @param store Store to be compared.

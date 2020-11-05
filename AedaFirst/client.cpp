@@ -20,6 +20,10 @@ Client::Client(std::string name, unsigned int nif, bool regime) {
     sumOfAppraisals = 0;
 }
 
+Client::~Client() {
+    cout <<  "Client erased" << endl;
+}
+
 string Client::getName() const {return name;}
 
 unsigned Client::getNif() const {return nif;}

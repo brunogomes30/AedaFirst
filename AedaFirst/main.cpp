@@ -3,41 +3,105 @@
 #include "sale.h"
 #include "client.h"
 #include "product.h"
+#include "utilities.h"
+#include <algorithm>
 
 using namespace std;
 
-void showClients(const vector<Client*> &clients) {
-    for (auto client:clients)
-        cout << client->getNif() << " " << client->getName() << endl;
+void setClientData(string &identifier) {
+    bool error;
+    do {
+        error = false;
+        cout << "Client's name or NIF:" << endl;
+        getline(cin, identifier);
+        if (identifier.length() == 0)
+            error = true;
+    } while (error);
 }
 
-void showStores(const vector<Store*> &stores) {
-    for (auto store:stores){
-        cout << store->getId() << " -> " << store->getName() << endl;
-    }
-}
-
-Client* searchClient(const vector<Client*> &clients, string &identifier) {
-    for (auto client:clients) {
-        if (client->same(identifier))
-            return client;
-    }
-    return nullptr;
-}
-
-Store* searchStore(const vector<Store*> &stores, unsigned id) {
-    for (auto store:stores){
-        if (id == store->getId()){
-            return store;
+void setClientData(string &name, unsigned &nif, bool &regime) {
+    bool error;
+    // Set client's name
+    do {
+        error = false;
+        cout << "New client's name:" << endl;
+        getline(cin, name);
+        if (name.length() == 0)
+            error = true;
+    } while (error);
+    // Set client's NIF
+    do {
+        error = false;
+        cout << "New client's NIF:" << endl;
+        cin >> nif;
+        if (cin.fail() || cin.peek() != '\n' || nif > 999999999 || nif < 1) {
+            cin.clear();
+            cout << "That's not a NIF number!" << endl;
+            error = true;
         }
-    }
-    return nullptr;
+        cin.ignore(100, '\n');
+    } while (error);
+    // Set client's regime
+    cout << "0 -> Normal regime" << endl;
+    cout << "1 -> Premium regime" << endl;
+    do {
+        error = false;
+        cout << "New client's regime:" << endl;
+        cin >> regime;
+        if (cin.fail() || cin.peek() != '\n') {
+            cin.clear();
+            cout << "That's not a regime!" << endl;
+            error = true;
+        }
+        cin.ignore(100, '\n');
+    } while (error);
+}
+
+void setStoreData(unsigned &id) {
+    bool error;
+    do {
+        error = false;
+        cout << "Store's ID:" << endl;
+        cin >> id;
+        if (cin.fail() || cin.peek() != '\n') {
+            error = true;
+            cout << " That store doesn't exist" << endl;
+        }
+    } while (error);
+}
+
+void setStoreData(string &name, Address &address) {
+    bool error;
+    // Set store's name
+    do {
+        error = false;
+        cout << "New store's name:" << endl;
+        getline(cin, name);
+        if (name.length() == 0)
+            error = true;
+    } while (error);
+    // Set store's street
+    do {
+        error = false;
+        cout << "New store's street:" << endl;
+        getline(cin, address.street);
+        if (address.street.length() == 0)
+            error = true;
+    } while (error);
+    // Set store's locality
+    do {
+        error = false;
+        cout << "New store's locality:" << endl;
+        getline(cin, address.locality);
+        if (address.locality.length() == 0)
+            error = true;
+    } while (error);
 }
 
 void makeOrder(const vector<Store*> &stores, const vector<Client*> &clients, Sale &sale) {
     Store* store;
     Client* client;
-    string client_name;
+    string client_identifier;
     unsigned appraisal, store_id, product_id, qnt;
     float bill=0;
     bool error;
@@ -46,12 +110,13 @@ void makeOrder(const vector<Store*> &stores, const vector<Client*> &clients, Sal
     showClients(clients);
     do {
         error = true;
-        cout << "Client's name:" << endl;
-        getline(cin, client_name);
+        setClientData(client_identifier);
 
-        client = searchClient(clients, client_name);
+        client = searchClient(clients, client_identifier);
         if (client != nullptr)
             error = false;
+        else
+            cout << "That client doesn't exist." << endl;
     } while (error);
 
     sale.setClient(client);
@@ -87,7 +152,7 @@ void makeOrder(const vector<Store*> &stores, const vector<Client*> &clients, Sal
     do {
         cout << "Product you want:" << endl;
         cin >> product_id;
-        if (cin.fail() || cin.peek() != '\n'){
+        if (cin.fail() || cin.peek() != '\n' || (!store->findProduct(product_id) && product_id != 0)) {
             product_id = 1;
             cin.clear();
             cin.ignore(100, '\n');
@@ -144,92 +209,41 @@ void makeOrder(const vector<Store*> &stores, const vector<Client*> &clients, Sal
     sale.setAppraisal(appraisal);
 }
 
-void setClientData(string &identifier) {
-    bool error;
-    do {
-        error = false;
-        cout << "Client's name or NIF:" << endl;
-        getline(cin, identifier);
-        if (identifier.length() == 0)
-            error = true;
-    } while (error);
-}
-
-void setClientData(string &name, unsigned &nif, bool &regime) {
-    bool error;
-    // Set client's name
-    do {
-        error = false;
-        cout << "New client's name:" << endl;
-        getline(cin, name);
-        if (name.length() == 0)
-            error = true;
-    } while (error);
-    // Set client's NIF
-    do {
-        error = false;
-        cout << "New client's NIF:" << endl;
-        cin >> nif;
-        if (cin.fail() || cin.peek() != '\n' || nif > 999999999 || nif < 1) {
-            cin.clear();
-            cout << "That's not a NIF number!" << endl;
-            error = true;
-        }
-        cin.ignore(100, '\n');
-    } while (error);
-    // Set client's regime
-    cout << "0 -> Normal regime" << endl;
-    cout << "1 -> Premium regime" << endl;
-    do {
-        error = false;
-        cout << "New client's regime:" << endl;
-        cin >> regime;
-        if (cin.fail() || cin.peek() != '\n') {
-            cin.clear();
-            cout << "That's not a regime!" << endl;
-            error = true;
-        }
-        cin.ignore(100, '\n');
-    } while (error);
-}
-
-void setStoreData(string &name, Address &address) {
-    bool error;
-    // Set store's name
-    do {
-        error = false;
-        cout << "New store's name:" << endl;
-        getline(cin, name);
-        if (name.length() == 0)
-            error = true;
-    } while (error);
-    // Set store's street
-    do {
-        error = false;
-        cout << "New store's street:" << endl;
-        getline(cin, address.street);
-        if (address.street.length() == 0)
-            error = true;
-    } while (error);
-    // Set store's locality
-    do {
-        error = false;
-        cout << "New store's locality:" << endl;
-        getline(cin, address.locality);
-        if (address.locality.length() == 0)
-            error = true;
-    } while (error);
-}
-
 void searchEmployee() {}
 
 void searchProduct() {}
 
-void opsClient(vector<Client*> &clients, Client* &client) {
+void clientHistory(Client* &client, const vector<Sale*> &sales) {
+    float totalSpent = 0;
+    //map<Store*, map<Product*, unsigned>> allSales;
+    map<Product*, unsigned> auxProducts;
+    map<Product*, unsigned> products;
+    for (auto sale:sales){
+        if (sale->sameClient(client)){
+            auxProducts = sale->getProducts();
+            for (auto it = auxProducts.begin(); it != auxProducts.end(); it++){
+                products[it->first] += it->second;
+            }
+        }
+    }
+    for (auto it=products.begin(); it != products.end();it++) {
+        cout << it->first->getName() << "  " << it->second << " x " << it->first->getPrice() << " = " << it->second*it->first->getPrice() << endl;
+        totalSpent += it->first->getPrice() * it->second;
+    }
+    cout << "Total spend: " << totalSpent << endl;
+}
+
+void opsClient(vector<Client*> &clients, Client* &client, const vector<Sale*> &sales) {
     unsigned operation;
+    vector<Client*>::iterator it;
     do {
-        cout << "[CLIENT] Select operation:" << endl;
+        showClientOperations();
+        cout << "\n[CLIENT] Select operation:" << endl;
         cin >> operation;
+        if (cin.fail() || cin.peek() != '\n') {
+            cin.clear();
+            operation = -1;
+        }
         cin.ignore(100, '\n');
         switch (operation) {
             case 1: // Change regime
@@ -240,10 +254,52 @@ void opsClient(vector<Client*> &clients, Client* &client) {
                     cout << client->getName() << " is now Normal regime" << endl;
                 break;
             case 2: // View history
+                clientHistory(client, sales);
                 break;
             case 3: // Remove client
-                //auto it = find(clients.begin(), clients.end(), client);
+                it = find(clients.begin(), clients.end(), client);
+                delete *it;
+                *it = nullptr;
+                clients.erase(remove(clients.begin(), clients.end(), nullptr));
+                operation = 0;
+                break;
+            default:
+                break;
+        }
+    } while (operation != 0);
+}
 
+void opsStores(vector<Store*> &stores, Store* &store, vector<Sale*> sales) {
+    unsigned operation;
+    vector<Store*>::iterator it;
+    do {
+        showStoreOperations();
+        cout << "\n[STORE] Select operation:" << endl;
+        cin >> operation;
+        if (cin.fail() || cin.peek() != '\n') {
+            cin.clear();
+            operation = -1;
+        }
+        cin.ignore(100, '\n');
+        switch (operation) {
+            case 1: // Print statistics
+                break;
+            case 2: // Print all sales
+                for (auto sale:sales) {
+                    if (sale->getStore() == store)
+                        sale->showSale();
+                }
+                break;
+            case 3: // Add a product
+                break;
+            case 4: // Remove store
+                it = find(stores.begin(), stores.end(), store);
+                delete *it;
+                *it = nullptr;
+                stores.erase(remove(stores.begin(), stores.end(), nullptr));
+                operation = 0;
+                break;
+            default:
                 break;
         }
     } while (operation != 0);
@@ -254,6 +310,10 @@ void opsProduct(Product &product) {
     do {
         cout << "[PRODUCT] Select operation:" << endl;
         cin >> operation;
+        if (cin.fail() || cin.peek() != '\n') {
+            cin.clear();
+            operation = -1;
+        }
         cin.ignore(100, '\n');
         switch (operation) {
             case 1: // Change name
@@ -266,7 +326,6 @@ void opsProduct(Product &product) {
                 break;
             case 5: // Income
                 break;
-
         }
     } while (operation != 0);
 }
@@ -279,10 +338,11 @@ int main() {
     vector<Sale *> sales;
 
     string name;
-    unsigned nif;
+    unsigned nif_or_id;
     bool regime;
     float price;
     Address address;
+    Store* store;
     Product *product;
     Client *client;
 
@@ -300,18 +360,23 @@ int main() {
     stores.push_back(new Store("Baker Porto", Address({"Rua do douro", "Porto"})));
     stores.push_back(new Store("Baker Lisboa", Address({"Rua do Tejo", "Lisboa"})));
 
-    for (auto store:stores) {
-        store->addProduct(&p1);
-        store->addProduct(&p2);
+    for (auto s:stores) {
+        s->addProduct(&p1);
+        s->addProduct(&p2);
     }
 
     int operation;
     do {
-        cout << "[MENU] Select operation:" << endl;
+        showMenuOperations();
+        cout << "\n[MENU] Select operation:" << endl;
         cin >> operation;
+        if (cin.fail() || cin.peek() != '\n') {
+            cin.clear();
+            operation = -1;
+        }
         cin.ignore(100, '\n');
         switch (operation) {
-            case 0:
+            case 0: // Exit
                 cout << "End of program" << endl;
                 break;
             case 1: // Make an order
@@ -324,23 +389,36 @@ int main() {
                 }
                 break;
             case 3: // Add a client
-                setClientData(name, nif, regime);
-                clients.push_back(new Client(name, nif, regime));
+                setClientData(name, nif_or_id, regime);
+                clients.push_back(new Client(name, nif_or_id, regime));
                 break;
             case 4: // Search a client
+                showClients(clients);
                 setClientData(name);
                 client = searchClient(clients, name);
-                opsClient(clients, client);
+                if (client != nullptr)
+                    opsClient(clients, client, sales);
+                else
+                    cout << "That client doesn't exist" << endl;
                 break;
             case 5: // Add a product
                 break;
-            case 6: // Add a product to stores
+            case 6:
                 break;
             case 7: // Search a product
                 break;
             case 8: // Add a store
                 setStoreData(name, address);
                 stores.push_back(new Store(name, address));
+                break;
+            case 9: // Search a store
+                showStores(stores);
+                setStoreData(nif_or_id);
+                store = searchStore(stores, nif_or_id);
+                if (store != nullptr)
+                    opsStores(stores, store, sales);
+                else
+                    cout << "That store doesn't exist" << endl;
                 break;
 
             default:
