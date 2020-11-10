@@ -21,7 +21,6 @@ private:
 public:
     Client();
     Client(std::string name, unsigned nif, bool regime);
-    ~Client();
     std::string getName() const;
     unsigned getNif() const;
     bool getRegime() const;
@@ -45,12 +44,13 @@ public:
      * @param bill Amount payed in last order.
      */
     void addPoints(const float &bill);
+
+    bool same(std::string identifier) const;
+    bool operator==(const Client* &client) const;
     /**
      * Print client in format:
      * NIF: <CLIENT_NIF> Name: <CLIENT_NAME> Premium: <REGIME>
      */
-    bool same(std::string identifier) const;
-    bool operator==(const Client* &client) const;
     void showClient() const;
 
 

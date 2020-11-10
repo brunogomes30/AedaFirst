@@ -19,6 +19,7 @@ private:
     Address address;
     std::vector<Product*> products;
 public:
+    Store(unsigned id);
     Store(std::string name, Address address);
     unsigned getId() const;
     std::string getName() const;
@@ -43,6 +44,7 @@ public:
      * @return True if both stores has the same ID, false otherwise.
      */
     bool operator==(const Store &store) const;
+    bool operator<(const Store &store) const;
     /**
      * Print all products available in the store in format:
      * <PRODUCT_ID> -> <PRODUCT_NAME> <PRODUCT_PRICE> euros

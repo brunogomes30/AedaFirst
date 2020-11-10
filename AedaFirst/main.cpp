@@ -6,232 +6,78 @@
 #include "utilities.h"
 #include <algorithm>
 
+
 using namespace std;
 
-void setClientData(string &identifier) {
-    bool error;
+void chooseClientsSort(vector<Client*> &clients) {
+    int operation;
+    bool descending;
     do {
-        error = false;
-        cout << "Client's name or NIF:" << endl;
-        getline(cin, identifier);
-        if (identifier.length() == 0)
-            error = true;
-    } while (error);
-}
-
-void setClientData(string &name, unsigned &nif, bool &regime) {
-    bool error;
-    // Set client's name
-    do {
-        error = false;
-        cout << "New client's name:" << endl;
-        getline(cin, name);
-        if (name.length() == 0)
-            error = true;
-    } while (error);
-    // Set client's NIF
-    do {
-        error = false;
-        cout << "New client's NIF:" << endl;
-        cin >> nif;
-        if (cin.fail() || cin.peek() != '\n' || nif > 999999999 || nif < 1) {
+        cout << "0 -> Sort by name" << endl;
+        cout << "1 -> Sort by nif" << endl;
+        cin >> operation;
+        if (cin.fail() || cin.peek() != '\n' || (operation != 0 && operation != 1)) {
             cin.clear();
-            cout << "That's not a NIF number!" << endl;
-            error = true;
+            operation = -1;
+            cout << "That is not a possible sort" << endl;
         }
         cin.ignore(100, '\n');
-    } while (error);
-    // Set client's regime
-    cout << "0 -> Normal regime" << endl;
-    cout << "1 -> Premium regime" << endl;
-    do {
-        error = false;
-        cout << "New client's regime:" << endl;
-        cin >> regime;
-        if (cin.fail() || cin.peek() != '\n') {
-            cin.clear();
-            cout << "That's not a regime!" << endl;
-            error = true;
-        }
-        cin.ignore(100, '\n');
-    } while (error);
-}
-
-void setStoreData(unsigned &id) {
-    bool error;
-    do {
-        error = false;
-        cout << "Store's ID:" << endl;
-        cin >> id;
-        if (cin.fail() || cin.peek() != '\n') {
-            error = true;
-            cout << " That store doesn't exist" << endl;
-        }
-    } while (error);
-}
-
-void setStoreData(string &name, Address &address) {
-    bool error;
-    // Set store's name
-    do {
-        error = false;
-        cout << "New store's name:" << endl;
-        getline(cin, name);
-        if (name.length() == 0)
-            error = true;
-    } while (error);
-    // Set store's street
-    do {
-        error = false;
-        cout << "New store's street:" << endl;
-        getline(cin, address.street);
-        if (address.street.length() == 0)
-            error = true;
-    } while (error);
-    // Set store's locality
-    do {
-        error = false;
-        cout << "New store's locality:" << endl;
-        getline(cin, address.locality);
-        if (address.locality.length() == 0)
-            error = true;
-    } while (error);
-}
-
-void makeOrder(const vector<Store*> &stores, const vector<Client*> &clients, Sale &sale) {
-    Store* store;
-    Client* client;
-    string client_identifier;
-    unsigned appraisal, store_id, product_id, qnt;
-    float bill=0;
-    bool error;
-
-    // Choose client
-    showClients(clients);
-    do {
-        error = true;
-        setClientData(client_identifier);
-
-        client = searchClient(clients, client_identifier);
-        if (client != nullptr)
-            error = false;
-        else
-            cout << "That client doesn't exist." << endl;
-    } while (error);
-
-    sale.setClient(client);
-
-
-    // Choose store
-    showStores(stores);
-    do {
-        error = true;
-        cout << "Choose a store ID:" << endl;
-        cin >> store_id;
-
-        if (cin.fail() || cin.peek() != '\n'){
-            cin.clear();
-            cin.ignore(100, '\n');
-            cout << "That store doesn't exist." << endl;
-            continue;
-        }
-        else
-            cin.ignore(100, '\n');
-
-        store = searchStore(stores, store_id);
-        if (store != nullptr)
-            error = false;
-    } while (error);
-
-    sale.setStore(store);
-
-
-    // Choose products
-     cout << "ID: 0 -> Stop adding" << endl;
-     store->showProducts();
-    do {
-        cout << "Product you want:" << endl;
-        cin >> product_id;
-        if (cin.fail() || cin.peek() != '\n' || (!store->findProduct(product_id) && product_id != 0)) {
-            product_id = 1;
-            cin.clear();
-            cin.ignore(100, '\n');
-            cout << "That product doesn't exist" << endl;
-            continue;
-        }
-        else
-            cin.ignore(100, '\n');
-        if (product_id == 0)
-            continue;
-
-        error = false;
-        cout << "How many:" << endl;
-        cin >> qnt;
-        if (cin.fail() || cin.peek() != '\n'){
-            error = true;
-            cin.clear();
-            cout << "That quantity doesn't exist" << endl;
-        }
-        cin.ignore(100, '\n');
-
-        if (!error)
-            sale.addProduct(store->getProduct(product_id), qnt);
-    } while (product_id != 0);
-
-    // Bill
-     for (auto it = sale.getProducts().begin(); it != sale.getProducts().end(); it++){
-         bill += it->second * it->first->getPrice();
-         cout << it->first->getId() << " " << it->first->getName() << " "
-              << it->first->getPrice() << " x " << it->second << endl;
-     }
-    cout << endl << "Total amount: " << bill << endl;
-
-    if (client->getDiscount()) {
-        if (client->getRegime())
-            bill *= 0.95;
-        else
-            bill *= 0.98;
-        client->useDiscount();
-        sale.setDiscount(true);
-        cout << "Amount to pay after discount: " << bill << endl;
-    }
+    } while (operation == -1);
+    descending = order();
+    if (operation == 0)
+        sortClientsByName(clients);
     else
-        sale.setDiscount(false);
+        sortClientsByNif(clients);
 
-    // Manage points
-    client->addPoints(bill);
-    cout << "You have " << client->getPoints() << " points." << endl;
+    if (descending)
+        reverse(clients.begin(), clients.end());
 
-
-    // Appraisal
-    cout << "Your appraisal for the service (0-5): " << endl;
-    cin >> appraisal; cin.ignore(100, '\n');
-    sale.setAppraisal(appraisal);
 }
 
-void searchEmployee() {}
+void chooseSalesVolumeByProductSort(vector<pair<Product*, pair<unsigned, float>>> &vProducts) {
+    int operation;
+    bool descending;
+    do {
+        cout << "0 -> Sort by quantity sold" << endl;
+        cout << "1 -> Sort by income" << endl;
+        cin >> operation;
+        if (cin.fail() || cin.peek() != '\n' || (operation != 0 && operation != 1)) {
+            cin.clear();
+            operation = -1;
+            cout << "That is not a possible sort" << endl;
+        }
+        cin.ignore(100, '\n');
+    } while (operation == -1);
+    descending = order();
+    if (operation == 0)
+        sortByQuantitySold(vProducts);
+    else
+        sortByIncome(vProducts);
 
-void searchProduct() {}
+    if (descending)
+        reverse(vProducts.begin(), vProducts.end());
+}
 
-void clientHistory(Client* &client, const vector<Sale*> &sales) {
+/*void clientHistory(Client* &client, const vector<Sale*> &sales) {
     float totalSpent = 0;
     //map<Store*, map<Product*, unsigned>> allSales;
-    map<Product*, unsigned> auxProducts;
-    map<Product*, unsigned> products;
+    map<Product*, pair<unsigned, float>> auxProducts;
+    map<Product*, pair<unsigned, float>> products;
     for (auto sale:sales){
         if (sale->sameClient(client)){
             auxProducts = sale->getProducts();
             for (auto it = auxProducts.begin(); it != auxProducts.end(); it++){
-                products[it->first] += it->second;
+                products[it->first] += it->second.first;
             }
         }
     }
     for (auto it=products.begin(); it != products.end();it++) {
-        cout << it->first->getName() << "  " << it->second << " x " << it->first->getPrice() << " = " << it->second*it->first->getPrice() << endl;
+        cout << it->first->getName() << "  " << it->second << " x " << it->first->getPrice()
+                << " = " << it->second*it->first->getPrice() << endl;
         totalSpent += it->first->getPrice() * it->second;
     }
     cout << "Total spend: " << totalSpent << endl;
-}
+}*/
 
 void opsClient(vector<Client*> &clients, Client* &client, const vector<Sale*> &sales) {
     unsigned operation;
@@ -254,7 +100,7 @@ void opsClient(vector<Client*> &clients, Client* &client, const vector<Sale*> &s
                     cout << client->getName() << " is now Normal regime" << endl;
                 break;
             case 2: // View history
-                clientHistory(client, sales);
+                //clientHistory(client, sales);
                 break;
             case 3: // Remove client
                 it = find(clients.begin(), clients.end(), client);
@@ -330,11 +176,191 @@ void opsProduct(Product &product) {
     } while (operation != 0);
 }
 
+void makeOrder(const vector<Store*> &stores, const vector<Client*> &clients, Sale &sale) {
+    Store* store;
+    Client* client;
+    string client_identifier;
+    unsigned appraisal, store_id, product_id, qnt;
+    float bill=0;
+    bool error;
+
+    // Choose client
+    showClients(clients);
+    do {
+        error = true;
+        setClientData(client_identifier);
+
+        client = searchClient(clients, client_identifier);
+        if (client != nullptr)
+            error = false;
+        else
+            cout << "That client doesn't exist." << endl;
+    } while (error);
+
+    sale.setClient(client);
+
+
+    // Choose store
+    showStores(stores);
+    do {
+        error = true;
+        cout << "Choose a store ID:" << endl;
+        cin >> store_id;
+
+        if (cin.fail() || cin.peek() != '\n'){
+            cin.clear();
+            cin.ignore(100, '\n');
+            cout << "That store doesn't exist." << endl;
+            continue;
+        }
+        else
+            cin.ignore(100, '\n');
+
+        store = searchStore(stores, store_id);
+        if (store != nullptr)
+            error = false;
+    } while (error);
+
+    sale.setStore(store);
+
+
+    // Choose products
+    cout << "ID: 0 -> Stop adding" << endl;
+    store->showProducts();
+    do {
+        cout << "Product you want:" << endl;
+        cin >> product_id;
+        if (cin.fail() || cin.peek() != '\n' || (!store->findProduct(product_id) && product_id != 0)) {
+            product_id = 1;
+            cin.clear();
+            cin.ignore(100, '\n');
+            cout << "That product doesn't exist" << endl;
+            continue;
+        }
+        else
+            cin.ignore(100, '\n');
+        if (product_id == 0)
+            continue;
+
+        error = false;
+        cout << "How many:" << endl;
+        cin >> qnt;
+        if (cin.fail() || cin.peek() != '\n'){
+            error = true;
+            cin.clear();
+            cout << "That quantity doesn't exist" << endl;
+        }
+        cin.ignore(100, '\n');
+
+        if (!error) {
+            sale.addProduct(store->getProduct(product_id), qnt);
+        }
+    } while (product_id != 0);
+
+    // Bill
+    for (auto it = sale.getProducts().begin(); it != sale.getProducts().end(); it++){
+        bill += it->second.first * it->second.second;
+        cout << it->first->getId() << " " << it->first->getName() << " "
+             << it->second.first << " x " << it->second.second << endl;
+    }
+    cout << endl << "Total amount: " << bill << endl;
+
+    if (client->getDiscount()) {
+        if (client->getRegime())
+            bill *= 0.95;
+        else
+            bill *= 0.98;
+        client->useDiscount();
+        sale.setDiscount(true);
+        cout << "Amount to pay after discount: " << bill << endl;
+    }
+    else
+        sale.setDiscount(false);
+
+    // Manage points
+    client->addPoints(bill);
+    cout << "You have " << client->getPoints() << " points." << endl;
+
+
+    // Appraisal
+    cout << "Your appraisal for the service (0-5): " << endl;
+    cin >> appraisal; cin.ignore(100, '\n');
+    sale.setAppraisal(appraisal);
+}
+
+void salesVolumeByProduct(const vector<Sale*> &sales) {
+    map<Product*, pair<unsigned, float>> auxProducts;
+    map<Product*, pair<unsigned, float>> products;
+    for (auto sale:sales) {
+        auxProducts = sale->getProducts();
+        for (auto it=auxProducts.begin(); it != auxProducts.end(); it++) {
+            if (products.find(it->first) == products.end())
+                products[it->first] = pair<unsigned, float>(it->second.first, it->second.first*it->second.second);
+            else {
+                products[it->first].first += it->second.first;
+                products[it->first].second += it->second.first*it->second.second;
+            }
+        }
+    }
+    vector<pair<Product*, pair<unsigned, float>>> vProducts;
+    for (auto &it:products)
+        vProducts.push_back(it);
+    chooseSalesVolumeByProductSort(vProducts);
+    for (auto p:vProducts) {
+        cout << p.first->getId() << " " << p.first->getName() << " Total sold: " << p.second.first << " Total Income: " << p.second.second << endl;
+    }
+}
+void salesVolumeByStore(const vector<Sale*> &sales, const vector<Store*> &stores) {
+    map<Product*, pair<unsigned, float>> auxProducts;
+    map<Store*, float> stores_incomes;
+    for (auto store:stores)
+        stores_incomes[store] = 0;
+    for (auto sale:sales) {
+        auxProducts = sale->getProducts();
+        for (auto it=auxProducts.begin(); it != auxProducts.end(); it++)
+            stores_incomes[sale->getStore()] += it->second.first*it->second.second;
+    }
+    vector<pair<Store*, float>> vStores_incomes;
+    for (auto &it:stores_incomes)
+        vStores_incomes.push_back(it);
+    sort(vStores_incomes.begin(), vStores_incomes.end(), [](pair<Store*, float> &p1, pair<Store*, float> &p2) {return p1.second > p2.second;});
+    for (auto s:vStores_incomes)
+        cout << s.first->getId() << " " << s.first->getName() << " Total income: " << s.second << endl;
+}
+void opsSalesVolume(const vector<Sale*> &sales, const vector<Store*> &stores) {
+    int operation;
+    do {
+        cout << " 0 -> Back" << endl;
+        cout << " 1 -> Sales volume by product" << endl;
+        cout << " 2 -> Sales volume by store" << endl;
+        cout << "\n[SALES VOLUME] Select operation:" << endl;
+        cin >> operation;
+        if (cin.fail() || cin.peek() != '\n') {
+            cin.clear();
+            operation = -1;
+            cout << "That operation doesn't exist" << endl;
+        }
+        cin.ignore(100, '\n');
+        switch (operation) {
+            case 0:
+                break;
+            case 1:
+                salesVolumeByProduct(sales);
+                break;
+            case 2:
+                salesVolumeByStore(sales, stores);
+                break;
+            default:
+                break;
+        }
+    } while (operation<0 && operation >2);
+}
 
 int main() {
     vector<Store *> stores;
     vector<Client *> clients;
     vector<Product *> products;
+    vector<Product *> oldProducts;
     vector<Sale *> sales;
 
     string name;
@@ -357,8 +383,11 @@ int main() {
     clients.push_back(&c1);
     clients.push_back(&c2);
 
-    stores.push_back(new Store("Baker Porto", Address({"Rua do douro", "Porto"})));
+    stores.push_back(new Store("Baker Porto", Address({"Rua do Douro", "Porto"})));
     stores.push_back(new Store("Baker Lisboa", Address({"Rua do Tejo", "Lisboa"})));
+    stores.push_back(new Store("Baker Faro", Address({"Rua do Mediterraneo", "Faro"})));
+    stores.push_back(new Store("Baker Aveiro", Address({"Rua do Vouga", "Aveiro"})));
+
 
     for (auto s:stores) {
         s->addProduct(&p1);
@@ -375,43 +404,20 @@ int main() {
             operation = -1;
         }
         cin.ignore(100, '\n');
+
+        // MAIN MENU
         switch (operation) {
             case 0: // Exit
                 cout << "End of program" << endl;
                 break;
-            case 1: // Make an order
-                sales.push_back(new Sale());
-                makeOrder(stores, clients, (*sales[sales.size() - 1]));
+            case 1: // Print stores by ID
+                showStores(stores);
                 break;
-            case 2: // Show all sales
-                for (auto sale:sales) {
-                    sale->showSale();
-                }
-                break;
-            case 3: // Add a client
-                setClientData(name, nif_or_id, regime);
-                clients.push_back(new Client(name, nif_or_id, regime));
-                break;
-            case 4: // Search a client
-                showClients(clients);
-                setClientData(name);
-                client = searchClient(clients, name);
-                if (client != nullptr)
-                    opsClient(clients, client, sales);
-                else
-                    cout << "That client doesn't exist" << endl;
-                break;
-            case 5: // Add a product
-                break;
-            case 6:
-                break;
-            case 7: // Search a product
-                break;
-            case 8: // Add a store
+            case 2: // Add a store
                 setStoreData(name, address);
                 stores.push_back(new Store(name, address));
                 break;
-            case 9: // Search a store
+            case 3: // Search a store
                 showStores(stores);
                 setStoreData(nif_or_id);
                 store = searchStore(stores, nif_or_id);
@@ -420,7 +426,46 @@ int main() {
                 else
                     cout << "That store doesn't exist" << endl;
                 break;
-
+            case 4: // Print clients
+                chooseClientsSort(clients);
+                showClients(clients);
+                break;
+            case 5: // Add a client
+                setClientData(name, nif_or_id, regime);
+                clients.push_back(new Client(name, nif_or_id, regime));
+                break;
+            case 6: // Search a client
+                showClients(clients);
+                setClientData(name);
+                client = searchClient(clients, name);
+                if (client != nullptr)
+                    opsClient(clients, client, sales);
+                else
+                    cout << "That client doesn't exist" << endl;
+                break;
+            case 7: // Print employees
+                break;
+            case 8: // Add an employee
+                break;
+            case 9: // Search an employee
+                break;
+            case 10: // Print products by ID
+                break;
+            case 11: // Add a product
+                break;
+            case 12: // Search a product
+                break;
+            case 13: // Make an order
+                sales.push_back(new Sale());
+                makeOrder(stores, clients, (*sales[sales.size() - 1]));
+                break;
+            case 14: // Print sales volume
+                opsSalesVolume(sales, stores);
+                break;
+            case 15: // Show all sales
+                for (auto sale:sales)
+                    sale->showSale();
+                break;
             default:
                 cout << "Doesn't exist such operation!" << endl;
                 break;

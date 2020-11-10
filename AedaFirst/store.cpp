@@ -1,6 +1,9 @@
 #include "store.h"
 using namespace std;
 
+Store::Store(unsigned int id) {
+    this->store_id = id;
+}
 Store::Store(std::string name, Address address) {
     this->store_id = store_next_id++;
     this->name = name;
@@ -24,6 +27,7 @@ Product* Store::getProduct(unsigned id) const {
         if (product->getId() == id)
             return product;
     }
+    return nullptr;
 }
 
 void Store::setName(std::string name) {
@@ -47,6 +51,10 @@ bool Store::findProduct(const unsigned int &id) const {
 
 bool Store::operator==(const Store &store) const {
     return store_id == store.getId();
+}
+
+bool Store::operator<(const Store &store) const {
+    return store_id < store.getId();
 }
 
 void Store::showProducts() const {

@@ -20,10 +20,6 @@ Client::Client(std::string name, unsigned int nif, bool regime) {
     sumOfAppraisals = 0;
 }
 
-Client::~Client() {
-    cout <<  "Client erased" << endl;
-}
-
 string Client::getName() const {return name;}
 
 unsigned Client::getNif() const {return nif;}
@@ -56,16 +52,18 @@ void Client::addAppraisal(unsigned appraisal) {
 void Client::addPoints(const float &bill) {
     points += (int) bill * 10;
 
-    if (regime)
+    if (regime) {
         if (points >= 100) {
-            points = points%100;
+            points = points % 100;
             discount = true;
         }
-    else
+    }
+    else {
         if (points >= 200) {
-            points = points%200;
+            points = points % 200;
             discount = true;
         }
+    }
 }
 
 bool Client::same(string identifier) const {

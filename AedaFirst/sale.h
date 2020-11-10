@@ -13,9 +13,10 @@ private:
     unsigned sale_id;
     Client* client;
     Store* store;
-    std::map<Product*, unsigned> products;
+    std::map<Product*, std::pair<unsigned, float>> products;
     unsigned appraisal;
     bool discount;
+    float totalAmount;
 public:
     Sale();
     void setClient(Client* client);
@@ -25,7 +26,7 @@ public:
     void setDiscount(bool discount);
     Store* getStore() const;
     Client* getClient() const;
-    std::map<Product*,unsigned>& getProducts();
+    std::map<Product*,std::pair<unsigned, float>>& getProducts();
     unsigned getAppraisal() const;
     bool sameClient(Client* &client) const;
     /**

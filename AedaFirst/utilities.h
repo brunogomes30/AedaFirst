@@ -7,6 +7,7 @@
 #include "client.h"
 #include "product.h"
 #include "sale.h"
+#include "algorithm"
 
 void showClients(const std::vector<Client*> &clients);
 
@@ -18,9 +19,37 @@ void showClientOperations();
 
 void showStoreOperations();
 
+void setClientData(std::string &identifier);
+
+void setClientData(std::string &name, unsigned &nif, bool &regime);
+
+void setStoreData(unsigned &id);
+
+void setStoreData(std::string &name, Address &address);
+
 Client* searchClient(const std::vector<Client*> &clients, const std::string &identifier);
 
-Store* searchStore(const std::vector<Store*> &stores, const unsigned &id);
+Store* searchStore(const std::vector<Store*> &stores, unsigned id);
+
+void searchEmployee();
+
+void searchProduct();
+
+bool order();
+bool cmpByIncome(const std::pair<Product*, std::pair<unsigned, float>> &p1, const std::pair<Product*, std::pair<unsigned, float>> &p2);
+bool cmpByQuantitySold(const std::pair<Product*, std::pair<unsigned, float>> &p1, const std::pair<Product*, std::pair<unsigned, float>> &p2);
+void sortByIncome(std::vector<std::pair<Product*, std::pair<unsigned, float>>> &vProducts);
+void sortByQuantitySold(std::vector<std::pair<Product*, std::pair<unsigned, float>>> &vProducts);
+
+
+bool cmpClientsByName(Client* &client1, Client* &client2);
+
+bool cmpClientsByNif(Client* &client1, Client* &client2);
+
+void sortClientsByName(std::vector<Client*> &clients);
+
+void sortClientsByNif(std::vector<Client*> &clients);
+
 
 
 
