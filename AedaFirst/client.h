@@ -44,7 +44,11 @@ public:
      * @param bill Amount payed in last order.
      */
     void addPoints(const float &bill);
-
+    /**
+     *
+     * @param identifier Can be a name or a nif
+     * @return True if the client's name or the client's nif is the same of identifier, false otherwise
+     */
     bool same(std::string identifier) const;
     bool operator==(const Client* &client) const;
     /**
@@ -52,7 +56,5 @@ public:
      * NIF: <CLIENT_NIF> Name: <CLIENT_NAME> Premium: <REGIME>
      */
     void showClient() const;
-
-
 };
 #endif //CLIENT_H

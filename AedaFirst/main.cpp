@@ -115,8 +115,8 @@ void opsClient(vector<Client*> &clients, Client* &client, const vector<Sale*> &s
     } while (operation != 0);
 }
 
-void opsStores(vector<Store*> &stores, Store* &store, vector<Sale*> sales) {
-    unsigned operation;
+void opsStores(vector<Store*> &stores, Store* &store, vector<Sale*> sales, const vector<Product*> &products) {
+    int operation, op;
     vector<Store*>::iterator it;
     do {
         showStoreOperations();
@@ -137,6 +137,28 @@ void opsStores(vector<Store*> &stores, Store* &store, vector<Sale*> sales) {
                 }
                 break;
             case 3: // Add a product
+                do {
+                    cout << "0 All Products" << endl;
+                    showProducts(products);
+                    cout << " Choose product to add:" << endl;
+                    cin >> op;
+                    if (cin.fail() || cin.peek()!='\n') {
+                        cin.clear();
+                        op = -1;
+                        cout << "That product doesn't exist" << endl;
+                    }
+                    cin.ignore(100, '\n');
+                    switch (op) {
+                        case -1:
+                            break;
+                        case 0:
+                            store->addAllProducts(products);
+                            break;
+                        default:
+                            store->addProduct(searchProduct(products, op));
+                            break;
+                    }
+                } while (op==-1);
                 break;
             case 4: // Remove store
                 it = find(stores.begin(), stores.end(), store);
@@ -196,9 +218,7 @@ void makeOrder(const vector<Store*> &stores, const vector<Client*> &clients, Sal
         else
             cout << "That client doesn't exist." << endl;
     } while (error);
-
     sale.setClient(client);
-
 
     // Choose store
     showStores(stores);
@@ -220,9 +240,7 @@ void makeOrder(const vector<Store*> &stores, const vector<Client*> &clients, Sal
         if (store != nullptr)
             error = false;
     } while (error);
-
     sale.setStore(store);
-
 
     // Choose products
     cout << "ID: 0 -> Stop adding" << endl;
@@ -258,8 +276,8 @@ void makeOrder(const vector<Store*> &stores, const vector<Client*> &clients, Sal
     } while (product_id != 0);
 
     // Bill
+    bill = sale.getTotalAmount();
     for (auto it = sale.getProducts().begin(); it != sale.getProducts().end(); it++){
-        bill += it->second.first * it->second.second;
         cout << it->first->getId() << " " << it->first->getName() << " "
              << it->second.first << " x " << it->second.second << endl;
     }
@@ -280,7 +298,6 @@ void makeOrder(const vector<Store*> &stores, const vector<Client*> &clients, Sal
     // Manage points
     client->addPoints(bill);
     cout << "You have " << client->getPoints() << " points." << endl;
-
 
     // Appraisal
     cout << "Your appraisal for the service (0-5): " << endl;
@@ -338,7 +355,6 @@ void opsSalesVolume(const vector<Sale*> &sales, const vector<Store*> &stores) {
         if (cin.fail() || cin.peek() != '\n') {
             cin.clear();
             operation = -1;
-            cout << "That operation doesn't exist" << endl;
         }
         cin.ignore(100, '\n');
         switch (operation) {
@@ -351,9 +367,10 @@ void opsSalesVolume(const vector<Sale*> &sales, const vector<Store*> &stores) {
                 salesVolumeByStore(sales, stores);
                 break;
             default:
+                cout << "That operation doesn't exist" << endl;
                 break;
         }
-    } while (operation<0 && operation >2);
+    } while (operation<0 || operation>2);
 }
 
 int main() {
@@ -412,6 +429,7 @@ int main() {
                 break;
             case 1: // Print stores by ID
                 showStores(stores);
+                cout << endl;
                 break;
             case 2: // Add a store
                 setStoreData(name, address);
@@ -422,7 +440,7 @@ int main() {
                 setStoreData(nif_or_id);
                 store = searchStore(stores, nif_or_id);
                 if (store != nullptr)
-                    opsStores(stores, store, sales);
+                    opsStores(stores, store, sales, products);
                 else
                     cout << "That store doesn't exist" << endl;
                 break;

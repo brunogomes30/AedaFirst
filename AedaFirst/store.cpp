@@ -39,7 +39,14 @@ void Store::setAddress(Address address) {
 }
 
 void Store::addProduct(Product *product) {
-    products.push_back(product);
+    if (!findProduct(product->getId()))
+        products.push_back(product);
+}
+
+void Store::addAllProducts(const vector<Product*> &products) {
+    for (auto product:products)
+        if (!findProduct(product->getId()))
+            this->products.push_back(product);
 }
 
 bool Store::findProduct(const unsigned int &id) const {

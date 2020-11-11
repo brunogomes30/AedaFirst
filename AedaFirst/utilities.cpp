@@ -9,10 +9,17 @@ void showClients(const vector<Client*> &clients) {
 
 void showStores(const vector<Store*> &stores) {
     for (auto store:stores){
-        cout << "ID: " << store->getId() << " Name: " << store->getName() << " Street: " << store->getAddress().street
-            << " Locality: " << store->getAddress().locality << endl;
+        cout << store->getId() << "  " << store->getName() << "\t\t" << store->getAddress().street
+            << ", " << store->getAddress().locality << endl;
     }
 }
+
+void showProducts(const std::vector<Product*> &products) {
+    for (auto product:products) {
+        cout << product->getId() << " " << product->getName() << " " << product->getPrice() << endl;
+    }
+}
+
 
 void showMenuOperations() {
     cout << "[MENU]" << endl;
@@ -44,10 +51,10 @@ void showClientOperations() {
 
 void showStoreOperations() {
     cout << "[Store]" << endl;
-    cout << "0 -> Exit" << endl;
+    cout << " 0 -> Exit" << endl;
     cout << "# 1 -> Print statistics" << endl;
     cout << " 2 -> Print all sales" << endl;
-    cout << "# 3 -> Add a product" << endl;
+    cout << " 3 -> Add a product" << endl;
     cout << " 4 -> Remove store" << endl;
 }
 
@@ -157,12 +164,19 @@ Store* searchStore(const vector<Store*> &stores, unsigned id) {
         return *it;
     else
         return nullptr;
-
 }
 
 void searchEmployee() {}
 
-void searchProduct() {}
+Product* searchProduct(const vector<Product*> &products, unsigned id) {
+    Product searchingProduct(id);
+    auto it = find_if(products.begin(), products.end(),
+                      [&searchingProduct](const Product* product){return *product == searchingProduct;});
+    if (it!=products.end())
+        return *it;
+    else
+        return nullptr;
+}
 
 bool order() {
     int descending;

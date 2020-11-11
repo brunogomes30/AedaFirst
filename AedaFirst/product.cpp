@@ -6,7 +6,9 @@
 
 using namespace std;
 
-
+Product::Product(unsigned id) {
+    this->id = id;
+}
 Product::Product(string name, float price){
     this->id = next_id++;
     this->name = name;
@@ -25,7 +27,7 @@ float Product::getPrice() const{
     return price;
 }
 
-bool Product::operator==(const Product &product){
+bool Product::operator==(const Product &product) const{
     return id == product.getId();
 }
 

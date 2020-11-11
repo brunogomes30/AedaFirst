@@ -38,6 +38,8 @@ map<Product*,pair<unsigned, float>>& Sale::getProducts() {return products;}
 
 unsigned Sale::getAppraisal() const {return appraisal;}
 
+float Sale::getTotalAmount() const {return totalAmount;}
+
 bool Sale::sameClient(Client *&client) const {
     return this->client == client;
 }
