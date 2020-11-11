@@ -14,14 +14,14 @@ private:
     std::string name;
     float price;
 public:
-
+    Product(unsigned id);
     Product(std::string name, float price);
 
     int getId() const;
     std::string getName() const;
     float getPrice() const;
 
-    bool operator== (const Product &product2);
+    bool operator== (const Product &product2) const;
 
 };
 

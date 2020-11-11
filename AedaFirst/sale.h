@@ -13,6 +13,9 @@ private:
     unsigned sale_id;
     Client* client;
     Store* store;
+    /**
+     * Map of pairs that represent <product_pointer, <quantity, current_price>>
+     */
     std::map<Product*, std::pair<unsigned, float>> products;
     unsigned appraisal;
     bool discount;
@@ -28,6 +31,7 @@ public:
     Client* getClient() const;
     std::map<Product*,std::pair<unsigned, float>>& getProducts();
     unsigned getAppraisal() const;
+    float getTotalAmount() const;
     bool sameClient(Client* &client) const;
     /**
      * Print sale in format:

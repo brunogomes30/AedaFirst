@@ -37,6 +37,12 @@ public:
      * @param product Pointer to Product object.
      */
     void addProduct(Product *product);
+    void addAllProducts(const std::vector<Product*> &products);
+        /**
+         *
+         * @param id ID of searched product
+         * @return True if the store has the searched product
+         */
     bool findProduct(const unsigned &id) const;
     /**
      *
@@ -55,6 +61,8 @@ public:
      * ID: <STORE_ID> Store: <STORE_NAME>
      */
     void showStore() const;
+
+    //void Store::statistics(const std::vector<Sale*> &sales) const;
 };
 
 
