@@ -74,3 +74,14 @@ void Store::showStore() const {
     cout << "ID: " << getId() << " Store: " << name << endl;
 }
 
+/*void Store::statistics(const vector<Sale*> &sales) const {
+    unsigned nSales = 0;
+    for (auto sale:sales) {
+        if (*this == *(sale->getStore())) {
+            nSales++;
+        }
+    }
+    cout << "Number of sales: " << nSales << endl;
+
+}*/
+

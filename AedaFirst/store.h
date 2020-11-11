@@ -61,6 +61,8 @@ public:
      * ID: <STORE_ID> Store: <STORE_NAME>
      */
     void showStore() const;
+
+    //void Store::statistics(const std::vector<Sale*> &sales) const;
 };
 
 
