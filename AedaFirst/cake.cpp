@@ -1,12 +1,12 @@
-//
-// Created by ultra on 27/10/2020.
-//
-
 #include "cake.h"
+#include <iostream>
+#include <iomanip>
 
-Cake::Cake(std::string name, float price, layer layer1, layer layer2):Product(name, price) {
-    this->layer1 = layer1;
-    this->layer2 = layer2;
+using namespace std;
+
+Cake::Cake(std::string name, float price, Category ctg, layer ly1, layer ly2):Product(name, price, ctg) {
+    layer1 = ly1;
+    layer2 = ly2;
 }
 
 layer Cake::getLayer1() const {
@@ -15,4 +15,12 @@ layer Cake::getLayer1() const {
 
 layer Cake::getLayer2() const {
     return layer1;
+}
+
+void Cake::showProduct() const {
+    string layers[3] = {"crispy", "puff", "sponge"};
+
+    Product::showProduct();
+    cout << setw(17) << layers[layer1] + " / " + layers[layer2]
+        << setw(6) << price << " euros" << endl;
 }

@@ -1,26 +1,31 @@
-//
-// Created by ultra on 03/11/2020.
-//
-
-#ifndef MAIN_CPP_BREAD_H
-#define MAIN_CPP_BREAD_H
+#ifndef BREAD_H
+#define BREAD_H
 
 #include "product.h"
-#include <iostream>
-
+/**
+ * Enumerated type for specifying the size of the bread.
+ */
 enum sizeType{
-    small = "pequeno",
-    big = "grande"
+    small,
+    big
 };
 
-class Bread : public Product{
+class Bread : public Product {
 private:
+    /**
+     * Specifies the size of the bread.
+     */
     sizeType size;
 
 public:
-    Bread(std::string name, float price, sizeType size);
+    Bread(std::string name, float price, Category category, sizeType size);
     sizeType getSize();
+    /**
+     * Print product in format:
+     * <ID>  <CATEGORY>  <NAME>  <SIZE>  <PRICE>
+     */
+    void showProduct() const override;
 };
 
 
-#endif //MAIN_CPP_BREAD_H
+#endif //BREAD_H

@@ -1,5 +1,5 @@
 #include "client.h"
-#include <algorithm>
+#include <iomanip>
 using namespace std;
 
 Client::Client() {
@@ -18,6 +18,7 @@ Client::Client(std::string name, unsigned int nif, bool regime) {
     points = 0;
     discount = false;
     sumOfAppraisals = 0;
+    opinion = false;
 }
 
 string Client::getName() const {return name;}
@@ -79,6 +80,20 @@ bool Client::operator==(const Client* &client) const {
     return (name==client->getName()) && (nif == client->getNif());
 }
 
-void Client::showClient() const {
-    cout << "NIF: " << nif << " Name: " << name << "  Premium: " << regime << endl;
+void Client::showClient(bool details) const {
+    cout << setw(12) << nif << setw(20) << name;
+    if (regime)
+        cout << setw(10) << "Premium";
+    else
+        cout << setw(10) << "Normal";
+    if (details) {
+        if (opinion)
+            cout << setw(12) << "Positive" << endl;
+        else
+            cout << setw(12) << "Negatve" << endl;
+    }
+    else {
+        cout << endl;
+    }
+
 }

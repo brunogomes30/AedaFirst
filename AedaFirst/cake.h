@@ -1,26 +1,38 @@
-//
-// Created by ultra on 27/10/2020.
-//
+#ifndef CAKE_H
+#define CAKE_H
 
-#ifndef MAIN_CPP_CAKE_H
-#define MAIN_CPP_CAKE_H
 #include "product.h"
-#include <iostream>
+
+/**
+ * Enumerated type for specifying each layer of the cake.
+ */
 enum layer {
-    crispy = "crocante",
-    puff = "massa folhada",
-    sponge = "massa de pão de ló"
+    crispy, // crocante
+    puff,   // massa folhada
+    sponge  // massa de pão de ló
 };
+
 class Cake : public Product{
 private:
+    /**
+     * First layer of the cake.
+     */
     layer layer1;
+    /**
+     * Second Layer of the cake.
+     */
     layer layer2;
 public:
-    Cake(std::string name, float price, layer layer1, layer layer2);
+    Cake(std::string name, float price, Category category, layer layer1, layer layer2);
     layer getLayer1() const;
     layer getLayer2() const;
+    /**
+     * Print product in format:
+     * <ID>  <CATEGORY>  <NAME>  <LAYER1> / <LAYER2>  <PRICE>
+     */
+    void showProduct() const override;
 
 };
 
 
-#endif //MAIN_CPP_CAKE_H
+#endif //CAKE_H

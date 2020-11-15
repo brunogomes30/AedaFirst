@@ -7,9 +7,11 @@ Sale::Sale() {
     totalAmount = 0;
 }
 
+void Sale::setStore(Store *store) {this->store = store;}
+
 void Sale::setClient(Client *client) {this->client = client;}
 
-void Sale::setStore(Store *store) {this->store = store;}
+void Sale::setEmployee(Employee* employee) {this->employee = employee;}
 
 void Sale::addProduct(Product *product, unsigned int qty) {
     map<Product*, pair<unsigned, float>>::iterator it;
@@ -28,15 +30,19 @@ void Sale::setAppraisal(unsigned int appraisal) {
     client->addAppraisal(appraisal);
 }
 
-void Sale::setDiscount(bool discount) {this->discount = discount;}
+void Sale::setDiscount(float discount) {this->discount = discount;}
 
 Store* Sale::getStore() const {return store;}
 
 Client* Sale::getClient() const {return client;}
 
+Employee* Sale::getEmployee() const {return employee;}
+
 map<Product*,pair<unsigned, float>>& Sale::getProducts() {return products;}
 
 unsigned Sale::getAppraisal() const {return appraisal;}
+
+float Sale::getDiscount() const {return discount;}
 
 float Sale::getTotalAmount() const {return totalAmount;}
 
@@ -44,24 +50,21 @@ bool Sale::sameClient(Client *&client) const {
     return this->client == client;
 }
 
-void Sale::showSale() const {
-    float bill = totalAmount;
+void Sale::showSale(bool showAppraisal) const {
     cout << endl << "---------------------------------------" << endl;
     cout << "SALE " << sale_id << endl;
     store->showStore();
-    client->showClient();
+    cout << "Employee: "; employee->showEmployee(0);
+    cout << "Client: "; client->showClient(0);
     for (auto it = products.begin(); it != products.end(); it++){
         cout << it->first->getId() << " " << it->first->getName() << " "
              << it->second.first << " x " << it->second.second << endl;
     }
-    cout << endl << "Total amount: " << bill << endl;
-    if (discount) {
-        if (client->getRegime())
-            bill *= 0.95;
-        else
-            bill *= 0.98;
-        cout << "Amount to pay after discount: " << bill << endl;
+    cout << endl << "Total amount: " << totalAmount << endl;
+    if (discount!=1) {
+        cout << "Discount: " << (1-discount)*100 << "%   Amount to pay : " << totalAmount*discount << endl;
     }
-    cout << "Client's appraisal: " << appraisal << endl;
+    if (showAppraisal)
+        cout << "Appraisal: " << appraisal << endl;
     cout << "---------------------------------------" << endl;
 }

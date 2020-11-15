@@ -1,4 +1,6 @@
 #include "store.h"
+#include <iomanip>
+#include <algorithm>
 using namespace std;
 
 Store::Store(unsigned int id) {
@@ -30,15 +32,19 @@ Product* Store::getProduct(unsigned id) const {
     return nullptr;
 }
 
-void Store::setName(std::string name) {
+vector<Employee*> Store::getEmployees() const {
+    return employees;
+}
+
+void Store::setName(const string &name) {
   this->name = name;
 }
 
-void Store::setAddress(Address address) {
+void Store::setAddress(const Address &address) {
   this->address = address;
 }
 
-void Store::addProduct(Product *product) {
+void Store::addProduct(Product* product) {
     if (!findProduct(product->getId()))
         products.push_back(product);
 }
@@ -49,11 +55,39 @@ void Store::addAllProducts(const vector<Product*> &products) {
             this->products.push_back(product);
 }
 
+void Store::addEmployee(Employee *employee) {
+    employees.push_back(employee);
+}
+
+void Store::removeProduct(Product *product) {
+    auto it = find(products.begin(), products.end(), product);
+    if (it != products.end())
+        products.erase(it);
+}
+
+void Store::removeEmployee(Employee *employee) {
+    auto it = find(employees.begin(), employees.end(), employee);
+    if (it != employees.end())
+        employees.erase(it);
+}
+
 bool Store::findProduct(const unsigned int &id) const {
     for (auto product:products)
         if (product->getId() == id)
             return true;
     return false;
+}
+
+Employee* Store::lessOrdered() const {
+    Employee* employee = employees.front();
+    unsigned min = employees.front()->getNumOrders();
+    for (auto e:employees) {
+        if (e->getNumOrders() < min) {
+            min = e->getNumOrders();
+            employee = e;
+        }
+    }
+    return employee;
 }
 
 bool Store::operator==(const Store &store) const {
@@ -65,8 +99,18 @@ bool Store::operator<(const Store &store) const {
 }
 
 void Store::showProducts() const {
+    cout << endl << left << setw(5) << "ID" << setw(10) << "Category" << setw(20)
+         << "Name" << setw(17) << "Details" << setw(6) << "Price" << endl;
     for (auto product:products){
-        cout << product->getId() << " -> " << product->getName() << " " << product->getPrice() << " euros" << endl;
+        product->showProduct();
+    }
+}
+
+void Store::showEmployees() const {
+    cout << setw(12) << "NIF" << setw(20) << "Name" << setw(10)
+            << "Salary" << setw(12) << "N. Orders" << endl;
+    for (auto emp:employees) {
+        emp->showEmployee(true);
     }
 }
 

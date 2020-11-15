@@ -5,6 +5,8 @@
 #include <vector>
 #include <map>
 #include "client.h"
+#include "employee.h"
+
 
 static unsigned next_sale_id = 1;
 
@@ -13,24 +15,28 @@ private:
     unsigned sale_id;
     Client* client;
     Store* store;
+    Employee* employee;
     /**
      * Map of pairs that represent <product_pointer, <quantity, current_price>>
      */
     std::map<Product*, std::pair<unsigned, float>> products;
     unsigned appraisal;
-    bool discount;
+    float discount;
     float totalAmount;
 public:
     Sale();
-    void setClient(Client* client);
     void setStore(Store* store);
+    void setClient(Client* client);
+    void setEmployee(Employee* employee);
     void addProduct(Product* product, unsigned qty);
     void setAppraisal(unsigned appraisal);
-    void setDiscount(bool discount);
+    void setDiscount(float discount);
     Store* getStore() const;
     Client* getClient() const;
+    Employee* getEmployee() const;
     std::map<Product*,std::pair<unsigned, float>>& getProducts();
     unsigned getAppraisal() const;
+    float getDiscount() const;
     float getTotalAmount() const;
     bool sameClient(Client* &client) const;
     /**
@@ -43,7 +49,7 @@ public:
      * Amount to pay after discount: <BILL_DISCOUNTED>
      * Client's appraisal: <APPRAISAL>
      */
-    void showSale() const;
+    void showSale(bool showAppraisal) const;
 };
 
 #endif //SALE_H

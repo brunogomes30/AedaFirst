@@ -1,29 +1,44 @@
-//
-// Created by ultra on 27/10/2020.
-//
+#ifndef PRODUCT_H
+#define PRODUCT_H
+
 #include<iostream>
-#ifndef MAIN_CPP_PRODUCT_H
-#define MAIN_CPP_PRODUCT_H
 
 static int next_id = 1;
+
+/**
+ * Enumerated type for specifying the category of product.
+ */
+enum Category {
+    bread,
+    cake
+};
+
 class Product {
-
-private:
-
+protected:
     unsigned int id;
     std::string name;
     float price;
+    Category category;
 public:
     Product(unsigned id);
-    Product(std::string name, float price);
+    Product(std::string name, float price, Category ctg);
 
-    int getId() const;
+    unsigned getId() const;
     std::string getName() const;
     float getPrice() const;
-
+    void setName(std::string &name);
+    void setPrice(float &price);
+    /**
+     * Checks equality of two products.
+     * @param product2 Product to be compared.
+     * @return True if both products has the same ID, false otherwise.
+     */
     bool operator== (const Product &product2) const;
-
+    /**
+     * Print product in format:
+     * <ID>  <CATEGORY>  <NAME>
+     */
+    virtual void showProduct() const;
 };
 
-
-#endif //MAIN_CPP_PRODUCT_H
+#endif //PRODUCT_H

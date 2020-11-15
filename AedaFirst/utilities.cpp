@@ -1,28 +1,39 @@
 #include "utilities.h"
-
+#include <iomanip>
 using namespace std;
 
-void showClients(const vector<Client*> &clients) {
-    for (auto client:clients)
-        cout << client->getNif() << " " << client->getName() << endl;
+void showStores(const vector<Store*> &stores) {
+    cout << endl << left << setw(5) << "ID" << setw(30) << "Name" << setw(30) << "Address" << endl;
+    for (auto store:stores){
+        cout << setw(5) << store->getId() << setw(30) << store->getName() << store->getAddress().street
+             << ", " << store->getAddress().locality << endl;
+    }
 }
 
-void showStores(const vector<Store*> &stores) {
-    for (auto store:stores){
-        cout << store->getId() << "  " << store->getName() << "\t\t" << store->getAddress().street
-            << ", " << store->getAddress().locality << endl;
+void showClients(const vector<Client*> &clients) {
+    cout << endl << left << setw(12) << "NIF" << setw(20) << "Name" << setw(10) << "Regime" << setw(12) << "Opinion" << endl;
+    for (auto client:clients)
+        client->showClient(true);
+}
+
+void showEmployees(const std::vector<Store*> &stores) {
+    for (auto store:stores) {
+        cout << left << endl;
+        store->showStore();
+        store->showEmployees();
     }
 }
 
 void showProducts(const std::vector<Product*> &products) {
+    cout << endl << left << setw(5) << "ID" << setw(10) << "Category" << setw(20)
+            << "Name" << setw(17) << "Details" << setw(6) << "Price" << endl;
     for (auto product:products) {
-        cout << product->getId() << " " << product->getName() << " " << product->getPrice() << endl;
+        product->showProduct();
     }
 }
 
-
 void showMenuOperations() {
-    cout << "[MENU]" << endl;
+    cout << endl << "[MENU]" << endl;
     cout << " 0 -> Exit" << endl;
     cout << " 1 -> Print stores" << endl;
     cout << " 2 -> Add a store" << endl;
@@ -30,59 +41,112 @@ void showMenuOperations() {
     cout << " 4 -> Print clients" << endl;
     cout << " 5 -> Add a client" << endl;
     cout << " 6 -> Search a client (Submenu)" << endl;
-    cout << "# 7 -> Print employees" << endl;
-    cout << "# 8 -> Add an employee" << endl;
-    cout << "# 9 -> Search an employee" << endl;
-    cout << "#10 -> Print products" << endl;
-    cout << "#11 -> Add a product" << endl;
-    cout << "#12 -> Search a product" << endl;
+    cout << " 7 -> Print employees" << endl;
+    cout << " 8 -> Add an employee" << endl;
+    cout << " 9 -> Search an employee (Submenu)" << endl;
+    cout << "10 -> Print products" << endl;
+    cout << "11 -> Add a product" << endl;
+    cout << "12 -> Search a product (Submenu)" << endl;
     cout << "13 -> Make an order" << endl;
     cout << "14 -> Print sales volume (Submenu)" << endl;
-    cout << "15 -> Print all sales" << endl;
-}
-
-void showClientOperations() {
-    cout << "[CLIENT]" << endl;
-    cout << "0 -> Back" << endl;
-    cout << "1 -> Change client's regime" << endl;
-    cout << "#2 -> Print client's history" << endl;
-    cout << "3 -> Remove client" << endl;
+    cout << "15 -> Print sales (Submenu)" << endl;
 }
 
 void showStoreOperations() {
-    cout << "[Store]" << endl;
-    cout << " 0 -> Exit" << endl;
+    cout << endl << "[STORE]" << endl;
+    cout << " 0 -> Back" << endl;
     cout << "# 1 -> Print statistics" << endl;
     cout << " 2 -> Print all sales" << endl;
-    cout << " 3 -> Add a product" << endl;
-    cout << " 4 -> Remove store" << endl;
+    cout << " 3 -> Add products" << endl;
+    cout << " 4 -> Change name" << endl;
+    cout << " 5 -> Change address" << endl;
+    cout << " 6 -> Remove store" << endl;
 }
 
-void setClientData(string &identifier) {
+void showClientOperations() {
+    cout << endl << "[CLIENT]" << endl;
+    cout << "0 -> Back" << endl;
+    cout << "1 -> Change client's regime" << endl;
+    cout << "2 -> Print client's history" << endl;
+    cout << "3 -> Remove client" << endl;
+}
+
+void showEmployeeOperations() {
+    cout << endl << "[EMPLOYEE]" << endl;
+    cout << "0 -> Back" << endl;
+    cout << "1 -> Change employee's salary" << endl;
+    cout << "2 -> Remove employee" << endl;
+}
+
+void showProductOperations() {
+    cout << endl << "[PRODUCT]" << endl;
+    cout << "0 -> Back" << endl;
+    cout << "1 -> Change product's name" << endl;
+    cout << "2 -> Change product's price" << endl;
+    cout << "3 -> Add product to stores" << endl;
+    cout << "4 -> Remove product" << endl;
+}
+
+void askId(unsigned &id, string object) {
     bool error;
     do {
         error = false;
-        cout << "Client's name or NIF:" << endl;
+        cout << endl << object + "'s ID:" << endl;
+        cin >> id;
+        if (cin.fail() || cin.peek() != '\n') {
+            error = true;
+            cout << " That " + object + " doesn't exist" << endl;
+        }
+    } while (error);
+}
+
+void askPersonData(string &identifier, string person) {
+    bool error;
+    do {
+        error = false;
+        cout << endl << person+"'s name or NIF:" << endl;
         getline(cin, identifier);
         if (identifier.length() == 0)
             error = true;
     } while (error);
 }
 
-void setClientData(string &name, unsigned &nif, bool &regime) {
+void askAddress(Address &address) {
     bool error;
-    // Set client's name
+    // Set store's street
     do {
         error = false;
-        cout << "New client's name:" << endl;
+        cout << "Store's street:" << endl;
+        getline(cin, address.street);
+        if (address.street.length() == 0)
+            error = true;
+    } while (error);
+    // Set store's locality
+    do {
+        error = false;
+        cout << "Store's locality:" << endl;
+        getline(cin, address.locality);
+        if (address.locality.length() == 0)
+            error = true;
+    } while (error);
+}
+
+void askName(string &name, string object) {
+    bool error;
+    do {
+        error = false;
+        cout << object + " name:" << endl;
         getline(cin, name);
         if (name.length() == 0)
             error = true;
     } while (error);
-    // Set client's NIF
+}
+
+void askNif(unsigned &nif, string object) {
+    bool error;
     do {
         error = false;
-        cout << "New client's NIF:" << endl;
+        cout << object << "'s NIF:" << endl;
         cin >> nif;
         if (cin.fail() || cin.peek() != '\n' || nif > 999999999 || nif < 1) {
             cin.clear();
@@ -91,69 +155,172 @@ void setClientData(string &name, unsigned &nif, bool &regime) {
         }
         cin.ignore(100, '\n');
     } while (error);
-    // Set client's regime
-    cout << "0 -> Normal regime" << endl;
-    cout << "1 -> Premium regime" << endl;
+}
+
+void askRegime(bool &regime) {
+    bool error;
+    cout << endl << setw(5) << "OP" << setw(10) << "Regime" << endl;
+    cout << setw(5) << "1" << setw(10) << "Normal" << endl;
+    cout << setw(5) << "2" << setw(10) << "Premium" << endl;
+    int reg;
     do {
         error = false;
-        cout << "New client's regime:" << endl;
-        cin >> regime;
-        if (cin.fail() || cin.peek() != '\n') {
+        cout << endl << "Client's regime:" << endl;
+        cin >> reg;
+        if (cin.fail() || cin.peek() != '\n' || (reg!=1 && reg!=2)) {
             cin.clear();
             cout << "That's not a regime!" << endl;
             error = true;
         }
         cin.ignore(100, '\n');
     } while (error);
+    regime = reg==2;
 }
 
-void setStoreData(unsigned &id) {
+void askSalaryOrPrice(float &price_salary, string object) {
     bool error;
     do {
         error = false;
-        cout << "Store's ID:" << endl;
-        cin >> id;
-        if (cin.fail() || cin.peek() != '\n') {
+        cout << object << ":" << endl;
+        cin >> price_salary;
+        if (cin.fail() || cin.peek() != '\n' || price_salary < 0) {
+            cin.clear();
+            cout << "That's not a valid value!" << endl;
             error = true;
-            cout << " That store doesn't exist" << endl;
+        }
+        cin.ignore(100, '\n');
+    } while (error);
+}
+
+void askCategory(Category &ctg) {
+    int category;
+    bool error;
+    cout << left << endl << setw(5) << "OP" << setw(10) << "Category" << endl;
+    cout << setw(5) << "1" << setw(10) << "Bread" << endl;
+    cout << setw(5) << "2" << setw(10) << "Cake" << endl;
+    do {
+        error = false;
+        cout << "Product's category:" << endl;
+        cin >> category;
+        if (cin.fail() || cin.peek() != '\n' || (category != 1 && category != 2)) {
+            cin.clear();
+            cout << "That's not a category!" << endl;
+            error = true;
+        }
+        cin.ignore(100, '\n');
+    } while (error);
+    if (category == 1) ctg = bread;
+    else ctg = cake;
+}
+
+void askBreadSize(sizeType &size) {
+    int s;
+    bool error;
+    cout << endl << setw(5) << "OP" << setw(10) << "Bread size" << endl;
+    cout << setw(5) << "1" << setw(10) << "Small" << endl;
+    cout << setw(5) << "2" << setw(10) << "Big" << endl;
+    do {
+        error = false;
+        cout << "Bread's size:" << endl;
+        cin >> s;
+        if (cin.fail() || cin.peek() != '\n' || (s != 1 && s != 2)) {
+            cin.clear();
+            cout << "That's not a bread size!" << endl;
+            error = true;
+        }
+        cin.ignore(100, '\n');
+    } while (error);
+    if (s == 1) size = small;
+    else size = big;
+}
+
+void askCakeLayer(layer &ly, string object) {
+    int layer;
+    bool error;
+    cout << endl << setw(5) << "OP" << setw(10) << "Cake layer" << endl;
+    cout << setw(5) << "1" << setw(10) << "Crispy" << endl;
+    cout << setw(5) << "2" << setw(10) << "Puff" << endl;
+    cout << setw(5) << "3" << setw(10) << "Sponge" << endl;
+    do {
+        error = false;
+        cout << "Cake's layer " << object << ":" << endl;
+        cin >> layer;
+        if (cin.fail() || cin.peek() != '\n' || (layer != 1 && layer != 2 && layer != 3)) {
+            cin.clear();
+            cout << "That's not a cake layer!" << endl;
+            error = true;
+        }
+        cin.ignore(100, '\n');
+    } while (error);
+    if (layer == 1) ly = crispy;
+    else if (layer == 2) ly = puff;
+    else ly = sponge;
+}
+
+void askStores(const vector<Store*> &stores, vector<Store*> &filterStores) {
+    unsigned id;
+    Store* auxS;
+    showStores(stores);
+    cout << "Press  0  to finish the filter" << endl;
+    do {
+        askId(id, "Store");
+        auxS = searchStore(stores, id);
+        if (auxS != nullptr && searchStore(filterStores, id) == nullptr)
+            filterStores.push_back(auxS);
+    } while (id != 0);
+}
+
+void setStoreData(string &name, Address &address) {
+    // Set store's name
+    askName(name, "store");
+    // Set store's address
+    askAddress(address);
+}
+
+void setClientData(string &name, unsigned &nif, bool &regime) {
+    // Set client's name
+    askName(name, "client");
+    // Set client's NIF
+    askNif(nif, "client");
+    // Set client's regime
+    askRegime(regime);
+}
+
+void setEmployeeData(string &name, unsigned &nif, float &salary, const vector<Store*> &stores, Store* &store) {
+    bool error;
+    // Set employee's name
+    askName(name, "Employee");
+    // Set employee's NIF
+    askNif(nif, "Employee");
+    // Set employee's salary
+    askSalaryOrPrice(salary, "Employee's salary");
+    // Set employee's store
+    unsigned id;
+    do {
+        error = false;
+        showStores(stores);
+        askId(id, "Store");
+        store = searchStore(stores, id);
+        if (store == nullptr) {
+            cout << "That store doesn't exist" << endl;
+            error = true;
         }
     } while (error);
 }
 
-void setStoreData(string &name, Address &address) {
-    bool error;
-    // Set store's name
-    do {
-        error = false;
-        cout << "New store's name:" << endl;
-        getline(cin, name);
-        if (name.length() == 0)
-            error = true;
-    } while (error);
-    // Set store's street
-    do {
-        error = false;
-        cout << "New store's street:" << endl;
-        getline(cin, address.street);
-        if (address.street.length() == 0)
-            error = true;
-    } while (error);
-    // Set store's locality
-    do {
-        error = false;
-        cout << "New store's locality:" << endl;
-        getline(cin, address.locality);
-        if (address.locality.length() == 0)
-            error = true;
-    } while (error);
-}
-
-Client* searchClient(const vector<Client*> &clients, const string &identifier) {
-    for (auto client:clients) {
-        if (client->same(identifier))
-            return client;
+void setProductData(string &name, float &price, Category &ctg, sizeType &size, layer &ly1, layer &ly2) {
+    // Set category
+    askCategory(ctg);
+    // Set name
+    askName(name, "Product");
+    // Set price
+    askSalaryOrPrice(price, "Product's price");
+    if (ctg == bread)
+        askBreadSize(size);
+    else {
+        askCakeLayer(ly1, "1");
+        askCakeLayer(ly2, "2");
     }
-    return nullptr;
 }
 
 Store* searchStore(const vector<Store*> &stores, unsigned id) {
@@ -166,7 +333,21 @@ Store* searchStore(const vector<Store*> &stores, unsigned id) {
         return nullptr;
 }
 
-void searchEmployee() {}
+Client* searchClient(const vector<Client*> &clients, const string &identifier) {
+    for (auto client:clients) {
+        if (client->same(identifier))
+            return client;
+    }
+    return nullptr;
+}
+
+Employee* searchEmployee(const vector<Employee*> &employees, const string &identifier) {
+        for (auto employee:employees) {
+            if (employee->same(identifier))
+                return employee;
+    }
+    return nullptr;
+}
 
 Product* searchProduct(const vector<Product*> &products, unsigned id) {
     Product searchingProduct(id);
@@ -181,17 +362,19 @@ Product* searchProduct(const vector<Product*> &products, unsigned id) {
 bool order() {
     int descending;
     do {
-        cout << "0 -> Ascending" << endl;
-        cout << "1 -> Descending" << endl;
+        cout << endl << "OP\tOrder" << endl;
+        cout << "1\tAscending" << endl;
+        cout << "2\tDescending" << endl;
+        cout << "Choose order of sort:" << endl;
         cin >> descending;
-        if (cin.fail() || cin.peek() != '\n' || (descending != 0 && descending != 1)) {
+        if (cin.fail() || cin.peek() != '\n' || (descending != 1 && descending != 2)) {
             cin.clear();
             descending = -1;
             cout << "That is not a possible sort" << endl;
         }
         cin.ignore(100, '\n');
     } while (descending == -1);
-    return (bool)descending;
+    return descending==2;
 }
 
 bool cmpByIncome(const pair<Product*, pair<unsigned, float>> &p1, const pair<Product*, pair<unsigned, float>> &p2) {
@@ -199,7 +382,7 @@ bool cmpByIncome(const pair<Product*, pair<unsigned, float>> &p1, const pair<Pro
 }
 
 bool cmpByQuantitySold(const pair<Product*, pair<unsigned, float>> &p1, const pair<Product*, pair<unsigned, float>> &p2) {
-    return p1.second.first > p1.second.first;
+    return p1.second.first > p2.second.first;
 }
 
 void sortByIncome(std::vector<pair<Product*, pair<unsigned, float>>> &vProducts) {
@@ -210,19 +393,20 @@ void sortByQuantitySold(std::vector<pair<Product*, pair<unsigned, float>>> &vPro
     sort(vProducts.begin(), vProducts.end(), cmpByQuantitySold);
 }
 
-bool cmpClientsByName(Client* &client1, Client* &client2) {
-    return client1->getName() < client2->getName();
+template<class T>
+bool cmpPersonsByName(T* &person1, T* &person2) {
+    return person1->getName() < person2->getName();
 }
-
-bool cmpClientsByNif(Client* &client1, Client* &client2) {
-    return client1->getNif() < client2->getNif();
+template<class T>
+bool cmpPersonsByNif(T* &person1, T* &person2) {
+    return person1->getNif() < person2->getNif();
 }
 
 void sortClientsByName(std::vector<Client*> &clients) {
-    sort(clients.begin(), clients.end(), cmpClientsByName);
+    sort(clients.begin(), clients.end(), cmpPersonsByName<Client>);
 }
 
 void sortClientsByNif(std::vector<Client*> &clients) {
-    sort(clients.begin(), clients.end(), cmpClientsByNif);
+    sort(clients.begin(), clients.end(), cmpPersonsByNif<Client>);
 }
 

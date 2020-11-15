@@ -55,6 +55,6 @@ public:
      * Print client in format:
      * NIF: <CLIENT_NIF> Name: <CLIENT_NAME> Premium: <REGIME>
      */
-    void showClient() const;
+    void showClient(bool details) const;
 };
 #endif //CLIENT_H

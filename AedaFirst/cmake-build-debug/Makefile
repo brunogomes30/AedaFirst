@@ -67,10 +67,10 @@ RM = "C:\Program Files\JetBrains\CLion 2020.2.3\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst"
+CMAKE_SOURCE_DIR = C:\Users\ultra\Documents\AedaFirst\AedaFirst
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\cmake-build-debug"
+CMAKE_BINARY_DIR = C:\Users\ultra\Documents\AedaFirst\AedaFirst\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -99,9 +99,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles" "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles\progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ultra\Documents\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles C:\Users\ultra\Documents\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ultra\Documents\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -142,7 +142,33 @@ AedaFirst/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/build
 .PHONY : AedaFirst/fast
 
-<<<<<<< HEAD
+bread.obj: bread.cpp.obj
+
+.PHONY : bread.obj
+
+# target to build an object file
+bread.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/bread.cpp.obj
+.PHONY : bread.cpp.obj
+
+bread.i: bread.cpp.i
+
+.PHONY : bread.i
+
+# target to preprocess a source file
+bread.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/bread.cpp.i
+.PHONY : bread.cpp.i
+
+bread.s: bread.cpp.s
+
+.PHONY : bread.s
+
+# target to generate assembly for a file
+bread.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/bread.cpp.s
+.PHONY : bread.cpp.s
+
 cake.obj: cake.cpp.obj
 
 .PHONY : cake.obj
@@ -170,10 +196,7 @@ cake.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/cake.cpp.s
 .PHONY : cake.cpp.s
 
-loja.obj: loja.cpp.obj
-=======
 client.obj: client.cpp.obj
->>>>>>> 03fa9b62b76273886c6953b064dfff803b70bd5f
 
 .PHONY : client.obj
 
@@ -199,6 +222,33 @@ client.s: client.cpp.s
 client.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/client.cpp.s
 .PHONY : client.cpp.s
+
+employee.obj: employee.cpp.obj
+
+.PHONY : employee.obj
+
+# target to build an object file
+employee.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/employee.cpp.obj
+.PHONY : employee.cpp.obj
+
+employee.i: employee.cpp.i
+
+.PHONY : employee.i
+
+# target to preprocess a source file
+employee.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/employee.cpp.i
+.PHONY : employee.cpp.i
+
+employee.s: employee.cpp.s
+
+.PHONY : employee.s
+
+# target to generate assembly for a file
+employee.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/employee.cpp.s
+.PHONY : employee.cpp.s
 
 main.obj: main.cpp.obj
 
@@ -226,6 +276,33 @@ main.s: main.cpp.s
 main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/main.cpp.s
 .PHONY : main.cpp.s
+
+menu.obj: menu.cpp.obj
+
+.PHONY : menu.obj
+
+# target to build an object file
+menu.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/menu.cpp.obj
+.PHONY : menu.cpp.obj
+
+menu.i: menu.cpp.i
+
+.PHONY : menu.i
+
+# target to preprocess a source file
+menu.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/menu.cpp.i
+.PHONY : menu.cpp.i
+
+menu.s: menu.cpp.s
+
+.PHONY : menu.s
+
+# target to generate assembly for a file
+menu.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/menu.cpp.s
+.PHONY : menu.cpp.s
 
 product.obj: product.cpp.obj
 
@@ -308,6 +385,33 @@ store.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/store.cpp.s
 .PHONY : store.cpp.s
 
+utilities.obj: utilities.cpp.obj
+
+.PHONY : utilities.obj
+
+# target to build an object file
+utilities.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/utilities.cpp.obj
+.PHONY : utilities.cpp.obj
+
+utilities.i: utilities.cpp.i
+
+.PHONY : utilities.i
+
+# target to preprocess a source file
+utilities.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/utilities.cpp.i
+.PHONY : utilities.cpp.i
+
+utilities.s: utilities.cpp.s
+
+.PHONY : utilities.s
+
+# target to generate assembly for a file
+utilities.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/utilities.cpp.s
+.PHONY : utilities.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -317,21 +421,24 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... AedaFirst
-<<<<<<< HEAD
+	@echo ... bread.obj
+	@echo ... bread.i
+	@echo ... bread.s
 	@echo ... cake.obj
 	@echo ... cake.i
 	@echo ... cake.s
-	@echo ... loja.obj
-	@echo ... loja.i
-	@echo ... loja.s
-=======
 	@echo ... client.obj
 	@echo ... client.i
 	@echo ... client.s
->>>>>>> 03fa9b62b76273886c6953b064dfff803b70bd5f
+	@echo ... employee.obj
+	@echo ... employee.i
+	@echo ... employee.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... menu.obj
+	@echo ... menu.i
+	@echo ... menu.s
 	@echo ... product.obj
 	@echo ... product.i
 	@echo ... product.s
@@ -341,6 +448,9 @@ help:
 	@echo ... store.obj
 	@echo ... store.i
 	@echo ... store.s
+	@echo ... utilities.obj
+	@echo ... utilities.i
+	@echo ... utilities.s
 .PHONY : help
 
 
