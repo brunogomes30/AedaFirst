@@ -145,11 +145,12 @@ void clientHistory(Client* &client, const vector<Sale*> &sales) {
             totalSpent += sale->getDiscount() * sale->getTotalAmount();
         }
     }
-    client->showClient(0);
+    client->showClient(false);
     if (client->getOpinion())
         cout << "Opinion:\t\t" << "Positive" << endl;
     else
         cout << "Opinion:\t\t" << "Negative" << endl;
+    cout << "Number of points:\t" << client->getPoints() << endl;
     cout << "Number of orders:\t" << nSales << endl;
     cout << "Total spent:\t\t" << totalSpent << endl;
     cout << "Discounts used:\t\t" << nDiscounts << endl;
@@ -254,6 +255,10 @@ void opsProduct(vector<Product*> &products, vector<Product*> &oldProducts, vecto
             case 3: // Add to stores
                 filterStores.clear();
                 askStores(stores, filterStores);
+                for (auto store:filterStores) {
+                    if (!store->findProduct(product->getId()))
+                        store->addProduct(product);
+                }
                 break;
             case 4: // Remove product
                 it = find(products.begin(), products.end(), product);
@@ -308,7 +313,7 @@ void makeOrder(const vector<Store*> &stores, const vector<Client*> &clients, Sal
     // Choose products
     cout << endl;
     store->showProducts();
-    cout << "Press 0 to stop adding" << endl;
+    cout << "Press 0 to stop adding" << endl << endl;
     do {
         cout << "Product you want:" << endl;
         cin >> product_id;
@@ -357,11 +362,17 @@ void makeOrder(const vector<Store*> &stores, const vector<Client*> &clients, Sal
     else
         sale.setDiscount(1);
 
-    sale.showSale(0);
+    sale.showSale(false);
 
     // Manage points
     client->addPoints(bill);
     cout << "You have " << client->getPoints() << " points." << endl;
+
+    if (client->getDiscount())
+        if (client->getRegime())
+            cout << "Discount of 5% in next order" << endl;
+        else
+            cout << "Discount of 2% in next order" << endl;
 
     // Appraisal
     cout << "Your appraisal for the service (0-5): " << endl;

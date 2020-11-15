@@ -1,4 +1,5 @@
 #include "sale.h"
+#include <iomanip>
 
 using namespace std;
 
@@ -51,20 +52,24 @@ bool Sale::sameClient(Client *&client) const {
 }
 
 void Sale::showSale(bool showAppraisal) const {
-    cout << endl << "---------------------------------------" << endl;
+    string ctg[2] = {"Bread", "Cake"};
+    cout << endl << "-----------------------------------------------" << endl;
     cout << "SALE " << sale_id << endl;
     store->showStore();
-    cout << "Employee: "; employee->showEmployee(0);
-    cout << "Client: "; client->showClient(0);
+    cout << "Employee: "; employee->showEmployee(false);
+    cout << "Client: "; client->showClient(false);
+    cout << endl << setw(5) << "ID" << setw(10) << "Category" << setw(20) << "Name" << setw(6)
+            << "Qty" << "   " << setw(6) << "Price" << endl;
     for (auto it = products.begin(); it != products.end(); it++){
-        cout << it->first->getId() << " " << it->first->getName() << " "
-             << it->second.first << " x " << it->second.second << endl;
+        cout << setw(5) << it->first->getId() << setw(10) << ctg[it->first->getCategory()] << setw(20) << it->first->getName()
+            << setw(6) << it->second.first << " x " << setw(6) << setprecision(2) << fixed << it->second.second << endl;
     }
-    cout << endl << "Total amount: " << totalAmount << endl;
+    cout << endl << "Total amount: " << setprecision(2) << fixed << totalAmount << endl;
     if (discount!=1) {
-        cout << "Discount: " << (1-discount)*100 << "%   Amount to pay : " << totalAmount*discount << endl;
+        cout << "Discount: " << (1-discount)*100 << "%   Amount to pay : "
+            << setprecision(2) << fixed << totalAmount*discount << endl;
     }
     if (showAppraisal)
         cout << "Appraisal: " << appraisal << endl;
-    cout << "---------------------------------------" << endl;
+    cout << "-----------------------------------------------" << endl;
 }

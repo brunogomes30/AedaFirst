@@ -16,5 +16,5 @@ void Bread::showProduct() const {
     string sizes[2] = {"small", "big"};
 
     Product::showProduct();
-    cout << setw(17) << sizes[size] << setw(6) << price << " euros" << endl;
+    cout << setw(17) << sizes[size] << setw(6) << setprecision(2) << fixed << price << " euros" << endl;
 }
