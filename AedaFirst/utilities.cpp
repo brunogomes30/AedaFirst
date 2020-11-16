@@ -279,9 +279,9 @@ void setStoreData(string &name, Address &address) {
 
 void setClientData(string &name, unsigned &nif, bool &regime) {
     // Set client's name
-    askName(name, "client");
+    askName(name, "Client");
     // Set client's NIF
-    askNif(nif, "client");
+    askNif(nif, "Client");
     // Set client's regime
     askRegime(regime);
 }

@@ -4,7 +4,13 @@
 using namespace std;
 
 Sale::Sale() {
+    totalAmount = 0;
+}
+
+Sale::Sale(Client* client, Store* store) {
     id = next_sale_id++;
+    this->client = client;
+    this->store = store;
     totalAmount = 0;
 }
 
@@ -25,6 +31,12 @@ void Sale::addProduct(Product *product, unsigned int qty) {
     }
     totalAmount += qty*product->getPrice();
 }
+
+void Sale::setProducts(std::map<Product*, std::pair<unsigned, float>> &prodsVolume, float totalAmount) {
+    products = prodsVolume;
+    this->totalAmount = totalAmount;
+}
+
 
 void Sale::setAppraisal(unsigned int appraisal) {
     this->appraisal = appraisal;

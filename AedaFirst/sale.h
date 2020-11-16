@@ -25,10 +25,12 @@ private:
     float totalAmount;
 public:
     Sale();
+    Sale(Client* client, Store* store);
     void setStore(Store* store);
     void setClient(Client* client);
     void setEmployee(Employee* employee);
     void addProduct(Product* product, unsigned qty);
+    void setProducts(std::map<Product*, std::pair<unsigned, float>> &products, float totalAmount);
     void setAppraisal(unsigned appraisal);
     void setDiscount(float discount);
     Store* getStore() const;
