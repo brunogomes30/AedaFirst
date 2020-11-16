@@ -15,7 +15,7 @@ static unsigned store_next_id = 1;
 
 class Store {
 private:
-    unsigned store_id;
+    unsigned id;
     std::string name;
     Address address;
     std::vector<Product*> products;
@@ -23,9 +23,13 @@ private:
 public:
     Store(unsigned id);
     Store(std::string name, Address address);
+    Store(unsigned int id, std::string name, Address address);
     unsigned getId() const;
     std::string getName() const;
     Address getAddress() const;
+    friend std::ostream& operator<< (std::ostream &os, Store &store);
+    friend std::istream& operator>> (std::istream &is, Store &store);
+
     /**
      *
      * @param id ID of the searched product.

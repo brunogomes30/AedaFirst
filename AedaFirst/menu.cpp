@@ -3,8 +3,12 @@
 #include <iostream>
 #include <algorithm>
 #include <iomanip>
-
+#include <map>
 using namespace std;
+
+map<unsigned int, Product> productsMapping;
+map<unsigned int, Employee> employeesMapping;
+
 
 void chooseClientsSort(vector<Client*> &clients) {
     int operation;
@@ -145,11 +149,12 @@ void clientHistory(Client* &client, const vector<Sale*> &sales) {
             totalSpent += sale->getDiscount() * sale->getTotalAmount();
         }
     }
-    client->showClient(0);
+    client->showClient(false);
     if (client->getOpinion())
         cout << "Opinion:\t\t" << "Positive" << endl;
     else
         cout << "Opinion:\t\t" << "Negative" << endl;
+    cout << "Number of points:\t" << client->getPoints() << endl;
     cout << "Number of orders:\t" << nSales << endl;
     cout << "Total spent:\t\t" << totalSpent << endl;
     cout << "Discounts used:\t\t" << nDiscounts << endl;

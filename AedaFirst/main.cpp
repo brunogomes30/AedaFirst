@@ -1,8 +1,8 @@
 #include "menu.h"
 #include "utilities.h"
 
-
 using namespace std;
+static map<int, Product> productsMapping;
 
 int main() {
     vector<Store *> stores;

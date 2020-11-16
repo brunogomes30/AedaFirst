@@ -1,19 +1,25 @@
 #include "store.h"
 #include <iomanip>
 #include <algorithm>
+#include <map>
 using namespace std;
 
 Store::Store(unsigned int id) {
-    this->store_id = id;
+    this->id = id;
 }
 Store::Store(std::string name, Address address) {
-    this->store_id = store_next_id++;
+    this->id = store_next_id++;
+    this->name = name;
+    this->address = address;
+}
+Store::Store(unsigned int id, std::string name, Address address) {
+    this->id = id;
     this->name = name;
     this->address = address;
 }
 
 unsigned Store::getId() const {
-    return store_id;
+    return id;
 }
 
 string Store::getName() const {
@@ -91,11 +97,11 @@ Employee* Store::lessOrdered() const {
 }
 
 bool Store::operator==(const Store &store) const {
-    return store_id == store.getId();
+    return id == store.getId();
 }
 
 bool Store::operator<(const Store &store) const {
-    return store_id < store.getId();
+    return id < store.getId();
 }
 
 void Store::showProducts() const {
@@ -128,4 +134,60 @@ void Store::showStore() const {
     cout << "Number of sales: " << nSales << endl;
 
 }*/
+
+ostream& operator<< (std::ostream &os, Store &store){
+
+    os << "id=\" " << store.id << "\" ";
+    os << "name=\" " << store.name << "\" ";
+    os << "address_locality=\" " << store.address.locality << "\" ";
+    os << "address_street=\" " << store.address.street << "\" ";
+    os << "address_street=\" " << store.address.street << "\" ";
+    os << "products=\" ";
+    for(Product *product : store.products){
+        os << " " << product->getId();
+    }
+    os << "\" ";
+    os << "employees=\" ";
+    for(Employee *employee : store.employees){
+        os << " " << employee->getNif() ;
+    }
+    os << "\" ";
+    os << "\n";
+
+
+}
+
+istream &operator>>(std::istream &is, Store &store){
+    string line;
+    while(!is.eof()) {
+        getline(is, line);
+        stringstream ss(line);
+        map<string, string> mapping;
+        while (!ss.eof()) {
+            string variable;
+            ss >> variable;
+            if ((*variable.end()) != '\"') {
+                //Must be ' " '
+                throw 1;
+            }
+            variable = variable.substr(0, variable.size() - 1);
+            string value = "", extra = "";
+            do {
+                value += extra;
+                ss >> extra;
+
+            } while (extra != "\"");
+            mapping.insert(variable, value);
+        }
+        unsigned int id;
+        stringstream sa(mapping.at("id"));
+        sa >> id;
+        store = Store(id,
+                      mapping.at("name"),
+                      Address({mapping.at("address_street"), mapping.at("address_locality")}));
+
+
+    }
+}
+
 
