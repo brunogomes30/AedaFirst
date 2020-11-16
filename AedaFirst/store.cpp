@@ -3,7 +3,7 @@
 #include <algorithm>
 using namespace std;
 
-Store::Store(unsigned int id) {
+Store::Store(unsigned id) {
     this->id = id;
 }
 Store::Store(std::string name, Address address) {
