@@ -158,14 +158,14 @@ bool order();
  * Compare two pairs (sales volume) by its total value, quantity * price.
  * @param p1 First pair (sales volume) to be compared.
  * @param p2 Second pair (sales volume) to be compared.
- * @return True if total value of <p1> is greater than that of <p2>, false otherwise.
+ * @return True if total value of <p1> is smaller than that of <p2>, false otherwise.
  */
 bool cmpByIncome(const std::pair<Product*, std::pair<unsigned, float>> &p1, const std::pair<Product*, std::pair<unsigned, float>> &p2);
 /**
  * Compare two pairs (sales volume) by its quantity.
  * @param p1 First pair (sale volume) to be compared.
  * @param p2 Second pair (sale volume) to be compared.
- * @return True if quantity of <p1> is greater than that of <p2>, false otherwise.
+ * @return True if quantity of <p1> is smaller than that of <p2>, false otherwise.
  */
 bool cmpByQuantitySold(const std::pair<Product*, std::pair<unsigned, float>> &p1, const std::pair<Product*, std::pair<unsigned, float>> &p2);
 /**

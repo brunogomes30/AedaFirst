@@ -15,7 +15,7 @@ static unsigned store_next_id = 1;
 
 class Store {
 private:
-    unsigned store_id;
+    unsigned id;
     std::string name;
     Address address;
     std::vector<Product*> products;

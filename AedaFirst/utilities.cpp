@@ -378,11 +378,11 @@ bool order() {
 }
 
 bool cmpByIncome(const pair<Product*, pair<unsigned, float>> &p1, const pair<Product*, pair<unsigned, float>> &p2) {
-    return p1.second.second > p2.second.second;
+    return p1.second.second < p2.second.second;
 }
 
 bool cmpByQuantitySold(const pair<Product*, pair<unsigned, float>> &p1, const pair<Product*, pair<unsigned, float>> &p2) {
-    return p1.second.first > p2.second.first;
+    return p1.second.first < p2.second.first;
 }
 
 void sortByIncome(std::vector<pair<Product*, pair<unsigned, float>>> &vProducts) {

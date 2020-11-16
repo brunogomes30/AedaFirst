@@ -12,7 +12,7 @@ static unsigned next_sale_id = 1;
 
 class Sale {
 private:
-    unsigned sale_id;
+    unsigned id;
     Client* client;
     Store* store;
     Employee* employee;

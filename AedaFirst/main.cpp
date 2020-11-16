@@ -53,8 +53,8 @@ int main() {
     for (int i = 0; i < employees.size(); i++) {
         stores[i%4]->addEmployee(employees[i]);
     }
-
-    mainMenu(stores, clients, oldClients, products, oldProducts, sales, employees, oldEmployees);
+    Menu menu(stores, clients, oldClients, employees, oldEmployees, products, oldProducts, sales);
+    menu.mainMenu();
 
 
 }

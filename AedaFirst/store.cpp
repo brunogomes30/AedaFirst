@@ -4,16 +4,16 @@
 using namespace std;
 
 Store::Store(unsigned int id) {
-    this->store_id = id;
+    this->id = id;
 }
 Store::Store(std::string name, Address address) {
-    this->store_id = store_next_id++;
+    this->id = store_next_id++;
     this->name = name;
     this->address = address;
 }
 
 unsigned Store::getId() const {
-    return store_id;
+    return id;
 }
 
 string Store::getName() const {
@@ -91,11 +91,11 @@ Employee* Store::lessOrdered() const {
 }
 
 bool Store::operator==(const Store &store) const {
-    return store_id == store.getId();
+    return id == store.getId();
 }
 
 bool Store::operator<(const Store &store) const {
-    return store_id < store.getId();
+    return id < store.getId();
 }
 
 void Store::showProducts() const {

@@ -4,7 +4,7 @@
 using namespace std;
 
 Sale::Sale() {
-    sale_id = next_sale_id++;
+    id = next_sale_id++;
     totalAmount = 0;
 }
 
@@ -54,7 +54,7 @@ bool Sale::sameClient(Client *&client) const {
 void Sale::showSale(bool showAppraisal) const {
     string ctg[2] = {"Bread", "Cake"};
     cout << endl << "-----------------------------------------------" << endl;
-    cout << "SALE " << sale_id << endl;
+    cout << "SALE " << id << endl;
     store->showStore();
     cout << "Employee: "; employee->showEmployee(false);
     cout << "Client: "; client->showClient(false);
