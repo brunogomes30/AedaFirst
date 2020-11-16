@@ -200,7 +200,7 @@ void askCategory(Category &ctg) {
     cout << setw(5) << "2" << setw(10) << "Cake" << endl;
     do {
         error = false;
-        cout << "Product's category:" << endl;
+        cout << endl << "Product's category:" << endl;
         cin >> category;
         if (cin.fail() || cin.peek() != '\n' || (category != 1 && category != 2)) {
             cin.clear();
@@ -221,7 +221,7 @@ void askBreadSize(sizeType &size) {
     cout << setw(5) << "2" << setw(10) << "Big" << endl;
     do {
         error = false;
-        cout << "Bread's size:" << endl;
+        cout << endl << "Bread's size:" << endl;
         cin >> s;
         if (cin.fail() || cin.peek() != '\n' || (s != 1 && s != 2)) {
             cin.clear();
@@ -243,7 +243,7 @@ void askCakeLayer(layer &ly, string object) {
     cout << setw(5) << "3" << setw(10) << "Sponge" << endl;
     do {
         error = false;
-        cout << "Cake's layer " << object << ":" << endl;
+        cout << endl << "Cake's layer " << object << ":" << endl;
         cin >> layer;
         if (cin.fail() || cin.peek() != '\n' || (layer != 1 && layer != 2 && layer != 3)) {
             cin.clear();
@@ -272,7 +272,7 @@ void askStores(const vector<Store*> &stores, vector<Store*> &filterStores) {
 
 void setStoreData(string &name, Address &address) {
     // Set store's name
-    askName(name, "store");
+    askName(name, "Store");
     // Set store's address
     askAddress(address);
 }
@@ -378,11 +378,11 @@ bool order() {
 }
 
 bool cmpByIncome(const pair<Product*, pair<unsigned, float>> &p1, const pair<Product*, pair<unsigned, float>> &p2) {
-    return p1.second.second > p2.second.second;
+    return p1.second.second < p2.second.second;
 }
 
 bool cmpByQuantitySold(const pair<Product*, pair<unsigned, float>> &p1, const pair<Product*, pair<unsigned, float>> &p2) {
-    return p1.second.first > p2.second.first;
+    return p1.second.first < p2.second.first;
 }
 
 void sortByIncome(std::vector<pair<Product*, pair<unsigned, float>>> &vProducts) {

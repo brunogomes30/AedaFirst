@@ -41,9 +41,9 @@ bool Employee::operator==(Employee* employee) {
 }
 
 void Employee::showEmployee(bool details) const {
-    cout << left << setw(12) << nif << setw(20) << name;
+    cout << right << setw(9) << setfill('0') << nif << "   " << left << setfill(' ') << setw(20) << name;
     if (details)
-        cout << setw(10) << salary << setw(12) << numOrders << endl;
+        cout << setw(10) << setprecision(2) << fixed << salary << setw(12) << numOrders << endl;
     else
         cout << endl;
 }

@@ -6,12 +6,20 @@
 #include <map>
 using namespace std;
 
-map<unsigned int, Product> productsMapping;
-map<unsigned int, Employee> employeesMapping;
+Menu::Menu(bool load) {}
 
-
-void chooseClientsSort(vector<Client*> &clients) {
-    int operation;
+Menu::Menu(vector<Store*> s, vector<Client*> c, vector<Client*> co, vector<Employee*> e,
+           vector<Employee*> eo, vector<Product*> p, vector<Product*> po, vector<Sale*> sal) {
+    stores = s;
+    employees = e;
+    oldEmployees = eo;
+    clients = c;
+    oldClients = co;
+    products = p;
+    oldProducts = po;
+    sales = sal;
+}
+void Menu::chooseClientsSort() {    int operation;
     do {
         cout << left << endl << setw(5) << "OP" << "Sort by" << endl;
         cout << setw(5) << "1" << "Name" << endl;
@@ -34,7 +42,7 @@ void chooseClientsSort(vector<Client*> &clients) {
         reverse(clients.begin(), clients.end());
 }
 
-void chooseSalesVolumeByProductSort(vector<pair<Product*, pair<unsigned, float>>> &vProducts) {
+void Menu::chooseSalesVolumeByProductSort(vector<pair<Product*, pair<unsigned, float>>> &vProducts) {
     int operation;
     bool descending;
     do {
@@ -60,7 +68,7 @@ void chooseSalesVolumeByProductSort(vector<pair<Product*, pair<unsigned, float>>
         reverse(vProducts.begin(), vProducts.end());
 }
 
-void opsStore(vector<Store*> &stores, Store* &store, vector<Sale*> &sales, const vector<Product*> &products) {
+void Menu::opsStore(Store* &store) {
     int operation, op; string name; Address address;
     vector<Store*>::iterator it;
     do {
@@ -81,7 +89,7 @@ void opsStore(vector<Store*> &stores, Store* &store, vector<Sale*> &sales, const
             case 2: // Print all sales
                 for (auto sale:sales) {
                     if (sale->getStore() == store)
-                        sale->showSale(1);
+                        sale->showSale(true);
                 }
                 break;
             case 3: // Add products
@@ -137,7 +145,7 @@ void opsStore(vector<Store*> &stores, Store* &store, vector<Sale*> &sales, const
     } while (operation != 0);
 }
 
-void clientHistory(Client* &client, const vector<Sale*> &sales) {
+void Menu::clientHistory(Client* &client) {
     unsigned nSales = 0, nDiscounts = 0;
     float totalSpent = 0, totalDiscount = 0;
     for (auto sale:sales){
@@ -162,7 +170,7 @@ void clientHistory(Client* &client, const vector<Sale*> &sales) {
 
 }
 
-void opsClient(vector<Client*> &clients, vector<Client*> &oldClients, Client* &client, const vector<Sale*> &sales) {
+void Menu::opsClient(Client* &client) {
     unsigned operation;
     vector<Client*>::iterator it;
     do {
@@ -183,7 +191,7 @@ void opsClient(vector<Client*> &clients, vector<Client*> &oldClients, Client* &c
                     cout << client->getName() << " is now Normal regime" << endl;
                 break;
             case 2: // View history
-                clientHistory(client, sales);
+                clientHistory(client);
                 break;
             case 3: // Remove client
                 it = find(clients.begin(), clients.end(), client);
@@ -197,7 +205,7 @@ void opsClient(vector<Client*> &clients, vector<Client*> &oldClients, Client* &c
     } while (operation != 0);
 }
 
-void opsEmployee(vector<Store*> &stores, vector<Employee*> employees, vector<Employee*> oldEmployees, Employee* employee) {
+void Menu::opsEmployee(Employee* employee) {
     unsigned operation;
     vector<Employee*>::iterator it;
     do {
@@ -231,7 +239,7 @@ void opsEmployee(vector<Store*> &stores, vector<Employee*> employees, vector<Emp
     } while (operation != 0);
 }
 
-void opsProduct(vector<Product*> &products, vector<Product*> &oldProducts, vector<Store*> &stores, Product* &product) {
+void Menu::opsProduct(Product* &product) {
     int operation;
     string name;
     vector<Product*>::iterator it;
@@ -259,6 +267,10 @@ void opsProduct(vector<Product*> &products, vector<Product*> &oldProducts, vecto
             case 3: // Add to stores
                 filterStores.clear();
                 askStores(stores, filterStores);
+                for (auto store:filterStores) {
+                    if (!store->findProduct(product->getId()))
+                        store->addProduct(product);
+                }
                 break;
             case 4: // Remove product
                 it = find(products.begin(), products.end(), product);
@@ -275,7 +287,7 @@ void opsProduct(vector<Product*> &products, vector<Product*> &oldProducts, vecto
     } while (operation != 0);
 }
 
-void makeOrder(const vector<Store*> &stores, const vector<Client*> &clients, Sale &sale) {
+void Menu::makeOrder(Sale &sale) {
     Store* store;
     Client* client;
     string client_identifier;
@@ -313,7 +325,7 @@ void makeOrder(const vector<Store*> &stores, const vector<Client*> &clients, Sal
     // Choose products
     cout << endl;
     store->showProducts();
-    cout << "Press 0 to stop adding" << endl;
+    cout << "Press 0 to stop adding" << endl << endl;
     do {
         cout << "Product you want:" << endl;
         cin >> product_id;
@@ -362,11 +374,17 @@ void makeOrder(const vector<Store*> &stores, const vector<Client*> &clients, Sal
     else
         sale.setDiscount(1);
 
-    sale.showSale(0);
+    sale.showSale(false);
 
     // Manage points
     client->addPoints(bill);
     cout << "You have " << client->getPoints() << " points." << endl;
+
+    if (client->getDiscount())
+        if (client->getRegime())
+            cout << "Discount of 5% in next order" << endl;
+        else
+            cout << "Discount of 2% in next order" << endl;
 
     // Appraisal
     cout << "Your appraisal for the service (0-5): " << endl;
@@ -382,7 +400,7 @@ void makeOrder(const vector<Store*> &stores, const vector<Client*> &clients, Sal
     sale.setAppraisal(appraisal);
 }
 
-void salesVolumeByProduct(const vector<Sale*> &sales) {
+void Menu::salesVolumeByProduct() {
     map<Product*, pair<unsigned, float>> auxProducts;
     map<Product*, pair<unsigned, float>> products;
     for (auto sale:sales) {
@@ -400,12 +418,13 @@ void salesVolumeByProduct(const vector<Sale*> &sales) {
     for (auto &it:products)
         vProducts.push_back(it);
     chooseSalesVolumeByProductSort(vProducts);
-    cout << endl << "ID\tName\t\t\tTotal sold\tTotal income" << endl;
+    cout << endl << setw(5) << "ID" << setw(20) << "Name" << right << setw(14) << "Total sold" << setw(14) << "Total income" << left << endl;
     for (auto p:vProducts) {
-        cout << p.first->getId() << "\t" << p.first->getName() << "\t\t\t" << p.second.first << "\t" << p.second.second << endl;
+        cout << setw(5) << p.first->getId() << setw(20) << p.first->getName() << right << setw(14)
+            << p.second.first << setw(14) << p.second.second << left << endl;
     }
 }
-void salesVolumeByStore(const vector<Sale*> &sales, const vector<Store*> &stores) {
+void Menu::salesVolumeByStore() {
     map<Product*, pair<unsigned, float>> auxProducts;
     map<Store*, float> stores_incomes;
     for (auto store:stores)
@@ -419,11 +438,12 @@ void salesVolumeByStore(const vector<Sale*> &sales, const vector<Store*> &stores
     for (auto &it:stores_incomes)
         vStores_incomes.push_back(it);
     sort(vStores_incomes.begin(), vStores_incomes.end(), [](pair<Store*, float> &p1, pair<Store*, float> &p2) {return p1.second > p2.second;});
-    cout << endl << "ID\tName\t\t\tTotal income" << endl;
+    cout << endl << setw(5) << "ID" << setw(20) << "Name" << right << setw(14) << "Total income" << left << endl;
     for (auto s:vStores_incomes)
-        cout << s.first->getId() << "\t" << s.first->getName() << "\t\t\t" << s.second << endl;
+        cout << setw(5) << s.first->getId() << setw(20) << s.first->getName()
+            << right << setw(14) << s.second << left << endl;
 }
-void opsSalesVolume(const vector<Sale*> &sales, const vector<Store*> &stores) {
+void Menu::opsSalesVolume() {
     int operation;
     do {
         cout << endl << "[SALES VOLUME]" << endl;
@@ -441,10 +461,10 @@ void opsSalesVolume(const vector<Sale*> &sales, const vector<Store*> &stores) {
             case 0:
                 break;
             case 1:
-                salesVolumeByProduct(sales);
+                salesVolumeByProduct();
                 break;
             case 2:
-                salesVolumeByStore(sales, stores);
+                salesVolumeByStore();
                 break;
             default:
                 cout << "That operation doesn't exist" << endl;
@@ -453,7 +473,7 @@ void opsSalesVolume(const vector<Sale*> &sales, const vector<Store*> &stores) {
     } while (operation != 0);
 }
 
-void opsSales(const vector<Sale*> &sales, const vector<Store*> &stores, const vector<Client*> &clients) {
+void Menu::opsSales() {
     int operation;
     string name;
     Client* auxC;
@@ -478,13 +498,13 @@ void opsSales(const vector<Sale*> &sales, const vector<Store*> &stores, const ve
                 break;
             case 1:
                 for (auto sale:sales)
-                    sale->showSale(1);
+                    sale->showSale(true);
                 break;
             case 2:
                 for (auto sale:sales)
                     if (searchStore(filterStores, sale->getStore()->getId()) != nullptr &&
                         searchClient(filterClients, sale->getClient()->getName()) != nullptr)
-                        sale->showSale(1);
+                        sale->showSale(true);
                 break;
             case 3:
                 filterStores.clear();
@@ -508,8 +528,7 @@ void opsSales(const vector<Sale*> &sales, const vector<Store*> &stores, const ve
     } while (operation != 0);
 }
 
-void mainMenu(vector<Store*> &stores, vector<Client*> &clients, vector<Client*> &oldClients, vector<Product*> &products,
-              vector<Product*> &oldProducts, vector<Sale*> &sales, vector<Employee*> &employees, vector<Employee*> &oldEmployees) {
+void Menu::mainMenu() {
     string name;
     unsigned nif_or_id;
     float price_or_salary;
@@ -547,12 +566,12 @@ void mainMenu(vector<Store*> &stores, vector<Client*> &clients, vector<Client*> 
                 askId(nif_or_id, "Store");
                 store = searchStore(stores, nif_or_id);
                 if (store != nullptr)
-                    opsStore(stores, store, sales, products);
+                    opsStore(store);
                 else
                     cout << "That store doesn't exist" << endl;
                 break;
             case 4: // Print clients
-                chooseClientsSort(clients);
+                chooseClientsSort();
                 showClients(clients);
                 nif_or_id = 0;
                 for (auto client:clients) {
@@ -570,7 +589,7 @@ void mainMenu(vector<Store*> &stores, vector<Client*> &clients, vector<Client*> 
                 askPersonData(name, "Client");
                 client = searchClient(clients, name);
                 if (client != nullptr)
-                    opsClient(clients, oldClients, client, sales);
+                    opsClient(client);
                 else
                     cout << "That client doesn't exist" << endl;
                 break;
@@ -587,7 +606,7 @@ void mainMenu(vector<Store*> &stores, vector<Client*> &clients, vector<Client*> 
                 askPersonData(name, "Employee");
                 employee = searchEmployee(employees, name);
                 if (employee != nullptr)
-                    opsEmployee(stores, employees, oldEmployees, employee);
+                    opsEmployee(employee);
                 else
                     cout << "That employee doesn't exist" << endl;
                 break;
@@ -606,19 +625,19 @@ void mainMenu(vector<Store*> &stores, vector<Client*> &clients, vector<Client*> 
                 askId(nif_or_id, "Product");
                 product = searchProduct(products, nif_or_id);
                 if (product != nullptr)
-                    opsProduct(products, oldProducts, stores, product);
+                    opsProduct(product);
                 else
                     cout << "That product doesn't exist" << endl;
                 break;
             case 13: // Make an order
                 sales.push_back(new Sale());
-                makeOrder(stores, clients, (*sales[sales.size() - 1]));
+                makeOrder((*sales[sales.size() - 1]));
                 break;
             case 14: // Print sales volume
-                opsSalesVolume(sales, stores);
+                opsSalesVolume();
                 break;
             case 15: // Print all sales
-                opsSales(sales, stores, clients);
+                opsSales();
                 break;
             default:
                 cout << "Doesn't exist such operation!" << endl;

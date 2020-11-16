@@ -81,7 +81,7 @@ bool Client::operator==(const Client* &client) const {
 }
 
 void Client::showClient(bool details) const {
-    cout << setw(12) << nif << setw(20) << name;
+    cout << right << setw(9) << setfill('0') << nif << left << "   " << setfill(' ') << setw(20) << name;
     if (regime)
         cout << setw(10) << "Premium";
     else
@@ -90,7 +90,7 @@ void Client::showClient(bool details) const {
         if (opinion)
             cout << setw(12) << "Positive" << endl;
         else
-            cout << setw(12) << "Negatve" << endl;
+            cout << setw(12) << "Negative" << endl;
     }
     else {
         cout << endl;

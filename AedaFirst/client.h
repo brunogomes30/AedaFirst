@@ -10,13 +10,37 @@
 
 class Client {
 private:
+    /**
+     * Name of the client.
+     */
     std::string name;
+    /**
+     * NIF of the client.
+     */
     unsigned nif;
+    /**
+     * True to Premium regime, false to Normal regime.
+     */
     bool regime; // true if premium regime, false if normal regime
+    /**
+     * Current points of the client.
+     */
     unsigned points;
+    /**
+     * True if the client has right to a discount in the next order.
+     */
     bool discount;
+    /**
+     * True if average of appraisals is greater than 2.5, false otherwise.
+     */
     bool opinion;
+    /**
+     * Save all the appraisals of client.
+     */
     std::stack<int> appraisals;
+    /**
+     * Keep tracking the sum of appraisals to give the opinion in time O(1).
+     */
     int sumOfAppraisals;
 public:
     Client();
@@ -46,14 +70,19 @@ public:
     void addPoints(const float &bill);
     /**
      *
-     * @param identifier Can be a name or a nif
+     * @param identifier Name or NIF
      * @return True if the client's name or the client's nif is the same of identifier, false otherwise
      */
     bool same(std::string identifier) const;
+    /**
+     *
+     * @param client Pointer to client to be comapared.
+     * @return True if both clients has the same name and the same NIF.
+     */
     bool operator==(const Client* &client) const;
     /**
      * Print client in format:
-     * NIF: <CLIENT_NIF> Name: <CLIENT_NAME> Premium: <REGIME>
+     * <NIF>  <NAME>  <REGIME>  <OPINION>
      */
     void showClient(bool details) const;
 };

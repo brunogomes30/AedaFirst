@@ -22,5 +22,5 @@ void Cake::showProduct() const {
 
     Product::showProduct();
     cout << setw(17) << layers[layer1] + " / " + layers[layer2]
-        << setw(6) << price << " euros" << endl;
+        << setw(6) << setprecision(2) << fixed << price << " euros" << endl;
 }

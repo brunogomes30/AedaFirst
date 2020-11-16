@@ -26,6 +26,7 @@ public:
     unsigned getId() const;
     std::string getName() const;
     float getPrice() const;
+    Category getCategory() const;
     void setName(std::string &name);
     void setPrice(float &price);
     /**

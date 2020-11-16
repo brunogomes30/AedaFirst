@@ -19,6 +19,8 @@ string Product::getName() const{return name;}
 
 float Product::getPrice() const{return price;}
 
+Category Product::getCategory() const {return category;}
+
 void Product::setName(std::string &name) {this->name = name;}
 
 void Product::setPrice(float &price) {this->price = price;}

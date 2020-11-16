@@ -12,12 +12,12 @@ static unsigned next_sale_id = 1;
 
 class Sale {
 private:
-    unsigned sale_id;
+    unsigned id;
     Client* client;
     Store* store;
     Employee* employee;
     /**
-     * Map of pairs that represent <product_pointer, <quantity, current_price>>
+     * Map of pairs that represent <product_pointer, <quantity, price_at_time>>
      */
     std::map<Product*, std::pair<unsigned, float>> products;
     unsigned appraisal;
@@ -38,16 +38,25 @@ public:
     unsigned getAppraisal() const;
     float getDiscount() const;
     float getTotalAmount() const;
+    /**
+     *
+     * @param client Pointer to client to be compared.
+     * @return True if client of the sale has the same of <client>, false otherwise.
+     */
     bool sameClient(Client* &client) const;
     /**
      * Print sale in format:
+     * -----------------------------------------------
      * ID: <STORE_ID> Store: <STORE_NAME>
-     * NIF: <CLIENT_NIF> Name: <CLIENT_NAME> Premium: <REGIME>
-     * <PRODUCT_ID> <PRODUCT_NAME> <PRODUCT_PRICE> x <PRODUCT_QUANTITY>
+     * <CLIENT_NIF>  <CLIENT_NAME>
+     * <CLIENT_NIF>  <CLIENT_NAME>  <REGIME>
+     *
+     * <PRODUCT_ID> <PRODUCT_NAME> <PRODUCT_QUANTITY> x <PRODUCT_PRICE>
      *
      * Total amount: <BILL>
-     * Amount to pay after discount: <BILL_DISCOUNTED>
-     * Client's appraisal: <APPRAISAL>
+     * Discount: <DISCOUNT>%  Amount to pay: <BILL_DISCOUNTED>
+     * Appraisal: <APPRAISAL>
+     * -----------------------------------------------
      */
     void showSale(bool showAppraisal) const;
 };

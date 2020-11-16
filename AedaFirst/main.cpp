@@ -17,8 +17,6 @@ int main() {
     Client c1("Joca", 111111, true);
     Client c2("Ambrosio", 222222, false);
 
-    //Product p1("pao de agua", 0.20);
-    //Product p2("bico de pato", 0.40);
     Bread p1("pao de agua", 0.20, bread, small);
     Bread p2("bico de pato", 0.40, bread, big);
     Cake p3("marmore", 0.80, cake, crispy, sponge);
@@ -55,8 +53,8 @@ int main() {
     for (int i = 0; i < employees.size(); i++) {
         stores[i%4]->addEmployee(employees[i]);
     }
-
-    mainMenu(stores, clients, oldClients, products, oldProducts, sales, employees, oldEmployees);
+    Menu menu(stores, clients, oldClients, employees, oldEmployees, products, oldProducts, sales);
+    menu.mainMenu();
 
 
 }
