@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['getaddress_203',['getAddress',['../class_store.html#a3105c240629d49669f43447be3dae726',1,'Store']]],
+  ['getappraisal_204',['getAppraisal',['../class_sale.html#acdd23952f24e52446ca71d16521b8ef4',1,'Sale']]],
+  ['getcategory_205',['getCategory',['../class_product.html#a9a720b2265efda83cb03a79a7f50d64e',1,'Product']]],
+  ['getclient_206',['getClient',['../class_sale.html#ab0fe6dfcffcd376e2258b26da953edcb',1,'Sale']]],
+  ['getdiscount_207',['getDiscount',['../class_client.html#a040ab923c7c3e7e6cbc991a4efb4950b',1,'Client::getDiscount()'],['../class_sale.html#a5f6356d41c5d66b1558ba94e464cbd8d',1,'Sale::getDiscount()']]],
+  ['getemployee_208',['getEmployee',['../class_sale.html#a40c3e4a7c824c5a994af03199f864912',1,'Sale']]],
+  ['getemployees_209',['getEmployees',['../class_store.html#adbfbcfd74513d7d4c18fe71719816a1a',1,'Store']]],
+  ['getid_210',['getId',['../class_product.html#a75ae7ac0f00768ba9eaa5ac4ff0d481a',1,'Product::getId()'],['../class_store.html#af0975418ed1e1f339af23a4779815562',1,'Store::getId()']]],
+  ['getlayer1_211',['getLayer1',['../class_cake.html#a1f0fdd97369ccbd04968f56f3209e22a',1,'Cake']]],
+  ['getlayer2_212',['getLayer2',['../class_cake.html#adaae49ed168aeca59384f0b92241f74d',1,'Cake']]],
+  ['getname_213',['getName',['../class_client.html#a5c473ba52d7678744edec9e51052c947',1,'Client::getName()'],['../class_employee.html#a8e7c3870f6b4b08a5c7ccccd32ca8f37',1,'Employee::getName()'],['../class_product.html#add69128805228e23dcc6619b0a167a08',1,'Product::getName()'],['../class_store.html#af3f51f9856617bc6cc796c87f889660b',1,'Store::getName()']]],
+  ['getnif_214',['getNif',['../class_client.html#a35c9fed8cdb36d28fd5e51bd2aee852e',1,'Client::getNif()'],['../class_employee.html#af947bdc75aed19966b5554e48c85c4fb',1,'Employee::getNif()']]],
+  ['getnumorders_215',['getNumOrders',['../class_employee.html#aaba99b758f54d35d683c962312a63738',1,'Employee']]],
+  ['getopinion_216',['getOpinion',['../class_client.html#ae3a1c1ee2e8713822db017b498d35c98',1,'Client']]],
+  ['getpoints_217',['getPoints',['../class_client.html#a51940a2154ba5b40ad5d7e47a02d8aa0',1,'Client']]],
+  ['getprice_218',['getPrice',['../class_product.html#a0aaea95b8d3241b3758246254b8575e2',1,'Product']]],
+  ['getproduct_219',['getProduct',['../class_store.html#ae18a8ef5b5d18da075d4bf5c65386791',1,'Store']]],
+  ['getproducts_220',['getProducts',['../class_sale.html#aeb9f68995a591e18c53ca0b321a107e5',1,'Sale']]],
+  ['getregime_221',['getRegime',['../class_client.html#a1c4f3ed5b6e56369614026a5e9f4cb3f',1,'Client']]],
+  ['getsalary_222',['getSalary',['../class_employee.html#a9fa21d120f7212200ca9c31b062086f3',1,'Employee']]],
+  ['getsize_223',['getSize',['../class_bread.html#a07d66a85d09c2eec592a318d0b51c5c2',1,'Bread']]],
+  ['getstore_224',['getStore',['../class_sale.html#a8a43ee1968c80044f2ffdfc3434ee9c9',1,'Sale']]],
+  ['gettotalamount_225',['getTotalAmount',['../class_sale.html#a1e48ea905579271de8eda95a36daa04c',1,'Sale']]]
+];
