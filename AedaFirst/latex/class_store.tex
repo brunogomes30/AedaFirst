@@ -1,0 +1,271 @@
+\hypertarget{class_store}{}\doxysection{Store Class Reference}
+\label{class_store}\index{Store@{Store}}
+
+
+{\ttfamily \#include $<$store.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_store_a060dc7211f5387d81ef7078e31b58291}{Store}} (unsigned id)
+\item 
+\mbox{\hyperlink{class_store_a5486a587b18db99350823bdfbf3bcae3}{Store}} (std\+::string name, \mbox{\hyperlink{struct_address}{Address}} address)
+\item 
+unsigned \mbox{\hyperlink{class_store_af0975418ed1e1f339af23a4779815562}{get\+Id}} () const
+\item 
+std\+::string \mbox{\hyperlink{class_store_af3f51f9856617bc6cc796c87f889660b}{get\+Name}} () const
+\item 
+\mbox{\hyperlink{struct_address}{Address}} \mbox{\hyperlink{class_store_a3105c240629d49669f43447be3dae726}{get\+Address}} () const
+\item 
+\mbox{\hyperlink{class_product}{Product}} $\ast$ \mbox{\hyperlink{class_store_ae18a8ef5b5d18da075d4bf5c65386791}{get\+Product}} (unsigned id) const
+\item 
+std\+::vector$<$ \mbox{\hyperlink{class_employee}{Employee}} $\ast$ $>$ \mbox{\hyperlink{class_store_adbfbcfd74513d7d4c18fe71719816a1a}{get\+Employees}} () const
+\item 
+void \mbox{\hyperlink{class_store_aba840a18a311ac64bd59cccf5229967d}{set\+Name}} (const std\+::string \&name)
+\item 
+void \mbox{\hyperlink{class_store_a481a52da711bddb18a1389dda62adfde}{set\+Address}} (const \mbox{\hyperlink{struct_address}{Address}} \&address)
+\item 
+void \mbox{\hyperlink{class_store_a260ec3b3a21f19f669966d0c59b3c322}{add\+Product}} (\mbox{\hyperlink{class_product}{Product}} $\ast$product)
+\item 
+void \mbox{\hyperlink{class_store_a7e9b681152ca643a80a882d249758016}{add\+All\+Products}} (const std\+::vector$<$ \mbox{\hyperlink{class_product}{Product}} $\ast$ $>$ \&products)
+\item 
+void \mbox{\hyperlink{class_store_a34b05c7e16f2c26d091070cf89edb9ad}{add\+Employee}} (\mbox{\hyperlink{class_employee}{Employee}} $\ast$employee)
+\item 
+void \mbox{\hyperlink{class_store_a053a951d72404f44d3d15004a656b800}{remove\+Employee}} (\mbox{\hyperlink{class_employee}{Employee}} $\ast$employee)
+\item 
+void \mbox{\hyperlink{class_store_a6e940fb082f71c99ff9e7ff69a6b09c8}{remove\+Product}} (\mbox{\hyperlink{class_product}{Product}} $\ast$product)
+\item 
+bool \mbox{\hyperlink{class_store_af2ab05ce61a5e62d029519da11580149}{find\+Product}} (const unsigned \&id) const
+\item 
+\mbox{\hyperlink{class_employee}{Employee}} $\ast$ \mbox{\hyperlink{class_store_a2ea518997c494dd23000d7970f719404}{less\+Ordered}} () const
+\item 
+bool \mbox{\hyperlink{class_store_ad9233b2a9ca0506ec64c1015cd08de1d}{operator==}} (const \mbox{\hyperlink{class_store}{Store}} \&store) const
+\item 
+bool \mbox{\hyperlink{class_store_a2e63d6309f2fd1e03fed4151ab4f6fe9}{operator$<$}} (const \mbox{\hyperlink{class_store}{Store}} \&store) const
+\item 
+void \mbox{\hyperlink{class_store_a39e781e2a4501d109b4e1f4e5d7b5182}{show\+Products}} () const
+\item 
+void \mbox{\hyperlink{class_store_afe89b173bbe567c896e0d31f345ddd0d}{show\+Employees}} () const
+\item 
+void \mbox{\hyperlink{class_store_ab297e1b660fe0895df0626c4c357de3d}{show\+Store}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_store_a060dc7211f5387d81ef7078e31b58291}\label{class_store_a060dc7211f5387d81ef7078e31b58291}} 
+\index{Store@{Store}!Store@{Store}}
+\index{Store@{Store}!Store@{Store}}
+\doxysubsubsection{\texorpdfstring{Store()}{Store()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Store\+::\+Store (\begin{DoxyParamCaption}\item[{unsigned}]{id }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_store_a5486a587b18db99350823bdfbf3bcae3}\label{class_store_a5486a587b18db99350823bdfbf3bcae3}} 
+\index{Store@{Store}!Store@{Store}}
+\index{Store@{Store}!Store@{Store}}
+\doxysubsubsection{\texorpdfstring{Store()}{Store()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Store\+::\+Store (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{\mbox{\hyperlink{struct_address}{Address}}}]{address }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_store_a7e9b681152ca643a80a882d249758016}\label{class_store_a7e9b681152ca643a80a882d249758016}} 
+\index{Store@{Store}!addAllProducts@{addAllProducts}}
+\index{addAllProducts@{addAllProducts}!Store@{Store}}
+\doxysubsubsection{\texorpdfstring{addAllProducts()}{addAllProducts()}}
+{\footnotesize\ttfamily void Store\+::add\+All\+Products (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{class_product}{Product}} $\ast$ $>$ \&}]{products }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em products} & Vector of pointers to products to be added to the store. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_store_a34b05c7e16f2c26d091070cf89edb9ad}\label{class_store_a34b05c7e16f2c26d091070cf89edb9ad}} 
+\index{Store@{Store}!addEmployee@{addEmployee}}
+\index{addEmployee@{addEmployee}!Store@{Store}}
+\doxysubsubsection{\texorpdfstring{addEmployee()}{addEmployee()}}
+{\footnotesize\ttfamily void Store\+::add\+Employee (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_employee}{Employee}} $\ast$}]{employee }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em employee} & Pointer to employee to be added to the store. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_store_a260ec3b3a21f19f669966d0c59b3c322}\label{class_store_a260ec3b3a21f19f669966d0c59b3c322}} 
+\index{Store@{Store}!addProduct@{addProduct}}
+\index{addProduct@{addProduct}!Store@{Store}}
+\doxysubsubsection{\texorpdfstring{addProduct()}{addProduct()}}
+{\footnotesize\ttfamily void Store\+::add\+Product (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_product}{Product}} $\ast$}]{product }\end{DoxyParamCaption})}
+
+Add a product to the products available in the store. 
+\begin{DoxyParams}{Parameters}
+{\em product} & Pointer to product to be added to the store. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_store_af2ab05ce61a5e62d029519da11580149}\label{class_store_af2ab05ce61a5e62d029519da11580149}} 
+\index{Store@{Store}!findProduct@{findProduct}}
+\index{findProduct@{findProduct}!Store@{Store}}
+\doxysubsubsection{\texorpdfstring{findProduct()}{findProduct()}}
+{\footnotesize\ttfamily bool Store\+::find\+Product (\begin{DoxyParamCaption}\item[{const unsigned \&}]{id }\end{DoxyParamCaption}) const}
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & ID of searched product \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the store has the searched product, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_store_a3105c240629d49669f43447be3dae726}\label{class_store_a3105c240629d49669f43447be3dae726}} 
+\index{Store@{Store}!getAddress@{getAddress}}
+\index{getAddress@{getAddress}!Store@{Store}}
+\doxysubsubsection{\texorpdfstring{getAddress()}{getAddress()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_address}{Address}} Store\+::get\+Address (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_store}{Store}}\textquotesingle{}s address. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_store_adbfbcfd74513d7d4c18fe71719816a1a}\label{class_store_adbfbcfd74513d7d4c18fe71719816a1a}} 
+\index{Store@{Store}!getEmployees@{getEmployees}}
+\index{getEmployees@{getEmployees}!Store@{Store}}
+\doxysubsubsection{\texorpdfstring{getEmployees()}{getEmployees()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_employee}{Employee}} $\ast$ $>$ Store\+::get\+Employees (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+Vector with employees linked to the store. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_store_af0975418ed1e1f339af23a4779815562}\label{class_store_af0975418ed1e1f339af23a4779815562}} 
+\index{Store@{Store}!getId@{getId}}
+\index{getId@{getId}!Store@{Store}}
+\doxysubsubsection{\texorpdfstring{getId()}{getId()}}
+{\footnotesize\ttfamily unsigned Store\+::get\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_store}{Store}}\textquotesingle{}s ID. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_store_af3f51f9856617bc6cc796c87f889660b}\label{class_store_af3f51f9856617bc6cc796c87f889660b}} 
+\index{Store@{Store}!getName@{getName}}
+\index{getName@{getName}!Store@{Store}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily string Store\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_store}{Store}}\textquotesingle{}s name. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_store_ae18a8ef5b5d18da075d4bf5c65386791}\label{class_store_ae18a8ef5b5d18da075d4bf5c65386791}} 
+\index{Store@{Store}!getProduct@{getProduct}}
+\index{getProduct@{getProduct}!Store@{Store}}
+\doxysubsubsection{\texorpdfstring{getProduct()}{getProduct()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_product}{Product}} $\ast$ Store\+::get\+Product (\begin{DoxyParamCaption}\item[{unsigned}]{id }\end{DoxyParamCaption}) const}
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & ID of the searched product. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the product with ID $<$id$>$ if found, nullptr otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_store_a2ea518997c494dd23000d7970f719404}\label{class_store_a2ea518997c494dd23000d7970f719404}} 
+\index{Store@{Store}!lessOrdered@{lessOrdered}}
+\index{lessOrdered@{lessOrdered}!Store@{Store}}
+\doxysubsubsection{\texorpdfstring{lessOrdered()}{lessOrdered()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_employee}{Employee}} $\ast$ Store\+::less\+Ordered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+Pointer to employee with less orders. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_store_a2e63d6309f2fd1e03fed4151ab4f6fe9}\label{class_store_a2e63d6309f2fd1e03fed4151ab4f6fe9}} 
+\index{Store@{Store}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Store@{Store}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool Store\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_store}{Store}} \&}]{store }\end{DoxyParamCaption}) const}
+
+
+\begin{DoxyParams}{Parameters}
+{\em store} & \mbox{\hyperlink{class_store}{Store}} to be compared. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if ID of the first is smaller than of the second. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_store_ad9233b2a9ca0506ec64c1015cd08de1d}\label{class_store_ad9233b2a9ca0506ec64c1015cd08de1d}} 
+\index{Store@{Store}!operator==@{operator==}}
+\index{operator==@{operator==}!Store@{Store}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Store\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_store}{Store}} \&}]{store }\end{DoxyParamCaption}) const}
+
+
+\begin{DoxyParams}{Parameters}
+{\em store} & \mbox{\hyperlink{class_store}{Store}} to be compared. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if both stores has the same ID, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_store_a053a951d72404f44d3d15004a656b800}\label{class_store_a053a951d72404f44d3d15004a656b800}} 
+\index{Store@{Store}!removeEmployee@{removeEmployee}}
+\index{removeEmployee@{removeEmployee}!Store@{Store}}
+\doxysubsubsection{\texorpdfstring{removeEmployee()}{removeEmployee()}}
+{\footnotesize\ttfamily void Store\+::remove\+Employee (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_employee}{Employee}} $\ast$}]{employee }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em employee} & Pointer to the employee to be removed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_store_a6e940fb082f71c99ff9e7ff69a6b09c8}\label{class_store_a6e940fb082f71c99ff9e7ff69a6b09c8}} 
+\index{Store@{Store}!removeProduct@{removeProduct}}
+\index{removeProduct@{removeProduct}!Store@{Store}}
+\doxysubsubsection{\texorpdfstring{removeProduct()}{removeProduct()}}
+{\footnotesize\ttfamily void Store\+::remove\+Product (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_product}{Product}} $\ast$}]{product }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em product} & Pointer to the product to be removed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_store_a481a52da711bddb18a1389dda62adfde}\label{class_store_a481a52da711bddb18a1389dda62adfde}} 
+\index{Store@{Store}!setAddress@{setAddress}}
+\index{setAddress@{setAddress}!Store@{Store}}
+\doxysubsubsection{\texorpdfstring{setAddress()}{setAddress()}}
+{\footnotesize\ttfamily void Store\+::set\+Address (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_address}{Address}} \&}]{address }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & New address of the store. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_store_aba840a18a311ac64bd59cccf5229967d}\label{class_store_aba840a18a311ac64bd59cccf5229967d}} 
+\index{Store@{Store}!setName@{setName}}
+\index{setName@{setName}!Store@{Store}}
+\doxysubsubsection{\texorpdfstring{setName()}{setName()}}
+{\footnotesize\ttfamily void Store\+::set\+Name (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & New name of the store. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_store_afe89b173bbe567c896e0d31f345ddd0d}\label{class_store_afe89b173bbe567c896e0d31f345ddd0d}} 
+\index{Store@{Store}!showEmployees@{showEmployees}}
+\index{showEmployees@{showEmployees}!Store@{Store}}
+\doxysubsubsection{\texorpdfstring{showEmployees()}{showEmployees()}}
+{\footnotesize\ttfamily void Store\+::show\+Employees (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+print all employees in the store in format\+: $<$\+N\+I\+F$>$ $<$\+N\+A\+M\+E$>$ $<$\+S\+A\+L\+A\+R\+Y$>$ $<$N. O\+R\+D\+E\+RS$>$ \mbox{\Hypertarget{class_store_a39e781e2a4501d109b4e1f4e5d7b5182}\label{class_store_a39e781e2a4501d109b4e1f4e5d7b5182}} 
+\index{Store@{Store}!showProducts@{showProducts}}
+\index{showProducts@{showProducts}!Store@{Store}}
+\doxysubsubsection{\texorpdfstring{showProducts()}{showProducts()}}
+{\footnotesize\ttfamily void Store\+::show\+Products (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Print all products available in the store in format\+: $<$\+I\+D$>$ $<$\+C\+A\+T\+E\+G\+O\+R\+Y$>$ $<$\+N\+A\+M\+E$>$ $<$\+D\+E\+T\+A\+I\+L\+S$>$ $<$\+P\+R\+I\+C\+E$>$ euros \mbox{\Hypertarget{class_store_ab297e1b660fe0895df0626c4c357de3d}\label{class_store_ab297e1b660fe0895df0626c4c357de3d}} 
+\index{Store@{Store}!showStore@{showStore}}
+\index{showStore@{showStore}!Store@{Store}}
+\doxysubsubsection{\texorpdfstring{showStore()}{showStore()}}
+{\footnotesize\ttfamily void Store\+::show\+Store (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Print store info in format\+: ID\+: $<$\+S\+T\+O\+R\+E\+\_\+\+I\+D$>$ \mbox{\hyperlink{class_store}{Store}}\+: $<$\+S\+T\+O\+R\+E\+\_\+\+N\+A\+M\+E$>$ 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{store_8h}{store.\+h}}\item 
+\mbox{\hyperlink{store_8cpp}{store.\+cpp}}\end{DoxyCompactItemize}

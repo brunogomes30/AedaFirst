@@ -26,14 +26,16 @@ private:
 public:
     const static std::string FILENAME;
     Sale();
-    Sale(const std::map<std::string, std::string> &mapping,
+
+ 	Sale(Client* client, Store* store);
+	Sale(const std::map<std::string, std::string> &mapping,
          const std::map<unsigned, Store *>  &storesMapping,
          const std::map<unsigned, Employee *> &employeesMapping,
-         const std::map<unsigned, Client *> &clientsMapping);
-    void setStore(Store* store);
+         const std::map<unsigned, Client *> &clientsMapping);    void setStore(Store* store);
     void setClient(Client* client);
     void setEmployee(Employee* employee);
     void addProduct(Product* product, unsigned qty);
+    void setProducts(std::map<Product*, std::pair<unsigned, float>> &products, float totalAmount);
     void setAppraisal(unsigned appraisal);
     void setDiscount(float discount);
     Store* getStore() const;

@@ -1,0 +1,517 @@
+\hypertarget{utilities_8h}{}\doxysection{utilities.\+h File Reference}
+\label{utilities_8h}\index{utilities.h@{utilities.h}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include \char`\"{}store.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}client.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}product.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}bread.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cake.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sale.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}algorithm\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{utilities_8h_abe318ff2d850c0fe10b5edc1ef7dfae6}{show\+Stores}} (const std\+::vector$<$ \mbox{\hyperlink{class_store}{Store}} $\ast$ $>$ \&stores)
+\item 
+void \mbox{\hyperlink{utilities_8h_a029e0d59423b12ca4e10a1d55ba688fe}{show\+Clients}} (const std\+::vector$<$ \mbox{\hyperlink{class_client}{Client}} $\ast$ $>$ \&clients)
+\item 
+void \mbox{\hyperlink{utilities_8h_acc6a585c70725005bff72609660ce0e6}{show\+Employees}} (const std\+::vector$<$ \mbox{\hyperlink{class_store}{Store}} $\ast$ $>$ \&stores)
+\item 
+void \mbox{\hyperlink{utilities_8h_a52fd68411e8d6cc04959d13abc18d152}{show\+Products}} (const std\+::vector$<$ \mbox{\hyperlink{class_product}{Product}} $\ast$ $>$ \&products)
+\item 
+void \mbox{\hyperlink{utilities_8h_aef323dc7eb6b5d5b93b0c22e93519667}{show\+Menu\+Operations}} ()
+\item 
+void \mbox{\hyperlink{utilities_8h_ac190de880c8bd20c34534f46e68f72b4}{show\+Store\+Operations}} ()
+\item 
+void \mbox{\hyperlink{utilities_8h_a38bd5c2dc78329556065dce74538c424}{show\+Client\+Operations}} ()
+\item 
+void \mbox{\hyperlink{utilities_8h_a17024d20863e162c670cb57b02a3c517}{show\+Employee\+Operations}} ()
+\item 
+void \mbox{\hyperlink{utilities_8h_ae50f532f56f70d7ed81c07454a50b2c4}{show\+Product\+Operations}} ()
+\item 
+void \mbox{\hyperlink{utilities_8h_a0ea8f0ec26a60ca43cf54ddc6cc8af63}{ask\+Id}} (unsigned \&id, std\+::string object)
+\item 
+void \mbox{\hyperlink{utilities_8h_a0f81ed61af71bc98b07d516e0b2c70b5}{ask\+Person\+Data}} (std\+::string \&identifier, std\+::string person)
+\item 
+void \mbox{\hyperlink{utilities_8h_a833b896fe8628ed611635475b7feba5e}{ask\+Address}} (\mbox{\hyperlink{struct_address}{Address}} \&address)
+\item 
+void \mbox{\hyperlink{utilities_8h_a2f01cf47ce8ab79191fb07f20354c384}{ask\+Name}} (std\+::string \&name, std\+::string object)
+\item 
+void \mbox{\hyperlink{utilities_8h_add4eeeb2ed26d8764e6f91e811d2ff1e}{ask\+Nif}} (unsigned \&nif, std\+::string object)
+\item 
+void \mbox{\hyperlink{utilities_8h_ae7823d947c7586ba0ea1846624eff6fa}{ask\+Regime}} (bool \&regime)
+\item 
+void \mbox{\hyperlink{utilities_8h_a0ceeffde853b301372ade92255081658}{ask\+Salary\+Or\+Price}} (float \&price\+\_\+salary, std\+::string object)
+\item 
+void \mbox{\hyperlink{utilities_8h_af6344b88834cf3b976a09da1670063eb}{ask\+Category}} (\mbox{\hyperlink{product_8h_a9ca8f05608edcbf85ab6c2c85a439ccb}{Category}} \&ctg)
+\item 
+void \mbox{\hyperlink{utilities_8h_a9bfe89512db0bf00366d3d5854b40bec}{ask\+Bread\+Size}} (\mbox{\hyperlink{bread_8h_abe414ea630457ddea551c4d7af0bb75c}{size\+Type}} \&size)
+\item 
+void \mbox{\hyperlink{utilities_8h_ab456ececa4e31e7090f7e2673f0a6ce0}{ask\+Cake\+Layer}} (\mbox{\hyperlink{cake_8h_a95f2e9e3b2b2d837f962bcfb58a2011e}{layer}} \&ly, std\+::string object)
+\item 
+void \mbox{\hyperlink{utilities_8h_a0361f9db772fae577d4c94c873301bf3}{ask\+Stores}} (const std\+::vector$<$ \mbox{\hyperlink{class_store}{Store}} $\ast$ $>$ \&stores, std\+::vector$<$ \mbox{\hyperlink{class_store}{Store}} $\ast$ $>$ \&filter\+Stores)
+\item 
+void \mbox{\hyperlink{utilities_8h_aec419ee1c49fbdb82f299647487013ac}{set\+Store\+Data}} (std\+::string \&name, \mbox{\hyperlink{struct_address}{Address}} \&address)
+\item 
+void \mbox{\hyperlink{utilities_8h_abf801011354e61fbc8f40fd4725b5cc3}{set\+Client\+Data}} (std\+::string \&name, unsigned \&nif, bool \&regime)
+\item 
+void \mbox{\hyperlink{utilities_8h_a664b6ac0b7d4e362b1cd32632623674e}{set\+Employee\+Data}} (std\+::string \&name, unsigned \&nif, float \&salary, const std\+::vector$<$ \mbox{\hyperlink{class_store}{Store}} $\ast$ $>$ \&stores, \mbox{\hyperlink{class_store}{Store}} $\ast$\&store)
+\item 
+void \mbox{\hyperlink{utilities_8h_af9b5154e3f4c75639061c35f6aeeee2d}{set\+Product\+Data}} (std\+::string \&name, float \&price, \mbox{\hyperlink{product_8h_a9ca8f05608edcbf85ab6c2c85a439ccb}{Category}} \&ctg, \mbox{\hyperlink{bread_8h_abe414ea630457ddea551c4d7af0bb75c}{size\+Type}} \&size, \mbox{\hyperlink{cake_8h_a95f2e9e3b2b2d837f962bcfb58a2011e}{layer}} \&ly1, \mbox{\hyperlink{cake_8h_a95f2e9e3b2b2d837f962bcfb58a2011e}{layer}} \&ly2)
+\item 
+\mbox{\hyperlink{class_store}{Store}} $\ast$ \mbox{\hyperlink{utilities_8h_a880d9c990660f2310cf73f81b8880cab}{search\+Store}} (const std\+::vector$<$ \mbox{\hyperlink{class_store}{Store}} $\ast$ $>$ \&stores, unsigned id)
+\item 
+\mbox{\hyperlink{class_client}{Client}} $\ast$ \mbox{\hyperlink{utilities_8h_a3cded408922afa8cdf3042bf3abfb998}{search\+Client}} (const std\+::vector$<$ \mbox{\hyperlink{class_client}{Client}} $\ast$ $>$ \&clients, const std\+::string \&identifier)
+\item 
+\mbox{\hyperlink{class_employee}{Employee}} $\ast$ \mbox{\hyperlink{utilities_8h_a39239476d2f422e4e4f92aed11c15fab}{search\+Employee}} (const std\+::vector$<$ \mbox{\hyperlink{class_employee}{Employee}} $\ast$ $>$ \&employees, const std\+::string \&identifier)
+\item 
+\mbox{\hyperlink{class_product}{Product}} $\ast$ \mbox{\hyperlink{utilities_8h_a0c3ce5367a5a1043f5b869a4f50ebe7d}{search\+Product}} (const std\+::vector$<$ \mbox{\hyperlink{class_product}{Product}} $\ast$ $>$ \&products, unsigned id)
+\item 
+bool \mbox{\hyperlink{utilities_8h_ae07eb837a3afa274b485207d5e9d80b6}{order}} ()
+\item 
+bool \mbox{\hyperlink{utilities_8h_a41c5e0b0c000c67fe0e9ede3aff0fd80}{cmp\+By\+Income}} (const std\+::pair$<$ \mbox{\hyperlink{class_product}{Product}} $\ast$, std\+::pair$<$ unsigned, float $>$$>$ \&p1, const std\+::pair$<$ \mbox{\hyperlink{class_product}{Product}} $\ast$, std\+::pair$<$ unsigned, float $>$$>$ \&p2)
+\item 
+bool \mbox{\hyperlink{utilities_8h_a9b19797efae4229bb85de1307a8385bd}{cmp\+By\+Quantity\+Sold}} (const std\+::pair$<$ \mbox{\hyperlink{class_product}{Product}} $\ast$, std\+::pair$<$ unsigned, float $>$$>$ \&p1, const std\+::pair$<$ \mbox{\hyperlink{class_product}{Product}} $\ast$, std\+::pair$<$ unsigned, float $>$$>$ \&p2)
+\item 
+void \mbox{\hyperlink{utilities_8h_ab77fe5e53bec6b827681d92b89123ba2}{sort\+By\+Income}} (std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{class_product}{Product}} $\ast$, std\+::pair$<$ unsigned, float $>$$>$$>$ \&v\+Products)
+\item 
+void \mbox{\hyperlink{utilities_8h_aee22af6b3b06ce71e8f779d39160c6f4}{sort\+By\+Quantity\+Sold}} (std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{class_product}{Product}} $\ast$, std\+::pair$<$ unsigned, float $>$$>$$>$ \&v\+Products)
+\item 
+{\footnotesize template$<$class T $>$ }\\bool \mbox{\hyperlink{utilities_8h_a03640b42c25606d8c6e132e43a348495}{cmp\+Persons\+By\+Name}} (T $\ast$\&person1, T $\ast$\&person2)
+\item 
+{\footnotesize template$<$class T $>$ }\\bool \mbox{\hyperlink{utilities_8h_ac4a3c78f5bfbd1af2abc159f41b30d35}{cmp\+Persons\+By\+Nif}} (T $\ast$\&client1, T $\ast$\&client2)
+\item 
+void \mbox{\hyperlink{utilities_8h_aa6329caa27ccb4622e2126f76c9c29df}{sort\+Clients\+By\+Name}} (std\+::vector$<$ \mbox{\hyperlink{class_client}{Client}} $\ast$ $>$ \&clients)
+\item 
+void \mbox{\hyperlink{utilities_8h_a04cb8fb7913801511d3d9b422ca3cd66}{sort\+Clients\+By\+Nif}} (std\+::vector$<$ \mbox{\hyperlink{class_client}{Client}} $\ast$ $>$ \&clients)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{utilities_8h_a833b896fe8628ed611635475b7feba5e}\label{utilities_8h_a833b896fe8628ed611635475b7feba5e}} 
+\index{utilities.h@{utilities.h}!askAddress@{askAddress}}
+\index{askAddress@{askAddress}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{askAddress()}{askAddress()}}
+{\footnotesize\ttfamily void ask\+Address (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_address}{Address}} \&}]{address }\end{DoxyParamCaption})}
+
+Asks user for an address. 
+\begin{DoxyParams}{Parameters}
+{\em address} & Save the user answer. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{utilities_8h_a9bfe89512db0bf00366d3d5854b40bec}\label{utilities_8h_a9bfe89512db0bf00366d3d5854b40bec}} 
+\index{utilities.h@{utilities.h}!askBreadSize@{askBreadSize}}
+\index{askBreadSize@{askBreadSize}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{askBreadSize()}{askBreadSize()}}
+{\footnotesize\ttfamily void ask\+Bread\+Size (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{bread_8h_abe414ea630457ddea551c4d7af0bb75c}{size\+Type}} \&}]{size }\end{DoxyParamCaption})}
+
+Asks user for a size of a bread. 
+\begin{DoxyParams}{Parameters}
+{\em size} & Save the user answer. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{utilities_8h_ab456ececa4e31e7090f7e2673f0a6ce0}\label{utilities_8h_ab456ececa4e31e7090f7e2673f0a6ce0}} 
+\index{utilities.h@{utilities.h}!askCakeLayer@{askCakeLayer}}
+\index{askCakeLayer@{askCakeLayer}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{askCakeLayer()}{askCakeLayer()}}
+{\footnotesize\ttfamily void ask\+Cake\+Layer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{cake_8h_a95f2e9e3b2b2d837f962bcfb58a2011e}{layer}} \&}]{ly,  }\item[{std\+::string}]{object }\end{DoxyParamCaption})}
+
+Asks user for a layer of a cake. 
+\begin{DoxyParams}{Parameters}
+{\em ly} & Save the user answer. \\
+\hline
+{\em object} & String with text to complement outputs. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{utilities_8h_af6344b88834cf3b976a09da1670063eb}\label{utilities_8h_af6344b88834cf3b976a09da1670063eb}} 
+\index{utilities.h@{utilities.h}!askCategory@{askCategory}}
+\index{askCategory@{askCategory}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{askCategory()}{askCategory()}}
+{\footnotesize\ttfamily void ask\+Category (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{product_8h_a9ca8f05608edcbf85ab6c2c85a439ccb}{Category}} \&}]{ctg }\end{DoxyParamCaption})}
+
+Asks user for a category of a product. 
+\begin{DoxyParams}{Parameters}
+{\em ctg} & Save the user answer. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{utilities_8h_a0ea8f0ec26a60ca43cf54ddc6cc8af63}\label{utilities_8h_a0ea8f0ec26a60ca43cf54ddc6cc8af63}} 
+\index{utilities.h@{utilities.h}!askId@{askId}}
+\index{askId@{askId}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{askId()}{askId()}}
+{\footnotesize\ttfamily void ask\+Id (\begin{DoxyParamCaption}\item[{unsigned \&}]{id,  }\item[{std\+::string}]{object }\end{DoxyParamCaption})}
+
+Asks user for an ID. 
+\begin{DoxyParams}{Parameters}
+{\em id} & Save the user answer. \\
+\hline
+{\em object} & String with text to complement outputs. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{utilities_8h_a2f01cf47ce8ab79191fb07f20354c384}\label{utilities_8h_a2f01cf47ce8ab79191fb07f20354c384}} 
+\index{utilities.h@{utilities.h}!askName@{askName}}
+\index{askName@{askName}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{askName()}{askName()}}
+{\footnotesize\ttfamily void ask\+Name (\begin{DoxyParamCaption}\item[{std\+::string \&}]{name,  }\item[{std\+::string}]{object }\end{DoxyParamCaption})}
+
+Asks user for a name. 
+\begin{DoxyParams}{Parameters}
+{\em name} & Save the user answer. \\
+\hline
+{\em object} & String with text to complement outputs. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{utilities_8h_add4eeeb2ed26d8764e6f91e811d2ff1e}\label{utilities_8h_add4eeeb2ed26d8764e6f91e811d2ff1e}} 
+\index{utilities.h@{utilities.h}!askNif@{askNif}}
+\index{askNif@{askNif}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{askNif()}{askNif()}}
+{\footnotesize\ttfamily void ask\+Nif (\begin{DoxyParamCaption}\item[{unsigned \&}]{nif,  }\item[{std\+::string}]{object }\end{DoxyParamCaption})}
+
+Asks user for a nif of a person. 
+\begin{DoxyParams}{Parameters}
+{\em nif} & Save the user answer. \\
+\hline
+{\em object} & String with text to complement outputs. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{utilities_8h_a0f81ed61af71bc98b07d516e0b2c70b5}\label{utilities_8h_a0f81ed61af71bc98b07d516e0b2c70b5}} 
+\index{utilities.h@{utilities.h}!askPersonData@{askPersonData}}
+\index{askPersonData@{askPersonData}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{askPersonData()}{askPersonData()}}
+{\footnotesize\ttfamily void ask\+Person\+Data (\begin{DoxyParamCaption}\item[{std\+::string \&}]{identifier,  }\item[{std\+::string}]{person }\end{DoxyParamCaption})}
+
+Asks user for a name or a nif. 
+\begin{DoxyParams}{Parameters}
+{\em identifier} & Save the user answer. \\
+\hline
+{\em person} & String with text to complement outputs. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{utilities_8h_ae7823d947c7586ba0ea1846624eff6fa}\label{utilities_8h_ae7823d947c7586ba0ea1846624eff6fa}} 
+\index{utilities.h@{utilities.h}!askRegime@{askRegime}}
+\index{askRegime@{askRegime}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{askRegime()}{askRegime()}}
+{\footnotesize\ttfamily void ask\+Regime (\begin{DoxyParamCaption}\item[{bool \&}]{regime }\end{DoxyParamCaption})}
+
+Asks user for a regime of a client. 
+\begin{DoxyParams}{Parameters}
+{\em regime} & Save the user answer. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{utilities_8h_a0ceeffde853b301372ade92255081658}\label{utilities_8h_a0ceeffde853b301372ade92255081658}} 
+\index{utilities.h@{utilities.h}!askSalaryOrPrice@{askSalaryOrPrice}}
+\index{askSalaryOrPrice@{askSalaryOrPrice}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{askSalaryOrPrice()}{askSalaryOrPrice()}}
+{\footnotesize\ttfamily void ask\+Salary\+Or\+Price (\begin{DoxyParamCaption}\item[{float \&}]{price\+\_\+salary,  }\item[{std\+::string}]{object }\end{DoxyParamCaption})}
+
+Asks user for a salary or a price of an employee or a product, respectively. 
+\begin{DoxyParams}{Parameters}
+{\em price\+\_\+salary} & Save the user answer. \\
+\hline
+{\em object} & String with text to complement outputs. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{utilities_8h_a0361f9db772fae577d4c94c873301bf3}\label{utilities_8h_a0361f9db772fae577d4c94c873301bf3}} 
+\index{utilities.h@{utilities.h}!askStores@{askStores}}
+\index{askStores@{askStores}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{askStores()}{askStores()}}
+{\footnotesize\ttfamily void ask\+Stores (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{class_store}{Store}} $\ast$ $>$ \&}]{stores,  }\item[{std\+::vector$<$ \mbox{\hyperlink{class_store}{Store}} $\ast$ $>$ \&}]{filter\+Stores }\end{DoxyParamCaption})}
+
+Asks user for stores. 
+\begin{DoxyParams}{Parameters}
+{\em stores} & Vector with all possible stores to choose. \\
+\hline
+{\em filter\+Stores} & Vector, passed by reference, that will be modified with the chosen stores. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{utilities_8h_a41c5e0b0c000c67fe0e9ede3aff0fd80}\label{utilities_8h_a41c5e0b0c000c67fe0e9ede3aff0fd80}} 
+\index{utilities.h@{utilities.h}!cmpByIncome@{cmpByIncome}}
+\index{cmpByIncome@{cmpByIncome}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{cmpByIncome()}{cmpByIncome()}}
+{\footnotesize\ttfamily bool cmp\+By\+Income (\begin{DoxyParamCaption}\item[{const std\+::pair$<$ \mbox{\hyperlink{class_product}{Product}} $\ast$, std\+::pair$<$ unsigned, float $>$$>$ \&}]{p1,  }\item[{const std\+::pair$<$ \mbox{\hyperlink{class_product}{Product}} $\ast$, std\+::pair$<$ unsigned, float $>$$>$ \&}]{p2 }\end{DoxyParamCaption})}
+
+Compare two pairs (sales volume) by its total value, quantity $\ast$ price. 
+\begin{DoxyParams}{Parameters}
+{\em p1} & First pair (sales volume) to be compared. \\
+\hline
+{\em p2} & Second pair (sales volume) to be compared. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if total value of $<$p1$>$ is smaller than that of $<$p2$>$, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{utilities_8h_a9b19797efae4229bb85de1307a8385bd}\label{utilities_8h_a9b19797efae4229bb85de1307a8385bd}} 
+\index{utilities.h@{utilities.h}!cmpByQuantitySold@{cmpByQuantitySold}}
+\index{cmpByQuantitySold@{cmpByQuantitySold}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{cmpByQuantitySold()}{cmpByQuantitySold()}}
+{\footnotesize\ttfamily bool cmp\+By\+Quantity\+Sold (\begin{DoxyParamCaption}\item[{const std\+::pair$<$ \mbox{\hyperlink{class_product}{Product}} $\ast$, std\+::pair$<$ unsigned, float $>$$>$ \&}]{p1,  }\item[{const std\+::pair$<$ \mbox{\hyperlink{class_product}{Product}} $\ast$, std\+::pair$<$ unsigned, float $>$$>$ \&}]{p2 }\end{DoxyParamCaption})}
+
+Compare two pairs (sales volume) by its quantity. 
+\begin{DoxyParams}{Parameters}
+{\em p1} & First pair (sale volume) to be compared. \\
+\hline
+{\em p2} & Second pair (sale volume) to be compared. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if quantity of $<$p1$>$ is smaller than that of $<$p2$>$, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{utilities_8h_a03640b42c25606d8c6e132e43a348495}\label{utilities_8h_a03640b42c25606d8c6e132e43a348495}} 
+\index{utilities.h@{utilities.h}!cmpPersonsByName@{cmpPersonsByName}}
+\index{cmpPersonsByName@{cmpPersonsByName}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{cmpPersonsByName()}{cmpPersonsByName()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool cmp\+Persons\+By\+Name (\begin{DoxyParamCaption}\item[{T $\ast$\&}]{person1,  }\item[{T $\ast$\&}]{person2 }\end{DoxyParamCaption})}
+
+Compare two clients or two employees by their names. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Template type in order to be used with \mbox{\hyperlink{class_client}{Client}} and \mbox{\hyperlink{class_employee}{Employee}} objects. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em person1} & First person (client/employee) to be compared. \\
+\hline
+{\em person2} & Second person (client/employee) to be compared. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if name of $<$person1$>$ is alphabetically smaller than that of $<$person2$>$, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{utilities_8h_ac4a3c78f5bfbd1af2abc159f41b30d35}\label{utilities_8h_ac4a3c78f5bfbd1af2abc159f41b30d35}} 
+\index{utilities.h@{utilities.h}!cmpPersonsByNif@{cmpPersonsByNif}}
+\index{cmpPersonsByNif@{cmpPersonsByNif}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{cmpPersonsByNif()}{cmpPersonsByNif()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool cmp\+Persons\+By\+Nif (\begin{DoxyParamCaption}\item[{T $\ast$\&}]{client1,  }\item[{T $\ast$\&}]{client2 }\end{DoxyParamCaption})}
+
+Compare two clients or two employees by their N\+I\+Fs. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Template type in order to be used with \mbox{\hyperlink{class_client}{Client}} and \mbox{\hyperlink{class_employee}{Employee}} objects. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em person1} & First person (client/employee) to be compared. \\
+\hline
+{\em person2} & Second person (client/employee) to be compared. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if N\+IF of $<$person1$>$ is smaller than that of $<$person2$>$, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{utilities_8h_ae07eb837a3afa274b485207d5e9d80b6}\label{utilities_8h_ae07eb837a3afa274b485207d5e9d80b6}} 
+\index{utilities.h@{utilities.h}!order@{order}}
+\index{order@{order}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{order()}{order()}}
+{\footnotesize\ttfamily bool order (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Asks user for the way he wants to order (ascending/descending). \begin{DoxyReturn}{Returns}
+True for descending order, false to ascending. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{utilities_8h_a3cded408922afa8cdf3042bf3abfb998}\label{utilities_8h_a3cded408922afa8cdf3042bf3abfb998}} 
+\index{utilities.h@{utilities.h}!searchClient@{searchClient}}
+\index{searchClient@{searchClient}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{searchClient()}{searchClient()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_client}{Client}}$\ast$ search\+Client (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{class_client}{Client}} $\ast$ $>$ \&}]{clients,  }\item[{const std\+::string \&}]{identifier }\end{DoxyParamCaption})}
+
+Search for a client by their name or N\+IF. 
+\begin{DoxyParams}{Parameters}
+{\em clients} & Vector of pointers to clients. \\
+\hline
+{\em identifier} & Name or N\+IF of the client searched. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the client with name or N\+IF $<$identifier$>$ if found in $<$clients$>$, nullptr otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{utilities_8h_a39239476d2f422e4e4f92aed11c15fab}\label{utilities_8h_a39239476d2f422e4e4f92aed11c15fab}} 
+\index{utilities.h@{utilities.h}!searchEmployee@{searchEmployee}}
+\index{searchEmployee@{searchEmployee}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{searchEmployee()}{searchEmployee()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_employee}{Employee}}$\ast$ search\+Employee (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{class_employee}{Employee}} $\ast$ $>$ \&}]{employees,  }\item[{const std\+::string \&}]{identifier }\end{DoxyParamCaption})}
+
+Search for an employee by their name or N\+IF. 
+\begin{DoxyParams}{Parameters}
+{\em employees} & Vector of pointers to employees. \\
+\hline
+{\em identifier} & Name or N\+IF of the employee searched. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the employee with name or N\+IF $<$identifier$>$ if found in $<$employees$>$, nullptr otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{utilities_8h_a0c3ce5367a5a1043f5b869a4f50ebe7d}\label{utilities_8h_a0c3ce5367a5a1043f5b869a4f50ebe7d}} 
+\index{utilities.h@{utilities.h}!searchProduct@{searchProduct}}
+\index{searchProduct@{searchProduct}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{searchProduct()}{searchProduct()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_product}{Product}}$\ast$ search\+Product (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{class_product}{Product}} $\ast$ $>$ \&}]{products,  }\item[{unsigned}]{id }\end{DoxyParamCaption})}
+
+Search for a product by its id. 
+\begin{DoxyParams}{Parameters}
+{\em products} & Vector of pointers to products. \\
+\hline
+{\em id} & ID of the product searched. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the product with ID $<$id$>$ if found in $<$products$>$, nullptr otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{utilities_8h_a880d9c990660f2310cf73f81b8880cab}\label{utilities_8h_a880d9c990660f2310cf73f81b8880cab}} 
+\index{utilities.h@{utilities.h}!searchStore@{searchStore}}
+\index{searchStore@{searchStore}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{searchStore()}{searchStore()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_store}{Store}}$\ast$ search\+Store (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{class_store}{Store}} $\ast$ $>$ \&}]{stores,  }\item[{unsigned}]{id }\end{DoxyParamCaption})}
+
+Search for a store by its ID. 
+\begin{DoxyParams}{Parameters}
+{\em stores} & Vector of pointers to stores. \\
+\hline
+{\em id} & ID of the store searched. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the store with ID $<$id$>$ if found in $<$stores$>$, nullptr otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{utilities_8h_abf801011354e61fbc8f40fd4725b5cc3}\label{utilities_8h_abf801011354e61fbc8f40fd4725b5cc3}} 
+\index{utilities.h@{utilities.h}!setClientData@{setClientData}}
+\index{setClientData@{setClientData}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{setClientData()}{setClientData()}}
+{\footnotesize\ttfamily void set\+Client\+Data (\begin{DoxyParamCaption}\item[{std\+::string \&}]{name,  }\item[{unsigned \&}]{nif,  }\item[{bool \&}]{regime }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{utilities_8h_a664b6ac0b7d4e362b1cd32632623674e}\label{utilities_8h_a664b6ac0b7d4e362b1cd32632623674e}} 
+\index{utilities.h@{utilities.h}!setEmployeeData@{setEmployeeData}}
+\index{setEmployeeData@{setEmployeeData}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{setEmployeeData()}{setEmployeeData()}}
+{\footnotesize\ttfamily void set\+Employee\+Data (\begin{DoxyParamCaption}\item[{std\+::string \&}]{name,  }\item[{unsigned \&}]{nif,  }\item[{float \&}]{salary,  }\item[{const std\+::vector$<$ \mbox{\hyperlink{class_store}{Store}} $\ast$ $>$ \&}]{stores,  }\item[{\mbox{\hyperlink{class_store}{Store}} $\ast$\&}]{store }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{utilities_8h_af9b5154e3f4c75639061c35f6aeeee2d}\label{utilities_8h_af9b5154e3f4c75639061c35f6aeeee2d}} 
+\index{utilities.h@{utilities.h}!setProductData@{setProductData}}
+\index{setProductData@{setProductData}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{setProductData()}{setProductData()}}
+{\footnotesize\ttfamily void set\+Product\+Data (\begin{DoxyParamCaption}\item[{std\+::string \&}]{name,  }\item[{float \&}]{price,  }\item[{\mbox{\hyperlink{product_8h_a9ca8f05608edcbf85ab6c2c85a439ccb}{Category}} \&}]{ctg,  }\item[{\mbox{\hyperlink{bread_8h_abe414ea630457ddea551c4d7af0bb75c}{size\+Type}} \&}]{size,  }\item[{\mbox{\hyperlink{cake_8h_a95f2e9e3b2b2d837f962bcfb58a2011e}{layer}} \&}]{ly1,  }\item[{\mbox{\hyperlink{cake_8h_a95f2e9e3b2b2d837f962bcfb58a2011e}{layer}} \&}]{ly2 }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{utilities_8h_aec419ee1c49fbdb82f299647487013ac}\label{utilities_8h_aec419ee1c49fbdb82f299647487013ac}} 
+\index{utilities.h@{utilities.h}!setStoreData@{setStoreData}}
+\index{setStoreData@{setStoreData}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{setStoreData()}{setStoreData()}}
+{\footnotesize\ttfamily void set\+Store\+Data (\begin{DoxyParamCaption}\item[{std\+::string \&}]{name,  }\item[{\mbox{\hyperlink{struct_address}{Address}} \&}]{address }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{utilities_8h_a38bd5c2dc78329556065dce74538c424}\label{utilities_8h_a38bd5c2dc78329556065dce74538c424}} 
+\index{utilities.h@{utilities.h}!showClientOperations@{showClientOperations}}
+\index{showClientOperations@{showClientOperations}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{showClientOperations()}{showClientOperations()}}
+{\footnotesize\ttfamily void show\+Client\+Operations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Print possible operations in \mbox{\hyperlink{class_client}{Client}} \mbox{\hyperlink{class_menu}{Menu}} and respective input keys. \mbox{\Hypertarget{utilities_8h_a029e0d59423b12ca4e10a1d55ba688fe}\label{utilities_8h_a029e0d59423b12ca4e10a1d55ba688fe}} 
+\index{utilities.h@{utilities.h}!showClients@{showClients}}
+\index{showClients@{showClients}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{showClients()}{showClients()}}
+{\footnotesize\ttfamily void show\+Clients (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{class_client}{Client}} $\ast$ $>$ \&}]{clients }\end{DoxyParamCaption})}
+
+Print all clients passed as an argument in table format. 
+\begin{DoxyParams}{Parameters}
+{\em clients} & Vector of pointers to object \mbox{\hyperlink{class_client}{Client}}. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{utilities_8h_a17024d20863e162c670cb57b02a3c517}\label{utilities_8h_a17024d20863e162c670cb57b02a3c517}} 
+\index{utilities.h@{utilities.h}!showEmployeeOperations@{showEmployeeOperations}}
+\index{showEmployeeOperations@{showEmployeeOperations}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{showEmployeeOperations()}{showEmployeeOperations()}}
+{\footnotesize\ttfamily void show\+Employee\+Operations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Print possible operations in \mbox{\hyperlink{class_employee}{Employee}} \mbox{\hyperlink{class_menu}{Menu}} and respective input keys. \mbox{\Hypertarget{utilities_8h_acc6a585c70725005bff72609660ce0e6}\label{utilities_8h_acc6a585c70725005bff72609660ce0e6}} 
+\index{utilities.h@{utilities.h}!showEmployees@{showEmployees}}
+\index{showEmployees@{showEmployees}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{showEmployees()}{showEmployees()}}
+{\footnotesize\ttfamily void show\+Employees (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{class_store}{Store}} $\ast$ $>$ \&}]{stores }\end{DoxyParamCaption})}
+
+Print all employees of all stores passed as an argument in table format, ordered by store. 
+\begin{DoxyParams}{Parameters}
+{\em stores} & Vector of pointers to object \mbox{\hyperlink{class_store}{Store}}. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{utilities_8h_aef323dc7eb6b5d5b93b0c22e93519667}\label{utilities_8h_aef323dc7eb6b5d5b93b0c22e93519667}} 
+\index{utilities.h@{utilities.h}!showMenuOperations@{showMenuOperations}}
+\index{showMenuOperations@{showMenuOperations}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{showMenuOperations()}{showMenuOperations()}}
+{\footnotesize\ttfamily void show\+Menu\+Operations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Print possible operations in Main \mbox{\hyperlink{class_menu}{Menu}} and respective input keys. \mbox{\Hypertarget{utilities_8h_ae50f532f56f70d7ed81c07454a50b2c4}\label{utilities_8h_ae50f532f56f70d7ed81c07454a50b2c4}} 
+\index{utilities.h@{utilities.h}!showProductOperations@{showProductOperations}}
+\index{showProductOperations@{showProductOperations}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{showProductOperations()}{showProductOperations()}}
+{\footnotesize\ttfamily void show\+Product\+Operations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Print possible operations in \mbox{\hyperlink{class_product}{Product}} \mbox{\hyperlink{class_menu}{Menu}} and respective input keys. \mbox{\Hypertarget{utilities_8h_a52fd68411e8d6cc04959d13abc18d152}\label{utilities_8h_a52fd68411e8d6cc04959d13abc18d152}} 
+\index{utilities.h@{utilities.h}!showProducts@{showProducts}}
+\index{showProducts@{showProducts}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{showProducts()}{showProducts()}}
+{\footnotesize\ttfamily void show\+Products (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{class_product}{Product}} $\ast$ $>$ \&}]{products }\end{DoxyParamCaption})}
+
+Print all products passed as an argument in table format. 
+\begin{DoxyParams}{Parameters}
+{\em products} & Vector of pointers to object \mbox{\hyperlink{class_product}{Product}}. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{utilities_8h_ac190de880c8bd20c34534f46e68f72b4}\label{utilities_8h_ac190de880c8bd20c34534f46e68f72b4}} 
+\index{utilities.h@{utilities.h}!showStoreOperations@{showStoreOperations}}
+\index{showStoreOperations@{showStoreOperations}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{showStoreOperations()}{showStoreOperations()}}
+{\footnotesize\ttfamily void show\+Store\+Operations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Print possible operations in \mbox{\hyperlink{class_store}{Store}} \mbox{\hyperlink{class_menu}{Menu}} and respective input keys. \mbox{\Hypertarget{utilities_8h_abe318ff2d850c0fe10b5edc1ef7dfae6}\label{utilities_8h_abe318ff2d850c0fe10b5edc1ef7dfae6}} 
+\index{utilities.h@{utilities.h}!showStores@{showStores}}
+\index{showStores@{showStores}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{showStores()}{showStores()}}
+{\footnotesize\ttfamily void show\+Stores (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{class_store}{Store}} $\ast$ $>$ \&}]{stores }\end{DoxyParamCaption})}
+
+Print all stores passed as an argument in table format. 
+\begin{DoxyParams}{Parameters}
+{\em stores} & Vector of pointers to object \mbox{\hyperlink{class_store}{Store}}. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{utilities_8h_ab77fe5e53bec6b827681d92b89123ba2}\label{utilities_8h_ab77fe5e53bec6b827681d92b89123ba2}} 
+\index{utilities.h@{utilities.h}!sortByIncome@{sortByIncome}}
+\index{sortByIncome@{sortByIncome}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{sortByIncome()}{sortByIncome()}}
+{\footnotesize\ttfamily void sort\+By\+Income (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{class_product}{Product}} $\ast$, std\+::pair$<$ unsigned, float $>$$>$$>$ \&}]{v\+Products }\end{DoxyParamCaption})}
+
+Sort pairs by its total value, quantity $\ast$ price. 
+\begin{DoxyParams}{Parameters}
+{\em v\+Products} & Vector of sales volume to be sorted. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{utilities_8h_aee22af6b3b06ce71e8f779d39160c6f4}\label{utilities_8h_aee22af6b3b06ce71e8f779d39160c6f4}} 
+\index{utilities.h@{utilities.h}!sortByQuantitySold@{sortByQuantitySold}}
+\index{sortByQuantitySold@{sortByQuantitySold}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{sortByQuantitySold()}{sortByQuantitySold()}}
+{\footnotesize\ttfamily void sort\+By\+Quantity\+Sold (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{class_product}{Product}} $\ast$, std\+::pair$<$ unsigned, float $>$$>$$>$ \&}]{v\+Products }\end{DoxyParamCaption})}
+
+Sort pairs by its quantity. 
+\begin{DoxyParams}{Parameters}
+{\em v\+Products} & Vector of sales volume to be sorted. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{utilities_8h_aa6329caa27ccb4622e2126f76c9c29df}\label{utilities_8h_aa6329caa27ccb4622e2126f76c9c29df}} 
+\index{utilities.h@{utilities.h}!sortClientsByName@{sortClientsByName}}
+\index{sortClientsByName@{sortClientsByName}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{sortClientsByName()}{sortClientsByName()}}
+{\footnotesize\ttfamily void sort\+Clients\+By\+Name (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{class_client}{Client}} $\ast$ $>$ \&}]{clients }\end{DoxyParamCaption})}
+
+Sort clients by their names. 
+\begin{DoxyParams}{Parameters}
+{\em clients} & Vector of clients to be sorted. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{utilities_8h_a04cb8fb7913801511d3d9b422ca3cd66}\label{utilities_8h_a04cb8fb7913801511d3d9b422ca3cd66}} 
+\index{utilities.h@{utilities.h}!sortClientsByNif@{sortClientsByNif}}
+\index{sortClientsByNif@{sortClientsByNif}!utilities.h@{utilities.h}}
+\doxysubsubsection{\texorpdfstring{sortClientsByNif()}{sortClientsByNif()}}
+{\footnotesize\ttfamily void sort\+Clients\+By\+Nif (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{class_client}{Client}} $\ast$ $>$ \&}]{clients }\end{DoxyParamCaption})}
+
+Sort clients by their N\+I\+Fs. 
+\begin{DoxyParams}{Parameters}
+{\em clients} & Vector of clients to be sorted. \\
+\hline
+\end{DoxyParams}

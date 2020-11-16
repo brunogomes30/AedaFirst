@@ -28,15 +28,15 @@ unsigned Employee::getNif() const {return nif;}
 
 float Employee::getSalary() const {return salary;}
 
-unsigned int Employee::getNumOrders() const {return numOrders;}
+unsigned Employee::getNumOrders() const {return numOrders;}
 
 void Employee::setName(string name) {this->name = name;}
 
-void Employee::setNif(unsigned int nif){this->nif = nif;}
+void Employee::setNif(unsigned nif){this->nif = nif;}
 
 void Employee::setSalary(float salary){this->salary = salary;}
 
-void Employee::addOrders(unsigned int numOrders){this->numOrders += numOrders;}
+void Employee::addOrders(unsigned numOrders){this->numOrders += numOrders;}
 
 bool Employee::same(string identifier) const {
     if (isdigit(identifier[0])) {

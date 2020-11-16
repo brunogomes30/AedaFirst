@@ -6,7 +6,13 @@ using namespace std;
 const string Sale::FILENAME = "sales.txt";
 
 Sale::Sale() {
+    totalAmount = 0;
+}
+
+Sale::Sale(Client* client, Store* store) {
     id = next_sale_id++;
+    this->client = client;
+    this->store = store;
     totalAmount = 0;
 }
 
@@ -34,7 +40,7 @@ void Sale::setClient(Client *client) {this->client = client;}
 
 void Sale::setEmployee(Employee* employee) {this->employee = employee;}
 
-void Sale::addProduct(Product *product, unsigned int qty) {
+void Sale::addProduct(Product *product, unsigned qty) {
     map<Product*, pair<unsigned, float>>::iterator it;
     it = products.find(product);
     if (it == products.end()){
@@ -46,7 +52,12 @@ void Sale::addProduct(Product *product, unsigned int qty) {
     totalAmount += qty*product->getPrice();
 }
 
-void Sale::setAppraisal(unsigned int appraisal) {
+void Sale::setProducts(std::map<Product*, std::pair<unsigned, float>> &prodsVolume, float totalAmount) {
+    products = prodsVolume;
+    this->totalAmount = totalAmount;
+}
+
+void Sale::setAppraisal(unsigned appraisal) {
     this->appraisal = appraisal;
     client->addAppraisal(appraisal);
 }

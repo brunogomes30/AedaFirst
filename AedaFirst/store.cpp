@@ -6,7 +6,7 @@
 using namespace std;
 const string Store::FILENAME = "stores.txt";
 
-Store::Store(unsigned int id) {
+Store::Store(unsigned id) {
     this->id = id;
 }
 Store::Store(std::string name, Address address) {

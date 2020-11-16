@@ -5,14 +5,12 @@
 class Employee {
 private:
     std::string name;
-    unsigned int nif;
+    unsigned nif;
     float salary;
-    unsigned int numOrders;
+    unsigned numOrders;
 public:
-    static const std::string FILENAME;
-
-    Employee(std::string name = "", unsigned int nif = 0, float salary = 0);
-
+	static const std::string FILENAME;
+Employee(std::string name = "", unsigned nif = 0, float salary = 0);
     /**
      * The constructor to use when loading from file
      * @param mapping
@@ -25,7 +23,7 @@ public:
 
     float getSalary() const;
 
-    unsigned int getNumOrders() const;
+    unsigned getNumOrders() const;
 
     void setName(std::string name);
 
@@ -33,7 +31,7 @@ public:
 
     void setSalary(float salary);
 
-    void addOrders(unsigned int numOrders);
+    void addOrders(unsigned numOrders);
 
     bool same(std::string identifier) const;
 

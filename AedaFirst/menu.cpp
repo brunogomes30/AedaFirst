@@ -4,16 +4,16 @@
 #include <iostream>
 #include <algorithm>
 #include <iomanip>
+#include "exceptions.h"
 #include<fstream>
-#include <map>
-using namespace std;
+#include <map>using namespace std;
 
 Menu::Menu(bool load) {
     loadData();
 }
 
-Menu::Menu(vector<Store*> s, vector<Client*> c, vector<Client*> co, vector<Employee*> e,
-           vector<Employee*> eo, vector<Product*> p, vector<Product*> po, vector<Sale*> sal) {
+Menu::Menu(vector<Store*> &s, vector<Client*> &c, vector<Client*> &co, vector<Employee*> &e,
+           vector<Employee*> &eo, vector<Product*> &p, vector<Product*> &po, vector<Sale*> &sal) {
     stores = s;
     employees = e;
     oldEmployees = eo;
@@ -291,13 +291,16 @@ void Menu::opsProduct(Product* &product) {
     } while (operation != 0);
 }
 
-void Menu::makeOrder(Sale &sale) {
+void Menu::makeOrder() {
     Store* store;
     Client* client;
     string client_identifier;
     unsigned appraisal, store_id, product_id, qnt;
     float bill=0;
     bool error;
+
+    if (clients.empty())
+        throw NoClientInClientsException("No registered clients.");
 
     // Choose client
     showClients(clients);
@@ -311,7 +314,6 @@ void Menu::makeOrder(Sale &sale) {
         else
             cout << "That client doesn't exist." << endl;
     } while (error);
-    sale.setClient(client);
 
     // Choose store
     showStores(stores);
@@ -324,9 +326,12 @@ void Menu::makeOrder(Sale &sale) {
         else
             cout << "That store doesn't exist." << endl;
     } while (error);
-    sale.setStore(store);
+
+    if (store->getEmployees().empty())
+        throw NoEmployeeInStoreException("No employees in that store to deal with the order.");
 
     // Choose products
+    Sale auxSale;
     cout << endl;
     store->showProducts();
     cout << "Press 0 to stop adding" << endl << endl;
@@ -356,39 +361,47 @@ void Menu::makeOrder(Sale &sale) {
         cin.ignore(100, '\n');
 
         if (!error) {
-            sale.addProduct(store->getProduct(product_id), qnt);
+            auxSale.addProduct(store->getProduct(product_id), qnt);
         }
     } while (product_id != 0);
 
+    if (auxSale.getProducts().empty())
+        throw NoProductsChoseException("Order canceled, no products were chose.");
+
+    // Initialize sale
+    Sale* sale = new Sale(client, store);
+    sale->setProducts(auxSale.getProducts(), auxSale.getTotalAmount());
+
     // Set employee
-    sale.setEmployee(sale.getStore()->lessOrdered());
-    sale.getEmployee()->addOrders(1);
+    sale->setEmployee(sale->getStore()->lessOrdered());
+    sale->getEmployee()->addOrders(1);
 
     // Bill
-    bill = sale.getTotalAmount();
+    bill = sale->getTotalAmount();
 
     // Discount
     if (client->getDiscount()) {
         if (client->getRegime())
-            sale.setDiscount(0.95);
+            sale->setDiscount(0.95);
         else
-            sale.setDiscount(0.98);
+            sale->setDiscount(0.98);
         client->useDiscount();
     }
     else
-        sale.setDiscount(1);
+        sale->setDiscount(1);
 
-    sale.showSale(false);
+    sale->showSale(false);
 
     // Manage points
     client->addPoints(bill);
     cout << "You have " << client->getPoints() << " points." << endl;
 
-    if (client->getDiscount())
-        if (client->getRegime())
-            cout << "Discount of 5% in next order" << endl;
-        else
+    if (client->getDiscount()) {
+        if (!client->getRegime())
             cout << "Discount of 2% in next order" << endl;
+        else
+            cout << "Discount of 5% in next order" << endl;
+    }
 
     // Appraisal
     cout << "Your appraisal for the service (0-5): " << endl;
@@ -401,25 +414,28 @@ void Menu::makeOrder(Sale &sale) {
         cin.ignore(100, '\n');
     } while (appraisal < 0 || appraisal > 5);
 
-    sale.setAppraisal(appraisal);
+    sale->setAppraisal(appraisal);
+
+
+    sales.push_back(sale);
 }
 
 void Menu::salesVolumeByProduct() {
     map<Product*, pair<unsigned, float>> auxProducts;
-    map<Product*, pair<unsigned, float>> products;
+    map<Product*, pair<unsigned, float>> prods;
     for (auto sale:sales) {
         auxProducts = sale->getProducts();
         for (auto it=auxProducts.begin(); it != auxProducts.end(); it++) {
-            if (products.find(it->first) == products.end())
-                products[it->first] = pair<unsigned, float>(it->second.first, it->second.first*it->second.second);
+            if (prods.find(it->first) == prods.end())
+                prods[it->first] = pair<unsigned, float>(it->second.first, it->second.first*it->second.second);
             else {
-                products[it->first].first += it->second.first;
-                products[it->first].second += it->second.first*it->second.second;
+                prods[it->first].first += it->second.first;
+                prods[it->first].second += it->second.first*it->second.second;
             }
         }
     }
     vector<pair<Product*, pair<unsigned, float>>> vProducts;
-    for (auto &it:products)
+    for (auto &it:prods)
         vProducts.push_back(it);
     chooseSalesVolumeByProductSort(vProducts);
     cout << endl << setw(5) << "ID" << setw(20) << "Name" << right << setw(14) << "Total sold" << setw(14) << "Total income" << left << endl;
@@ -586,8 +602,8 @@ void Menu::mainMenu() {
                 chooseClientsSort();
                 showClients(clients);
                 nif_or_id = 0;
-                for (auto client:clients) {
-                    if (client->getRegime() == true)
+                for (auto c:clients) {
+                    if (c->getRegime())
                         nif_or_id++;
                 }
                 cout << "Normal: " << clients.size() - nif_or_id << "     Premium: " << nif_or_id << endl;
@@ -642,8 +658,13 @@ void Menu::mainMenu() {
                     cout << "That product doesn't exist" << endl;
                 break;
             case 13: // Make an order
-                sales.push_back(new Sale());
-                makeOrder((*sales[sales.size() - 1]));
+                try {
+                    makeOrder();
+                }
+                catch (Exception &e) {
+                    e.what();
+                }
+
                 break;
             case 14: // Print sales volume
                 opsSalesVolume();

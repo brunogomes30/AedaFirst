@@ -10,6 +10,7 @@
 #include "cake.h"
 #include "employee.h"
 using namespace std;
+
 class Menu {
 private:
     std::vector<Store *> stores;
@@ -63,10 +64,9 @@ private:
     */
     void opsProduct(Product* &product);
     /**
-    * Make an order. Asks for a client, a store, products client appraisal.
-    * @param sale Sale to be created;
+    * Make an order. Asks for a client, a store, products and client appraisal.
     */
-    void makeOrder(Sale &sale);
+    void makeOrder();
     /**
     * Print sales volume by product.
     */
@@ -87,8 +87,8 @@ private:
     void loadData();
 public:
     Menu(bool load);
-    Menu(vector<Store*> s, vector<Client*> c, vector<Client*> co, vector<Employee*> e,
-         vector<Employee*> eo, vector<Product*> p, vector<Product*> po, vector<Sale*> sal);
+    Menu(vector<Store*> &s, vector<Client*> &c, vector<Client*> &co, vector<Employee*> &e,
+         vector<Employee*> &eo, vector<Product*> &p, vector<Product*> &po, vector<Sale*> &sal);
     /**
     * Main Menu
     */

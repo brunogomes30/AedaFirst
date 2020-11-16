@@ -15,7 +15,7 @@ enum Category {
 
 class Product {
 protected:
-    unsigned int id;
+    unsigned id;
     std::string name;
     float price;
     Category category;
