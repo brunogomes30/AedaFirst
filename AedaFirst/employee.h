@@ -5,11 +5,11 @@
 class Employee {
 private:
     std::string name;
-    unsigned int nif;
+    unsigned nif;
     float salary;
-    unsigned int numOrders;
+    unsigned numOrders;
 public:
-    Employee(std::string name = "", unsigned int nif = 0, float salary = 0);
+    Employee(std::string name = "", unsigned nif = 0, float salary = 0);
 
     std::string getName() const;
 
@@ -17,7 +17,7 @@ public:
 
     float getSalary() const;
 
-    unsigned int getNumOrders() const;
+    unsigned getNumOrders() const;
 
     void setName(std::string name);
 
@@ -25,7 +25,7 @@ public:
 
     void setSalary(float salary);
 
-    void addOrders(unsigned int numOrders);
+    void addOrders(unsigned numOrders);
 
     bool same(std::string identifier) const;
 

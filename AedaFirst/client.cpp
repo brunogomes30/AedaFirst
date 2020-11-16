@@ -11,7 +11,7 @@ Client::Client() {
     sumOfAppraisals = 0;
 }
 
-Client::Client(std::string name, unsigned int nif, bool regime) {
+Client::Client(std::string name, unsigned nif, bool regime) {
     this->name = name;
     this->nif = nif;
     this->regime = regime;
