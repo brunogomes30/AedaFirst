@@ -1,0 +1,2 @@
+nif=" 111111 " name=" Joca " opinion=" 1 " points=" 80 " regime=" 1 " discount=" 0 " 
+nif=" 222222 " name=" Ambrosio " opinion=" 0 " points=" 0 " regime=" 0 " discount=" 0 " 

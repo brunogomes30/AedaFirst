@@ -20,7 +20,9 @@ protected:
     float price;
     Category category;
 public:
-    Product(unsigned id);
+    Product();
+    Product(unsigned int id);
+    Product(unsigned int id, std::string name, float price, Category ctg);
     Product(std::string name, float price, Category ctg);
 
     unsigned getId() const;
@@ -40,6 +42,8 @@ public:
      * <ID>  <CATEGORY>  <NAME>
      */
     virtual void showProduct() const;
+
+
 };
 
 #endif //PRODUCT_H

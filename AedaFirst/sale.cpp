@@ -1,11 +1,31 @@
 #include "sale.h"
 #include <iomanip>
-
+#include "files.h"
 using namespace std;
+
+const string Sale::FILENAME = "sales.txt";
 
 Sale::Sale() {
     id = next_sale_id++;
     totalAmount = 0;
+}
+
+Sale::Sale(const map<string, string> &mapping,
+           const map<unsigned, Store *>  &storesMapping,
+           const map<unsigned, Employee *> &employeesMapping,
+           const map<unsigned, Client *> &clientsMapping){
+    stringstream(mapping.at("id")) >> this->id;
+    unsigned employeeNif, clientNif, storeId;
+    stringstream(mapping.at("employeeNif")) >> employeeNif;
+    stringstream(mapping.at("clientNif")) >> clientNif;
+    stringstream(mapping.at("storeId")) >> storeId;
+    this->store = storesMapping.at(storeId);
+    this->employee = employeesMapping.at(employeeNif);
+    this->client = clientsMapping.at(clientNif);
+    stringstream(mapping.at("appraisal")) >> this->appraisal;
+    stringstream(mapping.at("totalAmount")) >> this->totalAmount;
+    stringstream(mapping.at("discount")) >> this->discount;
+
 }
 
 void Sale::setStore(Store *store) {this->store = store;}
@@ -72,4 +92,16 @@ void Sale::showSale(bool showAppraisal) const {
     if (showAppraisal)
         cout << "Appraisal: " << appraisal << endl;
     cout << "-----------------------------------------------" << endl;
+}
+
+ostream& operator<< (ostream &os, const Sale &sale){
+    files::writeVariable(os, "id", sale.id);
+    files::writeVariable(os, "employeeNif", sale.employee->getNif());
+    files::writeVariable(os, "clientNif", sale.client->getNif());
+    files::writeVariable(os, "storeId", sale.store->getId());
+    files::writeVariable(os, "appraisal", sale.appraisal);
+    files::writeVariable(os, "totalAmount", sale.totalAmount);
+    files::writeVariable(os, "discount", sale.discount);
+    os << "\n";
+    return os;
 }

@@ -1,7 +1,7 @@
 #ifndef EMPLOYEE_H
 #define EMPLOYEE_H
 #include <iostream>
-
+#include<map>
 class Employee {
 private:
     std::string name;
@@ -9,7 +9,15 @@ private:
     float salary;
     unsigned int numOrders;
 public:
+    static const std::string FILENAME;
+
     Employee(std::string name = "", unsigned int nif = 0, float salary = 0);
+
+    /**
+     * The constructor to use when loading from file
+     * @param mapping
+     */
+    Employee(const std::map<std::string, std::string> &mapping);
 
     std::string getName() const;
 
@@ -38,5 +46,7 @@ public:
          * Salary: <EMPLOYEE_SALARY> Number of orders: <NUM_ORDERS>
          */
     void showEmployee(bool details) const;
+
+    friend std::ostream& operator<< (std::ostream &os, Employee &employee);
 };
 #endif //EMPLOYEE_H

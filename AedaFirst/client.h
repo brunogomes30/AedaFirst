@@ -7,6 +7,7 @@
 #include "product.h"
 #include <stack>
 #include <vector>
+#include <map>
 
 class Client {
 private:
@@ -43,8 +44,11 @@ private:
      */
     int sumOfAppraisals;
 public:
+
+    const static std::string FILENAME;
     Client();
     Client(std::string name, unsigned nif, bool regime);
+    Client(const std::map<std::string, std::string> &mapping);
     std::string getName() const;
     unsigned getNif() const;
     bool getRegime() const;
@@ -85,5 +89,7 @@ public:
      * <NIF>  <NAME>  <REGIME>  <OPINION>
      */
     void showClient(bool details) const;
+
+    friend std::ostream& operator<< (std::ostream &os, const Client &client);
 };
 #endif //CLIENT_H

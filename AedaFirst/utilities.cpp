@@ -213,7 +213,7 @@ void askCategory(Category &ctg) {
     else ctg = cake;
 }
 
-void askBreadSize(sizeType &size) {
+void askBreadSize(SizeType &size) {
     int s;
     bool error;
     cout << endl << setw(5) << "OP" << setw(10) << "Bread size" << endl;
@@ -234,7 +234,7 @@ void askBreadSize(sizeType &size) {
     else size = big;
 }
 
-void askCakeLayer(layer &ly, string object) {
+void askCakeLayer(Layer &ly, string object) {
     int layer;
     bool error;
     cout << endl << setw(5) << "OP" << setw(10) << "Cake layer" << endl;
@@ -243,7 +243,7 @@ void askCakeLayer(layer &ly, string object) {
     cout << setw(5) << "3" << setw(10) << "Sponge" << endl;
     do {
         error = false;
-        cout << endl << "Cake's layer " << object << ":" << endl;
+        cout << endl << "Cake's Layer " << object << ":" << endl;
         cin >> layer;
         if (cin.fail() || cin.peek() != '\n' || (layer != 1 && layer != 2 && layer != 3)) {
             cin.clear();
@@ -308,7 +308,7 @@ void setEmployeeData(string &name, unsigned &nif, float &salary, const vector<St
     } while (error);
 }
 
-void setProductData(string &name, float &price, Category &ctg, sizeType &size, layer &ly1, layer &ly2) {
+void setProductData(string &name, float &price, Category &ctg, SizeType &size, Layer &ly1, Layer &ly2) {
     // Set category
     askCategory(ctg);
     // Set name

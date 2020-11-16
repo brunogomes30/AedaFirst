@@ -27,6 +27,7 @@ int main() {
     Employee e5("Bach", 4, 112);
     Employee e6("Schubert", 9, 834);
 
+
     products.push_back(&p1);
     products.push_back(&p2);
     products.push_back(&p3);
@@ -53,8 +54,11 @@ int main() {
     for (int i = 0; i < employees.size(); i++) {
         stores[i%4]->addEmployee(employees[i]);
     }
-    Menu menu(stores, clients, oldClients, employees, oldEmployees, products, oldProducts, sales);
+    Menu menu(true);
+    //Menu menu(stores, clients, oldClients, employees, oldEmployees, products, oldProducts, sales);
     menu.mainMenu();
+
+    menu.saveData();
 
 
 }

@@ -1,6 +1,9 @@
 #include "client.h"
 #include <iomanip>
+#include "files.h"
 using namespace std;
+
+const string Client::FILENAME = "clients.txt";
 
 Client::Client() {
     name ="";
@@ -19,6 +22,15 @@ Client::Client(std::string name, unsigned int nif, bool regime) {
     discount = false;
     sumOfAppraisals = 0;
     opinion = false;
+}
+
+Client::Client(const std::map<std::string, std::string> &mapping){
+    this->name = mapping.at("name");
+    stringstream(mapping.at("nif")) >> this->nif ;
+    stringstream(mapping.at("points")) >> this->points;
+    stringstream(mapping.at("opinion")) >> this->opinion;
+    stringstream(mapping.at("points")) >> this->regime;
+    stringstream(mapping.at("discount")) >> this->discount;
 }
 
 string Client::getName() const {return name;}
@@ -96,4 +108,15 @@ void Client::showClient(bool details) const {
         cout << endl;
     }
 
+}
+
+ostream& operator<< (ostream &os, const Client &client){
+    files::writeVariable(os, "nif", client.nif);
+    files::writeVariable(os, "name", client.name);
+    files::writeVariable(os, "opinion", client.opinion);
+    files::writeVariable(os, "points", client.points);
+    files::writeVariable(os, "regime", client.regime);
+    files::writeVariable(os, "discount", client.discount);
+    os << "\n";
+    return os;
 }

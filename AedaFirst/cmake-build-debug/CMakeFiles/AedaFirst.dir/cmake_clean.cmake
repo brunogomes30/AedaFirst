@@ -6,6 +6,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/AedaFirst.dir/cake.cpp.obj"
   "CMakeFiles/AedaFirst.dir/client.cpp.obj"
   "CMakeFiles/AedaFirst.dir/employee.cpp.obj"
+  "CMakeFiles/AedaFirst.dir/files.cpp.obj"
   "CMakeFiles/AedaFirst.dir/main.cpp.obj"
   "CMakeFiles/AedaFirst.dir/menu.cpp.obj"
   "CMakeFiles/AedaFirst.dir/product.cpp.obj"

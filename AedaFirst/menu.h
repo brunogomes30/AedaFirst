@@ -20,6 +20,13 @@ private:
     std::vector<Product *> products;
     std::vector<Product *> oldProducts;
     std::vector<Sale *> sales;
+    map<unsigned, Product *> productsMapping;
+    map<unsigned, Employee *> employeesMapping;
+    map<unsigned, Client *> clientsMapping;
+    map<unsigned, Store *> storesMapping;
+    map<unsigned, Bread *> breadsMapping;
+    map<unsigned, Cake *> cakesMapping;
+
 
     /**
      * Asks user for the way he wants to sort <clients> and sort it.
@@ -76,6 +83,8 @@ private:
     * Sales Menu
     */
     void opsSales();
+    
+    void loadData();
 public:
     Menu(bool load);
     Menu(vector<Store*> s, vector<Client*> c, vector<Client*> co, vector<Employee*> e,
@@ -84,6 +93,9 @@ public:
     * Main Menu
     */
     void mainMenu();
+
+    void saveData();
+
 };
 
 

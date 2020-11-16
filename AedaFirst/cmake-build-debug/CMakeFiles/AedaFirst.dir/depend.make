@@ -3,20 +3,27 @@
 
 CMakeFiles/AedaFirst.dir/bread.cpp.obj: ../bread.cpp
 CMakeFiles/AedaFirst.dir/bread.cpp.obj: ../bread.h
+CMakeFiles/AedaFirst.dir/bread.cpp.obj: ../files.h
 CMakeFiles/AedaFirst.dir/bread.cpp.obj: ../product.h
 
 CMakeFiles/AedaFirst.dir/cake.cpp.obj: ../cake.cpp
 CMakeFiles/AedaFirst.dir/cake.cpp.obj: ../cake.h
+CMakeFiles/AedaFirst.dir/cake.cpp.obj: ../files.h
 CMakeFiles/AedaFirst.dir/cake.cpp.obj: ../product.h
 
 CMakeFiles/AedaFirst.dir/client.cpp.obj: ../client.cpp
 CMakeFiles/AedaFirst.dir/client.cpp.obj: ../client.h
 CMakeFiles/AedaFirst.dir/client.cpp.obj: ../employee.h
+CMakeFiles/AedaFirst.dir/client.cpp.obj: ../files.h
 CMakeFiles/AedaFirst.dir/client.cpp.obj: ../product.h
 CMakeFiles/AedaFirst.dir/client.cpp.obj: ../store.h
 
 CMakeFiles/AedaFirst.dir/employee.cpp.obj: ../employee.cpp
 CMakeFiles/AedaFirst.dir/employee.cpp.obj: ../employee.h
+CMakeFiles/AedaFirst.dir/employee.cpp.obj: ../files.h
+
+CMakeFiles/AedaFirst.dir/files.cpp.obj: ../files.cpp
+CMakeFiles/AedaFirst.dir/files.cpp.obj: ../files.h
 
 CMakeFiles/AedaFirst.dir/main.cpp.obj: ../bread.h
 CMakeFiles/AedaFirst.dir/main.cpp.obj: ../cake.h
@@ -33,6 +40,7 @@ CMakeFiles/AedaFirst.dir/menu.cpp.obj: ../bread.h
 CMakeFiles/AedaFirst.dir/menu.cpp.obj: ../cake.h
 CMakeFiles/AedaFirst.dir/menu.cpp.obj: ../client.h
 CMakeFiles/AedaFirst.dir/menu.cpp.obj: ../employee.h
+CMakeFiles/AedaFirst.dir/menu.cpp.obj: ../files.h
 CMakeFiles/AedaFirst.dir/menu.cpp.obj: ../menu.cpp
 CMakeFiles/AedaFirst.dir/menu.cpp.obj: ../menu.h
 CMakeFiles/AedaFirst.dir/menu.cpp.obj: ../product.h
@@ -45,12 +53,14 @@ CMakeFiles/AedaFirst.dir/product.cpp.obj: ../product.h
 
 CMakeFiles/AedaFirst.dir/sale.cpp.obj: ../client.h
 CMakeFiles/AedaFirst.dir/sale.cpp.obj: ../employee.h
+CMakeFiles/AedaFirst.dir/sale.cpp.obj: ../files.h
 CMakeFiles/AedaFirst.dir/sale.cpp.obj: ../product.h
 CMakeFiles/AedaFirst.dir/sale.cpp.obj: ../sale.cpp
 CMakeFiles/AedaFirst.dir/sale.cpp.obj: ../sale.h
 CMakeFiles/AedaFirst.dir/sale.cpp.obj: ../store.h
 
 CMakeFiles/AedaFirst.dir/store.cpp.obj: ../employee.h
+CMakeFiles/AedaFirst.dir/store.cpp.obj: ../files.h
 CMakeFiles/AedaFirst.dir/store.cpp.obj: ../product.h
 CMakeFiles/AedaFirst.dir/store.cpp.obj: ../store.cpp
 CMakeFiles/AedaFirst.dir/store.cpp.obj: ../store.h

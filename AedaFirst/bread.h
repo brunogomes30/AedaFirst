@@ -2,10 +2,11 @@
 #define BREAD_H
 
 #include "product.h"
+#include<map>
 /**
  * Enumerated type for specifying the size of the bread.
  */
-enum sizeType{
+enum SizeType{
     small,
     big
 };
@@ -15,16 +16,28 @@ private:
     /**
      * Specifies the size of the bread.
      */
-    sizeType size;
+    SizeType size;
 
 public:
-    Bread(std::string name, float price, Category category, sizeType size);
-    sizeType getSize();
+    static const std::string FILENAME;
+
+    Bread(unsigned int id, std::string name, float price, Category category, SizeType size);
+    Bread(std::string name, float price, Category category, SizeType size);
+
+    /**
+     * The constructor to use when loading from file
+     * @param mapping
+     */
+    Bread(const std::map<std::string, std::string> &mapping);
+
+    SizeType getSize();
     /**
      * Print product in format:
      * <ID>  <CATEGORY>  <NAME>  <SIZE>  <PRICE>
      */
     void showProduct() const override;
+
+    friend std::ostream& operator<< (std::ostream &os, Bread &bread);
 };
 
 

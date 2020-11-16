@@ -2,9 +2,19 @@
 #include <iomanip>
 
 using namespace std;
+Product::Product(){
+
+}
 
 Product::Product(unsigned id) {
     this->id = id;
+}
+
+Product::Product(unsigned int id, std::string name, float price, Category ctg){
+    this->id = id;
+    this->name = name;
+    this->price = price;
+    this->category = ctg;
 }
 Product::Product(string name, float price, Category ctg){
     this->id = next_id++;

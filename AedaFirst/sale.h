@@ -24,7 +24,12 @@ private:
     float discount;
     float totalAmount;
 public:
+    const static std::string FILENAME;
     Sale();
+    Sale(const std::map<std::string, std::string> &mapping,
+         const std::map<unsigned, Store *>  &storesMapping,
+         const std::map<unsigned, Employee *> &employeesMapping,
+         const std::map<unsigned, Client *> &clientsMapping);
     void setStore(Store* store);
     void setClient(Client* client);
     void setEmployee(Employee* employee);
@@ -59,6 +64,8 @@ public:
      * -----------------------------------------------
      */
     void showSale(bool showAppraisal) const;
+
+    friend std::ostream& operator<< (std::ostream &os, const Sale &sale);
 };
 
 #endif //SALE_H

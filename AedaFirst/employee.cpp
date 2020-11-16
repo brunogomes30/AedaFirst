@@ -1,8 +1,9 @@
 #include "employee.h"
 #include <iomanip>
-
+#include "files.h"
 using namespace std;
 
+const string Employee::FILENAME = "employees.txt";
 
 Employee::Employee(string name, unsigned nif, float salary){
     setName(name);
@@ -11,9 +12,19 @@ Employee::Employee(string name, unsigned nif, float salary){
     numOrders = 0;
 }
 
+Employee::Employee(const map<string, string> &mapping){
+    stringstream sa(mapping.at("nif"));
+    sa >> this->nif;
+    sa = stringstream(mapping.at("numOrders"));
+    sa >> this->numOrders;
+    sa = stringstream(mapping.at("salary"));
+    sa >> this->salary;
+    this->name = mapping.at("name");
+}
+
 string Employee::getName() const {return name;}
 
-unsigned int Employee::getNif() const {return nif;}
+unsigned Employee::getNif() const {return nif;}
 
 float Employee::getSalary() const {return salary;}
 
@@ -46,4 +57,13 @@ void Employee::showEmployee(bool details) const {
         cout << setw(10) << setprecision(2) << fixed << salary << setw(12) << numOrders << endl;
     else
         cout << endl;
+}
+
+std::ostream& operator<< (std::ostream &os, Employee &employee){
+    files::writeVariable(os, "nif", employee.nif);
+    files::writeVariable(os, "name", employee.name);
+    files::writeVariable(os, "salary", employee.salary);
+    files::writeVariable(os, "numOrders", employee.numOrders);
+    os << "\n";
+    return os;
 }

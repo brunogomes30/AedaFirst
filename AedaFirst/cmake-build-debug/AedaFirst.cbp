@@ -104,6 +104,12 @@
 		<Unit filename="C:/Users/ultra/Documents/AedaFirst/AedaFirst/employee.h">
 			<Option target="AedaFirst"/>
 		</Unit>
+		<Unit filename="C:/Users/ultra/Documents/AedaFirst/AedaFirst/files.cpp">
+			<Option target="AedaFirst"/>
+		</Unit>
+		<Unit filename="C:/Users/ultra/Documents/AedaFirst/AedaFirst/files.h">
+			<Option target="AedaFirst"/>
+		</Unit>
 		<Unit filename="C:/Users/ultra/Documents/AedaFirst/AedaFirst/main.cpp">
 			<Option target="AedaFirst"/>
 		</Unit>

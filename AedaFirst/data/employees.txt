@@ -1,0 +1,6 @@
+nif=" 123456789 " name=" Joaquim " salary=" 1000.5 " numOrders=" 1 " 
+nif=" 987654321 " name=" Ana " salary=" 800 " numOrders=" 0 " 
+nif=" 1 " name=" Mozart " salary=" 2000 " numOrders=" 0 " 
+nif=" 232 " name=" Bethoveen " salary=" 1578 " numOrders=" 0 " 
+nif=" 4 " name=" Bach " salary=" 112 " numOrders=" 1 " 
+nif=" 9 " name=" Schubert " salary=" 834 " numOrders=" 0 " 

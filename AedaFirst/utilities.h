@@ -100,13 +100,13 @@ void askCategory(Category &ctg);
  * Asks user for a size of a bread.
  * @param size Save the user answer.
  */
-void askBreadSize(sizeType &size);
+void askBreadSize(SizeType &size);
 /**
- * Asks user for a layer of a cake.
+ * Asks user for a Layer of a cake.
  * @param ly Save the user answer.
  * @param object String with text to complement outputs.
  */
-void askCakeLayer(layer &ly, std::string object);
+void askCakeLayer(Layer &ly, std::string object);
 /**
  * Asks user for stores.
  * @param stores Vector with all possible stores to choose.
@@ -120,7 +120,7 @@ void setClientData(std::string &name, unsigned &nif, bool &regime);
 
 void setEmployeeData(std::string &name, unsigned &nif, float &salary, const std::vector<Store*> &stores, Store* &store);
 
-void setProductData(std::string &name, float &price, Category &ctg, sizeType &size, layer &ly1, layer &ly2);
+void setProductData(std::string &name, float &price, Category &ctg, SizeType &size, Layer &ly1, Layer &ly2);
 /**
  * Search for a store by its ID.
  * @param stores  Vector of pointers to stores.

@@ -2,7 +2,9 @@
 #include <iomanip>
 #include <algorithm>
 #include <map>
+#include "files.h"
 using namespace std;
+const string Store::FILENAME = "stores.txt";
 
 Store::Store(unsigned int id) {
     this->id = id;
@@ -16,6 +18,30 @@ Store::Store(unsigned int id, std::string name, Address address) {
     this->id = id;
     this->name = name;
     this->address = address;
+}
+
+Store::Store(const map<string, string> &mapping, const map<unsigned, Product*> &productsMapping, const map<unsigned, Employee*> &employeesMapping){
+    //Create store with basic variables(id, name and Address)
+    stringstream sa(mapping.at("id"));
+    sa >> this->id;
+    this->name = mapping.at("name");
+    this->address.street = mapping.at("address_street");
+    this->address.locality = mapping.at("address_locality");
+
+    //Read vectors of products and employees
+    sa = stringstream(mapping.at("products"));
+    while(!sa.eof()){
+        unsigned id;
+        sa >> id;
+        addProduct(productsMapping.at(id));
+    }
+
+    sa = stringstream(mapping.at("employees"));
+    while(!sa.eof()){
+        unsigned nif;
+        sa >> nif;
+        addEmployee(employeesMapping.at(nif));
+    }
 }
 
 unsigned Store::getId() const {
@@ -137,57 +163,27 @@ void Store::showStore() const {
 
 ostream& operator<< (std::ostream &os, Store &store){
 
-    os << "id=\" " << store.id << "\" ";
-    os << "name=\" " << store.name << "\" ";
-    os << "address_locality=\" " << store.address.locality << "\" ";
-    os << "address_street=\" " << store.address.street << "\" ";
-    os << "address_street=\" " << store.address.street << "\" ";
-    os << "products=\" ";
+    files::writeVariable(os, "id", store.id);
+    files::writeVariable(os, "name", store.name);
+    files::writeVariable(os, "address_locality", store.address.locality);
+    files::writeVariable(os, "address_street", store.address.street);
+
+    stringstream productsString("");
     for(Product *product : store.products){
-        os << " " << product->getId();
+        productsString << " " << product->getId();
     }
-    os << "\" ";
-    os << "employees=\" ";
+    files::writeVariable(os, "products", productsString.str());
+
+    stringstream employeesString("");
     for(Employee *employee : store.employees){
-        os << " " << employee->getNif() ;
+        employeesString << " " << employee->getNif() ;
     }
-    os << "\" ";
+    files::writeVariable(os, "employees", employeesString.str());
+
     os << "\n";
-
-
+    return os;
 }
 
-istream &operator>>(std::istream &is, Store &store){
-    string line;
-    while(!is.eof()) {
-        getline(is, line);
-        stringstream ss(line);
-        map<string, string> mapping;
-        while (!ss.eof()) {
-            string variable;
-            ss >> variable;
-            if ((*variable.end()) != '\"') {
-                //Must be ' " '
-                throw 1;
-            }
-            variable = variable.substr(0, variable.size() - 1);
-            string value = "", extra = "";
-            do {
-                value += extra;
-                ss >> extra;
 
-            } while (extra != "\"");
-            mapping.insert(variable, value);
-        }
-        unsigned int id;
-        stringstream sa(mapping.at("id"));
-        sa >> id;
-        store = Store(id,
-                      mapping.at("name"),
-                      Address({mapping.at("address_street"), mapping.at("address_locality")}));
-
-
-    }
-}
 
 

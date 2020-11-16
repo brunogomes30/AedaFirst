@@ -1,12 +1,16 @@
 #include "menu.h"
 #include "utilities.h"
+#include "files.h"
 #include <iostream>
 #include <algorithm>
 #include <iomanip>
+#include<fstream>
 #include <map>
 using namespace std;
 
-Menu::Menu(bool load) {}
+Menu::Menu(bool load) {
+    loadData();
+}
 
 Menu::Menu(vector<Store*> s, vector<Client*> c, vector<Client*> co, vector<Employee*> e,
            vector<Employee*> eo, vector<Product*> p, vector<Product*> po, vector<Sale*> sal) {
@@ -526,14 +530,22 @@ void Menu::opsSales() {
                 break;
         }
     } while (operation != 0);
+    for(Store *store : stores){
+        cout << "ID = " << store->getId() << "\n";
+    }
 }
 
 void Menu::mainMenu() {
+    //loadData();
+    cout << "Stores size::: " << stores.size();
+    for(Store *store : stores){
+        cout << "Store = " << store << "\n";
+    }
     string name;
     unsigned nif_or_id;
     float price_or_salary;
     Store* store; Address address;
-    Product *product; Category ctg; sizeType size; layer ly1;layer ly2;
+    Product *product; Category ctg; SizeType size; Layer ly1;Layer ly2;
     Client *client; bool regime;
     Employee *employee;
 
@@ -644,4 +656,169 @@ void Menu::mainMenu() {
                 break;
         }
     } while (operation != 0);
+    for(Store *store : stores){
+        cout << "ID = " << store->getId() << "\n";
+    }
+}
+
+void Menu::loadData() {
+    //return;
+    cout <<"Load Data:::";
+    string line;
+    string path = "data/";
+    try {
+        //Load breads
+        cout << "Load breads ";
+        ifstream is(path + Bread::FILENAME);
+        while (!is.eof() && is.is_open()) {
+            getline(is, line);
+            if(line.empty()){
+                continue;
+            }
+            map<string, string> mapping = files::readData(line);
+            Bread *bread = new Bread(mapping);
+            Product *product = bread;
+            productsMapping[bread->getId()] = product;
+            products.push_back(product);
+        }
+        is.close();
+
+        cout << "Load Cakes ";
+        //Load Cakes
+        is = ifstream(path + Cake::FILENAME);
+        while (!is.eof() && is.is_open()) {
+            getline(is, line);
+            map<string, string> mapping = files::readData(line);
+            if(mapping.empty()){
+                continue;
+            }
+            Cake *cake = new Cake(mapping);
+            Product *product = cake;
+            productsMapping[cake->getId()] = product;
+            products.push_back(product);
+        }
+        is.close();
+
+        cout << "Load Employees ";
+        //Load employees
+        is = ifstream(path + Employee::FILENAME);
+        while (!is.eof() && is.is_open()) {
+            getline(is, line);
+            if(line.empty()){
+                continue;
+            }
+            map<string, string> mapping = files::readData(line);
+            Employee *employee = new Employee(mapping);
+            employeesMapping[employee->getNif()] = employee;
+            employees.push_back(employeesMapping[employee->getNif()]);
+        }
+        is.close();
+
+        cout << "Load Stores ";
+        //Load stores
+        is = ifstream(path + Store::FILENAME);
+        //One line equals one Store
+        while(!is.eof() && is.is_open()) {
+
+            getline(is, line);
+            if(line.empty()){
+                continue;
+            }
+            map<string, string> mapping = files::readData(line);
+            Store *store = new Store(mapping, productsMapping, employeesMapping);
+            stores.push_back(store);
+            storesMapping[store->getId()] = store;
+
+        }
+        is.close();
+
+        cout << "Load clients ";
+        // Load clients
+        is = ifstream(path + Client::FILENAME);
+        //One line equals one Store
+        while(!is.eof() && is.is_open()) {
+            getline(is, line);
+            if(line.empty()){
+                continue;
+            }
+            map<string, string> mapping = files::readData(line);
+            Client *client = new Client(mapping);
+            clients.push_back(client);
+            clientsMapping[client->getNif()] = client;
+        }
+        is.close();
+
+        //Load Sales
+        is = ifstream(path + Sale::FILENAME);
+        //One line equals one Store
+        while(!is.eof() && is.is_open()) {
+            getline(is, line);
+            if(line.empty()){
+                continue;
+            }
+            map<string, string> mapping = files::readData(line);
+            Sale *sale = new Sale(mapping, storesMapping, employeesMapping, clientsMapping);
+            sales.push_back(sale);
+
+            //sale->getClient()
+        }
+        is.close();
+
+        for(Store *store : stores){
+            cout << "Store = " << *store;
+        }
+    } catch (exception e){
+        cout << "Error trying to load data\n";
+    }
+}
+
+void Menu::saveData(){
+    cout << "SAVE DATA ()";
+    string path = "data/";
+    ofstream outCakes, outBreads, outEmployees, outStores, outClients, outSales;
+
+    //Save products
+    outCakes.open(path + Cake::FILENAME, ios::out);
+    outBreads.open(path + Bread::FILENAME, ios::out);
+    for(Product *product : products){
+        if(product->getCategory() == Category::bread){
+            outBreads << *(Bread*)product;
+        } else {
+            outCakes << *(Cake*)product;
+        }
+    }
+    outBreads.close();
+    outCakes.close();
+
+
+    //Save employess
+    outEmployees.open(path + Employee::FILENAME, ios::out);
+    for(Employee *employee : employees){
+        outEmployees << *employee;
+    }
+    outEmployees.close();
+
+    //Save Stores
+    outStores.open(path + Store::FILENAME, ios::out);
+    for(Store *store : stores){
+        outStores << *store;
+    }
+    outStores.close();
+    outClients.open(path + Client::FILENAME, ios::out);
+
+    for(Client * client: clients){
+        outClients << *client;
+    }
+    outClients.close();
+
+    outSales.open(path + Sale::FILENAME, ios::out);
+    for(Sale * sale : sales){
+        outSales << *sale;
+    }
+
+    outSales.close();
+
+
+
+
 }

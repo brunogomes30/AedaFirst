@@ -250,6 +250,33 @@ employee.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/employee.cpp.s
 .PHONY : employee.cpp.s
 
+files.obj: files.cpp.obj
+
+.PHONY : files.obj
+
+# target to build an object file
+files.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/files.cpp.obj
+.PHONY : files.cpp.obj
+
+files.i: files.cpp.i
+
+.PHONY : files.i
+
+# target to preprocess a source file
+files.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/files.cpp.i
+.PHONY : files.cpp.i
+
+files.s: files.cpp.s
+
+.PHONY : files.s
+
+# target to generate assembly for a file
+files.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/files.cpp.s
+.PHONY : files.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -433,6 +460,9 @@ help:
 	@echo ... employee.obj
 	@echo ... employee.i
 	@echo ... employee.s
+	@echo ... files.obj
+	@echo ... files.i
+	@echo ... files.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

@@ -21,13 +21,25 @@ private:
     std::vector<Product*> products;
     std::vector<Employee*> employees;
 public:
+    static const std::string FILENAME;
     Store(unsigned id);
     Store(std::string name, Address address);
  	Store(unsigned int id, std::string name, Address address);
-/**
+
+    /**
+    * The constructor to use when loading from file
+    * @param mapping
+    */
+    Store(const std::map<std::string, std::string> &mapping,
+          const std::map<unsigned, Product*> &productsMapping,
+          const std::map<unsigned, Employee*> &employeesMapping);
+
+    /**
      *
      * @return Store's ID.
-     */    unsigned getId() const;
+     */
+    unsigned getId() const;
+
     /**
      *
      * @return Store's name.
