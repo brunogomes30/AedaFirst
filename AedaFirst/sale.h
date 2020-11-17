@@ -54,18 +54,17 @@ public:
      */
     bool sameClient(Client* &client) const;
     /**
-     * Print sale in format:
-     * -----------------------------------------------
-     * ID: <STORE_ID> Store: <STORE_NAME>
-     * <CLIENT_NIF>  <CLIENT_NAME>
-     * <CLIENT_NIF>  <CLIENT_NAME>  <REGIME>
+     * Print sale in format:\n\n
      *
-     * <PRODUCT_ID> <PRODUCT_NAME> <PRODUCT_QUANTITY> x <PRODUCT_PRICE>
+     * ID: <STORE_ID> Store: <STORE_NAME> \n
+     * <EMPLOYEE_NIF>  <EMPLOYEE_NAME> \n
+     * <CLIENT_NIF>  <CLIENT_NAME>  <REGIME>\n\n
      *
-     * Total amount: <BILL>
-     * Discount: <DISCOUNT>%  Amount to pay: <BILL_DISCOUNTED>
+     * <PRODUCT_ID> <PRODUCT_NAME> <PRODUCT_QUANTITY> x <PRODUCT_PRICE>\n\n
+     *
+     * Total amount: <BILL>\n
+     * Discount: <DISCOUNT>%  Amount to pay: <BILL_DISCOUNTED>\n
      * Appraisal: <APPRAISAL>
-     * -----------------------------------------------
      */
     void showSale(bool showAppraisal) const;
 

@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <iomanip>
 #include "exceptions.h"
-#include<fstream>
+#include <fstream>
 #include <map>
 
 using namespace std;
@@ -834,7 +834,7 @@ void Menu::mainMenu() {
                     makeOrder();
                 }
                 catch (Exception &e) {
-                    e.what();
+                    cout << e.what() << endl;
                 }
 
                 break;

@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <exception>
+
 class Exception : public exception {
 private:
     std::string explanation;

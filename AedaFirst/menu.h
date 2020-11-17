@@ -18,12 +18,11 @@ private:
     std::vector<Client *> clients;
     std::vector<Product *> products;
     std::vector<Sale *> sales;
+    // Maps to help saving and loading files
     map<unsigned, Product *> productsMapping;
     map<unsigned, Employee *> employeesMapping;
     map<unsigned, Client *> clientsMapping;
     map<unsigned, Store *> storesMapping;
-
-
     /**
      * Asks user for the way he wants to sort <clients> and sort it.
      */
