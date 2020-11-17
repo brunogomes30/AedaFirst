@@ -18,11 +18,8 @@ Menu::Menu(vector<Store*> &s, vector<Client*> &c, vector<Client*> &co, vector<Em
            vector<Employee*> &eo, vector<Product*> &p, vector<Product*> &po, vector<Sale*> &sal) {
     stores = s;
     employees = e;
-    oldEmployees = eo;
     clients = c;
-    oldClients = co;
     products = p;
-    oldProducts = po;
     sales = sal;
 
     for(Store * s :stores){
@@ -570,11 +567,6 @@ void Menu::opsSales() {
 }
 
 void Menu::mainMenu() {
-    //loadData();
-    cout << "Stores size::: " << stores.size();
-    for(Store *store : stores){
-        cout << "Store = " << store << "\n";
-    }
     string name;
     unsigned nif_or_id;
     float price_or_salary;
@@ -705,21 +697,15 @@ void Menu::mainMenu() {
                 break;
         }
     } while (operation != 0);
-    for(Store *store : stores){
-        cout << "ID = " << store->getId() << "\n";
-    }
 }
 
 void Menu::loadData() {
-    //return;
-    cout <<"Load Data:::";
     string line;
     string path = "data/";
     try {
         ifstream is(path + Bread::FILENAME);
         //Load breads
         try {
-            cout << "Load breads ";
             while (!is.eof() && is.is_open()) {
                 getline(is, line);
                 if (line.empty()) {
@@ -737,10 +723,8 @@ void Menu::loadData() {
         }catch(exception &e){
             throw ReadingDataException("Breads");
         }
-
+        //Load Cakes
         try {
-            cout << "Load Cakes ";
-            //Load Cakes
             is = ifstream(path + Cake::FILENAME);
             while (!is.eof() && is.is_open()) {
                 getline(is, line);
@@ -759,9 +743,8 @@ void Menu::loadData() {
         } catch(exception &e){
             throw ReadingDataException("Cakes");
         }
-
+        cout << "Load Employees ";
         try {
-            cout << "Load Employees ";
             //Load employees
             is = ifstream(path + Employee::FILENAME);
             while (!is.eof() && is.is_open()) {
@@ -780,9 +763,8 @@ void Menu::loadData() {
         } catch (exception &e){
             throw ReadingDataException("Employees");
         }
-
+        cout << "Load Stores ";
         try {
-            cout << "Load Stores ";
             //Load stores
             is = ifstream(path + Store::FILENAME);
             //One line equals one Store
@@ -804,9 +786,8 @@ void Menu::loadData() {
         } catch (exception e){
             throw ReadingDataException("Stores");
         }
-
+        cout << "Load clients ";
         try {
-            cout << "Load clients ";
             // Load clients
             is = ifstream(path + Client::FILENAME);
             //One line equals one Store
@@ -827,9 +808,8 @@ void Menu::loadData() {
         } catch(exception &e){
             throw ReadingDataException("Clients");
         }
-
+        //Load Sales
         try {
-            //Load Sales
             is = ifstream(path + Sale::FILENAME);
             //One line equals one Store
             while (!is.eof() && is.is_open()) {
@@ -840,8 +820,6 @@ void Menu::loadData() {
                 map<string, string> mapping = files::readData(line);
                 Sale *sale = new Sale(mapping, storesMapping, employeesMapping, clientsMapping, productsMapping);
                 sales.push_back(sale);
-
-                //sale->getClient()
             }
             is.close();
         } catch (exception &e){
@@ -854,7 +832,6 @@ void Menu::loadData() {
 }
 
 void Menu::saveData(){
-    cout << "SAVE DATA ()";
     string path = "data/";
     ofstream outCakes, outBreads, outEmployees, outStores, outClients, outSales;
 

@@ -15,18 +15,13 @@ class Menu {
 private:
     std::vector<Store *> stores;
     std::vector<Employee*> employees;
-    std::vector<Employee*> oldEmployees;
     std::vector<Client *> clients;
-    std::vector<Client *> oldClients;
     std::vector<Product *> products;
-    std::vector<Product *> oldProducts;
     std::vector<Sale *> sales;
     map<unsigned, Product *> productsMapping;
     map<unsigned, Employee *> employeesMapping;
     map<unsigned, Client *> clientsMapping;
     map<unsigned, Store *> storesMapping;
-    map<unsigned, Bread *> breadsMapping;
-    map<unsigned, Cake *> cakesMapping;
 
 
     /**
