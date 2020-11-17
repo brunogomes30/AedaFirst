@@ -33,6 +33,13 @@ void showProducts(const std::vector<Product*> &products) {
 }
 
 void showMenuOperations() {
+    cout << "There are several options available and some require extra arguments" << endl;
+    cout << "\t add -> to Add an entity, takes a second argument from the list: client, employee, product, store, " << endl;
+    cout << "\t remove -> to Remove an entity, takes a second argument from the list : client, employee, product, store, " << endl;
+    cout << "\t view -> to view a list or entity, takes a second argument from the list: clients, employees, products, stores, client, employee, store, product, sales" << endl;
+    cout << "\t edit -> to edit an entity, takes a second argument from the list: client, employee, product, store";
+    cout << endl;
+    return;
     cout << endl << "[MENU]" << endl;
     cout << " 0 -> Exit" << endl;
     cout << " 1 -> Print stores" << endl;

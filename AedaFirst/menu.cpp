@@ -574,34 +574,176 @@ void Menu::mainMenu() {
     Product *product; Category ctg; SizeType size; Layer ly1;Layer ly2;
     Client *client; bool regime;
     Employee *employee;
-
-    int operation;
+    string firstCommand, secondCommand;
+    showMenuOperations();
     do {
-        showMenuOperations();
-        cout << "\n[MENU] Select operation:" << endl;
-        cin >> operation;
-        if (cin.fail() || cin.peek() != '\n') {
-            cin.clear();
-            operation = -1;
-        }
-        cin.ignore(100, '\n');
 
+        cout << "\n[MENU] Select operation:" << endl;
+        string line;
+        getline(cin, line);
+
+        stringstream responseStream(line);
+        responseStream >> firstCommand >> secondCommand;
+        if(firstCommand == "add"){
+            if(secondCommand.empty()){
+                cout << "Please insert a second argument from the list [store, employee, product, client]" << endl;
+                cout << "e.g: add store " << endl;
+            } else if(secondCommand == "store"){
+                setStoreData(name, address);
+                store = new Store(name, address);
+                stores.push_back(store);
+                storesMapping[store->getId()] = store;
+            } else if(secondCommand == "employee"){
+                setEmployeeData(name, nif_or_id, price_or_salary, stores, store);
+                employees.push_back(new Employee(name, nif_or_id, price_or_salary));
+                store->addEmployee(employees.back());
+            } else if(secondCommand == "product"){
+                setProductData(name, price_or_salary, ctg, size, ly1, ly2);
+                Product *product;
+                if (ctg == bread) {
+                    product = new Bread(name, price_or_salary, ctg, size);
+                    products.push_back(product);
+                }
+                else{
+                    product = new Bread(name, price_or_salary, ctg, size);
+                    products.push_back(product);
+                }
+                productsMapping[product->getId()] = product;
+
+            } else if(secondCommand == "client") {
+                setClientData(name, nif_or_id, regime);
+                client = new Client(name, nif_or_id, regime);
+                clients.push_back(client);
+                clientsMapping[client->getNif()] = client;
+
+            } else {
+                cout << "Second argument is wrong." << endl;
+                cout << "Please insert a second argument from the list [store, employee, product, client]" << endl;
+                cout << "e.g: add store " << endl;
+            }
+        } else if(firstCommand == "remove") {
+
+            if(secondCommand.empty()){
+                cout << "Please insert a second argument from the list [shop, employee, product, client]" << endl;
+                cout << "e.g: add shop " << endl;
+            } else if(secondCommand == "shop"){
+
+            } else if(secondCommand == "employee"){
+
+            } else if(secondCommand == "product"){
+
+            } else if(secondCommand == "client") {
+
+            } else {
+                cout << "Second argument is wrong." << endl;
+                cout << "Please insert a second argument from the list [shop, employee, product, client]" << endl;
+                cout << "e.g: remove shop " << endl;
+            }
+
+        } else if(firstCommand == "view"){
+
+            if(secondCommand.empty()){
+                cout << "Please insert a second argument from the list [stores, employees, products, clients, store, employee, product, client]" << endl;
+                cout << "e.g: add shop " << endl;
+            } else if(secondCommand == "stores" ){
+                showStores(stores);
+                cout << endl;
+            } else if(secondCommand == "employees"){
+                showEmployees(stores);
+            } else if(secondCommand == "products"){
+                showProducts(products);
+            } else if(secondCommand == "clients") {
+                chooseClientsSort();
+                showClients(clients);
+                nif_or_id = 0;
+                for (auto c:clients) {
+                    if (c->getRegime())
+                        nif_or_id++;
+                }
+                cout << "Normal: " << clients.size() - nif_or_id << "     Premium: " << nif_or_id << endl;
+
+            } else if(secondCommand == "sales") {
+                try {
+                    makeOrder();
+                }
+                catch (Exception &e) {
+                    e.what();
+                }
+                //opsSalesVolume();
+                //opsSales();
+            }else if(secondCommand == "store") {
+                showStores(stores);
+                askId(nif_or_id, "Store");
+                store = searchStore(stores, nif_or_id);
+                if (store != nullptr)
+                    opsStore(store);
+                else
+                    cout << "That store doesn't exist" << endl;
+            } else if(secondCommand == "employee") {
+                showEmployees(stores);
+                askPersonData(name, "Employee");
+                employee = searchEmployee(employees, name);
+                if (employee != nullptr)
+                    opsEmployee(employee);
+                else
+                    cout << "That employee doesn't exist" << endl;
+            } else if(secondCommand == "product"){
+                showProducts(products);
+                askId(nif_or_id, "Product");
+                product = searchProduct(products, nif_or_id);
+                if (product != nullptr)
+                    opsProduct(product);
+                else
+                    cout << "That product doesn't exist" << endl;
+            } else if(secondCommand == "client") {
+                showClients(clients);
+                askPersonData(name, "Client");
+                client = searchClient(clients, name);
+                if (client != nullptr)
+                    opsClient(client);
+                else
+                    cout << "That client doesn't exist" << endl;
+            } else {
+                    cout << "Second argument is wrong." << endl;
+                    cout << "Please insert a second argument from the list [shops, employees, products, clients]" << endl;
+                    cout << "e.g: remove shops " << endl;
+                }
+            } else if(firstCommand == "order") {
+                try {
+                    makeOrder();
+                }
+                catch (Exception &e) {
+                    e.what();
+                }
+            } else if(firstCommand == "help") {
+                showMenuOperations();
+            } else if(firstCommand == "exit") {
+            cout << "Finish Program" << endl;
+            break;
+            }
+
+
+
+    /*
         // MAIN MENU
         switch (operation) {
             case 0: // Exit
                 cout << "End of program" << endl;
                 break;
             case 1: // Print stores by ID
+                //Done
                 showStores(stores);
                 cout << endl;
                 break;
             case 2: // Add a store
+                //Done
                 setStoreData(name, address);
                 store = new Store(name, address);
                 stores.push_back(store);
                 storesMapping[store->getId()] = store;
                 break;
             case 3: // Search a store
+                //Done
                 showStores(stores);
                 askId(nif_or_id, "Store");
                 store = searchStore(stores, nif_or_id);
@@ -611,6 +753,7 @@ void Menu::mainMenu() {
                     cout << "That store doesn't exist" << endl;
                 break;
             case 4: // Print clients
+                //Done
                 chooseClientsSort();
                 showClients(clients);
                 nif_or_id = 0;
@@ -621,12 +764,14 @@ void Menu::mainMenu() {
                 cout << "Normal: " << clients.size() - nif_or_id << "     Premium: " << nif_or_id << endl;
                 break;
             case 5: // Add a client
+                //Done
                 setClientData(name, nif_or_id, regime);
                 client = new Client(name, nif_or_id, regime);
                 clients.push_back(client);
                 clientsMapping[client->getNif()] = client;
                 break;
             case 6: // Search a client
+                //Done
                 showClients(clients);
                 askPersonData(name, "Client");
                 client = searchClient(clients, name);
@@ -636,14 +781,17 @@ void Menu::mainMenu() {
                     cout << "That client doesn't exist" << endl;
                 break;
             case 7: // Print employees
+                //Done
                 showEmployees(stores);
                 break;
             case 8: // Add an employee
+                //Done
                 setEmployeeData(name, nif_or_id, price_or_salary, stores, store);
                 employees.push_back(new Employee(name, nif_or_id, price_or_salary));
                 store->addEmployee(employees.back());
                 break;
             case 9: // Search an employee
+                //Done
                 showEmployees(stores);
                 askPersonData(name, "Employee");
                 employee = searchEmployee(employees, name);
@@ -653,9 +801,11 @@ void Menu::mainMenu() {
                     cout << "That employee doesn't exist" << endl;
                 break;
             case 10: // Print products by ID
+                //Done
                 showProducts(products);
                 break;
             case 11: // Add a product
+                //Done
                 setProductData(name, price_or_salary, ctg, size, ly1, ly2);
                 Product *product;
                 if (ctg == bread) {
@@ -669,6 +819,7 @@ void Menu::mainMenu() {
                 productsMapping[product->getId()] = product;
                 break;
             case 12: // Search a product
+                //Done
                 showProducts(products);
                 askId(nif_or_id, "Product");
                 product = searchProduct(products, nif_or_id);
@@ -678,6 +829,7 @@ void Menu::mainMenu() {
                     cout << "That product doesn't exist" << endl;
                 break;
             case 13: // Make an order
+                //Done
                 try {
                     makeOrder();
                 }
@@ -696,7 +848,8 @@ void Menu::mainMenu() {
                 cout << "Doesn't exist such operation!" << endl;
                 break;
         }
-    } while (operation != 0);
+        */
+    } while (firstCommand != "exit");
 }
 
 void Menu::loadData() {

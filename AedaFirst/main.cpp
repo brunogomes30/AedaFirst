@@ -5,6 +5,7 @@ using namespace std;
 static map<int, Product> productsMapping;
 
 int main() {
+    /*
     vector<Store *> stores;
     vector<Employee*> employees;
     vector<Employee*> oldEmployees;
@@ -54,6 +55,8 @@ int main() {
     for (int i = 0; i < employees.size(); i++) {
         stores[i%4]->addEmployee(employees[i]);
     }
+
+    */
     Menu menu(true);
     //Menu menu(stores, clients, oldClients, employees, oldEmployees, products, oldProducts, sales);
     menu.mainMenu();

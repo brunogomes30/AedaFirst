@@ -19,6 +19,9 @@ Cake::Cake(string name, float price, Category ctg, Layer layer1, Layer layer2):P
 
 Cake::Cake(const map<string, string> &mapping) {
     stringstream(mapping.at("id")) >> this->id;
+    if(next_id <= this->id){
+        next_id = this->id + 1;
+    }
     stringstream(mapping.at("price")) >> this->price;
     stringstream(mapping.at("status")) >> this->status;
     int layerId;

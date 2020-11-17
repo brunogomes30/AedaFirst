@@ -15,6 +15,9 @@ Bread::Bread(unsigned int id, std::string name, float price, Category ctg, SizeT
 
 Bread::Bread(const map<string, string> &mapping) : Product() {
     stringstream(mapping.at("id")) >> this->id;
+    if(next_id <= this->id){
+        next_id = this->id + 1;
+    }
     stringstream(mapping.at("price")) >> this->price;
     stringstream(mapping.at("size")) >> this->status;
     name = mapping.at("name");

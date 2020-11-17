@@ -22,7 +22,9 @@ Sale::Sale(const map<string, string> &mapping,
            const map<unsigned, Client *> &clientsMapping,
            const map<unsigned, Product *> &productsMapping){
     stringstream(mapping.at("id")) >> this->id;
-
+    if(next_sale_id <= this->id){
+        next_sale_id = this->id + 1;
+    }
     unsigned employeeNif, clientNif, storeId;
     stringstream(mapping.at("employeeNif")) >> employeeNif;
     stringstream(mapping.at("clientNif")) >> clientNif;

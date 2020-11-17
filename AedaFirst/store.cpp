@@ -25,6 +25,9 @@ Store::Store(unsigned int id, std::string name, Address address) {
 Store::Store(const map<string, string> &mapping, const map<unsigned, Product*> &productsMapping, const map<unsigned, Employee*> &employeesMapping){
     //Create store with basic variables(id, name and Address)
     stringstream sa(mapping.at("id"));
+    if(store_next_id <= this->id) {
+        store_next_id = this->id + 1;
+    }
     sa >> this->id;
     this->name = mapping.at("name");
     this->address.street = mapping.at("address_street");
@@ -33,14 +36,14 @@ Store::Store(const map<string, string> &mapping, const map<unsigned, Product*> &
 
     //Read vectors of products and employees
     sa = stringstream(mapping.at("products"));
-    while(!sa.eof()){
+    while(!sa.eof() && !mapping.at("products").empty()){
         unsigned id;
         sa >> id;
         addProduct(productsMapping.at(id));
     }
 
     sa = stringstream(mapping.at("employees"));
-    while(!sa.eof()){
+    while(!sa.eof() && !mapping.at("employees").empty()){
         unsigned nif;
         sa >> nif;
         addEmployee(employeesMapping.at(nif));
