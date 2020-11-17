@@ -1,13 +1,8 @@
-//
-// Created by ultra on 16/11/2020.
-//
-
-#ifndef AEDAFIRST_FILES_H
-#define AEDAFIRST_FILES_H
-#include<map>
+#ifndef FILES_H
+#define FILES_H
+#include <map>
 
 namespace files{
-
 
     /**
      * Writes the variable in the ostream in the correct format to load
@@ -30,4 +25,4 @@ namespace files{
     std::map<std::string, std::string>  readData(const std::string &line);
 }
 
-#endif //AEDAFIRST_FILES_H
+#endif //FILES_H
