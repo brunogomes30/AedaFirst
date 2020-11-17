@@ -1,1 +1,0 @@
-id=" 1 " employeeNif=" 4 " clientNif=" 111111 " storeId=" 1 " appraisal=" 4 " totalAmount=" 5 " discount=" 1 " 

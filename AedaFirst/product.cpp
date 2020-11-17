@@ -21,6 +21,7 @@ Product::Product(string name, float price, Category ctg){
     this->name = name;
     this->price = price;
     this->category = ctg;
+    this->status = true;
 }
 
 unsigned Product::getId() const{return id;}
@@ -43,4 +44,12 @@ void Product::showProduct() const {
     string categories[2] = {"Bread", "Cake"};
 
     cout << left << setw(5) << id << setw(10) << categories[category] << setw(20) << name;
+}
+
+bool Product::getStatus() const{
+    return this->status;
+}
+
+void Product::setStatus(bool status) {
+    this->status = status;
 }

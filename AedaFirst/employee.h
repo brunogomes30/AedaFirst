@@ -8,6 +8,8 @@ private:
     unsigned nif;
     float salary;
     unsigned numOrders;
+
+    bool status;
 public:
 	static const std::string FILENAME;
 Employee(std::string name = "", unsigned nif = 0, float salary = 0);
@@ -46,5 +48,8 @@ Employee(std::string name = "", unsigned nif = 0, float salary = 0);
     void showEmployee(bool details) const;
 
     friend std::ostream& operator<< (std::ostream &os, Employee &employee);
+
+    bool getStatus() const;
+    void setStatus(bool status);
 };
 #endif //EMPLOYEE_H

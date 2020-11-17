@@ -43,6 +43,11 @@ private:
      * Keep tracking the sum of appraisals to give the opinion in time O(1).
      */
     int sumOfAppraisals;
+
+    /*
+     * Status to see if client is removed active or not
+     */
+    bool status;
 public:
 
     const static std::string FILENAME;
@@ -91,5 +96,8 @@ public:
     void showClient(bool details) const;
 
     friend std::ostream& operator<< (std::ostream &os, const Client &client);
+
+    bool getStatus() const;
+    void setStatus(bool status);
 };
 #endif //CLIENT_H

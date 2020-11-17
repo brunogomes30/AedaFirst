@@ -10,15 +10,14 @@ Employee::Employee(string name, unsigned nif, float salary){
     setNif(nif);
     setSalary(salary);
     numOrders = 0;
+    this->status = true;
 }
 
 Employee::Employee(const map<string, string> &mapping){
-    stringstream sa(mapping.at("nif"));
-    sa >> this->nif;
-    sa = stringstream(mapping.at("numOrders"));
-    sa >> this->numOrders;
-    sa = stringstream(mapping.at("salary"));
-    sa >> this->salary;
+    stringstream(mapping.at("nif")) >> this->nif;
+    stringstream(mapping.at("numOrders")) >> this->numOrders;
+    stringstream(mapping.at("salary")) >> this->salary;
+    stringstream(mapping.at("status")) >> this->status;
     this->name = mapping.at("name");
 }
 
@@ -64,6 +63,14 @@ std::ostream& operator<< (std::ostream &os, Employee &employee){
     files::writeVariable(os, "name", employee.name);
     files::writeVariable(os, "salary", employee.salary);
     files::writeVariable(os, "numOrders", employee.numOrders);
+    files::writeVariable(os, "status", employee.status);
     os << "\n";
     return os;
+}
+
+bool Employee::getStatus() const {
+    return this->status;
+}
+void Employee::setStatus(bool status) {
+    this->status = status;
 }

@@ -16,6 +16,7 @@ Bread::Bread(unsigned int id, std::string name, float price, Category ctg, SizeT
 Bread::Bread(const map<string, string> &mapping) : Product() {
     stringstream(mapping.at("id")) >> this->id;
     stringstream(mapping.at("price")) >> this->price;
+    stringstream(mapping.at("size")) >> this->status;
     name = mapping.at("name");
     int sizeId;
     stringstream(mapping.at("size")) >> sizeId;
@@ -40,6 +41,7 @@ ostream& operator<< (std::ostream &os, Bread &bread){
     files::writeVariable(os, "name", bread.name);
     files::writeVariable(os, "price", bread.price);
     files::writeVariable(os, "size", bread.size);
+    files::writeVariable(os, "status", bread.status);
     os << "\n";
 
     return os;

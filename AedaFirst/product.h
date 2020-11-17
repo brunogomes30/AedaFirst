@@ -19,6 +19,7 @@ protected:
     std::string name;
     float price;
     Category category;
+    bool status;
 public:
     Product();
     Product(unsigned int id);
@@ -43,6 +44,8 @@ public:
      */
     virtual void showProduct() const;
 
+    bool getStatus() const;
+    void setStatus(bool status);
 
 };
 

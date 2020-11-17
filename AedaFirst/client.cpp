@@ -12,6 +12,7 @@ Client::Client() {
     points = 0;
     discount = false;
     sumOfAppraisals = 0;
+    this->status = true;
 }
 
 Client::Client(std::string name, unsigned nif, bool regime) {
@@ -22,6 +23,7 @@ Client::Client(std::string name, unsigned nif, bool regime) {
     discount = false;
     sumOfAppraisals = 0;
     opinion = false;
+    this->status = true;
 }
 
 Client::Client(const std::map<std::string, std::string> &mapping){
@@ -31,6 +33,7 @@ Client::Client(const std::map<std::string, std::string> &mapping){
     stringstream(mapping.at("opinion")) >> this->opinion;
     stringstream(mapping.at("points")) >> this->regime;
     stringstream(mapping.at("discount")) >> this->discount;
+    stringstream(mapping.at("status")) >> this->status;
 }
 
 string Client::getName() const {return name;}
@@ -117,6 +120,14 @@ ostream& operator<< (ostream &os, const Client &client){
     files::writeVariable(os, "points", client.points);
     files::writeVariable(os, "regime", client.regime);
     files::writeVariable(os, "discount", client.discount);
+    files::writeVariable(os, "status", client.status);
     os << "\n";
     return os;
+}
+
+bool Client::getStatus() const {
+    return this->status;
+}
+void Client::setStatus(bool status) {
+    this->status = status;
 }

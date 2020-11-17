@@ -2,13 +2,13 @@
 #define EXCEPTIONS_H
 
 #include <iostream>
-
-class Exception {
+#include <exception>
+class Exception : public exception {
 private:
     std::string explanation;
 public:
     Exception(std::string ex) {explanation = ex;}
-    void what() const {cout << endl << explanation << endl;}
+    virtual const char* what() const throw(){return explanation.c_str();}
 };
 
 class NoEmployeeInStoreException:public Exception {
@@ -24,6 +24,12 @@ public:
 class NoProductsChoseException:public Exception {
 public:
     NoProductsChoseException(std::string ex):Exception(ex) {}
+};
+
+class ReadingDataException : public Exception{
+public:
+    ReadingDataException(std::string ex) : Exception("Error reading " + ex + "Data "){}
+
 };
 
 #endif //EXCEPTIONS_H

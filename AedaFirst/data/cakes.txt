@@ -1,1 +1,1 @@
-id=" 3 " name=" marmore " price=" 0.8 " layer1=" 0 " layer2=" 2 " 
+id=" 3 " name=" marmore " price=" 0.8 " layer1=" 0 " layer2=" 2 " status=" 1 " 

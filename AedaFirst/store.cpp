@@ -13,11 +13,13 @@ Store::Store(std::string name, Address address) {
     this->id = store_next_id++;
     this->name = name;
     this->address = address;
+    this->status = true;
 }
 Store::Store(unsigned int id, std::string name, Address address) {
     this->id = id;
     this->name = name;
     this->address = address;
+    this->status = true;
 }
 
 Store::Store(const map<string, string> &mapping, const map<unsigned, Product*> &productsMapping, const map<unsigned, Employee*> &employeesMapping){
@@ -27,6 +29,7 @@ Store::Store(const map<string, string> &mapping, const map<unsigned, Product*> &
     this->name = mapping.at("name");
     this->address.street = mapping.at("address_street");
     this->address.locality = mapping.at("address_locality");
+    stringstream(mapping.at("employees")) >> this->status;
 
     //Read vectors of products and employees
     sa = stringstream(mapping.at("products"));
@@ -167,7 +170,7 @@ ostream& operator<< (std::ostream &os, Store &store){
     files::writeVariable(os, "name", store.name);
     files::writeVariable(os, "address_locality", store.address.locality);
     files::writeVariable(os, "address_street", store.address.street);
-
+    files::writeVariable(os, "status", store.status);
     stringstream productsString("");
     for(Product *product : store.products){
         productsString << " " << product->getId();
@@ -184,6 +187,9 @@ ostream& operator<< (std::ostream &os, Store &store){
     return os;
 }
 
+bool Store::getStatus() const {
+    return this->status;
+}
 
 
 

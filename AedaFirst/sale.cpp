@@ -19,8 +19,10 @@ Sale::Sale(Client* client, Store* store) {
 Sale::Sale(const map<string, string> &mapping,
            const map<unsigned, Store *>  &storesMapping,
            const map<unsigned, Employee *> &employeesMapping,
-           const map<unsigned, Client *> &clientsMapping){
+           const map<unsigned, Client *> &clientsMapping,
+           const map<unsigned, Product *> &productsMapping){
     stringstream(mapping.at("id")) >> this->id;
+
     unsigned employeeNif, clientNif, storeId;
     stringstream(mapping.at("employeeNif")) >> employeeNif;
     stringstream(mapping.at("clientNif")) >> clientNif;
@@ -28,9 +30,17 @@ Sale::Sale(const map<string, string> &mapping,
     this->store = storesMapping.at(storeId);
     this->employee = employeesMapping.at(employeeNif);
     this->client = clientsMapping.at(clientNif);
+
     stringstream(mapping.at("appraisal")) >> this->appraisal;
     stringstream(mapping.at("totalAmount")) >> this->totalAmount;
     stringstream(mapping.at("discount")) >> this->discount;
+
+    stringstream ss = stringstream(mapping.at("products"));
+    while(!ss.eof()) {
+        unsigned id, quantity, price;
+        ss >> id >> quantity >> price;
+        addProduct(productsMapping.at(id), quantity--);
+    }
 
 }
 
@@ -40,17 +50,22 @@ void Sale::setClient(Client *client) {this->client = client;}
 
 void Sale::setEmployee(Employee* employee) {this->employee = employee;}
 
-void Sale::addProduct(Product *product, unsigned qty) {
+void Sale::addProduct(Product *product, unsigned qty){
+    addProduct(product, qty, product->getPrice());
+    }
+
+void Sale::addProduct(Product *product, unsigned qty, float price) {
     map<Product*, pair<unsigned, float>>::iterator it;
     it = products.find(product);
     if (it == products.end()){
-        products.insert(pair<Product*,pair<unsigned, float>>(product, pair<unsigned, float>(qty, product->getPrice())));
+        products.insert(pair<Product*,pair<unsigned, float>>(product, pair<unsigned, float>(qty, price)));
     }
     else {
         products[product].first += qty;
     }
     totalAmount += qty*product->getPrice();
 }
+
 
 void Sale::setProducts(std::map<Product*, std::pair<unsigned, float>> &prodsVolume, float totalAmount) {
     products = prodsVolume;
@@ -113,6 +128,12 @@ ostream& operator<< (ostream &os, const Sale &sale){
     files::writeVariable(os, "appraisal", sale.appraisal);
     files::writeVariable(os, "totalAmount", sale.totalAmount);
     files::writeVariable(os, "discount", sale.discount);
+
+    stringstream productsStream (" ");
+    for(auto it = sale.products.begin(); it!= sale.products.end(); it++){
+        productsStream << it->first->getId() << " " << it->second.first << " " << it->second.second << " ";
+    }
+    files::writeVariable(os, "products", productsStream.str());
     os << "\n";
     return os;
 }

@@ -38,6 +38,12 @@ iostream
 map
 -
 
+C:/Users/ultra/Documents/AedaFirst/AedaFirst/exceptions.h
+iostream
+-
+exception
+-
+
 C:/Users/ultra/Documents/AedaFirst/AedaFirst/files.h
 map
 -
@@ -55,6 +61,8 @@ algorithm
 -
 iomanip
 -
+exceptions.h
+C:/Users/ultra/Documents/AedaFirst/AedaFirst/exceptions.h
 fstream
 -
 map

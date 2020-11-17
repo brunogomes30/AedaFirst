@@ -6,7 +6,9 @@
 #include <iomanip>
 #include "exceptions.h"
 #include<fstream>
-#include <map>using namespace std;
+#include <map>
+
+using namespace std;
 
 Menu::Menu(bool load) {
     loadData();
@@ -22,6 +24,19 @@ Menu::Menu(vector<Store*> &s, vector<Client*> &c, vector<Client*> &co, vector<Em
     products = p;
     oldProducts = po;
     sales = sal;
+
+    for(Store * s :stores){
+        storesMapping[s->getId()] = s;
+    }
+    for(Employee * e: employees){
+        employeesMapping[e->getNif()] = e;
+    }
+    for(Client * c: clients){
+        clientsMapping[c->getNif()] = c;
+    }
+    for(Product *p : products){
+        productsMapping[p->getId()] = p;
+    }
 }
 void Menu::chooseClientsSort() {    int operation;
     do {
@@ -199,7 +214,8 @@ void Menu::opsClient(Client* &client) {
                 break;
             case 3: // Remove client
                 it = find(clients.begin(), clients.end(), client);
-                oldClients.push_back(*it);
+                (*it)->setStatus(false);
+                //oldClients.push_back(*it);
                 clients.erase(it);
                 operation = 0;
                 break;
@@ -233,7 +249,8 @@ void Menu::opsEmployee(Employee* employee) {
                 for (auto store:stores) {
                     store->removeEmployee(*it);
                 }
-                oldEmployees.push_back(*it);
+                (*it)->setStatus(false);
+                //oldEmployees.push_back(*it);
                 employees.erase(it);
                 operation = 0;
                 break;
@@ -281,7 +298,8 @@ void Menu::opsProduct(Product* &product) {
                 for (auto store:stores) {
                     store->removeProduct(*it);
                 }
-                oldProducts.push_back(*it);
+                (*it)->setStatus(false);
+                //oldProducts.push_back(*it);
                 products.erase(it);
                 operation = 0;
                 break;
@@ -587,7 +605,9 @@ void Menu::mainMenu() {
                 break;
             case 2: // Add a store
                 setStoreData(name, address);
-                stores.push_back(new Store(name, address));
+                store = new Store(name, address);
+                stores.push_back(store);
+                storesMapping[store->getId()] = store;
                 break;
             case 3: // Search a store
                 showStores(stores);
@@ -610,7 +630,9 @@ void Menu::mainMenu() {
                 break;
             case 5: // Add a client
                 setClientData(name, nif_or_id, regime);
-                clients.push_back(new Client(name, nif_or_id, regime));
+                client = new Client(name, nif_or_id, regime);
+                clients.push_back(client);
+                clientsMapping[client->getNif()] = client;
                 break;
             case 6: // Search a client
                 showClients(clients);
@@ -643,10 +665,16 @@ void Menu::mainMenu() {
                 break;
             case 11: // Add a product
                 setProductData(name, price_or_salary, ctg, size, ly1, ly2);
-                if (ctg == bread)
-                    products.push_back(new Bread(name, price_or_salary, ctg, size));
-                else
-                    products.push_back(new Cake(name, price_or_salary, ctg, ly1, ly2));
+                Product *product;
+                if (ctg == bread) {
+                    product = new Bread(name, price_or_salary, ctg, size);
+                    products.push_back(product);
+                }
+                else{
+                    product = new Bread(name, price_or_salary, ctg, size);
+                    products.push_back(product);
+                }
+                productsMapping[product->getId()] = product;
                 break;
             case 12: // Search a product
                 showProducts(products);
@@ -688,108 +716,140 @@ void Menu::loadData() {
     string line;
     string path = "data/";
     try {
-        //Load breads
-        cout << "Load breads ";
         ifstream is(path + Bread::FILENAME);
-        while (!is.eof() && is.is_open()) {
-            getline(is, line);
-            if(line.empty()){
-                continue;
+        //Load breads
+        try {
+            cout << "Load breads ";
+            while (!is.eof() && is.is_open()) {
+                getline(is, line);
+                if (line.empty()) {
+                    continue;
+                }
+                map<string, string> mapping = files::readData(line);
+                Bread *bread = new Bread(mapping);
+                Product *product = bread;
+                productsMapping[bread->getId()] = product;
+                if(product->getStatus()){
+                    products.push_back(product);
+                }
             }
-            map<string, string> mapping = files::readData(line);
-            Bread *bread = new Bread(mapping);
-            Product *product = bread;
-            productsMapping[bread->getId()] = product;
-            products.push_back(product);
+            is.close();
+        }catch(exception &e){
+            throw ReadingDataException("Breads");
         }
-        is.close();
 
-        cout << "Load Cakes ";
-        //Load Cakes
-        is = ifstream(path + Cake::FILENAME);
-        while (!is.eof() && is.is_open()) {
-            getline(is, line);
-            map<string, string> mapping = files::readData(line);
-            if(mapping.empty()){
-                continue;
+        try {
+            cout << "Load Cakes ";
+            //Load Cakes
+            is = ifstream(path + Cake::FILENAME);
+            while (!is.eof() && is.is_open()) {
+                getline(is, line);
+                map<string, string> mapping = files::readData(line);
+                if (mapping.empty()) {
+                    continue;
+                }
+                Cake *cake = new Cake(mapping);
+                Product *product = cake;
+                productsMapping[cake->getId()] = product;
+                if(product->getStatus()) {
+                    products.push_back(product);
+                }
             }
-            Cake *cake = new Cake(mapping);
-            Product *product = cake;
-            productsMapping[cake->getId()] = product;
-            products.push_back(product);
+            is.close();
+        } catch(exception &e){
+            throw ReadingDataException("Cakes");
         }
-        is.close();
 
-        cout << "Load Employees ";
-        //Load employees
-        is = ifstream(path + Employee::FILENAME);
-        while (!is.eof() && is.is_open()) {
-            getline(is, line);
-            if(line.empty()){
-                continue;
+        try {
+            cout << "Load Employees ";
+            //Load employees
+            is = ifstream(path + Employee::FILENAME);
+            while (!is.eof() && is.is_open()) {
+                getline(is, line);
+                if (line.empty()) {
+                    continue;
+                }
+                map<string, string> mapping = files::readData(line);
+                Employee *employee = new Employee(mapping);
+                employeesMapping[employee->getNif()] = employee;
+                if(employee->getStatus()){
+                    employees.push_back(employee);
+                }
             }
-            map<string, string> mapping = files::readData(line);
-            Employee *employee = new Employee(mapping);
-            employeesMapping[employee->getNif()] = employee;
-            employees.push_back(employeesMapping[employee->getNif()]);
+            is.close();
+        } catch (exception &e){
+            throw ReadingDataException("Employees");
         }
-        is.close();
 
-        cout << "Load Stores ";
-        //Load stores
-        is = ifstream(path + Store::FILENAME);
-        //One line equals one Store
-        while(!is.eof() && is.is_open()) {
+        try {
+            cout << "Load Stores ";
+            //Load stores
+            is = ifstream(path + Store::FILENAME);
+            //One line equals one Store
+            while (!is.eof() && is.is_open()) {
 
-            getline(is, line);
-            if(line.empty()){
-                continue;
+                getline(is, line);
+                if (line.empty()) {
+                    continue;
+                }
+                map<string, string> mapping = files::readData(line);
+                Store *store = new Store(mapping, productsMapping, employeesMapping);
+                storesMapping[store->getId()] = store;
+                if(store->getStatus()){
+                    stores.push_back(store);
+                }
+
             }
-            map<string, string> mapping = files::readData(line);
-            Store *store = new Store(mapping, productsMapping, employeesMapping);
-            stores.push_back(store);
-            storesMapping[store->getId()] = store;
-
+            is.close();
+        } catch (exception e){
+            throw ReadingDataException("Stores");
         }
-        is.close();
 
-        cout << "Load clients ";
-        // Load clients
-        is = ifstream(path + Client::FILENAME);
-        //One line equals one Store
-        while(!is.eof() && is.is_open()) {
-            getline(is, line);
-            if(line.empty()){
-                continue;
+        try {
+            cout << "Load clients ";
+            // Load clients
+            is = ifstream(path + Client::FILENAME);
+            //One line equals one Store
+            while(!is.eof() && is.is_open()) {
+                getline(is, line);
+                if(line.empty()){
+                    continue;
+                }
+                map<string, string> mapping = files::readData(line);
+                Client *client = new Client(mapping);
+                clientsMapping[client->getNif()] = client;
+
+                if(client->getStatus()){
+                    clients.push_back(client);
+                }
             }
-            map<string, string> mapping = files::readData(line);
-            Client *client = new Client(mapping);
-            clients.push_back(client);
-            clientsMapping[client->getNif()] = client;
+            is.close();
+        } catch(exception &e){
+            throw ReadingDataException("Clients");
         }
-        is.close();
 
-        //Load Sales
-        is = ifstream(path + Sale::FILENAME);
-        //One line equals one Store
-        while(!is.eof() && is.is_open()) {
-            getline(is, line);
-            if(line.empty()){
-                continue;
+        try {
+            //Load Sales
+            is = ifstream(path + Sale::FILENAME);
+            //One line equals one Store
+            while (!is.eof() && is.is_open()) {
+                getline(is, line);
+                if (line.empty()) {
+                    continue;
+                }
+                map<string, string> mapping = files::readData(line);
+                Sale *sale = new Sale(mapping, storesMapping, employeesMapping, clientsMapping, productsMapping);
+                sales.push_back(sale);
+
+                //sale->getClient()
             }
-            map<string, string> mapping = files::readData(line);
-            Sale *sale = new Sale(mapping, storesMapping, employeesMapping, clientsMapping);
-            sales.push_back(sale);
-
-            //sale->getClient()
+            is.close();
+        } catch (exception &e){
+            throw ReadingDataException("Sales");
         }
-        is.close();
 
-        for(Store *store : stores){
-            cout << "Store = " << *store;
-        }
-    } catch (exception e){
-        cout << "Error trying to load data\n";
+    } catch (ReadingDataException &e){
+        cout << e.what() << endl;
     }
 }
 
@@ -801,11 +861,11 @@ void Menu::saveData(){
     //Save products
     outCakes.open(path + Cake::FILENAME, ios::out);
     outBreads.open(path + Bread::FILENAME, ios::out);
-    for(Product *product : products){
-        if(product->getCategory() == Category::bread){
-            outBreads << *(Bread*)product;
+    for(auto it : productsMapping){
+        if(it.second->getCategory() == Category::bread){
+            outBreads << *(Bread*) it.second;
         } else {
-            outCakes << *(Cake*)product;
+            outCakes << *(Cake*) it.second;
         }
     }
     outBreads.close();
@@ -814,21 +874,21 @@ void Menu::saveData(){
 
     //Save employess
     outEmployees.open(path + Employee::FILENAME, ios::out);
-    for(Employee *employee : employees){
-        outEmployees << *employee;
+    for(auto it : employeesMapping){
+        outEmployees << *(it.second);
     }
     outEmployees.close();
 
     //Save Stores
     outStores.open(path + Store::FILENAME, ios::out);
-    for(Store *store : stores){
-        outStores << *store;
+    for(auto it : storesMapping){
+        outStores << *(it.second);
     }
     outStores.close();
     outClients.open(path + Client::FILENAME, ios::out);
 
-    for(Client * client: clients){
-        outClients << *client;
+    for(auto it: clientsMapping){
+        outClients << *(it.second);
     }
     outClients.close();
 

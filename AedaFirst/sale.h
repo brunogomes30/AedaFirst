@@ -31,10 +31,12 @@ public:
 	Sale(const std::map<std::string, std::string> &mapping,
          const std::map<unsigned, Store *>  &storesMapping,
          const std::map<unsigned, Employee *> &employeesMapping,
-         const std::map<unsigned, Client *> &clientsMapping);    void setStore(Store* store);
+         const std::map<unsigned, Client *> &clientsMapping,
+         const std::map<unsigned, Product *> &productsMapping);    void setStore(Store* store);
     void setClient(Client* client);
     void setEmployee(Employee* employee);
     void addProduct(Product* product, unsigned qty);
+    void addProduct(Product* product, unsigned qty, float price);
     void setProducts(std::map<Product*, std::pair<unsigned, float>> &products, float totalAmount);
     void setAppraisal(unsigned appraisal);
     void setDiscount(float discount);

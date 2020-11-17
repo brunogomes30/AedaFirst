@@ -20,6 +20,7 @@ Cake::Cake(string name, float price, Category ctg, Layer layer1, Layer layer2):P
 Cake::Cake(const map<string, string> &mapping) {
     stringstream(mapping.at("id")) >> this->id;
     stringstream(mapping.at("price")) >> this->price;
+    stringstream(mapping.at("status")) >> this->status;
     int layerId;
     stringstream(mapping.at("layer1")) >> layerId;
     layer1 = (Layer) layerId;
@@ -52,6 +53,7 @@ ostream& operator<< (ostream &os, Cake &cake){
     files::writeVariable(os, "price", cake.price);
     files::writeVariable(os, "layer1", cake.layer1);
     files::writeVariable(os, "layer2", cake.layer2);
+    files::writeVariable(os, "status", cake.status);
     os << "\n";
     return os;
 }

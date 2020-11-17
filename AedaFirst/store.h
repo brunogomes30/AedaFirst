@@ -20,6 +20,7 @@ private:
     Address address;
     std::vector<Product*> products;
     std::vector<Employee*> employees;
+    bool status;
 public:
     static const std::string FILENAME;
     Store(unsigned id);
@@ -137,6 +138,8 @@ public:
      * ID: <STORE_ID> Store: <STORE_NAME>
      */
     void showStore() const;
+
+    bool getStatus() const;
 
     //void Store::statistics(const std::vector<Sale*> &sales) const;
 };
