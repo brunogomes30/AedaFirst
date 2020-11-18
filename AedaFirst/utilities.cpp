@@ -332,9 +332,8 @@ void setProductData(string &name, float &price, Category &ctg, SizeType &size, L
 }
 
 Store* searchStore(const vector<Store*> &stores, unsigned id) {
-    Store searchingStore(id);
     auto it = find_if(stores.begin(), stores.end(),
-                      [&searchingStore](const Store* store){return *store == searchingStore;});
+                      [&id](const Store* store){return store->getId() == id;});
     if (it!=stores.end())
         return *it;
     else
@@ -342,25 +341,27 @@ Store* searchStore(const vector<Store*> &stores, unsigned id) {
 }
 
 Client* searchClient(const vector<Client*> &clients, const string &identifier) {
-    for (auto client:clients) {
-        if (client->same(identifier))
-            return client;
-    }
-    return nullptr;
+    auto it = find_if(clients.begin(), clients.end(),
+                      [&identifier](const Client* client){return client->same(identifier);});
+    if (it!=clients.end())
+        return *it;
+    else
+        return nullptr;
+
 }
 
 Employee* searchEmployee(const vector<Employee*> &employees, const string &identifier) {
-        for (auto employee:employees) {
-            if (employee->same(identifier))
-                return employee;
-    }
-    return nullptr;
+    auto it = find_if(employees.begin(), employees.end(),
+                      [&identifier](const Employee* employee){return employee->same(identifier);});
+    if (it!=employees.end())
+        return *it;
+    else
+        return nullptr;
 }
 
 Product* searchProduct(const vector<Product*> &products, unsigned id) {
-    Product searchingProduct(id);
     auto it = find_if(products.begin(), products.end(),
-                      [&searchingProduct](const Product* product){return *product == searchingProduct;});
+                      [&id](const Product* product){return product->getId() == id;});
     if (it!=products.end())
         return *it;
     else

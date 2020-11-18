@@ -572,18 +572,19 @@ void Menu::mainMenu() {
     Product *product; Category ctg; SizeType size; Layer ly1;Layer ly2;
     Client *client; bool regime;
     Employee *employee;
-    string firstCommand, secondCommand;
+    string firstCommand, secondCommand, thirdCommand;
     showMenuOperations();
     do {
-        firstCommand = "";secondCommand = "";
+        firstCommand = "", secondCommand = "", thirdCommand = "";
 
         cout << "\n[MENU] Select operation:" << endl;
         string line;
         getline(cin, line);
 
         stringstream responseStream(line);
-        responseStream >> firstCommand >> secondCommand;
+        responseStream >> firstCommand >> secondCommand >> thirdCommand;
         if(firstCommand == "add"){
+            //Add options
             if(secondCommand.empty()){
                 cout << "Please insert a second argument from the list: [store, employee, product, client]" << endl;
                 cout << "e.g: add store " << endl;
@@ -620,7 +621,7 @@ void Menu::mainMenu() {
                 cout << "e.g: add store " << endl;
             }
         } else if(firstCommand == "view") {
-
+            //View options
             if (secondCommand.empty()) {
                 cout << "Please insert a second argument from the list:" << endl;
                 cout << "[stores, employees, products, clients, sales, volume]" << endl;
@@ -651,43 +652,81 @@ void Menu::mainMenu() {
                 cout << "e.g: view shops" << endl;
             }
         } else if (firstCommand == "select") {
+            //Select options
+            bool inputRequired = thirdCommand.empty();
             if (secondCommand.empty()) {
                 cout << "Please insert a second argument from the list:" << endl;
                 cout << "[store, employee, product, client]" << endl;
                 cout << "e.g: select shop " << endl;
             }
             else if (secondCommand == "store") {
-                showStores(stores);
-                askId(nif_or_id, "Store");
+                unsigned id;
+                if(inputRequired){
+                    stringstream(thirdCommand) >> id;
+                } else {
+                    showStores(stores);
+                    askId(id, "Store");
+                }
                 store = searchStore(stores, nif_or_id);
-                if (store != nullptr)
+                if (store != nullptr){
+                    if(!inputRequired){
+                        store->showStore();
+                    }
                     opsStore(store);
+                }
                 else
-                    cout << "That store doesn't exist" << endl;
+                    cout << "There is no store with the given id " <<  endl;
             } else if (secondCommand == "employee") {
-                showEmployees(stores);
-                askPersonData(name, "Employee");
+
+                string name;
+                if(!inputRequired){
+                    getline(responseStream, name);
+                    name = thirdCommand + name;
+                    cout << name << endl;
+                } else {
+                    if(!inputRequired)
+                        showEmployees(stores);
+                    askPersonData(name, "Employee");
+                }
                 employee = searchEmployee(employees, name);
                 if (employee != nullptr)
                     opsEmployee(employee);
                 else
-                    cout << "That employee doesn't exist" << endl;
+                    cout << "There is no employee with the given nif or name " << endl;
             } else if (secondCommand == "product") {
-                showProducts(products);
-                askId(nif_or_id, "Product");
-                product = searchProduct(products, nif_or_id);
-                if (product != nullptr)
+                unsigned id;
+                if(!inputRequired){
+                    stringstream(thirdCommand) >> id;
+                } else {
+                    showProducts(products);
+                    askId(nif_or_id, "Product");
+                }
+                product = searchProduct(products, id);
+                if (product != nullptr){
+                    if(!inputRequired)
+                        product->showProduct();
                     opsProduct(product);
+                }
                 else
-                    cout << "That product doesn't exist" << endl;
+                    cout << "There is no product with the given Id" << endl;
             } else if (secondCommand == "client") {
-                showClients(clients);
-                askPersonData(name, "Client");
+                string name;
+                if(!inputRequired){
+                    getline(responseStream, name);
+                    name = thirdCommand + name;
+                    cout << name << endl;
+                } else {
+                    showClients(clients);
+                    askPersonData(name, "Client");
+                }
                 client = searchClient(clients, name);
-                if (client != nullptr)
+                if (client != nullptr){
+                    if(!inputRequired)
+                        client->showClient(true);
                     opsClient(client);
+                }
                 else
-                    cout << "That client doesn't exist" << endl;
+                    cout << "There is no client with the given name" << endl;
             } else {
                 cout << "Second argument is wrong." << endl;
                 cout << "Please insert a second argument from the list: [stores, employees, products, clients, sales, volume, store, employee, product, client]" << endl;
