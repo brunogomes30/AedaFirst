@@ -1,6 +1,7 @@
 #include "client.h"
 #include <iomanip>
 #include "files.h"
+#include "utilities.h"
 using namespace std;
 
 const string Client::FILENAME = "clients.txt";
@@ -88,7 +89,7 @@ bool Client::same(string identifier) const {
         return nif == cmpNif;
     }
     else
-        return name == identifier;
+        return toLower(name) == toLower(identifier);
 }
 
 bool Client::operator==(const Client* &client) const {

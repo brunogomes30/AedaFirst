@@ -207,4 +207,6 @@ void sortClientsByName(std::vector<Client*> &clients);
  */
 void sortClientsByNif(std::vector<Client*> &clients);
 
+std::string toLower(std::string str);
+
 #endif //UTILITIES_H

@@ -18,6 +18,16 @@ C:/Users/ultra/Documents/AedaFirst/AedaFirst/product.h
 map
 -
 
+C:/Users/ultra/Documents/AedaFirst/AedaFirst/client.cpp
+client.h
+C:/Users/ultra/Documents/AedaFirst/AedaFirst/client.h
+iomanip
+-
+files.h
+C:/Users/ultra/Documents/AedaFirst/AedaFirst/files.h
+utilities.h
+C:/Users/ultra/Documents/AedaFirst/AedaFirst/utilities.h
+
 C:/Users/ultra/Documents/AedaFirst/AedaFirst/client.h
 iostream
 -
@@ -47,6 +57,12 @@ exception
 C:/Users/ultra/Documents/AedaFirst/AedaFirst/files.h
 map
 -
+
+C:/Users/ultra/Documents/AedaFirst/AedaFirst/main.cpp
+menu.h
+C:/Users/ultra/Documents/AedaFirst/AedaFirst/menu.h
+utilities.h
+C:/Users/ultra/Documents/AedaFirst/AedaFirst/utilities.h
 
 C:/Users/ultra/Documents/AedaFirst/AedaFirst/menu.cpp
 menu.h
@@ -111,6 +127,12 @@ product.h
 C:/Users/ultra/Documents/AedaFirst/AedaFirst/product.h
 employee.h
 C:/Users/ultra/Documents/AedaFirst/AedaFirst/employee.h
+
+C:/Users/ultra/Documents/AedaFirst/AedaFirst/utilities.cpp
+utilities.h
+C:/Users/ultra/Documents/AedaFirst/AedaFirst/utilities.h
+iomanip
+-
 
 C:/Users/ultra/Documents/AedaFirst/AedaFirst/utilities.h
 iostream

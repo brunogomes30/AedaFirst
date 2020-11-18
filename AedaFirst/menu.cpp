@@ -600,11 +600,11 @@ void Menu::mainMenu() {
             } else if(secondCommand == "product"){
                 setProductData(name, price_or_salary, ctg, size, ly1, ly2);
                 if (ctg == bread) {
-                    product = new Bread(name, price_or_salary, ctg, size);
+                    product = new Bread(name, price_or_salary, size);
                     products.push_back(product);
                 }
                 else{
-                    product = new Cake(name, price_or_salary, ctg, ly1, ly2);
+                    product = new Cake(name, price_or_salary, ly1, ly2);
                     products.push_back(product);
                 }
                 productsMapping[product->getId()] = product;

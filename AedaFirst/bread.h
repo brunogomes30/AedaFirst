@@ -21,8 +21,8 @@ private:
 public:
     static const std::string FILENAME;
 
-    Bread(unsigned int id, std::string name, float price, Category category, SizeType size);
-    Bread(std::string name, float price, Category category, SizeType size);
+    Bread(unsigned int id, std::string name, float price, SizeType size);
+    Bread(std::string name, float price, SizeType size);
 
     /**
      * The constructor to use when loading from file

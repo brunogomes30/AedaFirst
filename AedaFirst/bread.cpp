@@ -5,11 +5,11 @@
 using namespace std;
 const string Bread::FILENAME = "breads.txt";
 
-Bread::Bread(std::string name, float price, Category ctg, SizeType size):Product(name, price, Category::bread) {
+Bread::Bread(std::string name, float price, SizeType size):Product(name, price, Category::bread) {
     this->size = size;
 }
 
-Bread::Bread(unsigned int id, std::string name, float price, Category ctg, SizeType size):Product(id, name, price, Category::bread){
+Bread::Bread(unsigned int id, std::string name, SizeType size):Product(id, name, price, Category::bread){
     this->size = size;
 }
 

@@ -419,3 +419,8 @@ void sortClientsByNif(std::vector<Client*> &clients) {
     sort(clients.begin(), clients.end(), cmpPersonsByNif<Client>);
 }
 
+string toLower(string str){
+        std::transform(str.begin(), str.end(), str.begin(), [](unsigned char c){return  std::tolower(c);});
+        return str;
+}
+

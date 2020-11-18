@@ -11,12 +11,16 @@ CMakeFiles/AedaFirst.dir/cake.cpp.obj: ../cake.h
 CMakeFiles/AedaFirst.dir/cake.cpp.obj: ../files.h
 CMakeFiles/AedaFirst.dir/cake.cpp.obj: ../product.h
 
+CMakeFiles/AedaFirst.dir/client.cpp.obj: ../bread.h
+CMakeFiles/AedaFirst.dir/client.cpp.obj: ../cake.h
 CMakeFiles/AedaFirst.dir/client.cpp.obj: ../client.cpp
 CMakeFiles/AedaFirst.dir/client.cpp.obj: ../client.h
 CMakeFiles/AedaFirst.dir/client.cpp.obj: ../employee.h
 CMakeFiles/AedaFirst.dir/client.cpp.obj: ../files.h
 CMakeFiles/AedaFirst.dir/client.cpp.obj: ../product.h
+CMakeFiles/AedaFirst.dir/client.cpp.obj: ../sale.h
 CMakeFiles/AedaFirst.dir/client.cpp.obj: ../store.h
+CMakeFiles/AedaFirst.dir/client.cpp.obj: ../utilities.h
 
 CMakeFiles/AedaFirst.dir/employee.cpp.obj: ../employee.cpp
 CMakeFiles/AedaFirst.dir/employee.cpp.obj: ../employee.h

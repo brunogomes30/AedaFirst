@@ -12,12 +12,16 @@ CMakeFiles/AedaFirst.dir/cake.cpp.obj
  C:/Users/ultra/Documents/AedaFirst/AedaFirst/files.h
  C:/Users/ultra/Documents/AedaFirst/AedaFirst/product.h
 CMakeFiles/AedaFirst.dir/client.cpp.obj
+ C:/Users/ultra/Documents/AedaFirst/AedaFirst/bread.h
+ C:/Users/ultra/Documents/AedaFirst/AedaFirst/cake.h
  C:/Users/ultra/Documents/AedaFirst/AedaFirst/client.cpp
  C:/Users/ultra/Documents/AedaFirst/AedaFirst/client.h
  C:/Users/ultra/Documents/AedaFirst/AedaFirst/employee.h
  C:/Users/ultra/Documents/AedaFirst/AedaFirst/files.h
  C:/Users/ultra/Documents/AedaFirst/AedaFirst/product.h
+ C:/Users/ultra/Documents/AedaFirst/AedaFirst/sale.h
  C:/Users/ultra/Documents/AedaFirst/AedaFirst/store.h
+ C:/Users/ultra/Documents/AedaFirst/AedaFirst/utilities.h
 CMakeFiles/AedaFirst.dir/employee.cpp.obj
  C:/Users/ultra/Documents/AedaFirst/AedaFirst/employee.cpp
  C:/Users/ultra/Documents/AedaFirst/AedaFirst/employee.h
