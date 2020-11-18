@@ -42,24 +42,6 @@ void showMenuOperations() {
     cout << "\t help   -> to show options available" << endl;
     cout << "\t exit   -> to Exit and save data" << endl;
     cout << endl;
-    return;
-    cout << endl << "[MENU]" << endl;
-    cout << " 0 -> Exit" << endl;
-    cout << " 1 -> Print stores" << endl;
-    cout << " 2 -> Add a store" << endl;
-    cout << " 3 -> Search a store (Submenu)" << endl;
-    cout << " 4 -> Print clients" << endl;
-    cout << " 5 -> Add a client" << endl;
-    cout << " 6 -> Search a client (Submenu)" << endl;
-    cout << " 7 -> Print employees" << endl;
-    cout << " 8 -> Add an employee" << endl;
-    cout << " 9 -> Search an employee (Submenu)" << endl;
-    cout << "10 -> Print products" << endl;
-    cout << "11 -> Add a product" << endl;
-    cout << "12 -> Search a product (Submenu)" << endl;
-    cout << "13 -> Make an order" << endl;
-    cout << "14 -> Print sales volume (Submenu)" << endl;
-    cout << "15 -> Print sales (Submenu)" << endl;
 }
 
 void showStoreOperations() {

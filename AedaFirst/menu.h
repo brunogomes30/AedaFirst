@@ -81,8 +81,6 @@ private:
     void loadData();
 public:
     Menu(bool load);
-    Menu(vector<Store*> &s, vector<Client*> &c, vector<Client*> &co, vector<Employee*> &e,
-         vector<Employee*> &eo, vector<Product*> &p, vector<Product*> &po, vector<Sale*> &sal);
     /**
     * Main Menu
     */
