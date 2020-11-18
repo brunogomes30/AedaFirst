@@ -33,11 +33,12 @@ void showProducts(const std::vector<Product*> &products) {
 }
 
 void showMenuOperations() {
+    cout << endl << endl;
     cout << "There are several options available and some require extra arguments" << endl;
-    cout << "\t add -> to Add an entity, takes a second argument from the list: client, employee, product, store, " << endl;
-    cout << "\t remove -> to Remove an entity, takes a second argument from the list : client, employee, product, store, " << endl;
-    cout << "\t view -> to view a list or entity, takes a second argument from the list: clients, employees, products, stores, client, employee, store, product, sales" << endl;
-    cout << "\t edit -> to edit an entity, takes a second argument from the list: client, employee, product, store";
+    cout << "\t add    -> to Add an entity, takes a second argument from the list:\n\t\t [client, employee, product, store]" << endl;
+    cout << "\t view   -> to View a list or entity, takes a second argument from the list:\n\t\t [clients, employees, products, stores]" << endl;
+    cout << "\t select -> to Select a entity, takes a second argument from the list: \n\t\t [client, employee, store, product, sales, volume]" << endl;
+    cout << "\t order  -> to Make an Order" << endl;
     cout << endl;
     return;
     cout << endl << "[MENU]" << endl;
@@ -166,7 +167,7 @@ void askNif(unsigned &nif, string object) {
 
 void askRegime(bool &regime) {
     bool error;
-    cout << endl << setw(5) << "OP" << setw(10) << "Regime" << endl;
+    cout << left << endl << setw(5) << "OP" << setw(10) << "Regime" << endl;
     cout << setw(5) << "1" << setw(10) << "Normal" << endl;
     cout << setw(5) << "2" << setw(10) << "Premium" << endl;
     int reg;
