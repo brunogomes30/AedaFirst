@@ -7,12 +7,12 @@ using namespace std;
 
 const string Cake::FILENAME = "cakes.txt";
 
-Cake::Cake(unsigned id, string name, float price, Category category, Layer layer1, Layer layer2) : Product(id, name, price, Category::cake){
+Cake::Cake(unsigned id, string name, float price, Layer layer1, Layer layer2) : Product(id, name, price, Category::cake){
     this->layer1 = layer1;
     this->layer2 = layer2;
 }
 
-Cake::Cake(string name, float price, Category ctg, Layer layer1, Layer layer2):Product(name, price, Category::cake) {
+Cake::Cake(string name, float price, Layer layer1, Layer layer2):Product(name, price, Category::cake) {
     this->layer1 = layer1;
     this->layer2 = layer2;
 }

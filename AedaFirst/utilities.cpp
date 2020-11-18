@@ -33,12 +33,14 @@ void showProducts(const std::vector<Product*> &products) {
 }
 
 void showMenuOperations() {
-    cout << endl << endl;
+    cout << endl << endl << "[MENU]" << endl;
     cout << "There are several options available and some require extra arguments" << endl;
     cout << "\t add    -> to Add an entity, takes a second argument from the list:\n\t\t [client, employee, product, store]" << endl;
-    cout << "\t view   -> to View a list or entity, takes a second argument from the list:\n\t\t [clients, employees, products, stores]" << endl;
+    cout << "\t view   -> to View a set of entities, takes a second argument from the list:\n\t\t [clients, employees, products, stores]" << endl;
     cout << "\t select -> to Select a entity, takes a second argument from the list: \n\t\t [client, employee, store, product, sales, volume]" << endl;
     cout << "\t order  -> to Make an Order" << endl;
+    cout << "\t help   -> to show options available" << endl;
+    cout << "\t exit   -> to Exit and save data" << endl;
     cout << endl;
     return;
     cout << endl << "[MENU]" << endl;
@@ -374,7 +376,7 @@ bool order() {
         cout << endl << "OP\tOrder" << endl;
         cout << "1\tAscending" << endl;
         cout << "2\tDescending" << endl;
-        cout << "Choose order of sort:" << endl;
+        cout << endl << "Choose order of sort:" << endl;
         cin >> descending;
         if (cin.fail() || cin.peek() != '\n' || (descending != 1 && descending != 2)) {
             cin.clear();

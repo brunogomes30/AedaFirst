@@ -30,8 +30,8 @@ public:
      * @param mapping
      */
     Cake(const std::map<std::string, std::string> &mapping);
-    Cake(unsigned id, std::string name, float price, Category category, Layer layer1, Layer layer2);
-    Cake(std::string name, float price, Category category, Layer layer1, Layer layer2);
+    Cake(unsigned id, std::string name, float price, Layer layer1, Layer layer2);
+    Cake(std::string name, float price, Layer layer1, Layer layer2);
     Layer getLayer1() const;
     Layer getLayer2() const;
     /**

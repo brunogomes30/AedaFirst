@@ -297,7 +297,6 @@ void Menu::opsProduct(Product* &product) {
                     store->removeProduct(*it);
                 }
                 (*it)->setStatus(false);
-                //oldProducts.push_back(*it);
                 products.erase(it);
                 operation = 0;
                 break;
@@ -582,7 +581,8 @@ void Menu::mainMenu() {
         getline(cin, line);
 
         stringstream responseStream(line);
-        responseStream >> firstCommand >> secondCommand >> thirdCommand;
+        responseStream >> firstCommand >> secondCommand >> thirdCommand; // Read user command
+
         if(firstCommand == "add"){
             //Add options
             if(secondCommand.empty()){
@@ -600,24 +600,23 @@ void Menu::mainMenu() {
             } else if(secondCommand == "product"){
                 setProductData(name, price_or_salary, ctg, size, ly1, ly2);
                 if (ctg == bread) {
-                    product = new Bread(name, price_or_salary, ctg, size);
+                    product = new Bread(name, price_or_salary, size);
                     products.push_back(product);
                 }
                 else{
-                    product = new Cake(name, price_or_salary, ctg, ly1, ly2);
+                    product = new Cake(name, price_or_salary, ly1, ly2);
                     products.push_back(product);
                 }
                 productsMapping[product->getId()] = product;
-
             } else if(secondCommand == "client") {
                 setClientData(name, nif_or_id, regime);
                 client = new Client(name, nif_or_id, regime);
                 clients.push_back(client);
                 clientsMapping[client->getNif()] = client;
-
             } else {
                 cout << "Second argument is wrong." << endl;
-                cout << "Please insert a second argument from the list [store, employee, product, client]" << endl;
+                cout << "Please insert a second argument from the list:" << endl;
+                cout << "[store, employee, product, client]" << endl;
                 cout << "e.g: add store " << endl;
             }
         } else if(firstCommand == "view") {
@@ -648,7 +647,8 @@ void Menu::mainMenu() {
                 opsSalesVolume();
             } else {
                 cout << "Second argument is wrong." << endl;
-                cout << "Please insert a second argument from the list: [stores, employees, products, clients, sales, volume]" << endl;
+                cout << "Please insert a second argument from the list:" << endl;
+                cout << "[stores, employees, products, clients, sales, volume]" << endl;
                 cout << "e.g: view shops" << endl;
             }
         } else if (firstCommand == "select") {
@@ -660,12 +660,11 @@ void Menu::mainMenu() {
                 cout << "e.g: select shop " << endl;
             }
             else if (secondCommand == "store") {
-                unsigned id;
-                if(inputRequired){
-                    stringstream(thirdCommand) >> id;
+                if(!inputRequired){
+                    stringstream(thirdCommand) >> nif_or_id;
                 } else {
                     showStores(stores);
-                    askId(id, "Store");
+                    askId(nif_or_id, "Store");
                 }
                 store = searchStore(stores, nif_or_id);
                 if (store != nullptr){
@@ -675,10 +674,9 @@ void Menu::mainMenu() {
                     opsStore(store);
                 }
                 else
-                    cout << "There is no store with the given id " <<  endl;
+                    cout << "There is no store with the given ID." <<  endl;
             } else if (secondCommand == "employee") {
 
-                string name;
                 if(!inputRequired){
                     getline(responseStream, name);
                     name = thirdCommand + name;
@@ -692,25 +690,23 @@ void Menu::mainMenu() {
                 if (employee != nullptr)
                     opsEmployee(employee);
                 else
-                    cout << "There is no employee with the given nif or name " << endl;
+                    cout << "There is no employee with the given NIF or name." << endl;
             } else if (secondCommand == "product") {
-                unsigned id;
                 if(!inputRequired){
-                    stringstream(thirdCommand) >> id;
+                    stringstream(thirdCommand) >> nif_or_id;
                 } else {
                     showProducts(products);
                     askId(nif_or_id, "Product");
                 }
-                product = searchProduct(products, id);
+                product = searchProduct(products, nif_or_id);
                 if (product != nullptr){
                     if(!inputRequired)
                         product->showProduct();
                     opsProduct(product);
                 }
                 else
-                    cout << "There is no product with the given Id" << endl;
+                    cout << "There is no product with the given ID." << endl;
             } else if (secondCommand == "client") {
-                string name;
                 if(!inputRequired){
                     getline(responseStream, name);
                     name = thirdCommand + name;
@@ -729,7 +725,8 @@ void Menu::mainMenu() {
                     cout << "There is no client with the given name" << endl;
             } else {
                 cout << "Second argument is wrong." << endl;
-                cout << "Please insert a second argument from the list: [stores, employees, products, clients, sales, volume, store, employee, product, client]" << endl;
+                cout << "Please insert a second argument from the list:" << endl;
+                cout << "[store, employee, product, client]" << endl;
                 cout << "e.g: select shop" << endl;
             }
         } else if(firstCommand == "order") {
@@ -737,7 +734,7 @@ void Menu::mainMenu() {
                 makeOrder();
             }
             catch (Exception &e) {
-                e.what();
+                cout << e.what() << endl;
             }
         } else if(firstCommand == "help") {
             showMenuOperations();
@@ -885,6 +882,7 @@ void Menu::loadData() {
         try {
             while (!is.eof() && is.is_open()) {
                 getline(is, line);
+                cout << line << endl;
                 if (line.empty()) {
                     continue;
                 }
@@ -892,6 +890,7 @@ void Menu::loadData() {
                 Bread *bread = new Bread(mapping);
                 Product *product = bread;
                 productsMapping[bread->getId()] = product;
+
                 if(product->getStatus()){
                     products.push_back(product);
                 }
@@ -912,6 +911,7 @@ void Menu::loadData() {
                 Cake *cake = new Cake(mapping);
                 Product *product = cake;
                 productsMapping[cake->getId()] = product;
+
                 if(product->getStatus()) {
                     products.push_back(product);
                 }
