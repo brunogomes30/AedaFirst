@@ -1,0 +1,55 @@
+\hypertarget{namespacefiles}{}\doxysection{files Namespace Reference}
+\label{namespacefiles}\index{files@{files}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+map$<$ string, string $>$ \mbox{\hyperlink{namespacefiles_a3acc6c3c525bdd8d25d61fefe588d3a5}{read\+Data}} (const string \&line)
+\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{namespacefiles_a016e4f96516159e4fd7d8abc382c7f8e}{write\+Variable}} (std\+::ostream \&os, const std\+::string \&name, const T \&value)
+\item 
+std\+::map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{namespacefiles_a1b91f58ab88c626107f40c27821c908b}{read\+Data}} (const std\+::string \&line)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespacefiles_a1b91f58ab88c626107f40c27821c908b}\label{namespacefiles_a1b91f58ab88c626107f40c27821c908b}} 
+\index{files@{files}!readData@{readData}}
+\index{readData@{readData}!files@{files}}
+\doxysubsubsection{\texorpdfstring{readData()}{readData()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::map$<$std\+::string, std\+::string$>$ files\+::read\+Data (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{line }\end{DoxyParamCaption})}
+
+Reads the text file data from a line, and returns a map with the key as the variable name, and value as the variable value 
+\begin{DoxyParams}{Parameters}
+{\em line} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespacefiles_a3acc6c3c525bdd8d25d61fefe588d3a5}\label{namespacefiles_a3acc6c3c525bdd8d25d61fefe588d3a5}} 
+\index{files@{files}!readData@{readData}}
+\index{readData@{readData}!files@{files}}
+\doxysubsubsection{\texorpdfstring{readData()}{readData()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily map$<$string, string$>$ files\+::read\+Data (\begin{DoxyParamCaption}\item[{const string \&}]{line }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespacefiles_a016e4f96516159e4fd7d8abc382c7f8e}\label{namespacefiles_a016e4f96516159e4fd7d8abc382c7f8e}} 
+\index{files@{files}!writeVariable@{writeVariable}}
+\index{writeVariable@{writeVariable}!files@{files}}
+\doxysubsubsection{\texorpdfstring{writeVariable()}{writeVariable()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void files\+::write\+Variable (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const std\+::string \&}]{name,  }\item[{const T \&}]{value }\end{DoxyParamCaption})}
+
+Writes the variable in the ostream in the correct format to load 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em os} & \\
+\hline
+{\em name} & \\
+\hline
+{\em value} & \\
+\hline
+\end{DoxyParams}

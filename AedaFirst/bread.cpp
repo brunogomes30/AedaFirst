@@ -9,7 +9,7 @@ Bread::Bread(std::string name, float price, SizeType size):Product(name, price, 
     this->size = size;
 }
 
-Bread::Bread(unsigned int id, std::string name, SizeType size):Product(id, name, price, Category::bread){
+Bread::Bread(unsigned int id, std::string name, float price, SizeType size):Product(id, name, price, Category::bread){
     this->size = size;
 }
 
@@ -19,7 +19,7 @@ Bread::Bread(const map<string, string> &mapping) : Product() {
         next_id = this->id + 1;
     }
     stringstream(mapping.at("price")) >> this->price;
-    stringstream(mapping.at("size")) >> this->status;
+    stringstream(mapping.at("status")) >> this->status;
     name = mapping.at("name");
     int sizeId;
     stringstream(mapping.at("size")) >> sizeId;
