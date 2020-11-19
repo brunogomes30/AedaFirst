@@ -417,6 +417,7 @@ bool cmpProductsByCategory(Product* &product1, Product* &product2) {
 bool cmpProductsByPrice(Product* &product1, Product* &product2) {
     return product1->getPrice() < product2->getPrice();
 }
+
 void sortEmployeesByName(vector<Employee*> &employees) {
     sort(employees.begin(), employees.end(), cmpPersonsByName<Employee>);
 }
@@ -425,7 +426,7 @@ void sortEmployeesByNif(vector<Employee*> &employees) {
     sort(employees.begin(), employees.end(), cmpPersonsByNif<Employee>);
 }
 
-void sortEmployeesByPrice(vector<Employee*> &employees) {
+void sortEmployeesBySalary(vector<Employee*> &employees) {
     sort(employees.begin(), employees.end(), cmpEmployeesBySalary);
 }
 
@@ -449,7 +450,7 @@ void sortClientsByNif(vector<Client*> &clients) {
     sort(clients.begin(), clients.end(), cmpPersonsByNif<Client>);
 }
 
-unsigned chooseEmployeesSort(vector<Employee*> &employees) {
+unsigned chooseEmployeesSort() {
     unsigned operation;
     do {
         cout << left << endl << setw(5) << "OP" << "Sort by" << endl;

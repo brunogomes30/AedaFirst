@@ -1,17 +1,10 @@
 #include "employee.h"
 #include <iomanip>
 #include "files.h"
+
 using namespace std;
 
 const string Employee::FILENAME = "employees.txt";
-
-Employee::Employee(string name, unsigned nif, float salary){
-    setName(name);
-    setNif(nif);
-    setSalary(salary);
-    numOrders = 0;
-    this->status = true;
-}
 
 Employee::Employee(const map<string, string> &mapping){
     stringstream(mapping.at("nif")) >> this->nif;
@@ -19,6 +12,14 @@ Employee::Employee(const map<string, string> &mapping){
     stringstream(mapping.at("salary")) >> this->salary;
     stringstream(mapping.at("status")) >> this->status;
     this->name = mapping.at("name");
+}
+
+Employee::Employee(string name, unsigned nif, float salary){
+    this->name = name;
+    this->nif = nif;
+    this->salary = salary;
+    numOrders = 0;
+    this->status = true;
 }
 
 string Employee::getName() const {return name;}

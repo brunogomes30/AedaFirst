@@ -11,24 +11,9 @@ const string Store::FILENAME = "stores.txt";
 
 unsigned Store::store_next_id = 1;
 
-
-Store::Store(unsigned id) {
-    this->id = id;
-}
-Store::Store(std::string name, Address address) {
-    this->id = store_next_id++;
-    this->name = name;
-    this->address = address;
-    this->status = true;
-}
-Store::Store(unsigned int id, std::string name, Address address) {
-    this->id = id;
-    this->name = name;
-    this->address = address;
-    this->status = true;
-}
-
-Store::Store(const map<string, string> &mapping, const map<unsigned, Product*> &productsMapping, const map<unsigned, Employee*> &employeesMapping){
+Store::Store(const map<string, string> &mapping,
+             const map<unsigned, Product*> &productsMapping,
+             const map<unsigned, Employee*> &employeesMapping){
     //Create store with basic variables(id, name and Address)
     stringstream sa(mapping.at("id"));
     if(store_next_id <= this->id) {
@@ -56,6 +41,21 @@ Store::Store(const map<string, string> &mapping, const map<unsigned, Product*> &
         addEmployee(employeesMapping.at(nif));
     }
 }
+
+Store::Store(std::string name, Address address) {
+    this->id = store_next_id++;
+    this->name = name;
+    this->address = address;
+    this->status = true;
+}
+/*
+Store::Store(unsigned int id, std::string name, Address address) {
+    this->id = id;
+    this->name = name;
+    this->address = address;
+    this->status = true;
+}*/
+
 
 unsigned Store::getId() const {
     return id;
@@ -157,7 +157,7 @@ void Store::showEmployees(const unsigned &order) {
     else if (order%3 == 2)
         sortEmployeesByNif(employees);
     else
-        sortEmployeesByPrice(employees);
+        sortEmployeesBySalary(employees);
     if (order > 3)
         reverse(employees.begin(), employees.end());
 

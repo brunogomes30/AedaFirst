@@ -11,9 +11,9 @@
 using namespace std;
 
 Menu::Menu(bool load) {
-    loadData();
+    if (load)
+        loadData();
 }
-
 
 void Menu::opsStore(Store* &store) {
     int operation, op; string name; Address address;

@@ -7,17 +7,6 @@ const string Sale::FILENAME = "sales.txt";
 
 unsigned Sale::next_sale_id = 1;
 
-Sale::Sale() {
-    totalAmount = 0;
-}
-
-Sale::Sale(Client* client, Store* store) {
-    id = next_sale_id++;
-    this->client = client;
-    this->store = store;
-    totalAmount = 0;
-}
-
 Sale::Sale(const map<string, string> &mapping,
            const map<unsigned, Store *>  &storesMapping,
            const map<unsigned, Employee *> &employeesMapping,
@@ -48,6 +37,17 @@ Sale::Sale(const map<string, string> &mapping,
         addProduct(productsMapping.at(id), quantity, price);
     }
 
+}
+
+Sale::Sale() {
+    totalAmount = 0;
+}
+
+Sale::Sale(Client* client, Store* store) {
+    id = next_sale_id++;
+    this->client = client;
+    this->store = store;
+    totalAmount = 0;
 }
 
 void Sale::setStore(Store *store) {this->store = store;}
