@@ -91,6 +91,7 @@ void askId(unsigned &id, string object) {
         cout << endl << object + "'s ID:" << endl;
         cin >> id;
         if (cin.fail() || cin.peek() != '\n') {
+            cin.clear();
             error = true;
             cout << " That " + object + " doesn't exist" << endl;
         }
