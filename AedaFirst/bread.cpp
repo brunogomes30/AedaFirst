@@ -2,22 +2,17 @@
 #include <iostream>
 #include <iomanip>
 #include "files.h"
+
 using namespace std;
+
 const string Bread::FILENAME = "breads.txt";
-
-Bread::Bread(std::string name, float price, SizeType size):Product(name, price, Category::bread) {
-    this->size = size;
-}
-
-Bread::Bread(unsigned int id, std::string name, float price, SizeType size):Product(id, name, price, Category::bread){
-    this->size = size;
-}
 
 Bread::Bread(const map<string, string> &mapping) : Product() {
     stringstream(mapping.at("id")) >> this->id;
     if(next_id <= this->id){
         next_id = this->id + 1;
     }
+
     stringstream(mapping.at("price")) >> this->price;
     stringstream(mapping.at("status")) >> this->status;
     name = mapping.at("name");
@@ -28,6 +23,11 @@ Bread::Bread(const map<string, string> &mapping) : Product() {
 
 
 }
+
+Bread::Bread(std::string name, float price, SizeType size):Product(name, price, Category::bread) {
+    this->size = size;
+}
+
 SizeType Bread::getSize() {
     return size;
 }

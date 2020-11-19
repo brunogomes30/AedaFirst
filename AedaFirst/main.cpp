@@ -1,14 +1,8 @@
-#include "menu.h"
+#include "bakery.h"
 
 using namespace std;
 
 int main() {
-
-    Menu menu(true);
-
-    menu.mainMenu();
-
-    menu.saveData();
-
-
-}
+	Bakery bakery(true);
+    bakery.mainMenu();
+    bakery.saveData();}

@@ -6,14 +6,14 @@ using namespace std;
 
 const string Client::FILENAME = "clients.txt";
 
-Client::Client() {
-    name ="";
-    nif = 0;
-    regime = false;
-    points = 0;
-    discount = false;
-    sumOfAppraisals = 0;
-    this->status = true;
+Client::Client(const std::map<std::string, std::string> &mapping){
+    this->name = mapping.at("name");
+    stringstream(mapping.at("nif")) >> this->nif ;
+    stringstream(mapping.at("points")) >> this->points;
+    stringstream(mapping.at("opinion")) >> this->opinion;
+    stringstream(mapping.at("points")) >> this->regime;
+    stringstream(mapping.at("discount")) >> this->discount;
+    stringstream(mapping.at("status")) >> this->status;
 }
 
 Client::Client(std::string name, unsigned nif, bool regime) {
@@ -25,16 +25,6 @@ Client::Client(std::string name, unsigned nif, bool regime) {
     sumOfAppraisals = 0;
     opinion = false;
     this->status = true;
-}
-
-Client::Client(const std::map<std::string, std::string> &mapping){
-    this->name = mapping.at("name");
-    stringstream(mapping.at("nif")) >> this->nif ;
-    stringstream(mapping.at("points")) >> this->points;
-    stringstream(mapping.at("opinion")) >> this->opinion;
-    stringstream(mapping.at("points")) >> this->regime;
-    stringstream(mapping.at("discount")) >> this->discount;
-    stringstream(mapping.at("status")) >> this->status;
 }
 
 string Client::getName() const {return name;}
@@ -49,11 +39,19 @@ bool Client::getDiscount() const {return discount;}
 
 bool Client::getOpinion() const {return opinion;}
 
+bool Client::getStatus() const {
+    return this->status;
+}
+
 void Client::setName(string name) {this->name = name;}
 
 void Client::setNif(unsigned nif) {this->nif = nif;}
 
 void Client::setRegime(bool regime) {this->regime = regime;}
+
+void Client::setStatus(bool status) {
+    this->status = status;
+}
 
 void Client::useDiscount() {discount = false;}
 
@@ -124,11 +122,4 @@ ostream& operator<< (ostream &os, const Client &client){
     files::writeVariable(os, "status", client.status);
     os << "\n";
     return os;
-}
-
-bool Client::getStatus() const {
-    return this->status;
-}
-void Client::setStatus(bool status) {
-    this->status = status;
 }

@@ -22,7 +22,7 @@ private:
     /**
      * True to Premium regime, false to Normal regime.
      */
-    bool regime; // true if premium regime, false if normal regime
+    bool regime;
     /**
      * Current points of the client.
      */
@@ -43,26 +43,76 @@ private:
      * Keep tracking the sum of appraisals to give the opinion in time O(1).
      */
     int sumOfAppraisals;
-
-    /*
-     * Status to see if client is removed active or not
+    /**
+     * Status to see if client is removed active or not.
      */
     bool status;
 public:
-
+    /**
+     * Name of the file in data directory (clients.txt).
+     */
     const static std::string FILENAME;
-    Client();
-    Client(std::string name, unsigned nif, bool regime);
+    /**
+     * The constructor to use when loading from file.
+     * @param mapping Pairs whose first element identifies the attribute and second has its data.
+     */
     Client(const std::map<std::string, std::string> &mapping);
+    /**
+     * Initialize a client setting his name, NIF and regime.
+     * @param name Name of the client.
+     * @param nif NIF of the client.
+     * @param regime Regime of the client.
+     */
+    Client(std::string name, unsigned nif, bool regime);
+    /**
+     *
+     * @return Name of the client
+     */
     std::string getName() const;
+    /**
+     *
+     * @return NIF of the client.
+     */
     unsigned getNif() const;
+    /**
+     *
+     * @return Regime of the client.
+     */
     bool getRegime() const;
+    /**
+     *
+     * @return Current points of the client.
+     */
     unsigned getPoints() const;
+    /**
+     *
+     * @return True if discount in next order.
+     */
     bool getDiscount() const;
+    /**
+     *
+     * @return Opinion of the client.
+     */
     bool getOpinion() const;
+    /**
+     *
+     * @return Activation status of the client (true if he was not removed)
+     */
+    bool getStatus() const;
+
     void setName(std::string name);
     void setNif(unsigned nif);
+    /**
+     *
+     * @param regime New regime of the client.
+     */
     void setRegime(bool regime);
+    /**
+     *
+     * @param status New activation status of the client.
+     */
+    void setStatus(bool status);
+
     /**
      * Set discount to false.
      */
@@ -78,26 +128,30 @@ public:
      */
     void addPoints(const float &bill);
     /**
-     *
+     * Compare a client with either a name or a NIF.
      * @param identifier Name or NIF
      * @return True if the client's name or the client's nif is the same of identifier, false otherwise
      */
     bool same(std::string identifier) const;
     /**
-     *
-     * @param client Pointer to client to be comapared.
+     * Compare two clients.
+     * @param client Pointer to client to be compared.
      * @return True if both clients has the same name and the same NIF.
      */
     bool operator==(const Client* &client) const;
     /**
      * Print client in format:
      * <NIF>  <NAME>  <REGIME>  <OPINION>
+     * @param details If false does not print client´s opinion.
      */
     void showClient(bool details) const;
-
+    /**
+     * Write client in the file.
+     * @param os Stream where to save.
+     * @param client Client to be saved.
+     * @return Stream where was saved.
+     */
     friend std::ostream& operator<< (std::ostream &os, const Client &client);
 
-    bool getStatus() const;
-    void setStatus(bool status);
 };
 #endif //CLIENT_H

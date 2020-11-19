@@ -5,16 +5,7 @@ using namespace std;
 
 const string Sale::FILENAME = "sales.txt";
 
-Sale::Sale() {
-    totalAmount = 0;
-}
-
-Sale::Sale(Client* client, Store* store) {
-    id = next_sale_id++;
-    this->client = client;
-    this->store = store;
-    totalAmount = 0;
-}
+unsigned Sale::next_sale_id = 1;
 
 Sale::Sale(const map<string, string> &mapping,
            const map<unsigned, Store *>  &storesMapping,
@@ -38,12 +29,25 @@ Sale::Sale(const map<string, string> &mapping,
     stringstream(mapping.at("discount")) >> this->discount;
 
     stringstream ss = stringstream(mapping.at("products"));
+
     while(!ss.eof()) {
-        unsigned id, quantity, price;
+        unsigned id, quantity;
+        float price;
         ss >> id >> quantity >> price;
-        addProduct(productsMapping.at(id), quantity--);
+        addProduct(productsMapping.at(id), quantity, price);
     }
 
+}
+
+Sale::Sale() {
+    totalAmount = 0;
+}
+
+Sale::Sale(Client* client, Store* store) {
+    id = next_sale_id++;
+    this->client = client;
+    this->store = store;
+    totalAmount = 0;
 }
 
 void Sale::setStore(Store *store) {this->store = store;}

@@ -27,7 +27,7 @@ public:
     NoProductsChoseException(std::string ex):Exception(ex) {}
 };
 
-class ReadingDataException : public Exception{
+class ReadingDataException : public Exception {
 public:
     ReadingDataException(std::string ex) : Exception("Error reading " + ex + "Data "){}
 

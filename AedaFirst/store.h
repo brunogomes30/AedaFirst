@@ -11,48 +11,72 @@ struct Address{
   std::string locality;
 };
 
-static unsigned store_next_id = 1;
 
 class Store {
 private:
+    /**
+     * ID of the next store to be created.
+     */
+    static unsigned store_next_id;
+    /**
+     * ID of the store.
+     */
     unsigned id;
+    /**
+     * Name of the store.
+     */
     std::string name;
+    /**
+     * Structure with the street and locality of the store.
+     */
     Address address;
+    /**
+     * Products belonging to the store.
+     */
     std::vector<Product*> products;
+    /**
+     * Employees who work at the store.
+     */
     std::vector<Employee*> employees;
+    /**
+     * Activation status of the store. True if the store was not removed.
+     */
     bool status;
 public:
-    static const std::string FILENAME;
-    Store(unsigned id);
-    Store(std::string name, Address address);
- 	Store(unsigned int id, std::string name, Address address);
-
     /**
-    * The constructor to use when loading from file
-    * @param mapping
-    */
+     * Name of the file in data directory (stores.txt).
+     */
+    static const std::string FILENAME;
+    /**
+     * The constructor to use when loading from file.
+     * @param mapping Pairs whose first element identifies the attribute and second has its data.
+     * @param productsMapping Map with products values.
+     * @param employeesMapping Map with employees values.
+     */
     Store(const std::map<std::string, std::string> &mapping,
           const std::map<unsigned, Product*> &productsMapping,
           const std::map<unsigned, Employee*> &employeesMapping);
-
+    /**
+     * Initialize store setting its name, street and locality.
+     * @param name Name of the store.
+     * @param address Structure with the street and locality.
+     */
+    Store(std::string name, Address address);
     /**
      *
-     * @return Store's ID.
+     * @return Id of the store.
      */
     unsigned getId() const;
-
     /**
      *
-     * @return Store's name.
+     * @return Name of the store.
      */
     std::string getName() const;
     /**
      *
-     * @return Store's address.
+     * @return Adrress of the store.
      */
     Address getAddress() const;
-    friend std::ostream& operator<< (std::ostream &os, Store &store);
-    friend std::istream& operator>> (std::istream &is, Store &store);
 
     /**
      *
@@ -65,6 +89,12 @@ public:
      * @return Vector with employees linked to the store.
      */
     std::vector<Employee*> getEmployees() const;
+    /**
+     *
+     * @return Activation status of the store (true if it was not removed)
+     */
+    bool getStatus() const;
+
     /**
      *
      * @param name New name of the store.
@@ -81,65 +111,71 @@ public:
      */
     void addProduct(Product* product);
     /**
-     *
+     * Add several products to the products available in the store.
      * @param products Vector of pointers to products to be added to the store.
      */
     void addAllProducts(const std::vector<Product*> &products);
     /**
-     *
+     * Add an employee to the employees linked to the store.
      * @param employee Pointer to employee to be added to the store.
      */
     void addEmployee(Employee *employee);
     /**
-     *
-     * @param employee Pointer to the employee to be removed
+     * Removes an employee from the store.
+     * @param employee Pointer to the employee to be removed.
      */
     void removeEmployee(Employee *employee);
     /**
-     *
-     * @param product Pointer to the product to be removed
+     * Removes a product from the store.
+     * @param product Pointer to the product to be removed.
      */
     void removeProduct(Product *product);
     /**
-     *
-     * @param id ID of searched product
+     * Search for a product in products available in the store.
+     * @param id ID of searched product.
      * @return True if the store has the searched product, false otherwise.
      */
     bool findProduct(const unsigned &id) const;
     /**
-     *
+     * Search for the employee linked to the store with less sales made.
      * @return Pointer to employee with less orders.
      */
     Employee* lessOrdered() const;
     /**
-     *
+     * Compare two stores.
      * @param store Store to be compared.
      * @return True if both stores has the same ID, false otherwise.
      */
     bool operator==(const Store &store) const;
     /**
-     *
+     * Compare two stores.
      * @param store Store to be compared.
      * @return True if ID of the first is smaller than of the second.
      */
     bool operator<(const Store &store) const;
     /**
      * Print all products available in the store in format:
-     * <ID>  <CATEGORY>  <NAME>  <DETAILS>  <PRICE> euros
+     * <ID>  <CATEGORY>  <NAME>  <DETAILS>  <PRICE>
      */
     void showProducts() const;
     /**
-     * print all employees in the store in format:
-     * <NIF>  <NAME>  <SALARY>  <N. ORDERS>
+     * Print all employees in the store in format:
+     * <NIF>  <NAME>  <SALARY>  <NUM_ORDERS>
      */
-    void showEmployees() const;
+    void showEmployees(const unsigned &order);
     /**
      * Print store info in format:
      * ID: <STORE_ID> Store: <STORE_NAME>
      */
     void showStore() const;
+    /**
+     * Write store in the file.
+     * @param os Stream where to save.
+     * @param store Store to be saved.
+     * @return Stream where was saved.
+     */
+    friend std::ostream& operator<< (std::ostream &os, Store &store);
 
-    bool getStatus() const;
 
     //void Store::statistics(const std::vector<Sale*> &sales) const;
 };

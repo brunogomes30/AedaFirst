@@ -16,11 +16,11 @@ void showClients(const vector<Client*> &clients) {
         client->showClient(true);
 }
 
-void showEmployees(const std::vector<Store*> &stores) {
+void showEmployees(const std::vector<Store*> &stores, const unsigned &order) {
     for (auto store:stores) {
         cout << left << endl;
         store->showStore();
-        store->showEmployees();
+        store->showEmployees(order);
     }
 }
 
@@ -37,7 +37,7 @@ void showMenuOperations() {
     cout << "There are several options available and some require extra arguments" << endl;
     cout << "\t add    -> to Add an entity, takes a second argument from the list:\n\t\t [client, employee, product, store]" << endl;
     cout << "\t view   -> to View a set of entities, takes a second argument from the list:\n\t\t [clients, employees, products, stores]" << endl;
-    cout << "\t select -> to Select a entity, takes a second argument from the list: \n\t\t [client, employee, store, product, sales, volume]" << endl;
+    cout << "\t select -> to Select an entity, takes a second argument from the list: \n\t\t [client, employee, store, product, sales, volume]" << endl;
     cout << "\t order  -> to Make an Order" << endl;
     cout << "\t help   -> to show options available" << endl;
     cout << "\t exit   -> to Exit and save data" << endl;
@@ -79,6 +79,11 @@ void showProductOperations() {
     cout << "4 -> Remove product" << endl;
 }
 
+string toLower(string str){
+    std::transform(str.begin(), str.end(), str.begin(), [](unsigned char c){return  std::tolower(c);});
+    return str;
+}
+
 void askId(unsigned &id, string object) {
     bool error;
     do {
@@ -86,9 +91,11 @@ void askId(unsigned &id, string object) {
         cout << endl << object + "'s ID:" << endl;
         cin >> id;
         if (cin.fail() || cin.peek() != '\n') {
+            cin.clear();
             error = true;
             cout << " That " + object + " doesn't exist" << endl;
         }
+        cin.ignore(100, '\n');
     } while (error);
 }
 
@@ -281,7 +288,7 @@ void setClientData(string &name, unsigned &nif, bool &regime) {
 void setEmployeeData(string &name, unsigned &nif, float &salary, const vector<Store*> &stores, Store* &store) {
     bool error;
     // Set employee's name
-    askName(name, "Employee");
+    askName(name, "Employee's");
     // Set employee's NIF
     askNif(nif, "Employee");
     // Set employee's salary
@@ -395,16 +402,151 @@ bool cmpPersonsByNif(T* &person1, T* &person2) {
     return person1->getNif() < person2->getNif();
 }
 
-void sortClientsByName(std::vector<Client*> &clients) {
+bool cmpEmployeesBySalary(Employee* &employee1, Employee* &employee2) {
+    return employee1->getSalary()<employee2->getSalary();
+}
+bool cmpProductsById(Product* &product1, Product* &product2) {
+    return product1->getId()<product2->getId();
+}
+
+bool cmpProductsByCategory(Product* &product1, Product* &product2) {
+    if (product1->getCategory() == product2->getCategory())
+        return product1->getName()<product2->getName();
+    return product1->getCategory() < product2->getCategory();
+}
+
+bool cmpProductsByPrice(Product* &product1, Product* &product2) {
+    return product1->getPrice() < product2->getPrice();
+}
+
+void sortEmployeesByName(vector<Employee*> &employees) {
+    sort(employees.begin(), employees.end(), cmpPersonsByName<Employee>);
+}
+
+void sortEmployeesByNif(vector<Employee*> &employees) {
+    sort(employees.begin(), employees.end(), cmpPersonsByNif<Employee>);
+}
+
+void sortEmployeesBySalary(vector<Employee*> &employees) {
+    sort(employees.begin(), employees.end(), cmpEmployeesBySalary);
+}
+
+void sortProductsById(vector<Product*> &products) {
+    sort(products.begin(), products.end(), cmpProductsById);
+}
+
+void sortProductsByCategory(vector<Product*> &products) {
+    sort(products.begin(), products.end(), cmpProductsByCategory);
+}
+
+void sortProductsByPrice(vector<Product*> &products) {
+    sort(products.begin(), products.end(), cmpProductsByPrice);
+}
+
+void sortClientsByName(vector<Client*> &clients) {
     sort(clients.begin(), clients.end(), cmpPersonsByName<Client>);
 }
 
-void sortClientsByNif(std::vector<Client*> &clients) {
+void sortClientsByNif(vector<Client*> &clients) {
     sort(clients.begin(), clients.end(), cmpPersonsByNif<Client>);
 }
 
-string toLower(string str){
-        std::transform(str.begin(), str.end(), str.begin(), [](unsigned char c){return  std::tolower(c);});
-        return str;
+unsigned chooseEmployeesSort() {
+    unsigned operation;
+    do {
+        cout << left << endl << setw(5) << "OP" << "Sort by" << endl;
+        cout << setw(5) << "1" << "Name" << endl;
+        cout << setw(5) << "2" << "NIF" << endl;
+        cout << setw(5) << "3" << "Salary" << endl;
+        cout << endl << "Choose sort:" << endl;
+        cin >> operation;
+        if (cin.fail() || cin.peek() != '\n' || (operation != 1 && operation != 2 && operation != 3)) {
+            cin.clear();
+            operation = 0;
+            cout << "That is not a possible sort" << endl;
+        }
+        cin.ignore(100, '\n');
+    } while (operation == 0);
+    if (order())
+        operation += 3;
+    return operation;
 }
+
+void chooseProductsSort(vector<Product*> &products) {
+    int operation;
+    do {
+        cout << left << endl << setw(5) << "OP" << "Sort by" << endl;
+        cout << setw(5) << "1" << "ID" << endl;
+        cout << setw(5) << "2" << "Category and name" << endl;
+        cout << setw(5) << "3" << "Price" << endl;
+        cout << endl << "Choose sort:" << endl;
+        cin >> operation;
+        if (cin.fail() || cin.peek() != '\n' || (operation != 1 && operation != 2 && operation != 3)) {
+            cin.clear();
+            operation = -1;
+            cout << "That is not a possible sort" << endl;
+        }
+        cin.ignore(100, '\n');
+    } while (operation == -1);
+    if (operation == 1)
+        sortProductsById(products);
+    else if (operation == 2)
+        sortProductsByCategory(products);
+    else
+        sortProductsByPrice(products);
+
+    if (order())
+        reverse(products.begin(), products.end());
+}
+
+void chooseClientsSort(vector<Client*> &clients) {
+    int operation;
+    do {
+        cout << left << endl << setw(5) << "OP" << "Sort by" << endl;
+        cout << setw(5) << "1" << "Name" << endl;
+        cout << setw(5) << "2" << "NIF" << endl;
+        cout << endl << "Choose sort:" << endl;
+        cin >> operation;
+        if (cin.fail() || cin.peek() != '\n' || (operation != 1 && operation != 2)) {
+            cin.clear();
+            operation = -1;
+            cout << "That is not a possible sort" << endl;
+        }
+        cin.ignore(100, '\n');
+    } while (operation == -1);
+    if (operation == 1)
+        sortClientsByName(clients);
+    else
+        sortClientsByNif(clients);
+
+    if (order())
+        reverse(clients.begin(), clients.end());
+}
+
+void chooseSalesVolumeByProductSort(vector<pair<Product*, pair<unsigned, float>>> &vProducts) {
+int operation;
+bool descending;
+do {
+    cout << endl << left << setw(5) << "OP" << "Sort by" << endl;
+    cout << setw(5) << "1" << "Quantity sold" << endl;
+    cout << setw(5) << "2" << "Income" << endl;
+    cout << endl << "Choose sort:" << endl;
+    cin >> operation;
+    if (cin.fail() || cin.peek() != '\n' || (operation != 1 && operation != 2)) {
+        cin.clear();
+        operation = -1;
+        cout << "That is not a possible sort" << endl;
+    }
+    cin.ignore(100, '\n');
+} while (operation == -1);
+descending = order();
+if (operation == 1)
+    sortByQuantitySold(vProducts);
+else
+    sortByIncome(vProducts);
+
+if (descending)
+    reverse(vProducts.begin(), vProducts.end());
+}
+
 

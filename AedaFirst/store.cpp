@@ -1,28 +1,19 @@
 #include "store.h"
+#include "utilities.h"
 #include <iomanip>
 #include <algorithm>
 #include <map>
 #include "files.h"
+
 using namespace std;
+
 const string Store::FILENAME = "stores.txt";
 
-Store::Store(unsigned id) {
-    this->id = id;
-}
-Store::Store(std::string name, Address address) {
-    this->id = store_next_id++;
-    this->name = name;
-    this->address = address;
-    this->status = true;
-}
-Store::Store(unsigned int id, std::string name, Address address) {
-    this->id = id;
-    this->name = name;
-    this->address = address;
-    this->status = true;
-}
+unsigned Store::store_next_id = 1;
 
-Store::Store(const map<string, string> &mapping, const map<unsigned, Product*> &productsMapping, const map<unsigned, Employee*> &employeesMapping){
+Store::Store(const map<string, string> &mapping,
+             const map<unsigned, Product*> &productsMapping,
+             const map<unsigned, Employee*> &employeesMapping){
     //Create store with basic variables(id, name and Address)
     stringstream sa(mapping.at("id"));
     if(store_next_id <= this->id) {
@@ -32,7 +23,7 @@ Store::Store(const map<string, string> &mapping, const map<unsigned, Product*> &
     this->name = mapping.at("name");
     this->address.street = mapping.at("address_street");
     this->address.locality = mapping.at("address_locality");
-    stringstream(mapping.at("employees")) >> this->status;
+    stringstream(mapping.at("status")) >> this->status;
 
     //Read vectors of products and employees
     sa = stringstream(mapping.at("products"));
@@ -46,8 +37,16 @@ Store::Store(const map<string, string> &mapping, const map<unsigned, Product*> &
     while(!sa.eof() && !mapping.at("employees").empty()){
         unsigned nif;
         sa >> nif;
+
         addEmployee(employeesMapping.at(nif));
     }
+}
+
+Store::Store(std::string name, Address address) {
+    this->id = store_next_id++;
+    this->name = name;
+    this->address = address;
+    this->status = true;
 }
 
 unsigned Store::getId() const {
@@ -144,7 +143,16 @@ void Store::showProducts() const {
     }
 }
 
-void Store::showEmployees() const {
+void Store::showEmployees(const unsigned &order) {
+    if (order%3 == 1)
+        sortEmployeesByName(employees);
+    else if (order%3 == 2)
+        sortEmployeesByNif(employees);
+    else
+        sortEmployeesBySalary(employees);
+    if (order > 3)
+        reverse(employees.begin(), employees.end());
+
     cout << setw(12) << "NIF" << setw(20) << "Name" << setw(10)
             << "Salary" << setw(12) << "N. Orders" << endl;
     for (auto emp:employees) {
