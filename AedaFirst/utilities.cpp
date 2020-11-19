@@ -525,7 +525,7 @@ void chooseSalesVolumeByProductSort(vector<pair<Product*, pair<unsigned, float>>
 int operation;
 bool descending;
 do {
-    cout << endl << setw(5) << "OP" << "Sort by" << endl;
+    cout << endl << left << setw(5) << "OP" << "Sort by" << endl;
     cout << setw(5) << "1" << "Quantity sold" << endl;
     cout << setw(5) << "2" << "Income" << endl;
     cout << endl << "Choose sort:" << endl;
@@ -538,7 +538,7 @@ do {
     cin.ignore(100, '\n');
 } while (operation == -1);
 descending = order();
-if (operation == 0)
+if (operation == 1)
     sortByQuantitySold(vProducts);
 else
     sortByIncome(vProducts);

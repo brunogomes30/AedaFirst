@@ -8,10 +8,10 @@
 #include "employee.h"
 
 
-static unsigned next_sale_id = 1;
 
 class Sale {
 private:
+    static unsigned next_sale_id;
     unsigned id;
     Client* client;
     Store* store;
@@ -32,7 +32,8 @@ public:
          const std::map<unsigned, Store *>  &storesMapping,
          const std::map<unsigned, Employee *> &employeesMapping,
          const std::map<unsigned, Client *> &clientsMapping,
-         const std::map<unsigned, Product *> &productsMapping);    void setStore(Store* store);
+         const std::map<unsigned, Product *> &productsMapping);
+	void setStore(Store* store);
     void setClient(Client* client);
     void setEmployee(Employee* employee);
     void addProduct(Product* product, unsigned qty);

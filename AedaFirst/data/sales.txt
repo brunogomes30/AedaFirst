@@ -1,0 +1,6 @@
+id=" 1 " employeeNif=" 123456789 " clientNif=" 311525279 " storeId=" 1 " appraisal=" 4 " totalAmount=" 15.2 " discount=" 1 " products=" 1 20 0.11 3 2 0.8  " 
+id=" 2 " employeeNif=" 423658345 " clientNif=" 227242220 " storeId=" 1 " appraisal=" 4 " totalAmount=" 67 " discount=" 1 " products=" 2 35 0.25 3 10 0.8  " 
+id=" 3 " employeeNif=" 123456789 " clientNif=" 311525279 " storeId=" 1 " appraisal=" 5 " totalAmount=" 23.1 " discount=" 1 " products=" 2 22 0.25 1 20 0.11  " 
+id=" 4 " employeeNif=" 423658345 " clientNif=" 311525279 " storeId=" 1 " appraisal=" 4 " totalAmount=" 40 " discount=" 0.98 " products=" 3 25 0.8  " 
+id=" 5 " employeeNif=" 542872090 " clientNif=" 101023980 " storeId=" 1 " appraisal=" 3 " totalAmount=" 2.26 " discount=" 1 " products=" 1 3 0.11 3 1 0.8  " 
+id=" 6 " employeeNif=" 987654321 " clientNif=" 733573451 " storeId=" 2 " appraisal=" 4 " totalAmount=" 23.9 " discount=" 1 " products=" 1 50 0.11 3 23 0.8  " 

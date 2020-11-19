@@ -169,7 +169,7 @@ void Menu::opsEmployee(Employee* employee) {
             case 1: // Change employee's salary
                 bool error;
                 float salary;
-                askSalaryOrPrice(salary, "Employee's new");
+                askSalaryOrPrice(salary, "Employee's new salary");
                 employee->setSalary(salary);
                 break;
             case 2: // Remove employee
@@ -402,8 +402,9 @@ void Menu::salesVolumeByStore() {
     vector<pair<Store*, float>> vStores_incomes;
     for (auto &it:stores_incomes)
         vStores_incomes.push_back(it);
-    sort(vStores_incomes.begin(), vStores_incomes.end(), [](pair<Store*, float> &p1, pair<Store*, float> &p2) {return p1.second > p2.second;});
-    cout << endl << setw(5) << "ID" << setw(20) << "Name" << right << setw(14) << "Total income" << left << endl;
+    sort(vStores_incomes.begin(), vStores_incomes.end(),
+         [](pair<Store*, float> &p1, pair<Store*, float> &p2) {return p1.second > p2.second;});
+    cout << endl << left << setw(5) << "ID" << setw(20) << "Name" << right << setw(14) << "Total income" << left << endl;
     for (auto s:vStores_incomes)
         cout << setw(5) << s.first->getId() << setw(20) << s.first->getName()
             << right << setw(14) << s.second << left << endl;
@@ -516,7 +517,8 @@ void Menu::mainMenu() {
         if(firstCommand == "add"){
             //Add options
             if(secondCommand.empty()){
-                cout << "Please insert a second argument from the list: [store, employee, product, client]" << endl;
+                cout << "Please insert a second argument from the list:" << endl;
+                cout << " [store, employee, product, client]" << endl;
                 cout << "e.g: add store " << endl;
             } else if(secondCommand == "store"){
                 setStoreData(name, address);
@@ -525,10 +527,14 @@ void Menu::mainMenu() {
                 storesMapping[store->getId()] = store;
             } else if(secondCommand == "employee"){
                 setEmployeeData(name, nif_or_id, price_or_salary, stores, store);
-                employee = new Employee(name, nif_or_id, price_or_salary);
-                employees.push_back(employee);
-                store->addEmployee(employees.back());
-                employeesMapping[employee->getNif()] = employee;
+                if (searchEmployee(employees, to_string(nif_or_id)) == nullptr) {
+                    employee = new Employee(name, nif_or_id, price_or_salary);
+                    employees.push_back(employee);
+                    store->addEmployee(employees.back());
+                    employeesMapping[employee->getNif()] = employee;
+                }
+                else
+                    cout << "That employee already exists." << endl;
             } else if(secondCommand == "product"){
                 setProductData(name, price_or_salary, ctg, size, ly1, ly2);
                 if (ctg == bread) {
@@ -542,9 +548,14 @@ void Menu::mainMenu() {
                 productsMapping[product->getId()] = product;
             } else if(secondCommand == "client") {
                 setClientData(name, nif_or_id, regime);
-                client = new Client(name, nif_or_id, regime);
-                clients.push_back(client);
-                clientsMapping[client->getNif()] = client;
+                if (searchClient(clients, to_string(nif_or_id)) == nullptr) {
+                    client = new Client(name, nif_or_id, regime);
+                    clients.push_back(client);
+                    clientsMapping[client->getNif()] = client;
+                }
+                else
+                    cout << "That client is already registered." << endl;
+
             } else {
                 cout << "Second argument is wrong." << endl;
                 cout << "Please insert a second argument from the list:" << endl;
@@ -556,7 +567,7 @@ void Menu::mainMenu() {
             if (secondCommand.empty()) {
                 cout << "Please insert a second argument from the list:" << endl;
                 cout << "[stores, employees, products, clients, sales, volume]" << endl;
-                cout << "e.g: view shops " << endl;
+                cout << "e.g: view stores " << endl;
             } else if (secondCommand == "stores") {
                 showStores(stores);
                 cout << endl;
@@ -583,7 +594,7 @@ void Menu::mainMenu() {
                 cout << "Second argument is wrong." << endl;
                 cout << "Please insert a second argument from the list:" << endl;
                 cout << "[stores, employees, products, clients, sales, volume]" << endl;
-                cout << "e.g: view shops" << endl;
+                cout << "e.g: view stores" << endl;
             }
         } else if (firstCommand == "select") {
             //Select options
@@ -591,7 +602,7 @@ void Menu::mainMenu() {
             if (secondCommand.empty()) {
                 cout << "Please insert a second argument from the list:" << endl;
                 cout << "[store, employee, product, client]" << endl;
-                cout << "e.g: select shop " << endl;
+                cout << "e.g: select store " << endl;
             }
             else if (secondCommand == "store") {
                 if(!inputRequired){
@@ -660,7 +671,7 @@ void Menu::mainMenu() {
                 cout << "Second argument is wrong." << endl;
                 cout << "Please insert a second argument from the list:" << endl;
                 cout << "[store, employee, product, client]" << endl;
-                cout << "e.g: select shop" << endl;
+                cout << "e.g: select store" << endl;
             }
         } else if(firstCommand == "order") {
             try {
@@ -726,7 +737,7 @@ void Menu::loadData() {
         } catch(exception &e){
             throw ReadingDataException("Cakes");
         }
-        cout << "Load Employees ";
+
         try {
             //Load employees
             is = ifstream(path + Employee::FILENAME);
