@@ -572,7 +572,7 @@ void Menu::mainMenu() {
                 showStores(stores);
                 cout << endl;
             } else if (secondCommand == "employees") {
-                nif_or_id = chooseEmployeesSort(employees);
+                nif_or_id = chooseEmployeesSort();
                 showEmployees(stores, nif_or_id);
             } else if (secondCommand == "products") {
                 chooseProductsSort(products);

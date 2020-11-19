@@ -1,2 +1,3 @@
 id=" 1 " name=" biju " price=" 0.11 " size=" 0 " status=" 1 " 
 id=" 2 " name=" bico de pato " price=" 0.25 " size=" 0 " status=" 1 " 
+id=" 4 " name=" baguete " price=" 1.2 " size=" 1 " status=" 1 " 

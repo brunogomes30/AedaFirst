@@ -52,7 +52,6 @@ public:
      * Name of the file in data directory (clients.txt).
      */
     const static std::string FILENAME;
-    //Client();
     /**
      * The constructor to use when loading from file.
      * @param mapping Pairs whose first element identifies the attribute and second has its data.

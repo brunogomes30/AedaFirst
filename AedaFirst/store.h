@@ -62,8 +62,6 @@ public:
      * @param address Structure with the street and locality.
      */
     Store(std::string name, Address address);
-
- 	//Store(unsigned id, std::string name, Address address);
     /**
      *
      * @return Id of the store.

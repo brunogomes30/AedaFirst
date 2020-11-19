@@ -48,14 +48,6 @@ Store::Store(std::string name, Address address) {
     this->address = address;
     this->status = true;
 }
-/*
-Store::Store(unsigned int id, std::string name, Address address) {
-    this->id = id;
-    this->name = name;
-    this->address = address;
-    this->status = true;
-}*/
-
 
 unsigned Store::getId() const {
     return id;

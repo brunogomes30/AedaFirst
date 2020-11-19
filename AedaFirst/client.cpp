@@ -5,16 +5,7 @@
 using namespace std;
 
 const string Client::FILENAME = "clients.txt";
-/*
-Client::Client() {
-    name ="";
-    nif = 0;
-    regime = false;
-    points = 0;
-    discount = false;
-    sumOfAppraisals = 0;
-    this->status = true;
-}*/
+
 Client::Client(const std::map<std::string, std::string> &mapping){
     this->name = mapping.at("name");
     stringstream(mapping.at("nif")) >> this->nif ;
