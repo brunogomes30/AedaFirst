@@ -525,8 +525,10 @@ void Menu::mainMenu() {
                 storesMapping[store->getId()] = store;
             } else if(secondCommand == "employee"){
                 setEmployeeData(name, nif_or_id, price_or_salary, stores, store);
-                employees.push_back(new Employee(name, nif_or_id, price_or_salary));
+                employee = new Employee(name, nif_or_id, price_or_salary);
+                employees.push_back(employee);
                 store->addEmployee(employees.back());
+                employeesMapping[employee->getNif()] = employee;
             } else if(secondCommand == "product"){
                 setProductData(name, price_or_salary, ctg, size, ly1, ly2);
                 if (ctg == bread) {
@@ -614,8 +616,7 @@ void Menu::mainMenu() {
                     name = thirdCommand + name;
                     cout << name << endl;
                 } else {
-                    if(!inputRequired)
-                        showEmployees(stores);
+                    showEmployees(stores);
                     askPersonData(name, "Employee");
                 }
                 employee = searchEmployee(employees, name);
@@ -672,9 +673,10 @@ void Menu::mainMenu() {
             showMenuOperations();
         } else if(firstCommand == "exit") {
             cout << "Finish Program" << endl;
-            break;
+        } else {
+            cout << "First argument is wrong." << endl;
+            cout << "Insert \"help\" to see options availables." << endl;
         }
-
     } while (firstCommand != "exit");
 }
 
@@ -761,7 +763,6 @@ void Menu::loadData() {
                 if(store->getStatus()){
                     stores.push_back(store);
                 }
-
             }
             is.close();
         } catch (exception e){
@@ -829,7 +830,6 @@ void Menu::saveData(){
     outBreads.close();
     outCakes.close();
 
-
     //Save employess
     outEmployees.open(path + Employee::FILENAME, ios::out);
     for(auto it : employeesMapping){
@@ -843,21 +843,18 @@ void Menu::saveData(){
         outStores << *(it.second);
     }
     outStores.close();
-    outClients.open(path + Client::FILENAME, ios::out);
 
+    // Save Clients
+    outClients.open(path + Client::FILENAME, ios::out);
     for(auto it: clientsMapping){
         outClients << *(it.second);
     }
     outClients.close();
 
+    // Save Sales
     outSales.open(path + Sale::FILENAME, ios::out);
     for(Sale * sale : sales){
         outSales << *sale;
     }
-
     outSales.close();
-
-
-
-
 }

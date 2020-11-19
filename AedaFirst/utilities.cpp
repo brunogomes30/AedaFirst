@@ -94,6 +94,7 @@ void askId(unsigned &id, string object) {
             error = true;
             cout << " That " + object + " doesn't exist" << endl;
         }
+        cin.ignore(100, '\n');
     } while (error);
 }
 
@@ -286,7 +287,7 @@ void setClientData(string &name, unsigned &nif, bool &regime) {
 void setEmployeeData(string &name, unsigned &nif, float &salary, const vector<Store*> &stores, Store* &store) {
     bool error;
     // Set employee's name
-    askName(name, "Employee");
+    askName(name, "Employee's");
     // Set employee's NIF
     askNif(nif, "Employee");
     // Set employee's salary

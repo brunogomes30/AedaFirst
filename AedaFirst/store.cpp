@@ -4,7 +4,9 @@
 #include <algorithm>
 #include <map>
 #include "files.h"
+
 using namespace std;
+
 const string Store::FILENAME = "stores.txt";
 
 unsigned Store::store_next_id = 1;
@@ -50,6 +52,7 @@ Store::Store(const map<string, string> &mapping, const map<unsigned, Product*> &
     while(!sa.eof() && !mapping.at("employees").empty()){
         unsigned nif;
         sa >> nif;
+
         addEmployee(employeesMapping.at(nif));
     }
 }

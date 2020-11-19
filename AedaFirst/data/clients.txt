@@ -1,2 +1,2 @@
-nif=" 111111 " name=" Joca " opinion=" 0 " points=" 0 " regime=" 0 " discount=" 0 " status=" 1 " 
-nif=" 222222 " name=" Ambrosio " opinion=" 0 " points=" 0 " regime=" 0 " discount=" 0 " status=" 1 " 
+nif=" 227242220 " name=" Ambrosio " opinion=" 0 " points=" 0 " regime=" 0 " discount=" 0 " status=" 1 " 
+nif=" 311525279 " name=" Joca " opinion=" 0 " points=" 0 " regime=" 0 " discount=" 0 " status=" 1 " 
