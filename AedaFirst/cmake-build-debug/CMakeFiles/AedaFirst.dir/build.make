@@ -62,10 +62,10 @@ RM = "C:\Program Files\JetBrains\CLion 2020.2.3\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\ultra\Documents\AedaFirst\AedaFirst
+CMAKE_SOURCE_DIR = "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\ultra\Documents\AedaFirst\AedaFirst\cmake-build-debug
+CMAKE_BINARY_DIR = "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\cmake-build-debug"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/AedaFirst.dir/depend.make
@@ -78,146 +78,146 @@ include CMakeFiles/AedaFirst.dir/flags.make
 
 CMakeFiles/AedaFirst.dir/main.cpp.obj: CMakeFiles/AedaFirst.dir/flags.make
 CMakeFiles/AedaFirst.dir/main.cpp.obj: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ultra\Documents\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/AedaFirst.dir/main.cpp.obj"
-	C:\MinGW64_2\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\AedaFirst.dir\main.cpp.obj -c C:\Users\ultra\Documents\AedaFirst\AedaFirst\main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/AedaFirst.dir/main.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\AedaFirst.dir\main.cpp.obj -c "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\main.cpp"
 
 CMakeFiles/AedaFirst.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/AedaFirst.dir/main.cpp.i"
-	C:\MinGW64_2\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\ultra\Documents\AedaFirst\AedaFirst\main.cpp > CMakeFiles\AedaFirst.dir\main.cpp.i
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\main.cpp" > CMakeFiles\AedaFirst.dir\main.cpp.i
 
 CMakeFiles/AedaFirst.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/AedaFirst.dir/main.cpp.s"
-	C:\MinGW64_2\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\ultra\Documents\AedaFirst\AedaFirst\main.cpp -o CMakeFiles\AedaFirst.dir\main.cpp.s
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\main.cpp" -o CMakeFiles\AedaFirst.dir\main.cpp.s
 
 CMakeFiles/AedaFirst.dir/product.cpp.obj: CMakeFiles/AedaFirst.dir/flags.make
 CMakeFiles/AedaFirst.dir/product.cpp.obj: ../product.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ultra\Documents\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/AedaFirst.dir/product.cpp.obj"
-	C:\MinGW64_2\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\AedaFirst.dir\product.cpp.obj -c C:\Users\ultra\Documents\AedaFirst\AedaFirst\product.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/AedaFirst.dir/product.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\AedaFirst.dir\product.cpp.obj -c "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\product.cpp"
 
 CMakeFiles/AedaFirst.dir/product.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/AedaFirst.dir/product.cpp.i"
-	C:\MinGW64_2\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\ultra\Documents\AedaFirst\AedaFirst\product.cpp > CMakeFiles\AedaFirst.dir\product.cpp.i
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\product.cpp" > CMakeFiles\AedaFirst.dir\product.cpp.i
 
 CMakeFiles/AedaFirst.dir/product.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/AedaFirst.dir/product.cpp.s"
-	C:\MinGW64_2\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\ultra\Documents\AedaFirst\AedaFirst\product.cpp -o CMakeFiles\AedaFirst.dir\product.cpp.s
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\product.cpp" -o CMakeFiles\AedaFirst.dir\product.cpp.s
 
 CMakeFiles/AedaFirst.dir/cake.cpp.obj: CMakeFiles/AedaFirst.dir/flags.make
 CMakeFiles/AedaFirst.dir/cake.cpp.obj: ../cake.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ultra\Documents\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/AedaFirst.dir/cake.cpp.obj"
-	C:\MinGW64_2\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\AedaFirst.dir\cake.cpp.obj -c C:\Users\ultra\Documents\AedaFirst\AedaFirst\cake.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/AedaFirst.dir/cake.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\AedaFirst.dir\cake.cpp.obj -c "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\cake.cpp"
 
 CMakeFiles/AedaFirst.dir/cake.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/AedaFirst.dir/cake.cpp.i"
-	C:\MinGW64_2\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\ultra\Documents\AedaFirst\AedaFirst\cake.cpp > CMakeFiles\AedaFirst.dir\cake.cpp.i
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\cake.cpp" > CMakeFiles\AedaFirst.dir\cake.cpp.i
 
 CMakeFiles/AedaFirst.dir/cake.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/AedaFirst.dir/cake.cpp.s"
-	C:\MinGW64_2\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\ultra\Documents\AedaFirst\AedaFirst\cake.cpp -o CMakeFiles\AedaFirst.dir\cake.cpp.s
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\cake.cpp" -o CMakeFiles\AedaFirst.dir\cake.cpp.s
 
 CMakeFiles/AedaFirst.dir/bread.cpp.obj: CMakeFiles/AedaFirst.dir/flags.make
 CMakeFiles/AedaFirst.dir/bread.cpp.obj: ../bread.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ultra\Documents\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/AedaFirst.dir/bread.cpp.obj"
-	C:\MinGW64_2\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\AedaFirst.dir\bread.cpp.obj -c C:\Users\ultra\Documents\AedaFirst\AedaFirst\bread.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/AedaFirst.dir/bread.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\AedaFirst.dir\bread.cpp.obj -c "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\bread.cpp"
 
 CMakeFiles/AedaFirst.dir/bread.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/AedaFirst.dir/bread.cpp.i"
-	C:\MinGW64_2\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\ultra\Documents\AedaFirst\AedaFirst\bread.cpp > CMakeFiles\AedaFirst.dir\bread.cpp.i
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\bread.cpp" > CMakeFiles\AedaFirst.dir\bread.cpp.i
 
 CMakeFiles/AedaFirst.dir/bread.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/AedaFirst.dir/bread.cpp.s"
-	C:\MinGW64_2\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\ultra\Documents\AedaFirst\AedaFirst\bread.cpp -o CMakeFiles\AedaFirst.dir\bread.cpp.s
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\bread.cpp" -o CMakeFiles\AedaFirst.dir\bread.cpp.s
 
 CMakeFiles/AedaFirst.dir/store.cpp.obj: CMakeFiles/AedaFirst.dir/flags.make
 CMakeFiles/AedaFirst.dir/store.cpp.obj: ../store.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ultra\Documents\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/AedaFirst.dir/store.cpp.obj"
-	C:\MinGW64_2\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\AedaFirst.dir\store.cpp.obj -c C:\Users\ultra\Documents\AedaFirst\AedaFirst\store.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/AedaFirst.dir/store.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\AedaFirst.dir\store.cpp.obj -c "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\store.cpp"
 
 CMakeFiles/AedaFirst.dir/store.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/AedaFirst.dir/store.cpp.i"
-	C:\MinGW64_2\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\ultra\Documents\AedaFirst\AedaFirst\store.cpp > CMakeFiles\AedaFirst.dir\store.cpp.i
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\store.cpp" > CMakeFiles\AedaFirst.dir\store.cpp.i
 
 CMakeFiles/AedaFirst.dir/store.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/AedaFirst.dir/store.cpp.s"
-	C:\MinGW64_2\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\ultra\Documents\AedaFirst\AedaFirst\store.cpp -o CMakeFiles\AedaFirst.dir\store.cpp.s
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\store.cpp" -o CMakeFiles\AedaFirst.dir\store.cpp.s
 
 CMakeFiles/AedaFirst.dir/client.cpp.obj: CMakeFiles/AedaFirst.dir/flags.make
 CMakeFiles/AedaFirst.dir/client.cpp.obj: ../client.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ultra\Documents\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/AedaFirst.dir/client.cpp.obj"
-	C:\MinGW64_2\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\AedaFirst.dir\client.cpp.obj -c C:\Users\ultra\Documents\AedaFirst\AedaFirst\client.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/AedaFirst.dir/client.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\AedaFirst.dir\client.cpp.obj -c "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\client.cpp"
 
 CMakeFiles/AedaFirst.dir/client.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/AedaFirst.dir/client.cpp.i"
-	C:\MinGW64_2\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\ultra\Documents\AedaFirst\AedaFirst\client.cpp > CMakeFiles\AedaFirst.dir\client.cpp.i
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\client.cpp" > CMakeFiles\AedaFirst.dir\client.cpp.i
 
 CMakeFiles/AedaFirst.dir/client.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/AedaFirst.dir/client.cpp.s"
-	C:\MinGW64_2\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\ultra\Documents\AedaFirst\AedaFirst\client.cpp -o CMakeFiles\AedaFirst.dir\client.cpp.s
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\client.cpp" -o CMakeFiles\AedaFirst.dir\client.cpp.s
 
 CMakeFiles/AedaFirst.dir/sale.cpp.obj: CMakeFiles/AedaFirst.dir/flags.make
 CMakeFiles/AedaFirst.dir/sale.cpp.obj: ../sale.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ultra\Documents\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/AedaFirst.dir/sale.cpp.obj"
-	C:\MinGW64_2\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\AedaFirst.dir\sale.cpp.obj -c C:\Users\ultra\Documents\AedaFirst\AedaFirst\sale.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/AedaFirst.dir/sale.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\AedaFirst.dir\sale.cpp.obj -c "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\sale.cpp"
 
 CMakeFiles/AedaFirst.dir/sale.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/AedaFirst.dir/sale.cpp.i"
-	C:\MinGW64_2\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\ultra\Documents\AedaFirst\AedaFirst\sale.cpp > CMakeFiles\AedaFirst.dir\sale.cpp.i
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\sale.cpp" > CMakeFiles\AedaFirst.dir\sale.cpp.i
 
 CMakeFiles/AedaFirst.dir/sale.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/AedaFirst.dir/sale.cpp.s"
-	C:\MinGW64_2\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\ultra\Documents\AedaFirst\AedaFirst\sale.cpp -o CMakeFiles\AedaFirst.dir\sale.cpp.s
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\sale.cpp" -o CMakeFiles\AedaFirst.dir\sale.cpp.s
 
 CMakeFiles/AedaFirst.dir/utilities.cpp.obj: CMakeFiles/AedaFirst.dir/flags.make
 CMakeFiles/AedaFirst.dir/utilities.cpp.obj: ../utilities.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ultra\Documents\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/AedaFirst.dir/utilities.cpp.obj"
-	C:\MinGW64_2\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\AedaFirst.dir\utilities.cpp.obj -c C:\Users\ultra\Documents\AedaFirst\AedaFirst\utilities.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/AedaFirst.dir/utilities.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\AedaFirst.dir\utilities.cpp.obj -c "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\utilities.cpp"
 
 CMakeFiles/AedaFirst.dir/utilities.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/AedaFirst.dir/utilities.cpp.i"
-	C:\MinGW64_2\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\ultra\Documents\AedaFirst\AedaFirst\utilities.cpp > CMakeFiles\AedaFirst.dir\utilities.cpp.i
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\utilities.cpp" > CMakeFiles\AedaFirst.dir\utilities.cpp.i
 
 CMakeFiles/AedaFirst.dir/utilities.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/AedaFirst.dir/utilities.cpp.s"
-	C:\MinGW64_2\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\ultra\Documents\AedaFirst\AedaFirst\utilities.cpp -o CMakeFiles\AedaFirst.dir\utilities.cpp.s
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\utilities.cpp" -o CMakeFiles\AedaFirst.dir\utilities.cpp.s
 
 CMakeFiles/AedaFirst.dir/employee.cpp.obj: CMakeFiles/AedaFirst.dir/flags.make
 CMakeFiles/AedaFirst.dir/employee.cpp.obj: ../employee.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ultra\Documents\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/AedaFirst.dir/employee.cpp.obj"
-	C:\MinGW64_2\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\AedaFirst.dir\employee.cpp.obj -c C:\Users\ultra\Documents\AedaFirst\AedaFirst\employee.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/AedaFirst.dir/employee.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\AedaFirst.dir\employee.cpp.obj -c "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\employee.cpp"
 
 CMakeFiles/AedaFirst.dir/employee.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/AedaFirst.dir/employee.cpp.i"
-	C:\MinGW64_2\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\ultra\Documents\AedaFirst\AedaFirst\employee.cpp > CMakeFiles\AedaFirst.dir\employee.cpp.i
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\employee.cpp" > CMakeFiles\AedaFirst.dir\employee.cpp.i
 
 CMakeFiles/AedaFirst.dir/employee.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/AedaFirst.dir/employee.cpp.s"
-	C:\MinGW64_2\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\ultra\Documents\AedaFirst\AedaFirst\employee.cpp -o CMakeFiles\AedaFirst.dir\employee.cpp.s
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\employee.cpp" -o CMakeFiles\AedaFirst.dir\employee.cpp.s
 
-CMakeFiles/AedaFirst.dir/menu.cpp.obj: CMakeFiles/AedaFirst.dir/flags.make
-CMakeFiles/AedaFirst.dir/menu.cpp.obj: ../menu.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ultra\Documents\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/AedaFirst.dir/menu.cpp.obj"
-	C:\MinGW64_2\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\AedaFirst.dir\menu.cpp.obj -c C:\Users\ultra\Documents\AedaFirst\AedaFirst\menu.cpp
+CMakeFiles/AedaFirst.dir/bakery.cpp.obj: CMakeFiles/AedaFirst.dir/flags.make
+CMakeFiles/AedaFirst.dir/bakery.cpp.obj: ../bakery.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/AedaFirst.dir/bakery.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\AedaFirst.dir\bakery.cpp.obj -c "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\bakery.cpp"
 
-CMakeFiles/AedaFirst.dir/menu.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/AedaFirst.dir/menu.cpp.i"
-	C:\MinGW64_2\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\ultra\Documents\AedaFirst\AedaFirst\menu.cpp > CMakeFiles\AedaFirst.dir\menu.cpp.i
+CMakeFiles/AedaFirst.dir/bakery.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/AedaFirst.dir/bakery.cpp.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\bakery.cpp" > CMakeFiles\AedaFirst.dir\bakery.cpp.i
 
-CMakeFiles/AedaFirst.dir/menu.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/AedaFirst.dir/menu.cpp.s"
-	C:\MinGW64_2\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\ultra\Documents\AedaFirst\AedaFirst\menu.cpp -o CMakeFiles\AedaFirst.dir\menu.cpp.s
+CMakeFiles/AedaFirst.dir/bakery.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/AedaFirst.dir/bakery.cpp.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\bakery.cpp" -o CMakeFiles\AedaFirst.dir\bakery.cpp.s
 
 CMakeFiles/AedaFirst.dir/files.cpp.obj: CMakeFiles/AedaFirst.dir/flags.make
 CMakeFiles/AedaFirst.dir/files.cpp.obj: ../files.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\ultra\Documents\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/AedaFirst.dir/files.cpp.obj"
-	C:\MinGW64_2\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\AedaFirst.dir\files.cpp.obj -c C:\Users\ultra\Documents\AedaFirst\AedaFirst\files.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/AedaFirst.dir/files.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\AedaFirst.dir\files.cpp.obj -c "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\files.cpp"
 
 CMakeFiles/AedaFirst.dir/files.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/AedaFirst.dir/files.cpp.i"
-	C:\MinGW64_2\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\ultra\Documents\AedaFirst\AedaFirst\files.cpp > CMakeFiles\AedaFirst.dir\files.cpp.i
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\files.cpp" > CMakeFiles\AedaFirst.dir\files.cpp.i
 
 CMakeFiles/AedaFirst.dir/files.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/AedaFirst.dir/files.cpp.s"
-	C:\MinGW64_2\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\ultra\Documents\AedaFirst\AedaFirst\files.cpp -o CMakeFiles\AedaFirst.dir\files.cpp.s
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\files.cpp" -o CMakeFiles\AedaFirst.dir\files.cpp.s
 
 # Object files for target AedaFirst
 AedaFirst_OBJECTS = \
@@ -230,7 +230,7 @@ AedaFirst_OBJECTS = \
 "CMakeFiles/AedaFirst.dir/sale.cpp.obj" \
 "CMakeFiles/AedaFirst.dir/utilities.cpp.obj" \
 "CMakeFiles/AedaFirst.dir/employee.cpp.obj" \
-"CMakeFiles/AedaFirst.dir/menu.cpp.obj" \
+"CMakeFiles/AedaFirst.dir/bakery.cpp.obj" \
 "CMakeFiles/AedaFirst.dir/files.cpp.obj"
 
 # External object files for target AedaFirst
@@ -245,13 +245,13 @@ AedaFirst.exe: CMakeFiles/AedaFirst.dir/client.cpp.obj
 AedaFirst.exe: CMakeFiles/AedaFirst.dir/sale.cpp.obj
 AedaFirst.exe: CMakeFiles/AedaFirst.dir/utilities.cpp.obj
 AedaFirst.exe: CMakeFiles/AedaFirst.dir/employee.cpp.obj
-AedaFirst.exe: CMakeFiles/AedaFirst.dir/menu.cpp.obj
+AedaFirst.exe: CMakeFiles/AedaFirst.dir/bakery.cpp.obj
 AedaFirst.exe: CMakeFiles/AedaFirst.dir/files.cpp.obj
 AedaFirst.exe: CMakeFiles/AedaFirst.dir/build.make
 AedaFirst.exe: CMakeFiles/AedaFirst.dir/linklibs.rsp
 AedaFirst.exe: CMakeFiles/AedaFirst.dir/objects1.rsp
 AedaFirst.exe: CMakeFiles/AedaFirst.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\ultra\Documents\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable AedaFirst.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable AedaFirst.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\AedaFirst.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -264,6 +264,6 @@ CMakeFiles/AedaFirst.dir/clean:
 .PHONY : CMakeFiles/AedaFirst.dir/clean
 
 CMakeFiles/AedaFirst.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\ultra\Documents\AedaFirst\AedaFirst C:\Users\ultra\Documents\AedaFirst\AedaFirst C:\Users\ultra\Documents\AedaFirst\AedaFirst\cmake-build-debug C:\Users\ultra\Documents\AedaFirst\AedaFirst\cmake-build-debug C:\Users\ultra\Documents\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles\AedaFirst.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst" "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst" "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\cmake-build-debug" "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\cmake-build-debug" "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles\AedaFirst.dir\DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/AedaFirst.dir/depend
 

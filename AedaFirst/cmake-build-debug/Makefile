@@ -67,10 +67,10 @@ RM = "C:\Program Files\JetBrains\CLion 2020.2.3\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\ultra\Documents\AedaFirst\AedaFirst
+CMAKE_SOURCE_DIR = "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\ultra\Documents\AedaFirst\AedaFirst\cmake-build-debug
+CMAKE_BINARY_DIR = "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\cmake-build-debug"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -99,9 +99,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ultra\Documents\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles C:\Users\ultra\Documents\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles" "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles\progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\ultra\Documents\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\henri\Desktop\FEUP\2o Ano\1o Semestre\Algoritmos e Estruturas de Dados\CG1\AedaFirst\AedaFirst\cmake-build-debug\CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -141,6 +141,33 @@ AedaFirst: cmake_check_build_system
 AedaFirst/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/build
 .PHONY : AedaFirst/fast
+
+bakery.obj: bakery.cpp.obj
+
+.PHONY : bakery.obj
+
+# target to build an object file
+bakery.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/bakery.cpp.obj
+.PHONY : bakery.cpp.obj
+
+bakery.i: bakery.cpp.i
+
+.PHONY : bakery.i
+
+# target to preprocess a source file
+bakery.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/bakery.cpp.i
+.PHONY : bakery.cpp.i
+
+bakery.s: bakery.cpp.s
+
+.PHONY : bakery.s
+
+# target to generate assembly for a file
+bakery.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/bakery.cpp.s
+.PHONY : bakery.cpp.s
 
 bread.obj: bread.cpp.obj
 
@@ -304,33 +331,6 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-menu.obj: menu.cpp.obj
-
-.PHONY : menu.obj
-
-# target to build an object file
-menu.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/menu.cpp.obj
-.PHONY : menu.cpp.obj
-
-menu.i: menu.cpp.i
-
-.PHONY : menu.i
-
-# target to preprocess a source file
-menu.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/menu.cpp.i
-.PHONY : menu.cpp.i
-
-menu.s: menu.cpp.s
-
-.PHONY : menu.s
-
-# target to generate assembly for a file
-menu.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\AedaFirst.dir\build.make CMakeFiles/AedaFirst.dir/menu.cpp.s
-.PHONY : menu.cpp.s
-
 product.obj: product.cpp.obj
 
 .PHONY : product.obj
@@ -448,6 +448,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... AedaFirst
+	@echo ... bakery.obj
+	@echo ... bakery.i
+	@echo ... bakery.s
 	@echo ... bread.obj
 	@echo ... bread.i
 	@echo ... bread.s
@@ -466,9 +469,6 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
-	@echo ... menu.obj
-	@echo ... menu.i
-	@echo ... menu.s
 	@echo ... product.obj
 	@echo ... product.i
 	@echo ... product.s

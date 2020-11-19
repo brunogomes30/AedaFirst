@@ -6,35 +6,43 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/bread.h
-product.h
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/product.h
-map
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/bakery.h
+vector
 -
-
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/cake.h
-product.h
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/product.h
-map
--
-
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/client.cpp
+store.h
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/store.h
+sale.h
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/sale.h
 client.h
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/client.h
-iomanip
--
-files.h
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/files.h
-utilities.h
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/utilities.h
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/client.h
+product.h
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/product.h
+bread.h
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/bread.h
+cake.h
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/cake.h
+employee.h
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/employee.h
 
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/client.h
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/bread.h
+product.h
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/product.h
+map
+-
+
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/cake.h
+product.h
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/product.h
+map
+-
+
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/client.h
 iostream
 -
 store.h
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/store.h
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/store.h
 product.h
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/product.h
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/product.h
 stack
 -
 vector
@@ -42,71 +50,21 @@ vector
 map
 -
 
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/employee.h
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/employee.h
 iostream
 -
 map
 -
 
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/exceptions.h
-iostream
--
-exception
--
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/main.cpp
+bakery.h
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/bakery.h
 
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/files.h
-map
--
-
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/main.cpp
-menu.h
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/menu.h
-utilities.h
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/utilities.h
-
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/menu.cpp
-menu.h
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/menu.h
-utilities.h
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/utilities.h
-files.h
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/files.h
-iostream
--
-algorithm
--
-iomanip
--
-exceptions.h
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/exceptions.h
-fstream
--
-map
--
-
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/menu.h
-vector
--
-store.h
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/store.h
-sale.h
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/sale.h
-client.h
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/client.h
-product.h
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/product.h
-bread.h
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/bread.h
-cake.h
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/cake.h
-employee.h
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/employee.h
-
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/product.h
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/product.h
 iostream
 -
 
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/sale.h
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/sale.h
 iostream
 -
 vector
@@ -114,43 +72,17 @@ vector
 map
 -
 client.h
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/client.h
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/client.h
 employee.h
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/employee.h
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/employee.h
 
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/store.h
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/store.h
 iostream
 -
 vector
 -
 product.h
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/product.h
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/product.h
 employee.h
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/employee.h
-
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/utilities.cpp
-utilities.h
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/utilities.h
-iomanip
--
-
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/utilities.h
-iostream
--
-vector
--
-store.h
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/store.h
-client.h
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/client.h
-product.h
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/product.h
-bread.h
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/bread.h
-cake.h
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/cake.h
-sale.h
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/sale.h
-algorithm
-C:/Users/ultra/Documents/AedaFirst/AedaFirst/algorithm
+C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/employee.h
 
