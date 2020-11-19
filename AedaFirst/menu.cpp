@@ -13,55 +13,7 @@ using namespace std;
 Menu::Menu(bool load) {
     loadData();
 }
-void Menu::chooseClientsSort() {
-    int operation;
-    do {
-        cout << left << endl << setw(5) << "OP" << "Sort by" << endl;
-        cout << setw(5) << "1" << "Name" << endl;
-        cout << setw(5) << "2" << "NIF" << endl;
-        cout << endl << "Choose sort:" << endl;
-        cin >> operation;
-        if (cin.fail() || cin.peek() != '\n' || (operation != 1 && operation != 2)) {
-            cin.clear();
-            operation = -1;
-            cout << "That is not a possible sort" << endl;
-        }
-        cin.ignore(100, '\n');
-    } while (operation == -1);
-    if (operation == 1)
-        sortClientsByName(clients);
-    else
-        sortClientsByNif(clients);
 
-    if (order())
-        reverse(clients.begin(), clients.end());
-}
-
-void Menu::chooseSalesVolumeByProductSort(vector<pair<Product*, pair<unsigned, float>>> &vProducts) {
-    int operation;
-    bool descending;
-    do {
-        cout << endl << setw(5) << "OP" << "Sort by" << endl;
-        cout << setw(5) << "1" << "Quantity sold" << endl;
-        cout << setw(5) << "2" << "Income" << endl;
-        cout << endl << "Choose sort:" << endl;
-        cin >> operation;
-        if (cin.fail() || cin.peek() != '\n' || (operation != 1 && operation != 2)) {
-            cin.clear();
-            operation = -1;
-            cout << "That is not a possible sort" << endl;
-        }
-        cin.ignore(100, '\n');
-    } while (operation == -1);
-    descending = order();
-    if (operation == 0)
-        sortByQuantitySold(vProducts);
-    else
-        sortByIncome(vProducts);
-
-    if (descending)
-        reverse(vProducts.begin(), vProducts.end());
-}
 
 void Menu::opsStore(Store* &store) {
     int operation, op; string name; Address address;
@@ -607,11 +559,13 @@ void Menu::mainMenu() {
                 showStores(stores);
                 cout << endl;
             } else if (secondCommand == "employees") {
-                showEmployees(stores);
+                nif_or_id = chooseEmployeesSort(employees);
+                showEmployees(stores, nif_or_id);
             } else if (secondCommand == "products") {
+                chooseProductsSort(products);
                 showProducts(products);
             } else if (secondCommand == "clients") {
-                chooseClientsSort();
+                chooseClientsSort(clients);
                 showClients(clients);
                 nif_or_id = 0;
                 for (auto c:clients) {
@@ -733,7 +687,6 @@ void Menu::loadData() {
         try {
             while (!is.eof() && is.is_open()) {
                 getline(is, line);
-                cout << line << endl;
                 if (line.empty()) {
                     continue;
                 }

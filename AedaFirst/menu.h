@@ -23,15 +23,8 @@ private:
     map<unsigned, Employee *> employeesMapping;
     map<unsigned, Client *> clientsMapping;
     map<unsigned, Store *> storesMapping;
-    /**
-     * Asks user for the way he wants to sort <clients> and sort it.
-     */
-    void chooseClientsSort();
-    /**
-    * Asks user for the way he wants to sort <vProducts> and sort it.
-     * @param vProducts Vector of volume sales.
-    */
-    void chooseSalesVolumeByProductSort(std::vector<std::pair<Product*, std::pair<unsigned, float>>> &vProducts);
+
+
     /**
     * Store Menu
     * @param store Pointer to the store chose by user.

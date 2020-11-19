@@ -2,9 +2,11 @@
 #include <iomanip>
 
 using namespace std;
-Product::Product(){
 
-}
+unsigned Product::next_id = 1;
+
+
+Product::Product(){}
 
 Product::Product(unsigned id) {
     this->id = id;

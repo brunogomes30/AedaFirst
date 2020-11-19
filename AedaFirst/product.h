@@ -3,7 +3,6 @@
 
 #include<iostream>
 
-static int next_id = 1;
 
 /**
  * Enumerated type for specifying the category of product.
@@ -15,6 +14,7 @@ enum Category {
 
 class Product {
 protected:
+    static unsigned next_id;
     unsigned id;
     std::string name;
     float price;

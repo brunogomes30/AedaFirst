@@ -25,7 +25,7 @@ void showClients(const std::vector<Client*> &clients);
  * Print all employees of all stores passed as an argument in table format, ordered by store.
  * @param stores Vector of pointers to object Store.
  */
-void showEmployees(const std::vector<Store*> &stores);
+void showEmployees(const std::vector<Store*> &stores, const unsigned &order = 1);
 /**
  * Print all products passed as an argument in table format.
  * @param products Vector of pointers to object Product.
@@ -51,6 +51,12 @@ void showEmployeeOperations();
  * Print possible operations in Product Menu and respective input keys.
  */
 void showProductOperations();
+/**
+ *
+ * @param str
+ * @return
+ */
+std::string toLower(std::string str);
 /**
  * Asks user for an ID.
  * @param id Save the user answer.
@@ -197,6 +203,64 @@ bool cmpPersonsByName(T* &person1, T* &person2);
 template<class T>
 bool cmpPersonsByNif(T* &client1, T* &client2);
 /**
+ *
+ * @param employee1
+ * @param employee2
+ * @return
+ */
+bool cmpEmployeesBySalary(Employee* &employee1, Employee* &employee2);
+/**
+ *
+ * @param product1
+ * @param product2
+ * @return
+ */
+bool cmpProductsById(Product* &product1, Product* &product2);
+/**
+ *
+ * @param product1
+ * @param product2
+ * @return
+ */
+bool cmpProductsByCategory(Product* &product1, Product* &product2);
+/**
+ *
+ * @param product1
+ * @param product2
+ * @return
+ */
+bool cmpProductsByPrice(Product* &product1, Product* &product2);
+/**
+ *
+ * @param employees
+ */
+void sortEmployeesByName(std::vector<Employee*> &employees);
+/**
+ *
+ * @param employees
+ */
+void sortEmployeesByNif(std::vector<Employee*> &employees);
+/**
+ *
+ * @param employees
+ */
+void sortEmployeesByPrice(std::vector<Employee*> &employees);
+/**
+ *
+ * @param products
+ */
+void sortProductsById(std::vector<Product*> &products);
+/**
+ *
+ * @param products
+ */
+void sortProductsByCategory(std::vector<Product*> &products);
+/**
+ *
+ * @param products
+ */
+void sortProductsByPrice(std::vector<Product*> &products);
+/**
  * Sort clients by their names.
  * @param clients Vector of clients to be sorted.
  */
@@ -206,7 +270,25 @@ void sortClientsByName(std::vector<Client*> &clients);
  * @param clients Vector of clients to be sorted.
  */
 void sortClientsByNif(std::vector<Client*> &clients);
-
-std::string toLower(std::string str);
+/**
+ *
+ * @param employees
+ * @return
+ */
+unsigned chooseEmployeesSort(std::vector<Employee*> &employees);
+/**
+ *
+ * @param products
+ */
+void chooseProductsSort(std::vector<Product*> &products);
+/**
+* Asks user for the way he wants to sort <clients> and sort it.
+*/
+void chooseClientsSort(std::vector<Client*> &clients);
+/**
+ * Asks user for the way he wants to sort <vProducts> and sort it.
+ * @param vProducts Vector of volume sales.
+ */
+void chooseSalesVolumeByProductSort(std::vector<std::pair<Product*, std::pair<unsigned, float>>> &vProducts);
 
 #endif //UTILITIES_H

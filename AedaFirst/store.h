@@ -11,10 +11,10 @@ struct Address{
   std::string locality;
 };
 
-static unsigned store_next_id = 1;
 
 class Store {
 private:
+    static unsigned store_next_id;
     unsigned id;
     std::string name;
     Address address;
@@ -132,7 +132,7 @@ public:
      * print all employees in the store in format:
      * <NIF>  <NAME>  <SALARY>  <N. ORDERS>
      */
-    void showEmployees() const;
+    void showEmployees(const unsigned &order);
     /**
      * Print store info in format:
      * ID: <STORE_ID> Store: <STORE_NAME>

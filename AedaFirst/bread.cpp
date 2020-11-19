@@ -18,6 +18,7 @@ Bread::Bread(const map<string, string> &mapping) : Product() {
     if(next_id <= this->id){
         next_id = this->id + 1;
     }
+
     stringstream(mapping.at("price")) >> this->price;
     stringstream(mapping.at("status")) >> this->status;
     name = mapping.at("name");

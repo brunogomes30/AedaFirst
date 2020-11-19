@@ -1,10 +1,14 @@
 #include "store.h"
+#include "utilities.h"
 #include <iomanip>
 #include <algorithm>
 #include <map>
 #include "files.h"
 using namespace std;
 const string Store::FILENAME = "stores.txt";
+
+unsigned Store::store_next_id = 1;
+
 
 Store::Store(unsigned id) {
     this->id = id;
@@ -32,7 +36,7 @@ Store::Store(const map<string, string> &mapping, const map<unsigned, Product*> &
     this->name = mapping.at("name");
     this->address.street = mapping.at("address_street");
     this->address.locality = mapping.at("address_locality");
-    stringstream(mapping.at("employees")) >> this->status;
+    stringstream(mapping.at("status")) >> this->status;
 
     //Read vectors of products and employees
     sa = stringstream(mapping.at("products"));
@@ -144,7 +148,16 @@ void Store::showProducts() const {
     }
 }
 
-void Store::showEmployees() const {
+void Store::showEmployees(const unsigned &order) {
+    if (order%3 == 1)
+        sortEmployeesByName(employees);
+    else if (order%3 == 2)
+        sortEmployeesByNif(employees);
+    else
+        sortEmployeesByPrice(employees);
+    if (order > 3)
+        reverse(employees.begin(), employees.end());
+
     cout << setw(12) << "NIF" << setw(20) << "Name" << setw(10)
             << "Salary" << setw(12) << "N. Orders" << endl;
     for (auto emp:employees) {
