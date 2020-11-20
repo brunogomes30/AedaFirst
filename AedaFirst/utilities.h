@@ -316,4 +316,6 @@ void chooseClientsSort(std::vector<Client*> &clients);
  */
 void chooseSalesVolumeByProductSort(std::vector<std::pair<Product*, std::pair<unsigned, float>>> &vProducts);
 
+void showStoreStatistics(const std::vector<Sale *> &sales, const Store *store);
+
 #endif //UTILITIES_H

@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst
+# Install script for directory: C:/Users/ultra/Documents/AedaFirst/AedaFirst
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/henri/Desktop/FEUP/2o Ano/1o Semestre/Algoritmos e Estruturas de Dados/CG1/AedaFirst/AedaFirst/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/ultra/Documents/AedaFirst/AedaFirst/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

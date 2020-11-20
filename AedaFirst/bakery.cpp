@@ -31,7 +31,7 @@ void Bakery::opsStore(Store* &store) {
             case 0:
                 break;
             case 1: // Print statistics
-                //store->statistics(sales);
+                showStoreStatistics(sales, store);
                 break;
             case 2: // Print all sales
                 for (auto sale:sales) {
