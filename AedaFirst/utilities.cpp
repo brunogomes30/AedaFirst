@@ -35,9 +35,9 @@ void showProducts(const std::vector<Product*> &products) {
 void showMenuOperations() {
     cout << endl << endl << "[MENU]" << endl;
     cout << "There are several options available and some require extra arguments" << endl;
-    cout << "\t add    -> to Add an entity, takes a second argument from the list:\n\t\t [client, employee, product, store]" << endl;
-    cout << "\t view   -> to View a set of entities, takes a second argument from the list:\n\t\t [clients, employees, products, stores]" << endl;
-    cout << "\t select -> to Select an entity, takes a second argument from the list: \n\t\t [client, employee, store, product, sales, volume]" << endl;
+    cout << "\t add    -> to Add an entity, take a second argument from the list:\n\t\t [store, employee, product, client]" << endl;
+    cout << "\t view   -> to View a set of entities, take a second argument from the list:\n\t\t [stores, employees, products, clients, sales, volume]" << endl;
+    cout << "\t select -> to Select an entity, take a second argument from the list: \n\t\t [store, employee, product, client]" << endl;
     cout << "\t order  -> to Make an Order" << endl;
     cout << "\t help   -> to show options available" << endl;
     cout << "\t exit   -> to Exit and save data" << endl;
@@ -47,7 +47,7 @@ void showMenuOperations() {
 void showStoreOperations() {
     cout << endl << "[STORE]" << endl;
     cout << " 0 -> Back" << endl;
-    cout << "# 1 -> Print statistics" << endl;
+    cout << " 1 -> Print statistics" << endl;
     cout << " 2 -> Print all sales" << endl;
     cout << " 3 -> Add products" << endl;
     cout << " 4 -> Remove product" << endl;
@@ -363,9 +363,9 @@ Product* searchProduct(const vector<Product*> &products, unsigned id) {
 bool order() {
     int descending;
     do {
-        cout << endl << "OP\tOrder" << endl;
-        cout << "1\tAscending" << endl;
-        cout << "2\tDescending" << endl;
+        cout << endl << setw(5) << "OP" << setw(12) << "Order" << endl;
+        cout << setw(5) << "1" << setw(12) << "Ascending" << endl;
+        cout << setw(5) << "2" << setw(12) << "Descending" << endl;
         cout << endl << "Choose order of sort:" << endl;
         cin >> descending;
         if (cin.fail() || cin.peek() != '\n' || (descending != 1 && descending != 2)) {
@@ -525,29 +525,29 @@ void chooseClientsSort(vector<Client*> &clients) {
 }
 
 void chooseSalesVolumeByProductSort(vector<pair<Product*, pair<unsigned, float>>> &vProducts) {
-int operation;
-bool descending;
-do {
-    cout << endl << left << setw(5) << "OP" << "Sort by" << endl;
-    cout << setw(5) << "1" << "Quantity sold" << endl;
-    cout << setw(5) << "2" << "Income" << endl;
-    cout << endl << "Choose sort:" << endl;
-    cin >> operation;
-    if (cin.fail() || cin.peek() != '\n' || (operation != 1 && operation != 2)) {
-        cin.clear();
-        operation = -1;
-        cout << "That is not a possible sort" << endl;
-    }
-    cin.ignore(100, '\n');
-} while (operation == -1);
-descending = order();
-if (operation == 1)
-    sortByQuantitySold(vProducts);
-else
-    sortByIncome(vProducts);
+    int operation;
+    bool descending;
+    do {
+        cout << endl << left << setw(5) << "OP" << "Sort by" << endl;
+        cout << setw(5) << "1" << "Quantity sold" << endl;
+        cout << setw(5) << "2" << "Income" << endl;
+        cout << endl << "Choose sort:" << endl;
+        cin >> operation;
+        if (cin.fail() || cin.peek() != '\n' || (operation != 1 && operation != 2)) {
+            cin.clear();
+            operation = -1;
+            cout << "That is not a possible sort" << endl;
+        }
+        cin.ignore(100, '\n');
+    } while (operation == -1);
+    descending = order();
+    if (operation == 1)
+        sortByQuantitySold(vProducts);
+    else
+        sortByIncome(vProducts);
 
-if (descending)
-    reverse(vProducts.begin(), vProducts.end());
+    if (descending)
+        reverse(vProducts.begin(), vProducts.end());
 }
 
 

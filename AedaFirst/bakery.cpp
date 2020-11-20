@@ -106,9 +106,9 @@ void Bakery::clientHistory(Client* &client) {
         cout << "Opinion:\t\t" << "Negative" << endl;
     cout << "Number of points:\t" << client->getPoints() << endl;
     cout << "Number of orders:\t" << nSales << endl;
-    cout << "Total spent:\t\t" << totalSpent << endl;
+    cout << "Total spent:\t\t" << setprecision(2) << fixed << totalSpent << endl;
     cout << "Discounts used:\t\t" << nDiscounts << endl;
-    cout << "Total saved:\t\t" << totalDiscount << endl << endl;
+    cout << "Total saved:\t\t" << setprecision(2) << fixed << totalDiscount << endl << endl;
 
 }
 
