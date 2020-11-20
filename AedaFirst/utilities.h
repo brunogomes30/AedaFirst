@@ -32,6 +32,12 @@ void showEmployees(const std::vector<Store*> &stores, const unsigned &order = 1)
  */
 void showProducts(const std::vector<Product*> &products);
 /**
+ * Print a bar chart according to the most selling product.
+ * @param sales Vector of pointers to object Sale.
+ * @param store Store to see the statistics.
+ */
+void showStoreStatistics(const std::vector<Sale *> &sales, const Store *store);
+/**
  * Print possible operations in Main Menu and respective input keys.
  */
 void showMenuOperations();
@@ -315,7 +321,5 @@ void chooseClientsSort(std::vector<Client*> &clients);
  * @param vProducts Vector of volume sales.
  */
 void chooseSalesVolumeByProductSort(std::vector<std::pair<Product*, std::pair<unsigned, float>>> &vProducts);
-
-void showStoreStatistics(const std::vector<Sale *> &sales, const Store *store);
 
 #endif //UTILITIES_H
