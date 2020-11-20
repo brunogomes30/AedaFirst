@@ -11,7 +11,7 @@ Client::Client(const std::map<std::string, std::string> &mapping){
     stringstream(mapping.at("nif")) >> this->nif ;
     stringstream(mapping.at("points")) >> this->points;
     stringstream(mapping.at("opinion")) >> this->opinion;
-    stringstream(mapping.at("points")) >> this->regime;
+    stringstream(mapping.at("regime")) >> this->regime;
     stringstream(mapping.at("discount")) >> this->discount;
     stringstream(mapping.at("status")) >> this->status;
 }
