@@ -551,47 +551,55 @@ void chooseSalesVolumeByProductSort(vector<pair<Product*, pair<unsigned, float>>
 }
 
 void showStoreStatistics(const vector<Sale*> &sales, const Store *store) {
-    map<unsigned, unsigned> salesByProduct;
-    unsigned total = 0;
-    salesByProduct[0] = 0; //Removed products from the store
-    unsigned maxNameSize = 0;
-    for(Product * product : store->getProducts()){
-        if(product->getName().size() > maxNameSize){
-            maxNameSize = product->getName().size();
+    if(!sales.empty()) {
+        map<unsigned, unsigned> salesByProduct;
+        unsigned total = 0;
+        salesByProduct[0] = 0; //Removed products from the store
+        unsigned maxNameSize = 0;
+        for (Product *product : store->getProducts()) {
+            if (product->getName().size() > maxNameSize) {
+                maxNameSize = product->getName().size();
+            }
+            salesByProduct[product->getId()] = 0;
         }
-        salesByProduct[product->getId()] = 0;
-    }
 
-    for(Sale * sale: sales){
-        if(sale->getStore() == store){
-            for(auto pair: sale->getProducts()){
-                Product *product = pair.first;
-                unsigned quantity = pair.second.first;
-                total += quantity;
-                if(!product->getStatus() || store->findProduct(product->getId())){
-                    salesByProduct[product->getId()]+= quantity;
-                } else {
-                    salesByProduct[0]+= quantity;
+        for (Sale *sale: sales) {
+            if (sale->getStore() == store) {
+                for (auto pair: sale->getProducts()) {
+                    Product *product = pair.first;
+                    unsigned quantity = pair.second.first;
+                    total += quantity;
+                    if (!product->getStatus() || store->findProduct(product->getId())) {
+                        salesByProduct[product->getId()] += quantity;
+                    } else {
+                        salesByProduct[0] += quantity;
+                    }
                 }
             }
         }
-    }
 
-    unsigned maxlength = 30;
-    for(Product * product : store->getProducts()){
-        cout << product->getName();
-        for(unsigned i=product->getName().size(); i < maxNameSize; i++){
-            cout << " ";
-        }
-        cout << " | ";
+        unsigned maxlength = 30;
+        for (Product *product : store->getProducts()) {
+            cout << product->getName();
+            for (unsigned i = product->getName().size(); i < maxNameSize; i++) {
+                cout << " ";
+            }
+            cout << " | ";
 
-        unsigned quantity = salesByProduct[product->getId()];
-        auto size = unsigned(100 * float(quantity)/float(total) * maxlength / 100);
-        cout << quantity;
-        for(unsigned i = 0; i < size; i++){
-            cout << "#";
+            unsigned quantity = salesByProduct[product->getId()];
+            auto max_iterator = max_element(salesByProduct.begin(), salesByProduct.end(), []
+                    (const pair<unsigned, unsigned> &a, const std::pair<unsigned, unsigned> &b)
+                    -> bool { return a.second < b.second; });
+            unsigned max = max_iterator->second;
+
+            auto size = unsigned(100 * float(quantity) / float(max) * maxlength / 100);
+            for (unsigned i = 0; i < size; i++) {
+                cout << "#";
+            }
+            cout << endl;
         }
-        cout << endl;
+    } else {
+        cout << "The store doesn't have any sales." << endl;
     }
 
 }
