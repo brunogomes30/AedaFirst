@@ -16,7 +16,7 @@ Bakery::Bakery(bool load) {
 }
 
 void Bakery::opsStore(Store* &store) {
-    int operation, op; string name; Address address;
+    int operation; unsigned id; string name; Address address;
     vector<Store*>::iterator it;
     do {
         showStoreOperations();
@@ -40,39 +40,33 @@ void Bakery::opsStore(Store* &store) {
                 }
                 break;
             case 3: // Add products
-                do {
-                    cout << endl << setw(5) << "ID" << setw(20) << "Name" << "Price" << endl;
-                    cout << setw(5) << "0" << "All Products" << endl;
-                    showProducts(products);
-                    cout << endl << "Choose product's ID:" << endl;
-                    cin >> op;
-                    if (cin.fail() || cin.peek()!='\n') {
-                        cin.clear();
-                        op = -1;
-                        cout << "That product doesn't exist" << endl;
-                    }
-                    cin.ignore(100, '\n');
-                    switch (op) {
-                        case -1:
-                            break;
-                        case 0:
-                            store->addAllProducts(products);
-                            break;
-                        default:
-                            store->addProduct(searchProduct(products, op));
-                            break;
-                    }
-                } while (op==-1);
+                showProducts(products);
+                cout << setw(5) << "0" << "All Products" << endl;
+                askId(id, "Product");
+                if (id == 0)
+                    store->addAllProducts(products);
+                else {
+                    Product *p = searchProduct(products, id);
+                    if (p != nullptr)
+                        store->addProduct(p);
+                    else
+                        cout << "That product does not exist." << endl;
+                }
                 break;
-            case 4: // Change name
+            case 4: // Remove product
+                store->showProducts();
+                askId(id, "Product");
+                store->removeProduct(searchProduct(products, id));
+                break;
+            case 5: // Change name
                 askName(name, "Store");
                 store->setName(name);
                 break;
-            case 5: // Change address
+            case 6: // Change address
                 askAddress(address);
                 store->setAddress(address);
                 break;
-            case 6: // Remove store
+            case 7: // Remove store
                 it = find(stores.begin(), stores.end(), store);
                 for (auto it2=sales.begin(); it2!=sales.end();it2++) {
                     if ((*it2)->getStore() == (*it)) {
@@ -81,6 +75,7 @@ void Bakery::opsStore(Store* &store) {
                     }
                 }
                 sales.erase(remove(sales.begin(), sales.end(), nullptr), sales.end());
+                storesMapping.erase((*it)->getId());
                 delete (*it);
                 *it = nullptr;
                 stores.erase(remove(stores.begin(), stores.end(), nullptr), stores.end());
@@ -143,7 +138,6 @@ void Bakery::opsClient(Client* &client) {
             case 3: // Remove client
                 it = find(clients.begin(), clients.end(), client);
                 (*it)->setStatus(false);
-                //oldClients.push_back(*it);
                 clients.erase(it);
                 operation = 0;
                 break;
@@ -178,7 +172,6 @@ void Bakery::opsEmployee(Employee* employee) {
                     store->removeEmployee(*it);
                 }
                 (*it)->setStatus(false);
-                //oldEmployees.push_back(*it);
                 employees.erase(it);
                 operation = 0;
                 break;
@@ -287,7 +280,7 @@ void Bakery::makeOrder() {
             product_id = 1;
             cin.clear();
             cin.ignore(100, '\n');
-            cout << "That product doesn't exist" << endl;
+            cout << "That product doesn't exist." << endl;
             continue;
         }
         else
@@ -367,7 +360,7 @@ void Bakery::makeOrder() {
 
 void Bakery::salesVolumeByProduct() {
     map<Product*, pair<unsigned, float>> auxProducts;
-    map<Product*, pair<unsigned, float>> prods;
+    map<Product*, pair<unsigned, float>> prods; // Final map originated by merging all the maps of each sale
     for (auto sale:sales) {
         auxProducts = sale->getProducts();
         for (auto it=auxProducts.begin(); it != auxProducts.end(); it++) {
@@ -462,21 +455,21 @@ void Bakery::opsSales() {
         switch (operation) {
             case 0:
                 break;
-            case 1:
+            case 1: // Print all sales
                 for (auto sale:sales)
                     sale->showSale(true);
                 break;
-            case 2:
+            case 2: // Print filter sales
                 for (auto sale:sales)
                     if (searchStore(filterStores, sale->getStore()->getId()) != nullptr &&
                         searchClient(filterClients, sale->getClient()->getName()) != nullptr)
                         sale->showSale(true);
                 break;
-            case 3:
+            case 3: // Filer sales by stores
                 filterStores.clear();
                 askStores(stores, filterStores);
                 break;
-            case 4:
+            case 4: // Filter sales by clients
                 filterClients.clear();
                 showClients(clients);
                 cout << "Press  0  to finish the filter" << endl;
@@ -696,7 +689,7 @@ void Bakery::mainMenu() {
             cout << "Finish Program" << endl;
         } else {
             cout << "First argument is wrong." << endl;
-            cout << "Insert \"help\" to see options availables." << endl;
+            cout << "Insert \"help\" to see options available." << endl;
         }
     } while (firstCommand != "exit");
 }
@@ -767,7 +760,6 @@ void Bakery::loadData() {
         } catch (exception &e){
             throw ReadingDataException("Employees");
         }
-        cout << "Load Stores ";
         try {
             //Load stores
             is = ifstream(path + Store::FILENAME);
@@ -781,15 +773,12 @@ void Bakery::loadData() {
                 map<string, string> mapping = files::readData(line);
                 Store *store = new Store(mapping, productsMapping, employeesMapping);
                 storesMapping[store->getId()] = store;
-                if(store->getStatus()){
-                    stores.push_back(store);
-                }
+                stores.push_back(store);
             }
             is.close();
         } catch (exception e){
             throw ReadingDataException("Stores");
         }
-        cout << "Load clients ";
         try {
             // Load clients
             is = ifstream(path + Client::FILENAME);
@@ -851,7 +840,7 @@ void Bakery::saveData(){
     outBreads.close();
     outCakes.close();
 
-    //Save employess
+    //Save employees
     outEmployees.open(path + Employee::FILENAME, ios::out);
     for(auto it : employeesMapping){
         outEmployees << *(it.second);

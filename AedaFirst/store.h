@@ -38,10 +38,6 @@ private:
      * Employees who work at the store.
      */
     std::vector<Employee*> employees;
-    /**
-     * Activation status of the store. True if the store was not removed.
-     */
-    bool status;
 public:
     /**
      * Name of the file in data directory (stores.txt).
@@ -89,12 +85,6 @@ public:
      * @return Vector with employees linked to the store.
      */
     std::vector<Employee*> getEmployees() const;
-    /**
-     *
-     * @return Activation status of the store (true if it was not removed)
-     */
-    bool getStatus() const;
-
     /**
      *
      * @param name New name of the store.
