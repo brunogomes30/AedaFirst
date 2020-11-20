@@ -50,9 +50,10 @@ void showStoreOperations() {
     cout << "# 1 -> Print statistics" << endl;
     cout << " 2 -> Print all sales" << endl;
     cout << " 3 -> Add products" << endl;
-    cout << " 4 -> Change name" << endl;
-    cout << " 5 -> Change address" << endl;
-    cout << " 6 -> Remove store" << endl;
+    cout << " 4 -> Remove product" << endl;
+    cout << " 5 -> Change name" << endl;
+    cout << " 6 -> Change address" << endl;
+    cout << " 7 -> Remove store" << endl;
 }
 
 void showClientOperations() {

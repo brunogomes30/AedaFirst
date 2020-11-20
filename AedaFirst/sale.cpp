@@ -25,9 +25,8 @@ Sale::Sale(const map<string, string> &mapping,
     this->client = clientsMapping.at(clientNif);
 
     stringstream(mapping.at("appraisal")) >> this->appraisal;
-    stringstream(mapping.at("totalAmount")) >> this->totalAmount;
     stringstream(mapping.at("discount")) >> this->discount;
-
+    totalAmount = 0;
     stringstream ss = stringstream(mapping.at("products"));
 
     while(!ss.eof()) {
@@ -69,7 +68,7 @@ void Sale::addProduct(Product *product, unsigned qty, float price) {
     else {
         products[product].first += qty;
     }
-    totalAmount += qty*product->getPrice();
+    totalAmount += qty*price;
 }
 
 
@@ -132,7 +131,6 @@ ostream& operator<< (ostream &os, const Sale &sale){
     files::writeVariable(os, "clientNif", sale.client->getNif());
     files::writeVariable(os, "storeId", sale.store->getId());
     files::writeVariable(os, "appraisal", sale.appraisal);
-    files::writeVariable(os, "totalAmount", sale.totalAmount);
     files::writeVariable(os, "discount", sale.discount);
 
     stringstream productsStream (" ");
