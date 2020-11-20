@@ -13,6 +13,7 @@ using namespace std;
 
 class Bakery {
 private:
+    // Vectors with all entities still active
     std::vector<Store *> stores;
     std::vector<Employee*> employees;
     std::vector<Client *> clients;

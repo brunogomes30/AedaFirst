@@ -1,2 +1,5 @@
 id=" 3 " name=" marmore " price=" 0.8 " layer1=" 0 " layer2=" 2 " status=" 1 " 
 id=" 5 " name=" chocolate " price=" 0.95 " layer1=" 1 " layer2=" 1 " status=" 1 " 
+id=" 7 " name=" cenoura " price=" 2 " layer1=" 2 " layer2=" 0 " status=" 1 " 
+id=" 8 " name=" laranja " price=" 1.5 " layer1=" 1 " layer2=" 1 " status=" 1 " 
+id=" 9 " name=" canela " price=" 1.5 " layer1=" 2 " layer2=" 0 " status=" 1 " 
