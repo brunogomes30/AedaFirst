@@ -167,7 +167,11 @@ public:
     friend std::ostream& operator<< (std::ostream &os, Store &store);
 
 
-    //void Store::statistics(const std::vector<Sale*> &sales) const;
+    /**
+     * Getter for products
+     * @return
+     */
+    std::vector<Product *> getProducts() const;
 };
 
 

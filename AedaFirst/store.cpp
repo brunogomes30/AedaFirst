@@ -5,6 +5,7 @@
 #include <map>
 #include "files.h"
 
+
 using namespace std;
 
 const string Store::FILENAME = "stores.txt";
@@ -107,10 +108,8 @@ void Store::removeEmployee(Employee *employee) {
 }
 
 bool Store::findProduct(const unsigned int &id) const {
-    for (auto product:products)
-        if (product->getId() == id)
-            return true;
-    return false;
+    return searchProduct(products, id) != nullptr;
+
 }
 
 Employee* Store::lessOrdered() const {
@@ -162,16 +161,7 @@ void Store::showStore() const {
     cout << "ID: " << getId() << " Store: " << name << endl;
 }
 
-/*void Store::statistics(const vector<Sale*> &sales) const {
-    unsigned nSales = 0;
-    for (auto sale:sales) {
-        if (*this == *(sale->getStore())) {
-            nSales++;
-        }
-    }
-    cout << "Number of sales: " << nSales << endl;
 
-}*/
 
 ostream& operator<< (std::ostream &os, Store &store){
 
@@ -195,4 +185,6 @@ ostream& operator<< (std::ostream &os, Store &store){
     return os;
 }
 
-
+std::vector<Product *> Store::getProducts() const {
+    return this->products;
+}
