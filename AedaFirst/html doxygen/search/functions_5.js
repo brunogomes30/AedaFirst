@@ -1,0 +1,23 @@
+var searchData=
+[
+  ['getaddress_102',['getAddress',['../class_store.html#a3105c240629d49669f43447be3dae726',1,'Store']]],
+  ['getcategory_103',['getCategory',['../class_product.html#a9a720b2265efda83cb03a79a7f50d64e',1,'Product']]],
+  ['getclient_104',['getClient',['../class_sale.html#ab0fe6dfcffcd376e2258b26da953edcb',1,'Sale']]],
+  ['getdiscount_105',['getDiscount',['../class_client.html#a040ab923c7c3e7e6cbc991a4efb4950b',1,'Client::getDiscount()'],['../class_sale.html#a5f6356d41c5d66b1558ba94e464cbd8d',1,'Sale::getDiscount()']]],
+  ['getemployee_106',['getEmployee',['../class_sale.html#a40c3e4a7c824c5a994af03199f864912',1,'Sale']]],
+  ['getemployees_107',['getEmployees',['../class_store.html#adbfbcfd74513d7d4c18fe71719816a1a',1,'Store']]],
+  ['getid_108',['getId',['../class_product.html#a75ae7ac0f00768ba9eaa5ac4ff0d481a',1,'Product::getId()'],['../class_store.html#af0975418ed1e1f339af23a4779815562',1,'Store::getId()']]],
+  ['getname_109',['getName',['../class_client.html#a5c473ba52d7678744edec9e51052c947',1,'Client::getName()'],['../class_employee.html#a8e7c3870f6b4b08a5c7ccccd32ca8f37',1,'Employee::getName()'],['../class_product.html#add69128805228e23dcc6619b0a167a08',1,'Product::getName()'],['../class_store.html#af3f51f9856617bc6cc796c87f889660b',1,'Store::getName()']]],
+  ['getnif_110',['getNif',['../class_client.html#a35c9fed8cdb36d28fd5e51bd2aee852e',1,'Client::getNif()'],['../class_employee.html#af947bdc75aed19966b5554e48c85c4fb',1,'Employee::getNif()']]],
+  ['getnumorders_111',['getNumOrders',['../class_employee.html#aaba99b758f54d35d683c962312a63738',1,'Employee']]],
+  ['getopinion_112',['getOpinion',['../class_client.html#ae3a1c1ee2e8713822db017b498d35c98',1,'Client']]],
+  ['getpoints_113',['getPoints',['../class_client.html#a51940a2154ba5b40ad5d7e47a02d8aa0',1,'Client']]],
+  ['getprice_114',['getPrice',['../class_product.html#a0aaea95b8d3241b3758246254b8575e2',1,'Product']]],
+  ['getproduct_115',['getProduct',['../class_store.html#ae18a8ef5b5d18da075d4bf5c65386791',1,'Store']]],
+  ['getproducts_116',['getProducts',['../class_sale.html#aeb9f68995a591e18c53ca0b321a107e5',1,'Sale::getProducts()'],['../class_store.html#a7872138a27287fd074237a01999ed69a',1,'Store::getProducts()']]],
+  ['getregime_117',['getRegime',['../class_client.html#a1c4f3ed5b6e56369614026a5e9f4cb3f',1,'Client']]],
+  ['getsalary_118',['getSalary',['../class_employee.html#a9fa21d120f7212200ca9c31b062086f3',1,'Employee']]],
+  ['getstatus_119',['getStatus',['../class_client.html#a9af3563d4391c222c933263a7b9239b7',1,'Client::getStatus()'],['../class_employee.html#ae28a2b3c9794d209ce52ea5c2ba924d2',1,'Employee::getStatus()'],['../class_product.html#af90a3aed2e7494a7595886a6f77916e4',1,'Product::getStatus()']]],
+  ['getstore_120',['getStore',['../class_sale.html#a8a43ee1968c80044f2ffdfc3434ee9c9',1,'Sale']]],
+  ['gettotalamount_121',['getTotalAmount',['../class_sale.html#a1e48ea905579271de8eda95a36daa04c',1,'Sale']]]
+];
