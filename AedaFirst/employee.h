@@ -98,8 +98,8 @@ public:
      */
     bool operator==(Employee* employee);
     /**
-     * Print employee in format:
-     * <NIF>  <NAME>  <SALARY>  <NUM_ORDERS>
+     * Print employee in format:\n
+     * <NIF>  <NAME>  <SALARY>  <NUM_ORDERS>\n
      * @param details If false does not print neither salary nor number of orders of the employee.
      */
     void showEmployee(bool details) const;

@@ -38,7 +38,7 @@ public:
 
     SizeType getSize();
     /**
-     * Print product in format:
+     * Print product in format:\n
      * <ID>  <CATEGORY>  <NAME>  <SIZE>  <PRICE>
      */
     void showProduct() const override;

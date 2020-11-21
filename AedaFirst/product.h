@@ -97,7 +97,7 @@ public:
      */
     bool operator== (const Product &product2) const;
     /**
-     * Print product in format:
+     * Print product in format:\n
      * <ID>  <CATEGORY>  <NAME>
      */
     virtual void showProduct() const;

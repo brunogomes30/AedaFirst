@@ -73,7 +73,11 @@ public:
      * @return Adrress of the store.
      */
     Address getAddress() const;
-
+    /**
+     *
+     * @return Vector of pointers to products in store.
+     */
+    std::vector<Product *> getProducts() const;
     /**
      *
      * @param id ID of the searched product.
@@ -154,7 +158,7 @@ public:
      */
     void showEmployees(const unsigned &order);
     /**
-     * Print store info in format:
+     * Print store info in format:\n
      * ID: <STORE_ID> Store: <STORE_NAME>
      */
     void showStore() const;
@@ -165,13 +169,6 @@ public:
      * @return Stream where was saved.
      */
     friend std::ostream& operator<< (std::ostream &os, Store &store);
-
-
-    /**
-     * Getter for products
-     * @return
-     */
-    std::vector<Product *> getProducts() const;
 };
 
 

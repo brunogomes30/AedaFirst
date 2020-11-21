@@ -2,7 +2,7 @@
 #define CAKE_H
 
 #include "product.h"
-#include<map>
+#include <map>
 /**
  * Enumerated type for specifying each layer of the cake.
  */
@@ -44,8 +44,8 @@ public:
     Layer getLayer1() const;
     Layer getLayer2() const;
     /**
-     * Print product in format:
-     * <ID>  <CATEGORY>  <NAME>  <LAYER1> / <LAYER2>  <PRICE>
+     * Print product in format:\n
+     * <ID>  <CATEGORY>  <NAME>  <LAYER1> / <LAYER2>  <PRICE>\n
      */
     void showProduct() const override;
     /**

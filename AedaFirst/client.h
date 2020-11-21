@@ -140,8 +140,8 @@ public:
      */
     bool operator==(const Client* &client) const;
     /**
-     * Print client in format:
-     * <NIF>  <NAME>  <REGIME>  <OPINION>
+     * Print client in format:\n
+     * <NIF>  <NAME>  <REGIME>  <OPINION>\n
      * @param details If false does not print client´s opinion.
      */
     void showClient(bool details) const;
