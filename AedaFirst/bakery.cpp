@@ -267,6 +267,8 @@ void Bakery::makeOrder() {
 
     if (store->getEmployees().empty())
         throw NoEmployeeInStoreException("No employees in that store to deal with the order.");
+    if (store->lessOrdered() == nullptr)
+        throw NoEmployeeInStoreException("No employees available in that store to deal with the order.");
 
     // Choose products
     Sale auxSale;
@@ -313,6 +315,7 @@ void Bakery::makeOrder() {
     // Set employee
     sale->setEmployee(sale->getStore()->lessOrdered());
     sale->getEmployee()->addOrders(1);
+    sale->getEmployee()->getDeliveries().push(ClientPtr(sale->getClient()));
 
     // Bill
     bill = sale->getTotalAmount();
@@ -356,6 +359,27 @@ void Bakery::makeOrder() {
 
 
     sales.push_back(sale);
+}
+
+void Bakery::makeDelivery(Employee* employee) {
+    unsigned id = 0;
+    Client* client = employee->getDeliveries().top().getClient();
+
+    if (employee->getDeliveries().empty())
+        throw NoPendingDeliveries("No pending deliveries to this employee.");
+
+    for (vector<Sale *>::const_reverse_iterator it = sales.rbegin(); it != sales.rend(); it++) {
+        if (((*it)->getEmployee()->getNif() == employee->getNif()) &&
+                ((*it)->getClient()->getNif() == client->getNif())) {
+            id = (*it)->getId();
+            break;
+        }
+    }
+
+    cout << endl << "Order no. " << id << " was delivery to client "
+        << client->getName() << " (NIF: " << client->getNif() << ")." << endl;
+
+    employee->getDeliveries().pop();
 }
 
 void Bakery::salesVolumeByProduct() {
@@ -683,6 +707,31 @@ void Bakery::mainMenu() {
             catch (Exception &e) {
                 cout << e.what() << endl;
             }
+        } else if (firstCommand == "delivery") {
+            bool inputRequired = secondCommand.empty();
+            if(!inputRequired){
+                name = "";
+                getline(responseStream, name);
+                name = secondCommand + name;
+            } else {
+                showEmployees(stores);
+                askPersonData(name, "Employee");
+            }
+            employee = searchEmployee(employees, name);
+            if (employee != nullptr) {
+                if (!inputRequired) {
+                    cout << endl;
+                    employee->showEmployee(false);
+                }
+                try {
+                    makeDelivery(employee);
+                }
+                catch (Exception &e) {
+                    cout << e.what() << endl;
+                }
+            }
+            else
+                cout << "There is no employee with the given NIF or name." << endl;
         } else if(firstCommand == "help") {
             showMenuOperations();
         } else if(firstCommand == "exit") {
@@ -740,7 +789,27 @@ void Bakery::loadData() {
         } catch(exception &e){
             throw ReadingDataException("Cakes");
         }
+        try {
+            // Load clients
+            is = ifstream(path + Client::FILENAME);
+            //One line equals one Store
+            while(!is.eof() && is.is_open()) {
+                getline(is, line);
+                if(line.empty()){
+                    continue;
+                }
+                map<string, string> mapping = files::readData(line);
+                Client *client = new Client(mapping);
+                clientsMapping[client->getNif()] = client;
 
+                if(client->getStatus()){
+                    clients.push_back(client);
+                }
+            }
+            is.close();
+        } catch(exception &e){
+            throw ReadingDataException("Clients");
+        }
         try {
             //Load employees
             is = ifstream(path + Employee::FILENAME);
@@ -750,7 +819,7 @@ void Bakery::loadData() {
                     continue;
                 }
                 map<string, string> mapping = files::readData(line);
-                Employee *employee = new Employee(mapping);
+                Employee *employee = new Employee(mapping, clientsMapping);
                 employeesMapping[employee->getNif()] = employee;
                 if(employee->getStatus()){
                     employees.push_back(employee);
@@ -778,27 +847,6 @@ void Bakery::loadData() {
             is.close();
         } catch (exception e){
             throw ReadingDataException("Stores");
-        }
-        try {
-            // Load clients
-            is = ifstream(path + Client::FILENAME);
-            //One line equals one Store
-            while(!is.eof() && is.is_open()) {
-                getline(is, line);
-                if(line.empty()){
-                    continue;
-                }
-                map<string, string> mapping = files::readData(line);
-                Client *client = new Client(mapping);
-                clientsMapping[client->getNif()] = client;
-
-                if(client->getStatus()){
-                    clients.push_back(client);
-                }
-            }
-            is.close();
-        } catch(exception &e){
-            throw ReadingDataException("Clients");
         }
         //Load Sales
         try {

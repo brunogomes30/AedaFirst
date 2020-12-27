@@ -3,8 +3,6 @@
 #define CLIENT_H
 
 #include <iostream>
-#include "store.h"
-#include "product.h"
 #include <stack>
 #include <vector>
 #include <map>
@@ -36,9 +34,13 @@ private:
      */
     bool opinion;
     /**
-     * Save all the appraisals of client.
+     * Number of discounts used.
      */
-    std::stack<int> appraisals;
+    unsigned nDiscounts;
+    /**
+     * Keep tracking the number of appraisals to give the opinion in time O(1).
+     */
+    unsigned nAppraisals;
     /**
      * Keep tracking the sum of appraisals to give the opinion in time O(1).
      */
@@ -89,6 +91,10 @@ public:
      * @return True if discount in next order.
      */
     bool getDiscount() const;
+    /**
+     * @return Numbers of discounts used.
+     */
+     unsigned getNoDiscounts() const;
     /**
      *
      * @return Opinion of the client.
@@ -153,5 +159,14 @@ public:
      */
     friend std::ostream& operator<< (std::ostream &os, const Client &client);
 
+};
+
+class ClientPtr{
+private:
+    Client* client;
+public:
+    ClientPtr(Client* clt);
+    Client* getClient() const;
+    bool operator<(const ClientPtr clt) const;
 };
 #endif //CLIENT_H

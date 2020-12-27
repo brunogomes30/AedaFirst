@@ -85,12 +85,13 @@ void showStoreStatistics(const vector<Sale*> &sales, const Store *store) {
 void showMenuOperations() {
     cout << endl << endl << "[MENU]" << endl;
     cout << "There are several options available and some require extra arguments" << endl;
-    cout << "\t add    -> to Add an entity, take a second argument from the list:\n\t\t [store, employee, product, client]" << endl;
-    cout << "\t view   -> to View a set of entities, take a second argument from the list:\n\t\t [stores, employees, products, clients, sales, volume]" << endl;
-    cout << "\t select -> to Select an entity, take a second argument from the list: \n\t\t [store, employee, product, client]" << endl;
-    cout << "\t order  -> to Make an Order" << endl;
-    cout << "\t help   -> to show options available" << endl;
-    cout << "\t exit   -> to Exit and save data" << endl;
+    cout << "\t add      -> to Add an entity, take a second argument from the list:\n\t\t\t [store, employee, product, client]" << endl;
+    cout << "\t view     -> to View a set of entities, take a second argument from the list:\n\t\t\t [stores, employees, products, clients, sales, volume]" << endl;
+    cout << "\t select   -> to Select an entity, take a second argument from the list: \n\t\t\t [store, employee, product, client]" << endl;
+    cout << "\t order    -> to Make an Order" << endl;
+    cout << "\t delivery -> to make a delivery" << endl;
+    cout << "\t help     -> to show options available" << endl;
+    cout << "\t exit     -> to Exit and save data" << endl;
     cout << endl;
 }
 

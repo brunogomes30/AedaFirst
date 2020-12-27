@@ -1,7 +1,11 @@
 #ifndef EMPLOYEE_H
 #define EMPLOYEE_H
 #include <iostream>
-#include<map>
+#include <map>
+#include <queue>
+#include "client.h"
+
+
 class Employee {
 private:
     /**
@@ -24,6 +28,10 @@ private:
      * Activation status of the employee. True if he was not removed.
      */
     bool status;
+    /**
+     * Keep a maximum of 5 clients to delivery the order in right order.
+     */
+    std::priority_queue<ClientPtr> deliveries;
 public:
     /**
      * Name of the file in data directory (employees.txt).
@@ -33,7 +41,8 @@ public:
      * The constructor to use when loading from file.
      * @param mapping Pairs whose first element identifies the attribute and second has its data.
      */
-    Employee(const std::map<std::string, std::string> &mapping);
+    Employee(const std::map<std::string, std::string> &mapping,
+             const std::map<unsigned, Client*> &clientsMapping);
     /**
      * Initialize a employee setting his name, NIF and salary.
      * @param name Name of the employee.
@@ -66,6 +75,11 @@ public:
      * @return Activation status of the employee (true if he was not removed)
      */
     bool getStatus() const;
+    /**
+     *
+     * @return Deliveries.
+     */
+    std::priority_queue<ClientPtr>& getDeliveries();
 
     void setName(std::string name);
 

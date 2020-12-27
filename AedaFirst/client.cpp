@@ -13,6 +13,9 @@ Client::Client(const std::map<std::string, std::string> &mapping){
     stringstream(mapping.at("opinion")) >> this->opinion;
     stringstream(mapping.at("regime")) >> this->regime;
     stringstream(mapping.at("discount")) >> this->discount;
+    stringstream (mapping.at("nDiscounts")) >> this->nDiscounts;
+    stringstream (mapping.at("nAppraisals")) >> this->nAppraisals;
+    stringstream(mapping.at("sumOfAppraisals")) >> this->sumOfAppraisals;
     stringstream(mapping.at("status")) >> this->status;
 }
 
@@ -22,6 +25,7 @@ Client::Client(std::string name, unsigned nif, bool regime) {
     this->regime = regime;
     points = 0;
     discount = false;
+    nDiscounts = 0;
     sumOfAppraisals = 0;
     opinion = false;
     this->status = true;
@@ -37,11 +41,11 @@ unsigned Client::getPoints() const {return points;}
 
 bool Client::getDiscount() const {return discount;}
 
+unsigned Client::getNoDiscounts() const {return nDiscounts;}
+
 bool Client::getOpinion() const {return opinion;}
 
-bool Client::getStatus() const {
-    return this->status;
-}
+bool Client::getStatus() const {return this->status;}
 
 void Client::setName(string name) {this->name = name;}
 
@@ -53,12 +57,15 @@ void Client::setStatus(bool status) {
     this->status = status;
 }
 
-void Client::useDiscount() {discount = false;}
+void Client::useDiscount() {
+    discount = false;
+    nDiscounts++;
+}
 
 void Client::addAppraisal(unsigned appraisal) {
-    appraisals.push(appraisal);
+    nAppraisals++;
     sumOfAppraisals += appraisal;
-    if ((double)sumOfAppraisals/appraisals.size() >= 2.5)
+    if ((double)sumOfAppraisals/nAppraisals >= 2.5)
         opinion = true; // positive opinion
     else
         opinion = false; // negative opinion
@@ -119,7 +126,22 @@ ostream& operator<< (ostream &os, const Client &client){
     files::writeVariable(os, "points", client.points);
     files::writeVariable(os, "regime", client.regime);
     files::writeVariable(os, "discount", client.discount);
+    files::writeVariable(os, "nDiscounts", client.nDiscounts);
+    files::writeVariable(os, "nAppraisals", client.nAppraisals);
+    files::writeVariable(os, "sumOfAppraisals", client.sumOfAppraisals);
     files::writeVariable(os, "status", client.status);
     os << "\n";
     return os;
 }
+
+
+ClientPtr::ClientPtr(Client *clt) {client = clt;}
+
+Client* ClientPtr::getClient() const {return client;}
+
+bool ClientPtr::operator<(const ClientPtr clt) const {
+    if ((client->getOpinion() && clt.client->getOpinion()) || (!client->getOpinion() && !clt.client->getOpinion()))
+        return client->getNoDiscounts() > clt.client->getNoDiscounts();
+    return client->getOpinion() && !clt.client->getOpinion();
+}
+

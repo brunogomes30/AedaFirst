@@ -72,6 +72,10 @@ vector<Employee*> Store::getEmployees() const {
     return employees;
 }
 
+std::vector<Product *> Store::getProducts() const {
+    return this->products;
+}
+
 void Store::setName(const string &name) {
   this->name = name;
 }
@@ -113,10 +117,10 @@ bool Store::findProduct(const unsigned int &id) const {
 }
 
 Employee* Store::lessOrdered() const {
-    Employee* employee = employees.front();
-    unsigned min = employees.front()->getNumOrders();
+    Employee* employee = nullptr;
+    unsigned min = 999999999;
     for (auto e:employees) {
-        if (e->getNumOrders() < min) {
+        if ((e->getNumOrders() < min) && (e->getDeliveries().size() < 5)) {
             min = e->getNumOrders();
             employee = e;
         }
@@ -151,7 +155,7 @@ void Store::showEmployees(const unsigned &order) {
         reverse(employees.begin(), employees.end());
 
     cout << setw(12) << "NIF" << setw(20) << "Name" << setw(10)
-            << "Salary" << setw(12) << "N. Orders" << endl;
+            << "Salary" << setw(12) << "N. Orders" << setw(12) << "To Delivery" << endl;
     for (auto emp:employees) {
         emp->showEmployee(true);
     }
@@ -183,8 +187,4 @@ ostream& operator<< (std::ostream &os, Store &store){
 
     os << "\n";
     return os;
-}
-
-std::vector<Product *> Store::getProducts() const {
-    return this->products;
 }

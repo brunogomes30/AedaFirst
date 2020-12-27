@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include "store.h"
 #include "client.h"
 #include "employee.h"
 
@@ -113,6 +114,11 @@ public:
      * @param discount Percentage to pay of the total amount.
      */
     void setDiscount(float discount);
+    /**
+     *
+     * @return ID of the sale.
+     */
+    unsigned getId() const;
     /**
      *
      * @return  Pointer to the store where was mada the the sale.

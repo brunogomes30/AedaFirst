@@ -84,6 +84,8 @@ void Sale::setAppraisal(unsigned appraisal) {
 
 void Sale::setDiscount(float discount) {this->discount = discount;}
 
+unsigned Sale::getId() const {return id;}
+
 Store* Sale::getStore() const {return store;}
 
 Client* Sale::getClient() const {return client;}

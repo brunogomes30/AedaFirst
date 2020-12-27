@@ -56,6 +56,11 @@ private:
     */
     void makeOrder();
     /**
+     * Make a delivery.
+     * @param employee Employee will make the delivery.
+     */
+    void makeDelivery(Employee* employee);
+    /**
     * Print sales volume by product after ordering.
     */
     void salesVolumeByProduct();
