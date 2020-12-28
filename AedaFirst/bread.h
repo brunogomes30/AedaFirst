@@ -34,7 +34,7 @@ public:
      * @param price Price of the bread.
      * @param size Size (small or big) of the bread.
      */
-    Bread(std::string name, float price, SizeType size);
+    Bread(std::string name, float price, SizeType size, unsigned presences=0);
 
     SizeType getSize();
     /**

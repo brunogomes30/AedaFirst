@@ -2,6 +2,7 @@
 #define BAKERY_H
 
 #include <vector>
+#include "bst.h"
 #include "store.h"
 #include "sale.h"
 #include "client.h"
@@ -19,6 +20,7 @@ private:
     std::vector<Client *> clients;
     std::vector<Product *> products;
     std::vector<Sale *> sales;
+    BST<ProductPtr> productsPresences;
     // Maps to help saving and loading files
     map<unsigned, Product *> productsMapping;
     map<unsigned, Employee *> employeesMapping;
@@ -68,6 +70,10 @@ private:
     * Print sales volume by store.
     */
     void salesVolumeByStore();
+    /**
+     * Print products by their presence in sales. Using the BST productsPresences
+     */
+     void salesProductsPresences();
     /**
     * Manage options available to print sales volume.
     */

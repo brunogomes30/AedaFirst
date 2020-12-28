@@ -38,6 +38,10 @@ protected:
      * Activation status of the product. True if it was not removed.
      */
     bool status;
+    /**
+     * Number of presences in an order.
+     */
+     unsigned presences;
 public:
     /**
      * Initialize empty class base.
@@ -49,7 +53,7 @@ public:
      * @param price Price of the product.
      * @param ctg Category of the product.
      */
-    Product(std::string name, float price, Category ctg);
+    Product(std::string name, float price, Category ctg, unsigned presences=0);
     /**
      *
      * @return ID of the product
@@ -77,6 +81,11 @@ public:
     bool getStatus() const;
     /**
      *
+     * @return
+     */
+    unsigned getPresences() const;
+    /**
+     *
      * @param name New name of the product.
      */
     void setName(std::string &name);
@@ -90,6 +99,7 @@ public:
      * @param status True for valid product, false for removed product.
      */
     void setStatus(bool status);
+    void addPresence();
     /**
      * Checks equality of two products.
      * @param product2 Product to be compared.
@@ -101,6 +111,16 @@ public:
      * <ID>  <CATEGORY>  <NAME>
      */
     virtual void showProduct() const;
+};
+
+class ProductPtr {
+private:
+    Product* product;
+public:
+    ProductPtr(Product* product);
+    Product* getProduct() const;
+    unsigned getPresences() const;
+    bool operator<(const ProductPtr& prd) const;
 };
 
 #endif //PRODUCT_H

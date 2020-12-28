@@ -39,7 +39,7 @@ public:
      * @param layer1 First layer of the cake.
      * @param layer2 Second layer of the cake.
      */
-    Cake(std::string name, float price, Layer layer1, Layer layer2);
+    Cake(std::string name, float price, Layer layer1, Layer layer2, unsigned presences=0);
 
     Layer getLayer1() const;
     Layer getLayer2() const;

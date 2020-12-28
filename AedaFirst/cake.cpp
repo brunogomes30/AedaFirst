@@ -8,7 +8,7 @@ using namespace std;
 
 const string Cake::FILENAME = "cakes.txt";
 
-Cake::Cake(string name, float price, Layer layer1, Layer layer2):Product(name, price, Category::cake) {
+Cake::Cake(string name, float price, Layer layer1, Layer layer2, unsigned presences):Product(name, price, Category::cake, presences) {
     this->layer1 = layer1;
     this->layer2 = layer2;
 }
@@ -20,6 +20,7 @@ Cake::Cake(const map<string, string> &mapping) {
     }
     stringstream(mapping.at("price")) >> this->price;
     stringstream(mapping.at("status")) >> this->status;
+    stringstream (mapping.at("presences")) >> this->presences;
     int layerId;
     stringstream(mapping.at("layer1")) >> layerId;
     layer1 = (Layer) layerId;
@@ -53,6 +54,7 @@ ostream& operator<< (ostream &os, Cake &cake){
     files::writeVariable(os, "layer1", cake.layer1);
     files::writeVariable(os, "layer2", cake.layer2);
     files::writeVariable(os, "status", cake.status);
+    files::writeVariable(os, "presences", cake.presences);
     os << "\n";
     return os;
 }

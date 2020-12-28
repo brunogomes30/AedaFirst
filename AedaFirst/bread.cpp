@@ -15,6 +15,7 @@ Bread::Bread(const map<string, string> &mapping) : Product() {
 
     stringstream(mapping.at("price")) >> this->price;
     stringstream(mapping.at("status")) >> this->status;
+    stringstream (mapping.at("presences")) >> this->presences;
     name = mapping.at("name");
     int sizeId;
     stringstream(mapping.at("size")) >> sizeId;
@@ -24,7 +25,7 @@ Bread::Bread(const map<string, string> &mapping) : Product() {
 
 }
 
-Bread::Bread(std::string name, float price, SizeType size):Product(name, price, Category::bread) {
+Bread::Bread(std::string name, float price, SizeType size, unsigned presences):Product(name, price, Category::bread, presences) {
     this->size = size;
 }
 
@@ -45,6 +46,7 @@ ostream& operator<< (std::ostream &os, Bread &bread){
     files::writeVariable(os, "price", bread.price);
     files::writeVariable(os, "size", bread.size);
     files::writeVariable(os, "status", bread.status);
+    files::writeVariable(os, "presences", bread.presences);
     os << "\n";
 
     return os;

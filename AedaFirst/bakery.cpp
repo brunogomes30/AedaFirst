@@ -10,7 +10,7 @@
 
 using namespace std;
 
-Bakery::Bakery(bool load) {
+Bakery::Bakery(bool load):productsPresences(ProductPtr(nullptr)) {
     if (load)
         loadData();
 }
@@ -199,12 +199,16 @@ void Bakery::opsProduct(Product* &product) {
         switch (operation) {
             case 1: // Change name
                 askName(name, "Product's new");
+                productsPresences.remove(ProductPtr(product));
                 product->setName(name);
+                productsPresences.insert(ProductPtr(product));
                 break;
             case 2: // Change price
                 float price;
                 askSalaryOrPrice(price, "Product's new price");
+                productsPresences.remove(ProductPtr(product));
                 product->setPrice(price);
+                productsPresences.insert(ProductPtr(product));
                 break;
             case 3: // Add to stores
                 filterStores.clear();
@@ -307,6 +311,13 @@ void Bakery::makeOrder() {
 
     if (auxSale.getProducts().empty())
         throw NoProductsChoseException("Order canceled, no products were chose.");
+
+    // Update presences of products
+    for (const auto& p:auxSale.getProducts()) {
+        productsPresences.remove(ProductPtr(p.first));
+        p.first->addPresence();
+        productsPresences.insert(ProductPtr(p.first));
+    }
 
     // Initialize sale
     Sale* sale = new Sale(client, store);
@@ -426,6 +437,18 @@ void Bakery::salesVolumeByStore() {
         cout << setw(5) << s.first->getId() << setw(20) << s.first->getName()
             << right << setw(14) << s.second << left << endl;
 }
+void Bakery::salesProductsPresences() {
+    string categories[2] = {"Bread", "Cake"};
+
+    cout << left << setw(5) << "ID" << setw(10) << "Category" << setw(20) << "Name" << setw(12) << "Presences" << endl;
+    iteratorBST<ProductPtr> it = productsPresences.begin();
+    while (it != productsPresences.end()) {
+        cout << setw(5) << (*it).getProduct()->getId() << setw(10) << categories[(*it).getProduct()->getCategory()]
+            << setw(20) << (*it).getProduct()->getName() << setw(12) << (*it).getPresences() << endl;
+        it++;
+    }
+}
+
 void Bakery::opsSalesVolume() {
     int operation;
     do {
@@ -433,6 +456,7 @@ void Bakery::opsSalesVolume() {
         cout << " 0 -> Back" << endl;
         cout << " 1 -> Sales volume by product" << endl;
         cout << " 2 -> Sales volume by store" << endl;
+        cout << " 3 -> Products presences" << endl;
         cout << "\n[SALES VOLUME] Select operation:" << endl;
         cin >> operation;
         if (cin.fail() || cin.peek() != '\n') {
@@ -448,6 +472,9 @@ void Bakery::opsSalesVolume() {
                 break;
             case 2:
                 salesVolumeByStore();
+                break;
+            case 3:
+                salesProductsPresences();
                 break;
             default:
                 cout << "That operation doesn't exist" << endl;
@@ -562,6 +589,7 @@ void Bakery::mainMenu() {
                     product = new Cake(name, price_or_salary, ly1, ly2);
                     products.push_back(product);
                 }
+                productsPresences.insert(product);
                 productsMapping[product->getId()] = product;
             } else if(secondCommand == "client") {
                 setClientData(name, nif_or_id, regime);
@@ -763,6 +791,7 @@ void Bakery::loadData() {
                 if(product->getStatus()){
                     products.push_back(product);
                 }
+                productsPresences.insert(product);
             }
             is.close();
         }catch(exception &e){
@@ -784,6 +813,7 @@ void Bakery::loadData() {
                 if(product->getStatus()) {
                     products.push_back(product);
                 }
+                productsPresences.insert(product);
             }
             is.close();
         } catch(exception &e){
