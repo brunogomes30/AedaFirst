@@ -438,13 +438,67 @@ void Bakery::salesVolumeByStore() {
             << right << setw(14) << s.second << left << endl;
 }
 void Bakery::salesProductsPresences() {
-    string categories[2] = {"Bread", "Cake"};
+    string categories[2] = {"Bread", "Cake"}, category;
+    unsigned max, min;
+    Category ctg = bread;
+    bool goodInput = true, choseCtg;
+
+    do {
+        cout << "\nInsert 'all' to not apply any filter and show all produtcs." << endl;
+        cout << "Insert 'min <minimum>' and/or 'max <maximum>' to set minimum and maximum presences of products to show." << endl;
+        cout << "Insert 'bread' or 'cake' to show the products of respective category." << endl;
+        cout << "e.g: cake min 10 max 50; e.g all; e.g max 10" << endl;
+
+        string stringCommand = "", intCommand = "", line;
+        max = 9999999; min = 0; choseCtg = false; goodInput = true;
+        getline(cin, line);
+        stringstream responseStream(line);
+        try {
+            do {
+                responseStream >> stringCommand;
+                if (stringCommand == "all") {
+                    break;
+                }
+                else if (toLower(stringCommand) == "bread") {
+                    ctg = bread;
+                    choseCtg = true;
+                }
+                else if (toLower(stringCommand) == "cake") {
+                    ctg = cake;
+                    choseCtg = true;
+                }
+                else if (stringCommand == "min") {
+                    responseStream >> intCommand;
+                    min = stoul(intCommand);
+                }
+                else if (stringCommand == "max") {
+                    responseStream >> intCommand;
+                    max = stoul(intCommand);
+                }
+                else {
+                    throw BadInput("Command does not exist");
+                }
+            } while (!responseStream.eof());
+        }
+        catch (invalid_argument &e) {
+            cout << "That is not a minimum/maximum" << endl;
+            goodInput = false;
+        }
+        catch (BadInput &e) {
+            cout << e.what() << endl;
+            goodInput = false;
+        }
+    } while (!goodInput);
+
 
     cout << left << setw(5) << "ID" << setw(10) << "Category" << setw(20) << "Name" << setw(12) << "Presences" << endl;
     iteratorBST<ProductPtr> it = productsPresences.begin();
     while (it != productsPresences.end()) {
-        cout << setw(5) << (*it).getProduct()->getId() << setw(10) << categories[(*it).getProduct()->getCategory()]
-            << setw(20) << (*it).getProduct()->getName() << setw(12) << (*it).getPresences() << endl;
+        if ((*it).getPresences() >= min && (*it).getPresences() <= max &&
+                    (!choseCtg || (*it).getProduct()->getCategory() == ctg)) {
+            cout << setw(5) << (*it).getProduct()->getId() << setw(10) << categories[(*it).getProduct()->getCategory()]
+                << setw(20) << (*it).getProduct()->getName() << setw(12) << (*it).getPresences() << endl;
+        }
         it++;
     }
 }
@@ -564,12 +618,14 @@ void Bakery::mainMenu() {
                 cout << "Please insert a second argument from the list:" << endl;
                 cout << " [store, employee, product, client]" << endl;
                 cout << "e.g: add store " << endl;
-            } else if(secondCommand == "store"){
+            }
+            else if(secondCommand == "store"){
                 setStoreData(name, address);
                 store = new Store(name, address);
                 stores.push_back(store);
                 storesMapping[store->getId()] = store;
-            } else if(secondCommand == "employee"){
+            }
+            else if(secondCommand == "employee"){
                 setEmployeeData(name, nif_or_id, price_or_salary, stores, store);
                 if (searchEmployee(employees, to_string(nif_or_id)) == nullptr) {
                     employee = new Employee(name, nif_or_id, price_or_salary);
@@ -579,7 +635,8 @@ void Bakery::mainMenu() {
                 }
                 else
                     cout << "That employee already exists." << endl;
-            } else if(secondCommand == "product"){
+            }
+            else if(secondCommand == "product"){
                 setProductData(name, price_or_salary, ctg, size, ly1, ly2);
                 if (ctg == bread) {
                     product = new Bread(name, price_or_salary, size);
@@ -591,7 +648,8 @@ void Bakery::mainMenu() {
                 }
                 productsPresences.insert(product);
                 productsMapping[product->getId()] = product;
-            } else if(secondCommand == "client") {
+            }
+            else if(secondCommand == "client") {
                 setClientData(name, nif_or_id, regime);
                 if (searchClient(clients, to_string(nif_or_id)) == nullptr) {
                     client = new Client(name, nif_or_id, regime);
@@ -601,28 +659,34 @@ void Bakery::mainMenu() {
                 else
                     cout << "That client is already registered." << endl;
 
-            } else {
+            }
+            else {
                 cout << "Second argument is wrong." << endl;
                 cout << "Please insert a second argument from the list:" << endl;
                 cout << "[store, employee, product, client]" << endl;
                 cout << "e.g: add store " << endl;
             }
-        } else if(firstCommand == "view") {
+        }
+        else if(firstCommand == "view") {
             //View options
             if (secondCommand.empty()) {
                 cout << "Please insert a second argument from the list:" << endl;
                 cout << "[stores, employees, products, clients, sales, volume]" << endl;
                 cout << "e.g: view stores " << endl;
-            } else if (secondCommand == "stores") {
+            }
+            else if (secondCommand == "stores") {
                 showStores(stores);
                 cout << endl;
-            } else if (secondCommand == "employees") {
+            }
+            else if (secondCommand == "employees") {
                 nif_or_id = chooseEmployeesSort();
                 showEmployees(stores, nif_or_id);
-            } else if (secondCommand == "products") {
+            }
+            else if (secondCommand == "products") {
                 chooseProductsSort(products);
                 showProducts(products);
-            } else if (secondCommand == "clients") {
+            }
+            else if (secondCommand == "clients") {
                 chooseClientsSort(clients);
                 showClients(clients);
                 nif_or_id = 0;
@@ -631,17 +695,21 @@ void Bakery::mainMenu() {
                         nif_or_id++;
                 }
                 cout << "Normal: " << clients.size() - nif_or_id << "     Premium: " << nif_or_id << endl;
-            } else if (secondCommand == "sales") {
+            }
+            else if (secondCommand == "sales") {
                 opsSales();
-            } else if (secondCommand == "volume") {
+            }
+            else if (secondCommand == "volume") {
                 opsSalesVolume();
-            } else {
+            }
+            else {
                 cout << "Second argument is wrong." << endl;
                 cout << "Please insert a second argument from the list:" << endl;
                 cout << "[stores, employees, products, clients, sales, volume]" << endl;
                 cout << "e.g: view stores" << endl;
             }
-        } else if (firstCommand == "select") {
+        }
+        else if (firstCommand == "select") {
             //Select options
             bool inputRequired = thirdCommand.empty();
             if (secondCommand.empty()) {
@@ -666,7 +734,8 @@ void Bakery::mainMenu() {
                 }
                 else
                     cout << "There is no store with the given ID." <<  endl;
-            } else if (secondCommand == "employee") {
+            }
+            else if (secondCommand == "employee") {
 
                 if(!inputRequired){
                     name = "";
@@ -686,7 +755,8 @@ void Bakery::mainMenu() {
                 }
                 else
                     cout << "There is no employee with the given NIF or name." << endl;
-            } else if (secondCommand == "product") {
+            }
+            else if (secondCommand == "product") {
                 if(!inputRequired){
                     stringstream(thirdCommand) >> nif_or_id;
                 } else {
@@ -703,7 +773,8 @@ void Bakery::mainMenu() {
                 }
                 else
                     cout << "There is no product with the given ID." << endl;
-            } else if (secondCommand == "client") {
+            }
+            else if (secondCommand == "client") {
                 if(!inputRequired){
                     name = "";
                     getline(responseStream, name);
@@ -722,26 +793,30 @@ void Bakery::mainMenu() {
                 }
                 else
                     cout << "There is no client with the given name" << endl;
-            } else {
+            }
+            else {
                 cout << "Second argument is wrong." << endl;
                 cout << "Please insert a second argument from the list:" << endl;
                 cout << "[store, employee, product, client]" << endl;
                 cout << "e.g: select store" << endl;
             }
-        } else if(firstCommand == "order") {
+        }
+        else if(firstCommand == "order") {
             try {
                 makeOrder();
             }
             catch (Exception &e) {
                 cout << e.what() << endl;
             }
-        } else if (firstCommand == "delivery") {
+        }
+        else if (firstCommand == "delivery") {
             bool inputRequired = secondCommand.empty();
             if(!inputRequired){
                 name = "";
                 getline(responseStream, name);
                 name = secondCommand + name;
-            } else {
+            }
+            else {
                 showEmployees(stores);
                 askPersonData(name, "Employee");
             }
@@ -760,11 +835,14 @@ void Bakery::mainMenu() {
             }
             else
                 cout << "There is no employee with the given NIF or name." << endl;
-        } else if(firstCommand == "help") {
+        }
+        else if(firstCommand == "help") {
             showMenuOperations();
-        } else if(firstCommand == "exit") {
+        }
+        else if(firstCommand == "exit") {
             cout << "Finish Program" << endl;
-        } else {
+        }
+        else {
             cout << "First argument is wrong." << endl;
             cout << "Insert \"help\" to see options available." << endl;
         }

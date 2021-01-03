@@ -27,6 +27,11 @@ public:
     NoProductsChoseException(std::string ex):Exception(ex) {}
 };
 
+class BadInput:public Exception {
+public:
+    BadInput(std::string ex):Exception(ex) {}
+};
+
 class NoPendingDeliveries:public Exception {
 public:
     NoPendingDeliveries(std::string ex):Exception(ex) {}
