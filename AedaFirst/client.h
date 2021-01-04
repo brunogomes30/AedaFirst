@@ -161,13 +161,30 @@ public:
 
 };
 
-
-class ClientPtr{
+/**
+ * Class that represents a client
+ */class ClientPtr{
 private:
+    /**
+     * Pointer to client.
+     */
     Client* client;
 public:
+    /**
+     * Constructor of ClientPtr.
+     * @param clt Pointer to client.
+     */
     ClientPtr(Client* clt);
+    /**
+     *
+     * @return Pointer to client.
+     */
     Client* getClient() const;
+    /**
+     * Compare clients by their opinion and in equality case by discounts taken.
+     * @param clt Client to compare with.
+     * @return True if clt has a better opinion of the bakery, false otherwise.
+     */
     bool operator<(const ClientPtr clt) const;
 };
 #endif //CLIENT_H

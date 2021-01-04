@@ -72,7 +72,10 @@ private:
     */
     void salesVolumeByStore();
     /**
-     * Print products by their presence in sales. Using the BST productsPresences
+     * Print products by their presence in sales.
+     * Allow to set the minimum and the maximum presences to show.
+     * Allow to set a single category to show.
+     * Using the BST productsPresences
      */
      void salesProductsPresences();
     /**
