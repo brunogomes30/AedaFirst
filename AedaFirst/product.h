@@ -99,6 +99,9 @@ public:
      * @param status True for valid product, false for removed product.
      */
     void setStatus(bool status);
+    /**
+     * Increments the number of presences in an order by 1.
+     */
     void addPresence();
     /**
      * Checks equality of two products.
