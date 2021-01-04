@@ -165,10 +165,17 @@ void Bakery::opsEmployee(Employee* employee) {
         cin.ignore(100, '\n');
         switch (operation) {
             case 1: // Change employee's salary
+                Store* s;
                 bool error;
                 float salary;
                 askSalaryOrPrice(salary, "Employee's new salary");
+                it = find(employees.begin(), employees.end(), employee);
+                for (auto store:stores) {
+                    if (store->removeEmployee(*it))
+                        s = store;
+                }
                 employee->setSalary(salary);
+                s->addEmployee(*it);
                 break;
             case 2: // Remove employee
                 it = find(employees.begin(), employees.end(), employee);

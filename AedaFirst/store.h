@@ -120,8 +120,9 @@ public:
     /**
      * Removes an employee from the store.
      * @param employee Pointer to the employee to be removed.
+     * @return True if the employee was removed.
      */
-    void removeEmployee(Employee *employee);
+    bool removeEmployee(Employee *employee);
     /**
      * Removes a product from the store.
      * @param product Pointer to the product to be removed.

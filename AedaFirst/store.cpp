@@ -110,11 +110,11 @@ void Store::removeProduct(Product *product) {
         products.erase(it);
 }
 
-void Store::removeEmployee(Employee *employee) {
+bool Store::removeEmployee(Employee *employee) {
     //auto it = find(employees.begin(), employees.end(), employee);
     //if (it != employees.end())
     //    employees.erase(it);
-    employees.erase(EmployeePtr(employee));
+    return employees.erase(EmployeePtr(employee));
 }
 
 bool Store::findProduct(const unsigned int &id) const {
