@@ -112,14 +112,36 @@ public:
      */
     virtual void showProduct() const;
 };
-
+/**
+ * Class that represent a product
+ */
 class ProductPtr {
 private:
+    /**
+     * Pointer to a product.
+     */
     Product* product;
 public:
+    /**
+     * Constructor of ProductPtr.
+     * @param product Pointer to product.
+     */
     ProductPtr(Product* product);
+    /**
+     *
+     * @return Pointer to product.
+     */
     Product* getProduct() const;
+    /**
+     *
+     * @return Number of presences in sales.
+     */
     unsigned getPresences() const;
+    /**
+     * Compare presences.
+     * @param prd ProductPtr to compare with.
+     * @return True if prd has more presences than the first.
+     */
     bool operator<(const ProductPtr& prd) const;
 };
 
