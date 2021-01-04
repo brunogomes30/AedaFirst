@@ -92,6 +92,9 @@
 		<Unit filename="C:/Users/ultra/Documents/AedaFirst/AedaFirst/bread.h">
 			<Option target="AedaFirst"/>
 		</Unit>
+		<Unit filename="C:/Users/ultra/Documents/AedaFirst/AedaFirst/bst.h">
+			<Option target="AedaFirst"/>
+		</Unit>
 		<Unit filename="C:/Users/ultra/Documents/AedaFirst/AedaFirst/cake.cpp">
 			<Option target="AedaFirst"/>
 		</Unit>

@@ -85,6 +85,11 @@ void askAddress(Address &address);
  * @param name Save the user answer.
  * @param object String with text to complement outputs.
  */
+/**
+ * Asks user for the minimum number of deliveries of the employees to increase their salary
+ * @param minNumber
+ */
+void askMinNumber(unsigned &minNumber);
 void askName(std::string &name, std::string object);
 /**
  * Asks user for a nif of a person.

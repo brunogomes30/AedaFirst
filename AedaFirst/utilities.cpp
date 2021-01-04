@@ -104,7 +104,8 @@ void showStoreOperations() {
     cout << " 4 -> Remove product" << endl;
     cout << " 5 -> Change name" << endl;
     cout << " 6 -> Change address" << endl;
-    cout << " 7 -> Remove store" << endl;
+    cout << " 7 -> Increase wages of employees" << endl;
+    cout << " 8 -> Remove store" << endl;
 }
 
 void showClientOperations() {
@@ -180,6 +181,22 @@ void askAddress(Address &address) {
         if (address.locality.length() == 0)
             error = true;
     } while (error);
+}
+
+void askMinNumber(unsigned &minNumber){
+    bool error;
+    int number;
+    do {
+        error = false;
+        cout << "Minimum number of deliveries to increase wage:" << endl;
+        cin >> number;
+        if (cin.fail() || cin.peek() != '\n' || number < 0) {
+            cin.clear();
+            cout << "That's not a valid value!" << endl;
+            error = true;
+        }
+    } while (error);
+    minNumber = (unsigned) number;
 }
 
 void askName(string &name, string object) {

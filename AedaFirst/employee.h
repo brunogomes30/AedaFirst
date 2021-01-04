@@ -108,7 +108,7 @@ public:
     /**
      * Compare two employees.
      * @param employee Pointer to employee to be compared.
-     * @return True if both employees has the same name and the same NIF.
+     * @return True if both employees have the same name and the same NIF.
      */
     bool operator==(Employee* employee);
     /**
@@ -125,5 +125,46 @@ public:
      */
     friend std::ostream& operator<< (std::ostream &os, Employee &employee);
 
+};
+
+/*
+* Class that represents an employee
+*/
+class EmployeePtr {
+private:
+    /*
+     * Pointer to employee
+     */
+    Employee* emp;
+public:
+    /*
+     * Constructor of ClientPtr
+     * @param e - Pointer to client
+     */
+    EmployeePtr(Employee* e):emp(e) {}
+
+    /*
+     *
+     * @return Pointer to employee
+     */
+    Employee* getEmployee() const{return emp;}
+};
+
+/**
+ * Return hash based on the nif of employee
+ */
+struct hashEmployee {
+    int operator() (const EmployeePtr &employee) const{
+        return std::hash<unsigned>()(employee.getEmployee()->getNif());
+    }
+};
+
+/**
+ * Returns true if the 2 employees have the same name and nif
+ */
+struct equalityEmployee{
+    bool operator() (const EmployeePtr &employee1, const EmployeePtr &employee2) const {
+        return employee1.getEmployee()->getNif() == employee2.getEmployee()->getNif();
+    }
 };
 #endif //EMPLOYEE_H

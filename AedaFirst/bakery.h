@@ -2,6 +2,7 @@
 #define BAKERY_H
 
 #include <vector>
+#include <unordered_set>
 #include "bst.h"
 #include "store.h"
 #include "sale.h"

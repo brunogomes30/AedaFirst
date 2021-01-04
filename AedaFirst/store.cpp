@@ -69,6 +69,10 @@ Product* Store::getProduct(unsigned id) const {
 }
 
 vector<Employee*> Store::getEmployees() const {
+    vector<Employee*> employees;
+    for(const auto& ptr: this->employees){
+        employees.push_back(ptr.getEmployee());
+    }
     return employees;
 }
 
@@ -96,7 +100,8 @@ void Store::addAllProducts(const vector<Product*> &products) {
 }
 
 void Store::addEmployee(Employee *employee) {
-    employees.push_back(employee);
+    //employees.push_back(employee);
+    employees.insert(EmployeePtr(employee));
 }
 
 void Store::removeProduct(Product *product) {
@@ -106,9 +111,10 @@ void Store::removeProduct(Product *product) {
 }
 
 void Store::removeEmployee(Employee *employee) {
-    auto it = find(employees.begin(), employees.end(), employee);
-    if (it != employees.end())
-        employees.erase(it);
+    //auto it = find(employees.begin(), employees.end(), employee);
+    //if (it != employees.end())
+    //    employees.erase(it);
+    employees.erase(EmployeePtr(employee));
 }
 
 bool Store::findProduct(const unsigned int &id) const {
@@ -119,10 +125,10 @@ bool Store::findProduct(const unsigned int &id) const {
 Employee* Store::lessOrdered() const {
     Employee* employee = nullptr;
     unsigned min = 999999999;
-    for (auto e:employees) {
-        if ((e->getNumOrders() < min) && (e->getDeliveries().size() < 5)) {
-            min = e->getNumOrders();
-            employee = e;
+    for (auto &e:employees) {
+        if ((e.getEmployee()->getNumOrders() < min) && (e.getEmployee()->getDeliveries().size() < 5)) {
+            min = e.getEmployee()->getNumOrders();
+            employee = e.getEmployee();
         }
     }
     return employee;
@@ -145,6 +151,7 @@ void Store::showProducts() const {
 }
 
 void Store::showEmployees(const unsigned &order) {
+    vector<Employee *> employees = getEmployees();
     if (order%3 == 1)
         sortEmployeesByName(employees);
     else if (order%3 == 2)
@@ -165,7 +172,14 @@ void Store::showStore() const {
     cout << "ID: " << getId() << " Store: " << name << endl;
 }
 
-
+void Store::increaseWages(unsigned minNumber){
+    for(const auto& ptr: employees){
+        Employee * employee = ptr.getEmployee();
+        if(employee->getNumOrders() >= minNumber){
+            employee->setSalary(employee->getSalary() * 1.02);
+        }
+    }
+}
 
 ostream& operator<< (std::ostream &os, Store &store){
 
@@ -180,8 +194,8 @@ ostream& operator<< (std::ostream &os, Store &store){
     files::writeVariable(os, "products", productsString.str());
 
     stringstream employeesString("");
-    for(Employee *employee : store.employees){
-        employeesString << " " << employee->getNif() ;
+    for(auto &ptr : store.employees){
+        employeesString << " " << ptr.getEmployee()->getNif() ;
     }
     files::writeVariable(os, "employees", employeesString.str());
 

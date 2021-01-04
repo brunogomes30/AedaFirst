@@ -4,6 +4,7 @@
 CMakeFiles/AedaFirst.dir/bakery.cpp.obj: ../bakery.cpp
 CMakeFiles/AedaFirst.dir/bakery.cpp.obj: ../bakery.h
 CMakeFiles/AedaFirst.dir/bakery.cpp.obj: ../bread.h
+CMakeFiles/AedaFirst.dir/bakery.cpp.obj: ../bst.h
 CMakeFiles/AedaFirst.dir/bakery.cpp.obj: ../cake.h
 CMakeFiles/AedaFirst.dir/bakery.cpp.obj: ../client.h
 CMakeFiles/AedaFirst.dir/bakery.cpp.obj: ../employee.h
@@ -35,6 +36,7 @@ CMakeFiles/AedaFirst.dir/client.cpp.obj: ../sale.h
 CMakeFiles/AedaFirst.dir/client.cpp.obj: ../store.h
 CMakeFiles/AedaFirst.dir/client.cpp.obj: ../utilities.h
 
+CMakeFiles/AedaFirst.dir/employee.cpp.obj: ../client.h
 CMakeFiles/AedaFirst.dir/employee.cpp.obj: ../employee.cpp
 CMakeFiles/AedaFirst.dir/employee.cpp.obj: ../employee.h
 CMakeFiles/AedaFirst.dir/employee.cpp.obj: ../files.h
@@ -44,6 +46,7 @@ CMakeFiles/AedaFirst.dir/files.cpp.obj: ../files.h
 
 CMakeFiles/AedaFirst.dir/main.cpp.obj: ../bakery.h
 CMakeFiles/AedaFirst.dir/main.cpp.obj: ../bread.h
+CMakeFiles/AedaFirst.dir/main.cpp.obj: ../bst.h
 CMakeFiles/AedaFirst.dir/main.cpp.obj: ../cake.h
 CMakeFiles/AedaFirst.dir/main.cpp.obj: ../client.h
 CMakeFiles/AedaFirst.dir/main.cpp.obj: ../employee.h

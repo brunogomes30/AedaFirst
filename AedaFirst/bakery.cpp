@@ -16,7 +16,7 @@ Bakery::Bakery(bool load):productsPresences(ProductPtr(nullptr)) {
 }
 
 void Bakery::opsStore(Store* &store) {
-    int operation; unsigned id; string name; Address address;
+    int operation; unsigned id, minNumber; string name; Address address;
     vector<Store*>::iterator it;
     do {
         showStoreOperations();
@@ -66,7 +66,11 @@ void Bakery::opsStore(Store* &store) {
                 askAddress(address);
                 store->setAddress(address);
                 break;
-            case 7: // Remove store
+            case 7: // Increase wages of employees by 2%
+                askMinNumber(minNumber);
+                store->increaseWages(minNumber);
+                break;
+            case 8: // Remove store
                 it = find(stores.begin(), stores.end(), store);
                 for (auto it2=sales.begin(); it2!=sales.end();it2++) {
                     if ((*it2)->getStore() == (*it)) {

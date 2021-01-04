@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <unordered_set>
 #include "product.h"
 #include "employee.h"
 
@@ -37,7 +38,8 @@ private:
     /**
      * Employees who work at the store.
      */
-    std::vector<Employee*> employees;
+    std::unordered_set<EmployeePtr, hashEmployee, equalityEmployee> employees;
+
 public:
     /**
      * Name of the file in data directory (stores.txt).
@@ -70,7 +72,7 @@ public:
     std::string getName() const;
     /**
      *
-     * @return Adrress of the store.
+     * @return Address of the store.
      */
     Address getAddress() const;
     /**
@@ -88,6 +90,7 @@ public:
      *
      * @return Vector with employees linked to the store.
      */
+    //std::vector<Employee*> getEmployees() const;
     std::vector<Employee*> getEmployees() const;
     /**
      *
@@ -163,6 +166,11 @@ public:
      */
     void showStore() const;
     /**
+     * Increases wages of employees by 2% that have delivered at least the minNumber
+     * @param minNumber
+     */
+    void increaseWages(unsigned minNumber);
+    /**
      * Write store in the file.
      * @param os Stream where to save.
      * @param store Store to be saved.
@@ -170,6 +178,4 @@ public:
      */
     friend std::ostream& operator<< (std::ostream &os, Store &store);
 };
-
-
 #endif //STORE_H
